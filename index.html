@@ -1,0 +1,51 @@
+---
+title: "Blackfell"
+layout: splash
+author_profile: true
+header:
+    overlay_image: "/assets/images/generic/fog2.jpg"
+    actions:
+        - label: "Straight to the Blog posts"
+          url: "/blog/"
+excerpt: "Welcome to My Personal Blog and Reference. I built this site to help my friends, family and colleagues, hopefully you'll find something useful too."
+#intro: 
+#    - excerpt: 'This is the intro excerpt.'
+#About me section
+feature_row:
+    - image_path: /assets/images/generic/forest.jpg
+      alt: "About Image"
+      title: "Who am I anyway?"
+      excerpt: 'This is my blog, but who am I? Find out more about me, why I blog and how I can help you here.'
+      url: /about/
+      btn_label: "Read about me"
+      btn_class: "btn--inverse"
+#Security Guidance Section
+feature_row2:
+    - image_path: /assets/images/generic/laptop.jpg
+      alt: "Guidance Image"
+      title: "Security Guidance Articles"
+      excerpt: 'This is my blog, but who am I? Find out more about me, why I blog and how I can help you here.'
+      url: /categories/#guidance
+      btn_label: "Get Guidance"
+      btn_class: "btn--inverse"
+      excerpt: "There is a **lot** of information out there on security. Some of my blog posts provide simple, clear discussion of security issues; perhaps they can cut through the noise and help you too."
+#Technial Guidance Section
+feature_row3:
+    - image_path: /assets/images/generic/urban.jpg
+      alt: "Technical Image"
+      title: "Technical Guides & Articles"
+      excerpt: "Idve given written and verbal guidance on technical aspects of security over the years and have now collected these articles as part of my blog. These are designed to help people learn practical security related skills, understand computers, coding, the business of security and learn in a fun, safe, ethical and legal way"
+      url: /categories/#technical
+      btn_label: "Get TeChNicA1"
+      btn_class: "btn--inverse"
+
+---
+
+{% include feature_row id="intro" type="left" %}
+
+{% include feature_row id="feature_row" type="right" %}
+
+{% include feature_row id="feature_row2" type="left" %}
+
+{% include feature_row id="feature_row3" type="right" %}
+

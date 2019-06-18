@@ -1,0 +1,10 @@
+tags:
+  - passwords
+  - two factor authentication
+  - web
+  - jekyll
+  - virtualisation
+  - windows
+  - lab
+  - networking
+  - linux
