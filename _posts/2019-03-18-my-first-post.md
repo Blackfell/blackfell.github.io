@@ -68,46 +68,27 @@ Now you're ready to set your site up in Github Pages; there are benefits to doin
 
 This will be a person/organisation site, project sites are linked to specific projects.
 
- 
-
 I create a repo called username.github.io via the github web interface.
+
+{% include figure image_path=/assets/images/posts/first_post/git_repo.jpg alt=git_repo_creation caption="Creating a new github pages repository via teh Github web interface." %}
 
 I use a terminal client for GitHub, so I can clone and push the repo back up to Github.
 
-UIf you're paranoid like me, you may wish to delete your commit history, maybe you left some personal info or passwords in there, but this is simple, don't worry, do this first:
-
- 
-
-1.Checkout , add all files and commit the new branch, delete and replace the master.
+1. First lets clone the repo, before copying all of the locally produced files into the new folder. There's no need to copy the *"_site"* directory created by Jekyll; remember, replace 'blackfell' for your own username.
 
 {% highlight bash%}
-
-git checkout --orphan latest_branch
-
+git clone git@github.com:Blackfell/blackfell.github.io.git
+cd ./blackfell.github.io
 git add -A
-
-git commit -am "commit message"
-
-git branch -D master
-
-git branch -m master
-
-git push -f origin master
-
+git commit -am "First commit."
 {% endhighlight %}
-
- 
 
 1. Now let's push our clean repo up to Github:
 
 {% highlight bash%}
-
-git remote add origin git@github.com:username/reponame.git
-
-git push origin master
-
+git push -u origin master
 {% endhighlight %}
 
 1. Profit
 
-Now go out in the world and profit!
+Your site is now gloriously live. Now go out in the world and profit!
