@@ -70,7 +70,7 @@ This will be a person/organisation site, project sites are linked to specific pr
 
 I create a repo called username.github.io via the github web interface.
 
-{% include figure image_path=/assets/images/posts/first_post/git_repo.jpg alt=git_repo_creation caption="Creating a new github pages repository via teh Github web interface." %}
+{% include figure image_path="/assets/images/posts/first_post/git_repo.jpg" alt="git repo creation" caption="Creating a new github pages repository via teh Github web interface." %}
 
 I use a terminal client for GitHub, so I can clone and push the repo back up to Github.
 
