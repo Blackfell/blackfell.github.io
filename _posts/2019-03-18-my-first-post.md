@@ -58,7 +58,7 @@ Well, no. Jekyll is great, it helps me write content in simple [Markdown](https:
 There's more still, though; as well as markup, Jekyll lets you write dynamic content, for example, listing all blog posts on a page, using [liquid](https://jekyllrb.com/docs/liquid/). This functionality is a little trickier than writing markdown posts, but you can get loads of information at the jekyll site.
 
 ## How can I do this?
-Building a site with Jekyll, Minimal Mistakes ang Github Pages has been a relatively easy and fun learning experience; if you're convinced adn fancy a go, I'd reccomend starting with an overview of Jekyll via their own [documentation](https://jekyllrb.com/docs/); don't start yet though, before you get too bogged down think about picking a [theme](http://jekyllthemes.org/) if you want one. 
+Building a site with Jekyll, Minimal Mistakes ang Github Pages has been a relatively easy and fun learning experience; if you're convinced and fancy a go, I'd reccomend starting with an overview of Jekyll via their own [documentation](https://jekyllrb.com/docs/); don't start yet though, before you get too bogged down think about picking a [theme](http://jekyllthemes.org/) if you want one. 
 
 Now you've picked a theme, it's time to read the documentation for that theme; this will add to your Jekyll knowledge and may actually affect the way you think about your site. If there are some base or default files for your theme, **get them now** these will invariably make your like a *lot* easier.
 
@@ -70,7 +70,7 @@ This will be a person/organisation site, project sites are linked to specific pr
 
 I create a repo called username.github.io via the github web interface.
 
-{% include figure image_path="/assets/images/posts/first_post/git_repo.jpg" alt="git repo creation" caption="Creating a new github pages repository via teh Github web interface." %}
+{% include figure image_path="/assets/images/posts/first_post/git_repo.jpg" alt="git repo creation" caption="Creating a new github pages repository via the Github web interface." %}
 
 I use a terminal client for GitHub, so I can clone and push the repo back up to Github.
 
