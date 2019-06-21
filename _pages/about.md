@@ -24,6 +24,8 @@ excerpt: "Who am I, anyway?"
   {{post.url | relative_url}}
 {% endfor %}
 
+#{% site.posts limit:1 | url | relative_url %}
+
 # Me!
 
 My name is Sam, I'm a security engineer for money, but I'm writing here because I enjoy hobbying and playing with technology. 
