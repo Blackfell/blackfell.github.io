@@ -18,7 +18,9 @@ excerpt: "Who am I, anyway?"
 ---
 
 
-{% site.posts limit:1 | relative_url %}
+{% for site in site.posts limit:1 %}
+  site.relative_url
+{% endfor %}
 
 # Me!
 
