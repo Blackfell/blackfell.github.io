@@ -17,13 +17,6 @@ excerpt: "Who am I, anyway?"
 
 ---
 
-
-#{% for post in site.posts limit:1 %}
-#  {{post.title}}
-#  {{post.url | relative_url}}
-#{% endfor %}
-
-
 # Me!
 
 My name is Sam, I'm a security engineer for money, but I'm writing here because I enjoy hobbying and playing with technology. 
@@ -66,3 +59,4 @@ I worked with youth throughout my University years and for the first years of my
 I'm now a father to a young family and take care to enjoy and be mindful of the pleasures of simple family life; swinging an axe and building a house can feel like a far cry from working with computers at time, but sometimes one can help build ideas and enthusiasm for the other.
 
 So please enjoy the site and remember to always **be excellent to each other**.
+
