@@ -24,7 +24,6 @@ excerpt: "Who am I, anyway?"
   {{post.url | relative_url}}
 {% endfor %}
 
-#{% site.posts limit:1 | url | relative_url %}
 
 # Me!
 
