@@ -78,9 +78,9 @@ I use a terminal client for GitHub, so I can clone and push the repo back up to 
 
 {% highlight bash%}
 git clone git@github.com:Blackfell/blackfell.github.io.git
-cp ./\* ../blackfell.github.io/
+cp ./* ../blackfell.github.io/
 cd ../blackfell.github.io/
-rm -r ./\_site/
+rm -r ./_site/
 git add -A
 git commit -am "First commit."
 {% endhighlight %}
