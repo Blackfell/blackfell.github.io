@@ -113,9 +113,8 @@ I simply generated the following page using my favourite text editor:
 ---
 permalink: "/latest/"
 ---
-(% for post in site.posts limit:1 %)
-
-  (( post | replace: "<!doctype html>", "" | replace: 'class = "masthead"', 'style="visibility:hidden; height:0px"'  ))
+{(% for post in site.posts limit:1 %)
+  (( post | replace: "<!doctype html>", "" | replace: 'class="masthead-class-name"', 'style="visibility:hidden; height:0px"'  ))
 (% endfor %)
 ```
 
