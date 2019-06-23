@@ -81,9 +81,9 @@ I use a terminal client for GitHub, so I can clone and push the repo back up to 
 1. First lets clone the repo, before copying all of the locally produced files into the new folder. There's no need to copy the *"_site"* directory created by Jekyll; remember, replace 'blackfell' for your own username.
   {% highlight bash%}
   git clone git@github.com:Blackfell/blackfell.github.io.git
-  cp ./practice_directory/* .//blackfell.github.io/
+  cp ./practice_directory/\* ./blackfell.github.io/
   cd ./blackfell.github.io/
-  rm -r ./_site/
+  rm -r ./\_site/
   git add -A
   git commit -am "First commit."
   {% endhighlight %}
