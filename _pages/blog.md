@@ -58,7 +58,7 @@ That means that if you're reading this, I'm blogging in the hope that my posts c
 
 I’ve been reading blogs for as long as I've been online and this has taught me that posts must be useful to someone; in my efforts to add value, you’ll see walkthroughs, technology guides, advice, and (hopefully) some guest posts too.
 
-My articles will sometimes be helpful for regular folk's personal security, sometimes for security professionals, or perhaps they'll be general discussions adn statements into the ether. Who knows what the future will hold? 
+My articles will sometimes be helpful for regular folk's personal security, sometimes for security professionals, or perhaps they'll be general discussions and statements into the ether. Who knows what the future will hold? 
 
 I want to give you, the reader, value; if you have thoughts, requests or complaints, get in touch via any of the social links on this page and let me know!
 
