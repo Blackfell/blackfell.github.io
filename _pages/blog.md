@@ -50,20 +50,21 @@ Alternatively, there are a few clever ways to **browse blog content**:
 
 # Why do I blog?
 
-I’ve collected my own notes and resources for years relating to security, coding, computers and business; these lay in various locations and I often needed to find them for new starts at work, or friends just looking for advice, maybe even just for me when I forget something.
+I’ve collected my own notes and resources for years relating to security, coding and technology, but have decided to collate them online; I hope this will help me pass them to new starts at work, students and mentees, friends just looking for advice, or maybe even just for me when I forget something.
 
-My notes are little use in isolation and when last I looked to reorganise them, I knew it was finally time to make them public in the hope that they can help people like you!
+That means that if you're reading this, I'm blogging in the hope that my posts can help you!
 
 ## What do I write about?
 
-I’ve been reading blogs around the industry for years and have decided to join the party. I want this to be useful though, so you’ll see walkthroughs, guides, advice, and (hopefully) some guest posts from my firends aroudn the industry.
+I’ve been reading blogs for as long as I've been online and this has taught me that posts must be useful to someone; in my efforts to add value, you’ll see walkthroughs, technology guides, advice, and (hopefully) some guest posts too.
 
-This content will sometimes be helpful for regular folk's personal security, sometimes for other security professionals, or perhaps they'll just be general discussions into the ether. Who knows what the future will hold? At the end of the day, I want to give you' the reader, value, so if you have thoughts, requests or (hopefully not!) complaints, get in touch via any o fthe social links on this page and let me know!
+My articles will sometimes be helpful for regular folk's personal security, sometimes for security professionals, or perhaps they'll be general discussions adn statements into the ether. Who knows what the future will hold? 
+
+I want to give you, the reader, value; if you have thoughts, requests or complaints, get in touch via any of the social links on this page and let me know!
 
 ## What makes you qualified for this?
 
-Why nothing, of course! That said, this is my hobby and passion, I live security and often bring another point of view to disussions, so why not try some content and see what I’m about?
+Nothing! That said, this is my hobby and passion; I live security, tech and problems, so why not try some content and see what I’m about?
 
 ## All articles by date
-
 
