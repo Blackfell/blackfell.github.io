@@ -86,7 +86,7 @@ I use a terminal client for GitHub, so I can clone and push the repo back up to 
 
 1. First lets clone the repo, before copying all of the locally produced files into the new folder. There's no need to copy the *"_site"* directory created by Jekyll; remember, replace 'blackfell' for your own username.
 
-   ```
+   ```bash
 git clone git@github.com:Blackfell/blackfell.github.io.git
 cp ./practice_directory/* ./blackfell.github.io/
 cd ./blackfell.github.io/
@@ -96,7 +96,7 @@ git commit -am "First commit."
    ```
 1. Now let's push our clean repo up to Github:
 
-   ```
+   ```bash
 git push -u origin master
    ```
 1. Profit
@@ -109,11 +109,12 @@ I needed a fix for this, which you may find useful too; I managed this by simply
 
 I simply generated the following page using my favourite text editor:
 
-```
+```ruby
 ---
 permalink: "/latest/"
 ---
 (% for post in site.posts limit:1 %)
+
   (( post | replace: "<!doctype html>", "" | replace: 'class="masthead"', 'style="visibility:hidden; height:0px"'  ))
 (% endfor %)
 ```
