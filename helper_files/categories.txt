@@ -1,6 +1,0 @@
-categories:
-  - social
-  - threats
-  - security guidance
-  - technical guidance
-  - lab
