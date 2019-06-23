@@ -23,7 +23,7 @@ My name is Sam, I'm a security engineer for money, but I'm writing here because 
 
 I am a father to a young family and enjoy Thai boxing, walking, climbing and skiing. I am regularly working on ‘analog’ projects and enjoy woodwork, DIY and am currently creating a home campervan conversion. 
 
-### Please enjoy the site and remember to always **be excellent to each other**.
+Please enjoy the site, party on and remember to always **be excellent to each other**.
 
 ### Why am I here?
 
