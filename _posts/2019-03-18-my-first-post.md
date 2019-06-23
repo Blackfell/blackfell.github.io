@@ -89,7 +89,9 @@ git commit -am "First commit."
    {% endhighlight %}
 2. Now let's push our clean repo up to Github:
    ```
+{% highlight bash %}
 git push -u origin master
+{% endhighlight %}
    ```
 3. Profit
 
