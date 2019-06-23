@@ -88,11 +88,11 @@ git add -A
 git commit -am "First commit."
    ```
 2. Now let's push our clean repo up to Github:
-   ```
    {% highlight bash %}
-git push -u origin master
-   {% endhighlight %}
    ```
+git push -u origin master
+   ```
+   {% endhighlight %}
 3. Profit
 
 Your site is now gloriously live. Now go out in the world and profit!
