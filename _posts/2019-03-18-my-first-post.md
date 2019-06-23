@@ -111,15 +111,15 @@ I simply generated the following page using my favourite text editor:
 
 {% highlight ruby %}
 
----
+\---
 permalink: "/latest/"
 
----
+\---
 
-{% for post in site.posts limit:1 %}
-  {{post | replace: "<!doctype html>", "" | replace: 'class="masthead"', 'style="visibility:hidden; height:0px"'  }}
-{%endfor%}
-{% endhighlight %}
+{\% for post in site.posts limit:1 %}
+  \{{post | replace: "<!doctype html>", "" | replace: 'class="masthead"', 'style="visibility:hidden; height:0px"'  }}
+\{%endfor%}
+\{% endhighlight %}
 
 This page is very simple, all posts are iterated with a limit of 1, meaning that the 'post' variable points to the most recent post. this is then piped into two replace operations, one to remove the doctype tag and one to hide the menu bar, since our default layout will render one of those for us. You can see the behaviour of the latest page [here](/latest).
 
