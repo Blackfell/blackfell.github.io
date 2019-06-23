@@ -1,6 +1,5 @@
 ---
 permalink: "/latest/"
-layout: default
 
 ---
 
