@@ -55,7 +55,7 @@ Frameworks influence the whole design process of software and that's what Jekyll
 ### Does Jekyll do it all for you?
 Well, no. Jekyll is great, it helps me write content in simple [Markdown](https://daringfireball.net/projects/markdown/), making my life easier, but more 'decoration' is required to get a good looking site. This is where **themes** come in. Themes are baked into how Jekyll works and I'm using [Michael Rose's](https://twitter.com/mmistakes) [minimal mistakes](https://mmistakes.github.io/minimal-mistakes/) theme.
 
-{% include figure image_path="/assets/images/posts/first_post/markdown.jpg" alt="Markdown rendering photo" caption="A sample of Markdown on the left; this markdown file was used to build the [about](/about) page from this very website (shown on the right). Markdown was designed to let people structure content in a simple, effective way; software like Jekyllnow  allows markdown to be parsed and turned into styled HTML for web pages; this is very easy and a quick way to get content published." %}
+{% include figure image_path="/assets/images/posts/first_post/markdown.jpg" alt="Markdown rendering photo" caption="A sample of Markdown on the left; this markdown file was used to build the [about](/about) page from this very website (shown on the right). Markdown was designed to let people structure content in a simple, effective way; software like Jekyll allows markdown to be parsed and turned into styled HTML (a mark**up** language) for web pages; this is very easy and a quick way to get content published." %}
 
 There's more still, though; as well as markup, Jekyll lets you write dynamic content, for example, listing all blog posts on a page, using [liquid](https://jekyllrb.com/docs/liquid/). This functionality is a little trickier than writing markdown posts, but you can get loads of information at the jekyll site.
 
@@ -79,8 +79,6 @@ I create a repo called username.github.io via the github web interface.
 I use a terminal client for GitHub, so I can clone and push the repo back up to Github.
 
 1. First lets clone the repo, before copying all of the locally produced files into the new folder. There's no need to copy the *"_site"* directory created by Jekyll; remember, replace 'blackfell' for your own username.
-1. Test
-1. TEst2
   {% highlight bash%}
   git clone git@github.com:Blackfell/blackfell.github.io.git
   cp ./practice_directory/* .//blackfell.github.io/
@@ -90,12 +88,12 @@ I use a terminal client for GitHub, so I can clone and push the repo back up to 
   git commit -am "First commit."
   {% endhighlight %}
 
-2. Now let's push our clean repo up to Github:
+1. Now let's push our clean repo up to Github:
 
   {% highlight bash%}
   git push -u origin master
   {% endhighlight %}
 
-3. Profit
+1. Profit
 
 Your site is now gloriously live. Now go out in the world and profit!
