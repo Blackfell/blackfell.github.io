@@ -1,2 +1,4 @@
 _site
 helper_files
+Gemfile.lock
+.sass-cache
