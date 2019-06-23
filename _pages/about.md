@@ -39,7 +39,7 @@ I practiced martial arts throughout university and kept up a Muay Thai practice 
 
 I worked with youth throughout my University years and for the first years of my career, both as a [STEM embassador](https://www.stem.org.uk/stem-ambassadors) and as a volunteer with the [Air Cadet Organisation](https://www.raf.mod.uk/aircadets/) in the UK. I have now drawn these activities to a close as I have my own youth organisation (see below!), but take my passion for education and development into my career, mentees, friends and, well, anyone that will listen.
 
-I'm now a father to a young family and take care to enjoy and be mindful of the pleasures of simple family life; swinging an axe and building a house can feel like a far cry from working with computers at time, but sometimes one can help build ideas and enthusiasm for the other.
+I'm now a father and take care to enjoy and be mindful of the pleasures of simple family life; swinging an axe and building a house can feel like a far cry from working with computers at time, but sometimes one can help build ideas and enthusiasm for the other.
 
 ## How can I help you?
 
@@ -54,7 +54,7 @@ As well as my day job as a Security Analyst, I am a partner with [Threatserve LL
 I mentor people moving into the field of Information Security both formally and informally and take great pleasure in helping others learn and understand technical concepts. This site is designed to help with that to a degree and I'm always happy to add more or different content, or provide individual support if appropriate; if you're thinking about this, why not get in touch?
 
 ### Speaking and Communication
-I also enjoy speaking on security and am a firm believer that security concepts and technology shouldn't be fenced off from non-technical people; all problems in technology are simple, if you look at them from the right perspective. I take great pleasure in teachning and comjunicating security issues at all levels; if this is somethign I can help you with, why not get in touch?
+I also enjoy speaking on security and am a firm believer that security concepts and technology shouldn't be fenced off from non-technical people; all problems in technology are simple, if you look at them from the right perspective. I take great pleasure in teaching and communicating security issues at all levels; if this is something I can help you with, why not get in touch?
 
 ### Something I haven't thought of
 

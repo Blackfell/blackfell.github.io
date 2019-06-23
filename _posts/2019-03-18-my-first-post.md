@@ -40,11 +40,11 @@ def blog():
 
 This blog is designed to be all things to all people, I have guidance for friends and family (so called *normal folk*), as well as colleagues and friends who I'd consider *'security experts'*. This post is a hello to everyone, but will get technical quickly and will explain how it all works and where it's hosted.
 
-## how does it work?
+## How does it work?
 
 This blog is a Github Pages site, made of simple, static content; this means that there's no log in, no databases, no fancy code on my site, it just sends simple, helpful web pages to your device and the device shows them to you. Simple!
 
-The way that developers might normally do this is by building pages from HTML, Javascript and CSS files, before putting them in a web server to show them to the world; this is what you might get taught on a web design intro course, like those excellend free courses available via [w3 academy](https://www.w3schools.com/). This site, however is built using [Jekyll](https://jekyllrb.com/), which frees me to do less design and maintenance and spend more time doing  writey blog. Great!
+The way that developers might normally do this is by building pages from HTML, Javascript and CSS files, before putting them in a web server to show them to the world; this is what you might get taught on a web design intro course, like those excellent free courses available via [w3 academy](https://www.w3schools.com/). This site, however is built using [Jekyll](https://jekyllrb.com/), which frees me to do less design and maintenance and spend more time doing  writey blog. Great!
 
 ## What's Jekyll?
 Jekyll is a framework for producing simple static websites; it's written in ruby and lets creators like me quickly pull static sites together and produce content quickly. In addition, the fantastic [Github](https://github.com/) will host your Jekyll site via [Github pages](https://pages.github.com/), probably for free (depending who you are).
@@ -76,7 +76,7 @@ I create a repo called username.github.io via the github web interface.
 
 I use a terminal client for GitHub, so I can clone and push the repo back up to Github.
 
-1. First lets clone the repo, before copying all of the locally produced files into the new folder. There's no need to copy the *"_site"* directory created by Jekyll; remember, replace 'blackfell' for your own username.
+  1. First lets clone the repo, before copying all of the locally produced files into the new folder. There's no need to copy the *"_site"* directory created by Jekyll; remember, replace 'blackfell' for your own username.
 
     {% highlight bash%}
     git clone git@github.com:Blackfell/blackfell.github.io.git
@@ -87,12 +87,12 @@ I use a terminal client for GitHub, so I can clone and push the repo back up to 
     git commit -am "First commit."
     {% endhighlight %}
 
-2. Now let's push our clean repo up to Github:
+  2. Now let's push our clean repo up to Github:
 
     {% highlight bash%}
     git push -u origin master
     {% endhighlight %}
 
-3. Profit
+  3. Profit
 
 Your site is now gloriously live. Now go out in the world and profit!
