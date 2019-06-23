@@ -87,12 +87,10 @@ rm -r ./_site/
 git add -A
 git commit -am "First commit."
    ```
-2. Now let's push our clean repo up to Github:
-   {% highlight bash %}
+1. Now let's push our clean repo up to Github:
    ```
 git push -u origin master
    ```
-   {% endhighlight %}
-3. Profit
+1. Profit
 
 Your site is now gloriously live. Now go out in the world and profit!
