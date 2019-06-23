@@ -60,7 +60,7 @@ There's more still, though; as well as markup, Jekyll lets you write dynamic con
 ## How can I do this?
 Building a site with Jekyll, Minimal Mistakes ang Github Pages has been a relatively easy and fun learning experience; if you're convinced and fancy a go, I'd reccomend starting with an overview of Jekyll via their own [documentation](https://jekyllrb.com/docs/); don't start yet though, before you get too bogged down think about picking a [theme](http://jekyllthemes.org/) if you want one. 
 
-{% include figure image_path="/assets/images/posts/first_post/jekyll_themes.jpg" alt="Jekyll Themes screenshot" caption="Jekylltheme.org has a large selection of themes you can browse. Once you've chosen a theme you can head over to its web page and find out how best to use it." %}
+{% include figure image_path="/assets/images/posts/first_post/jekyll_themes.jpg" alt="Jekyll Themes screenshot" caption="Jekyllthemes.org has a large selection of themes you can browse. Once you've chosen a theme you can head over to its web page and find out how best to use it." %}
 
 Now you've picked a theme, it's time to read the documentation for that theme; this will add to your Jekyll knowledge and may actually affect the way you think about your site. If there are some base or default files for your theme, **get them now** these will invariably make your like a *lot* easier.
 
