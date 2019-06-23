@@ -38,9 +38,11 @@ def blog():
 {% endhighlight %}
 
 
-# What is this blog for?
+# Who is this post for?
 
-This blog is designed to be all things to all people, I have guidance for friends and family (so called *normal folk*), as well as colleagues and friends who I'd consider *'security experts'*. This post is a hello to everyone, but will get technical quickly and will explain how it all works and where it's hosted.
+This blog is designed to be all things to all people, I have guidance for friends and family (so called *normal folk*), as well as colleagues and friends who I'd consider *'security experts'*. 
+
+This post is a quick hello to everyone, but will get technical quickly and will explain how this site is set up, how it works and where it's hosted.
 
 ## How does it work?
 
