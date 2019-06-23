@@ -110,6 +110,7 @@ I needed a fix for this, which you may find useful too; I managed this by simply
 I simply generated the following page using my favourite text editor:
 
 {% highlight ruby %}
+
 ---
 permalink: "/latest/"
 
