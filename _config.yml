@@ -25,7 +25,7 @@ url                      : # the base hostname & protocol for your site e.g. "ht
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
 teaser                   : "/assets/images/generic/fog.jpg"
-logo                     : "/assets/images/triangle_logo.png"
+logo                     : "/assets/images/generic/triangle_logo.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
@@ -89,7 +89,7 @@ facebook:
   username               :
   app_id                 :
   publisher              :
-og_image                 : "/assets/images/triange_logo.png"
+og_image                 : "/assets/images/generic/triangle_logo.png"
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
@@ -110,7 +110,7 @@ analytics:
 # Site Author
 author:
   command             : "~$ whoami"
-  avatar           : "/assets/images/author.jpg"
+  avatar           : "/assets/images/generic/author.jpg"
   name          : "Sam."
   bio              : "I'm a Father, tinker and security enthusiast. I have a particular interest in manual crafts, cars and bikes; I enjoy both digital and analogue things in life, they compliment one another."
   location         : "Location - North West England"

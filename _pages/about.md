@@ -43,6 +43,8 @@ I'm now a father and take care to enjoy and be mindful of the pleasures of simpl
 
 ## How can I help you?
 
+I'm always open to new challenges and opportunities; if you have something you think I can help with, why not get in touch?
+
 ### Blog posts
 
 I hope that you find some useful content in these pages, so if you have any comments or feedback, be sure to follow the social links and let me know!
