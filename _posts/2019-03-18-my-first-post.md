@@ -17,14 +17,14 @@ header:
   overlay_image: /assets/images/generic/northern_lights.jpg
   teaser: /assets/images/generic/northern_lights.jpg
 excerpt: "Hello, World!"
-categories: 
-  - social 
-  - technical guidance
-tags: 
-  - Jekyll 
-  - web
-  - liquid
-  - front matter
+categories:
+  - Social
+  - Technical Guidance
+tags:
+  - Jekyll
+  - Web
+  - Liquid
+  - Front matter
 
 ---
 
@@ -40,7 +40,7 @@ def blog():
 
 # Who is this post for?
 
-This blog is designed to be all things to all people, I have guidance for friends and family (so called *normal folk*), as well as colleagues and friends who I'd consider *'security experts'*. 
+This blog is designed to be all things to all people, I have guidance for friends and family (so called *normal folk*), as well as colleagues and friends who I'd consider *'security experts'*.
 
 This post is a quick hello to everyone, but will get technical quickly and will explain how this site is set up, how it works and where it's hosted.
 
@@ -54,7 +54,7 @@ The way that developers might normally do this is by building pages from HTML, J
 Jekyll is a framework for producing simple static websites; it's written in ruby and lets creators like me quickly pull static sites together and produce content quickly. In addition, the fantastic [Github](https://github.com/) will host your Jekyll site via [GitHub pages](https://pages.github.com/), probably for free (depending who you are).
 
 ### You said Framework, what's that?
-Frameworks influence the whole design process of software and that's what Jekyll gives me for this blog. As a result of following Jekyll's design philosophy, I get nudged to write in a certain way, then when I'm done, Jekyll does it's stuff and turns my content in to good looking static content. 
+Frameworks influence the whole design process of software and that's what Jekyll gives me for this blog. As a result of following Jekyll's design philosophy, I get nudged to write in a certain way, then when I'm done, Jekyll does it's stuff and turns my content in to good looking static content.
 
 ### Does Jekyll do it all for you?
 Well, no. Jekyll is great, it helps me write content in simple [Markdown](https://daringfireball.net/projects/markdown/), making my life easier, but more 'decoration' is required to get a good looking site. This is where **themes** come in. Themes are baked into how Jekyll works and I'm using [Michael Rose's](https://twitter.com/mmistakes) [minimal mistakes](https://mmistakes.github.io/minimal-mistakes/) theme.
@@ -68,15 +68,15 @@ Building a site with Jekyll, Minimal Mistakes and GitHub Pages has been a relati
 
 ### Working to your theme
 
-I'd recommend starting with an overview of Jekyll via their own [documentation](https://jekyllrb.com/docs/); don't start yet though, before you get too bogged down think about picking a [theme](http://jekyllthemes.org/) if you want one. 
+I'd recommend starting with an overview of Jekyll via their own [documentation](https://jekyllrb.com/docs/); don't start yet though, before you get too bogged down think about picking a [theme](http://jekyllthemes.org/) if you want one.
 
 {% include figure image_path="/assets/images/posts/first_post/jekyll_themes.jpg" alt="Jekyll Themes screenshot" caption="Jekyllthemes.org has a large selection of themes you can browse. Once you've chosen a theme you can head over to its web page and find out how best to use it." %}
 
 Now you've picked a theme, it's time to read the documentation for that theme; this will add to your Jekyll knowledge and may actually affect the way you think about your site. If there are some base or default files for your theme, **get them now** these will invariably make your life a *lot* easier. Now you have a feel for your theme, it's probably time to create your blog; Jekyll makes [site creation](https://jekyllrb.com/docs/) incredibly easy.
 
-Now think about your design and get writing some basic content; your mileage will vary heavily here depending on your theme, but I installed Jekyll to a local machine for this part of development to get the basic site together. To host on GitHub Pages, make sure you include your theme **remotely**, meaning you don't download the theme to your machine, but include it in your Jekyll config file for loading at build time. 
+Now think about your design and get writing some basic content; your mileage will vary heavily here depending on your theme, but I installed Jekyll to a local machine for this part of development to get the basic site together. To host on GitHub Pages, make sure you include your theme **remotely**, meaning you don't download the theme to your machine, but include it in your Jekyll config file for loading at build time.
 
-Configure all the relevant settings in your Jekyll config file; this will usually involve information about your site, you and how users will navigate. Once you've done this, create some pages in the *'_pages'* directory; this is where permanent pages like 'contacts' or 'about' might live. Then you can create some articles in the *'_posts'* directory; this is where all your created content is added and depending on your theme, this will be parsed and presented to your readers in different ways. 
+Configure all the relevant settings in your Jekyll config file; this will usually involve information about your site, you and how users will navigate. Once you've done this, create some pages in the *'_pages'* directory; this is where permanent pages like 'contacts' or 'about' might live. Then you can create some articles in the *'_posts'* directory; this is where all your created content is added and depending on your theme, this will be parsed and presented to your readers in different ways.
 
 You should now have some content that looks pretty good when you host it locally using Jekyll.
 
@@ -128,7 +128,7 @@ permalink: "/latest/"
 {% endraw %}
 ```
 
-This page is very simple, the iterator is limited to one post, meaning that the 'post' variable then points to the most recent post object. This object is then piped into two replace operations, one to remove the doctype tag and one to hide the menu bar, since our default layout will render one of those for us. If you use this, you'll need to find the name of the navigation bar class in the theme and substitute it there. 
+This page is very simple, the iterator is limited to one post, meaning that the 'post' variable then points to the most recent post object. This object is then piped into two replace operations, one to remove the doctype tag and one to hide the menu bar, since our default layout will render one of those for us. If you use this, you'll need to find the name of the navigation bar class in the theme and substitute it there.
 
 You can see the behaviour of the latest page [here](/latest).
 
