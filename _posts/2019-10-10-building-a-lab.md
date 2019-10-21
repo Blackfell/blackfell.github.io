@@ -26,6 +26,11 @@ tags:
   - Windows
   - Linux
   - Hacking
+toc: true
+toc_sticky: true
+toc_label: "What's in this post?"
+toc_icon: "arrow-circle-down"
+
 
 ---
 
@@ -71,7 +76,8 @@ It's up to you! They way it's built, we can plug and unplug machines as we want 
 
 Which looks a lot simpler, in fact, now it's only one machine. So let's get started.
 
-# Down to it
+
+# Down to design
 
 Let's do some actual config then.
 
@@ -100,6 +106,35 @@ There are a few virtualisation solutions out there, but the two that dominate th
 Finally, you'll need some guest systems; as well as victims, we're going to install attacker machines. So, should you use Linux or Windows? It's obvious, yes you should.
 
 I keep one Linux VM and one Windows for attacking; the Linux machine is usually a security oriented flavour of Linux like [Kali Linux](). Windows hacking toolsets don't really come packaged like this, so I usually complete a standard Windows install, apply some security settings, install Visual Studio, Wireshark, Nmap, Metasploit, NetCat, Python and Cain & Abel; everything else can just be installed as you go.
+
+## Decide why you're building it - learn IT, defence, offense, all?
+
+Think first about why you want your lab, then how you'll use it, then what you'll use it for. We'll try and get your lab to do what you want it to do.
+
+### Do you have specific learning goals?
+
+Are you looking to learn a specific technology? Do you need certain software? If so, you may need to think about getting hold of licences or hardware, things like Windows, Cisco equipment, or your favourite computer forensics tool.
+
+If you want to learn a whole host of things, you may want to build a lab with lots of future opportunities; if you think you want to learn how to build a network environmebnt, you may need to get lots of computing recources together to support the wide range of machines. Maybe you need one machine, maybe you need many to work together.
+
+### Do you want a lab quick and easy, or is it a learning challenge?
+
+Are you wanting to get on, or could you use teh lab build as part of your learning? If you want to learn Linux, for example, why not build your lab on Linux machines?
+
+### Mobile, static or hybrid?
+
+Do you want to take your lab with you? Will you be travelling to a place of learning? Maybe you have old static hardware that you want to use? Maybe you want some mobile adn static parts, this could help if you want to repurpose adn old laptop, but use an old PC to help with heavier workloads when at home, for example.
+
+### backups important, or just learn by regular rebuilds
+
+How important will backups be to you? Not only do you need to think about how to protect the information you produce in your lab, ask yourself - will you be happy regularly rebuilding it all if everythign goes wrong?
+
+If you want lots of backups, you may need to think about storage devices and save some equipment or money to cover that.
+
+### do you need internet access, seperation or both?
+
+Think about your networking requirements, will you want internet access? Will you want to separate some machines fromt eh internet? Will this be all the time? What about separating teh devices from one another (like a malware analysis machine vs your personal machine)?
+
 
 # Build your shit
 
@@ -155,35 +190,3 @@ You can use this table to decide when to connect adapters and which ones to use.
 
 
 ## Part 2
-
-# How will you work?
-
-OK you're on board; now what?
-
-## Decide why you're building it - learn IT, defence, offense, all?
-
-Think first about why you want your lab, then how you'll use it, then what you'll use it for. We'll try and get your lab to do what you want it to do.
-
-### Do you have specific learning goals?
-
-Are you looking to learn a specific technology? Do you need certain software? If so, you may need to think about getting hold of licences or hardware, things like Windows, Cisco equipment, or your favourite computer forensics tool.
-
-If you want to learn a whole host of things, you may want to build a lab with lots of future opportunities; if you think you want to learn how to build a network environmebnt, you may need to get lots of computing recources together to support the wide range of machines. Maybe you need one machine, maybe you need many to work together.
-
-### Do you want a lab quick and easy, or is it a learning challenge?
-
-Are you wanting to get on, or could you use teh lab build as part of your learning? If you want to learn Linux, for example, why not build your lab on Linux machines?
-
-### Mobile, static or hybrid?
-
-Do you want to take your lab with you? Will you be travelling to a place of learning? Maybe you have old static hardware that you want to use? Maybe you want some mobile adn static parts, this could help if you want to repurpose adn old laptop, but use an old PC to help with heavier workloads when at home, for example.
-
-### backups important, or just learn by regular rebuilds
-
-How important will backups be to you? Not only do you need to think about how to protect the information you produce in your lab, ask yourself - will you be happy regularly rebuilding it all if everythign goes wrong?
-
-If you want lots of backups, you may need to think about storage devices and save some equipment or money to cover that.
-
-### do you need internet access, seperation or both?
-
-Think about your networking requirements, will you want internet access? Will you want to separate some machines fromt eh internet? Will this be all the time? What about separating teh devices from one another (like a malware analysis machine vs your personal machine)?
