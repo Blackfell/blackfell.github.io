@@ -96,7 +96,7 @@ As you go further in this article, I hope you'll find that using this VM based a
 
 So now you know what our overall architecture is, let's get down to making it happen!
 
-## Get Hard(ware)
+## Get Hardware
 
 ![get hard](/assets/images/posts/hacking_lab/get_hard.jpg)
 
@@ -197,12 +197,12 @@ First, we'll install our attacker machine and configure it; most people start wi
 
 Download these files and generate their sha256 hashes, so that we can check the integrity of the downloaded files; this is worth doing for the time it takes to complete, as it gives us some protection from corrupted or tampered download links. You may even want to follow the more extensive GPG based verification on the [Kali Downloads page](https://www.kali.org/downloads/), if you have GPG installed.
 
-#### Powershell Hashes (Windows)
+### Powershell Hashes (Windows)
 
 ```Powershell
 Get-Filehash -Path./<insert-path-to-file-here> -Algorithm sha256
 ```
-#### Bash Hashes (Linux)
+### Bash Hashes (Linux)
 
 ```Bash
 ~$ sha256sum .<insert-path-to-file-here>
@@ -332,34 +332,6 @@ The steps for troubleshooting this are similar to those for pinging the internet
 
 This Lab is a design that works for me and 9/10 of the people I work with, but you may want to customise or change parts of the design. Maybe your hardware isn't up to snuff, maybe you want to learn something unique; the following are are some thoughts to help you work out what you want to customise and why.
 
-## Decide why you're building it - learn IT, defence, offense, all?
-
-Think first about why you want your lab, then how you'll use it, then what you'll use it for. We'll try and get your lab to do what you want it to do.
-
-### Do you have specific learning goals?
-
-Are you looking to learn a specific technology? Do you need certain software? If so, you may need to think about getting hold of licences or hardware, things like Windows, Cisco equipment, or your favourite computer forensics tool.
-
-If you want to learn a whole host of things, you may want to build a lab with lots of future opportunities; if you think you want to learn how to build a network environmebnt, you may need to get lots of computing recources together to support the wide range of machines. Maybe you need one machine, maybe you need many to work together.
-
-### Do you want a lab quick and easy, or is it a learning challenge?
-
-Are you wanting to get on, or could you use teh lab build as part of your learning? If you want to learn Linux, for example, why not build your lab on Linux machines?
-
-### Mobile, static or hybrid?
-
-Do you want to take your lab with you? Will you be travelling to a place of learning? Maybe you have old static hardware that you want to use? Maybe you want some mobile adn static parts, this could help if you want to repurpose adn old laptop, but use an old PC to help with heavier workloads when at home, for example.
-
-### backups important, or just learn by regular rebuilds
-
-How important will backups be to you? Not only do you need to think about how to protect the information you produce in your lab, ask yourself - will you be happy regularly rebuilding it all if everythign goes wrong?
-
-If you want lots of backups, you may need to think about storage devices and save some equipment or money to cover that.
-
-### do you need internet access, seperation or both?
-
-Think about your networking requirements, will you want internet access? Will you want to separate some machines fromt eh internet? Will this be all the time? What about separating teh devices from one another (like a malware analysis machine vs your personal machine)?
-
 ## Custom Hardware Considerations
 
 How you build your lab can depend on what hardware you have and whetehr you can afford to splash on some new gear. If you think you'll struggle virtualising this lab on a single machine, you could host victims on one machine and attack from another, either using Virtualisation on both hosts, or even going onto bare metal if you need to.
@@ -376,7 +348,7 @@ We used Oracle VirtualBox in our lab build, but there are loads of other type 2 
 
 VMWare workstation has some really nice features and just… works, but it costs a lot of money for an individual hobbyist, the player version is a cut-down free equivalent that has some good features. KVM and Xen are more Linux oriented options, for those who may take issue with getting their 'free' software from Oracle. You know who you are!
 
-## Customising Guests
+## Custom Guest Configuration
 
 Once you've got the hang of using your attacker and Victim VMs, you may wish to expand your lab, to get more functionality. This will help add more diversity to your lab and will help in the long run.
 
