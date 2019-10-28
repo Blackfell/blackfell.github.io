@@ -32,9 +32,9 @@ toc_label: "What's in this post?"
 toc_icon: "arrow-circle-down"
 feature_row1:
   - image_path: /assets/images/posts/hacking_lab/kali.png
-    alt: "Kali Linux"
-    title: "Kali Linux"
-    excerpt: "Kali Linux is a Linux Distribution, preloaded with a huge number of tools and resources for Penetration Testing"
+    #alt: "Kali Linux"
+    #title: "Kali Linux"
+    excerpt: "**Kali Linux** is a Linux Distribution, preloaded with a huge number of tools and resources, designed specifically for Penetration Testing"
     url: https://www.offensive-security.com/kali-linux-vm-vmware-virtualbox-image-download/
     btn_label: "Get a Kali VM"
     btn_class: "btn--inverse"
@@ -311,7 +311,7 @@ If you still can't get a successful ping, ask yourself whether DNS traffic can r
 
 As before, keep googling and working on the problem, at least you know it's DNS!
 
-## Testing Inter-Client Communications
+## Testing Client-Client Communications
 
 The last networking test I like to do is to quickly ping test another client. This is the same as the initial ping test, only now use the IP address of your mr robot VM. If you can't find this, you can run:
 
