@@ -56,7 +56,7 @@ I'm going to walk though building a virtual lab in this tutorial; I'm going to u
 
 Virtualisation is a large topic ([Wikipedia](https://en.wikipedia.org/wiki/Virtualization) may help here), but for our purposes, all we need to know is that it's like running a computer within a computer. People work with Virtual Machines all over the technology industry and throughout this post, I'll often shorten Virtual Machine to VM.
 
-{% include figure image_path="/assets/images/posts/hacking_lab/virtualisation.jpg" alt="Virtualisaiton Diagram" caption="The box on top represents two physical machines, each with its own Operating System and applicaitons running; the bottom diagram shows the same number of applications running, but this time, the machines are running virtually on a single item of hardware and each machine gets its own operating system." %}
+{% include figure image_path="/assets/images/posts/hacking_lab/virtualisation.jpg" alt="Virtualisaiton Diagram" caption="The box on top represents two physical machines, each with its own Operating System and applications running; the bottom diagram shows the same number of applications running, but this time, the machines are running virtually on a single item of hardware and each machine gets its own operating system." %}
 
 Why bother with VMs? In a nutshell, they give us hardware independence (you can run many machines on a single host), they give us isolation (you can manage workloads, processes, files and memory independently), and they give us portability (VMs can be moved and managed on the host as easily as a file). VMs can be networked virtually, which lets you control how machines talk to each other, the host, or the internet, all without the need for any specific networking hardware. As if that wasn't reason enough, you can back up and restore VMs with a single click.
 
@@ -70,9 +70,9 @@ The lab I'm building would look like this if I made it of physical equipment:
 
 In this simple lab setup, our attacker and victim can communicate, allowing us to simulate attacks in a safe environment. If I didn't want an attacker-victim setup and instead wanted to learn some basic Windows administration, my lab might instead look like this:
 
-{% include figure image_path="/assets/images/posts/hacking_lab/windows_lab.png" alt="Physical Lab Diagram" caption="Lab design for learning Windows basics; a server (picutred right) can communicate via the network to two client machines. Configuring the machines in this environment can help you learn about Windows Services and System Administration." %}
+{% include figure image_path="/assets/images/posts/hacking_lab/windows_lab.png" alt="Physical Lab Diagram" caption="Lab design for learning Windows basics; a server (pictured right) can communicate via the network to two client machines. Configuring the machines in this environment can help you learn about Windows Services and System Administration." %}
 
-You may be beginning to undertand that the possibilities with a lab setup are endless, what you build is totally up to you! You can add and remove machines to learn different things.
+You may be beginning to understand that the possibilities with a lab setup are endless, what you build is totally up to you! You can add and remove machines to learn different things.
 
 Whilst these diagrams are technically what we're aiming for, the lab in this walkthrough won't have physical machines and switches, it will use virtual machines and networking. The below design is logically equivalent to the first physical lab diagram, but is configured using virtual machines instead:
 
@@ -88,7 +88,7 @@ Can you picture or sketch your virtual equivalent to our simple Windows lab?
 
 Hopefully you didn't sneak a peek, below is how I would draw this out:
 
-{% include figure image_path="/assets/images/posts/hacking_lab/virtual_windows_lab.png" alt="Virtual Windows Lab Diagram" caption="A virutal Windows lab, a single physical host runs virtualisation software called a Hypervisor; virtual Windows clients can communicate via a virtual network to a Windows server." %}
+{% include figure image_path="/assets/images/posts/hacking_lab/virtual_windows_lab.png" alt="Virtual Windows Lab Diagram" caption="A virtual Windows lab, a single physical host runs virtualisation software called a Hypervisor; virtual Windows clients can communicate via a virtual network to a Windows server." %}
 
 As you go further in this article, I hope you'll find that using this VM based approach gives you the flexibility to learn whatever you want.
 
@@ -112,11 +112,11 @@ First and foremost **check that your hardware & BIOS supports hardware virtualis
 
 Virtual Machines will use up every kind of resource your host needs; you can assign limits to these as you set up VMs, but you'll need to make sure your host has enough overhead to run all it's VMs, as well as the host operating system.
 
-I argue that RAM is the most important requirement for your virtual lab; the VMs we use will be sucking RAM from the host machine, by the time you're running a 4G RAM attacker (realistic) and a 1G RAM victim (optomistic), you've hit 5G without anything for your host OS.
+I argue that RAM is the most important requirement for your virtual lab; the VMs we use will be sucking RAM from the host machine, by the time you're running a 4G RAM attacker (realistic) and a 1G RAM victim (optimistic), you've hit 5G without anything for your host OS.
 
 Processing power is my next most important requirement, followed by storage speed and space; whilst some people use removable media for managing storage of multiple VMs, a good amount of storage will make life much easier. Dedicated graphics isn't a hard requirement, but will make your experience a little smoother, spend on this, but do so last.
 
-I like to give real advice to readers, so here it comes (careful what you wish for!) - for this lab setup (in 2019) I suggest people use a minimum of 8GB RAM, something like an i5, or A8 processor, and aim for 500GB hard drive space, slipping to 256GB at a push (especially if this means you get to use an SSD). If you have cash leftover, spend it following the prefernces I just described above, or on non-upgradeable components (usually processors if laptops), with a view to upgrading the rest in future.
+I like to give real advice to readers, so here it comes (careful what you wish for!) - for this lab setup (in 2019) I suggest people use a minimum of 8GB RAM, something like an i5, or A8 processor, and aim for 500GB hard drive space, slipping to 256GB at a push (especially if this means you get to use an SSD). If you have cash leftover, spend it following the preferences I just described above, or on non-upgrade-able components (usually processors if laptops), with a view to upgrading the rest in future.
 
 If these sound a little bit out of reach for you, don't worry!, I have some options for you [later in the post](#customise-the-design-for-you).
 
@@ -126,7 +126,7 @@ Your Hypervisor will run and manage your VMs; there are many options available t
 
 ### Installing VirtualBox on Windows
 
-Instlaling on Windows is easy! Head over to the VirtualBox [Downloads Page](https://www.virtualbox.org/wiki/Downloads) and get hold of the installer.
+Installing on Windows is easy! Head over to the VirtualBox [Downloads Page](https://www.virtualbox.org/wiki/Downloads) and get hold of the installer.
 
 {% include figure image_path="/assets/images/posts/hacking_lab/virtualbox.jpg" alt="VBox Homepage" caption="The VirtualBox site makes it hard to miss the download link." %}
 
@@ -164,7 +164,7 @@ If you're running Arch Linux or a derivative, good news, you also have this in y
 ~$ echo "vboxdrv" | sudo tee -a /etc/modules-load.d/virtualbox.conf
 ~$ sudo usermod -aG vboxusers <user_name>
 ```
-This is slightly longer because you had to do some module loading and group configuration changes; this saves you having to load the vboxdrv kernel module everytime you run virtualbox, because...
+This is slightly longer because you had to do some module loading and group configuration changes; this saves you having to load the vboxdrv kernel module every time you run virtualbox, because...
 
 ![ain't nobody got time for that](/assets/images/posts/hacking_lab/Aint-Nobody-Got-Time-for-That.gif)
 
@@ -172,13 +172,13 @@ If you're running almost anything else, or if that didn't work, VirtualBox publi
 
 ### VirtualBox Extensions
 
-However and wherever you installed VirtualBox, You're probably going to want the [extension pack](); this isn't essential, but adds a lot of functionality I find quite useful. Read up on [the documentation]() and decide whetehr to go for it.
+However and wherever you installed VirtualBox, You're probably going to want the [extension pack](); this isn't essential, but adds a lot of functionality I find quite useful. Read up on [the documentation]() and decide whether to go for it.
 
 If you choose to install the pack, it's easily accessible on the VirtualBox [Downloads Page]():
 
 {% include figure image_path="/assets/images/posts/hacking_lab/vbox_extensions.jpg" alt="VirtualBox extensions link" caption="The VirtualBox downloads page gives us a cross-platform extension download link." %}
 
-Just download the extenstion pack and import it directly from within VirtualBox, by navigating to File>Preferences>Extensions and pressing the green plus to add your new file.
+Just download the extension pack and import it directly from within VirtualBox, by navigating to File>Preferences>Extensions and pressing the green plus to add your new file.
 
 {% include figure image_path="/assets/images/posts/hacking_lab/virtualbox_extension_install.jpg" alt="VirtualBox extensions Install" caption="The VirtualBox extension pack installation wizard will guide you through the install process. From the preferences window, you'll need to enter the extensions panel and press the 'add new package' button, highlighted in red." %}
 
@@ -190,14 +190,14 @@ When VirtualBox is installed, you want some virtual machines (VMs) to actually r
 
 ### Attacker VMs
 
-First, we'll install our attacker machine and configure it; most people start with Kali Linux, a security focussed distribution, and we'll be following the trend. The good folks at Offensive Security prepare a Kali Virtual Machine you can download directly, but
+First, we'll install our attacker machine and configure it; most people start with Kali Linux, a security focused distribution, and we'll be following the trend. The good folks at Offensive Security prepare a Kali Virtual Machine you can download directly, but
  make sure you pick the VirtualBox version!
 
 {% include feature_row id="feature_row1" type="left" %}
 
 Download these files and generate their sha256 hashes, so that we can check the integrity of the downloaded files; this is worth doing for the time it takes to complete, as it gives us some protection from corrupted or tampered download links. You may even want to follow the more extensive GPG based verification on the [Kali Downloads page](https://www.kali.org/downloads/), if you have GPG installed.
 
-### Powershell Hashes (Windows)
+### PowerShell Hashes (Windows)
 
 ```Powershell
 Get-Filehash -Path./<insert-path-to-file-here> -Algorithm sha256
@@ -208,15 +208,15 @@ Get-Filehash -Path./<insert-path-to-file-here> -Algorithm sha256
 ~$ sha256sum .<insert-path-to-file-here>
 ```
 
-If the hashes match those on the Kali Download page, then head back over to VirtualBox; next up, we'll import the file we just downloaded, to do this either press Ctrl+I, press the big orange arrow on the VM Manager panel, or open the file menu and go to 'import applicance'.
+If the hashes match those on the Kali Download page, then head back over to VirtualBox; next up, we'll import the file we just downloaded, to do this either press Ctrl+I, press the big orange arrow on the VM Manager panel, or open the file menu and go to 'import appliance'.
 
-{% include figure image_path="/assets/images/posts/hacking_lab/import_appliance.jpg" alt="The Import Applicance Button" caption="The big orange arrow will take you to the Import Appliance dialogue." %}
+{% include figure image_path="/assets/images/posts/hacking_lab/import_appliance.jpg" alt="The Import Appliance Button" caption="The big orange arrow will take you to the Import Appliance dialogue." %}
 
 Then, it's a simple case of browsing to the downloaded file and selecting it for import.
 
-{% include figure image_path="/assets/images/posts/hacking_lab/import_appliance_wizard.jpg" alt="The Import Applicance Button" caption="Follow the Wizard through to bring the Kali VM into your VM Manager Window" %}
+{% include figure image_path="/assets/images/posts/hacking_lab/import_appliance_wizard.jpg" alt="The Import Appliance Button" caption="Follow the Wizard through to bring the Kali VM into your VM Manager Window" %}
 
-Follow the wizrd through, pressing the 'Import' button, which will commence the importing of the VM. Once you have your VM imported, you may want to take some time familiarise yourself with the VM settings; you'll notice below that the defaul RAM is 2GB and the default processor configuration is two cores.
+Follow the wizard through, pressing the 'Import' button, which will commence the importing of the VM. Once you have your VM imported, you may want to take some time familiarise yourself with the VM settings; you'll notice below that the default RAM is 2GB and the default processor configuration is two cores.
 
 {% include figure image_path="/assets/images/posts/hacking_lab/VM_settings.jpg" alt="Virtual Machine Settings Management" caption="The Virtual machine settings will appear after import; highlighted in red are the RAM, processor, networking and USB settings. A red box is drawn round the settings wheel, where these can be changed." %}
 
@@ -232,13 +232,13 @@ I like [VulnHub VMs](https://www.vulnhub.com/) and I recommend looking for 'easy
 
 {% include figure image_path="/assets/images/posts/hacking_lab/vulnhub.jpg" alt="Virtual Machine catalogue at VulnHub" caption="VulnHub has a whole catalogue of vulnerable machines to download; my favourite beginner machine 'Mr Robot' is pictured after a simple search." %}
 
-All you need to do is download the file and verify checksums as we did [earlier](#powershell-hashes-windows), then import it; once you've done that **do not turn it on yet!** First, you should selet the VM, hit settings and configure the networking as in the next section; once done power it on and you'll save yourself some time getting things to talk to each other.
+All you need to do is download the file and verify checksums as we did [earlier](#powershell-hashes-windows), then import it; once you've done that **do not turn it on yet!** First, you should select the VM, hit settings and configure the networking as in the next section; once done power it on and you'll save yourself some time getting things to talk to each other.
 
 ### A Note on virtual networks
 
 VirtualBox provides [virtual networks](https://www.virtualbox.org/manual/ch06.html) for your VMs to use; you can select which one you want to connect your VM to and VirtualBox will handle the rest. There are several networking modes, including custom, but the three you should be most interested in are bridged, NAT and 'host only'.
 
-Bridged networking will put the VM on your network as if it were a real machine, this is bad if you don't trust the network you're bridging out to, but it's good in that it's simple, comparitively easy to troubleshoot and doesn't use NAT (read on).
+Bridged networking will put the VM on your network as if it were a real machine, this is bad if you don't trust the network you're bridging out to, but it's good in that it's simple, comparatively easy to troubleshoot and doesn't use NAT (read on).
 
 Host only mode is 'safe' compared to bridged, it lets you configure a virtual network in your machine that will allow your VMs to talk, but not reach the outside world. This is great if you want to avoid exposing vulnerable machines to any external physical network and also protects you from making errors (like attacking some public machine!) while you learn.
 
@@ -266,7 +266,7 @@ From Kali, we'll open a terminal window and start simple, ping out to the intern
 ~$ ping -c 5 1.1.1.1
 ```
 
-This address *1.1.1.1* is Cloudflare's DNS service; it responds to ping and has a high availability, so it's a good standard for us to use to test our conneciton. The argument *'-c 5'* tells ping to wait for 5 replies before stopping.
+This address *1.1.1.1* is Cloudflare's DNS service; it responds to ping and has a high availability, so it's a good standard for us to use to test our connection. The argument *'-c 5'* tells ping to wait for 5 replies before stopping.
 
 If this is working, you'll get something like the following output:
 
@@ -313,7 +313,7 @@ As before, keep googling and working on the problem, at least you know it's DNS!
 
 ## Testing Client-Client Communications
 
-The last networking test I like to do is to quickly ping test another client. This is the same as the initial ping test, only now use the IP address of your mr robot VM. If you can't find this, you can run:
+The last networking test I like to do is to quickly ping test another client. This is the same as the initial ping test, only now use the IP address of your Mr robot VM. If you can't find this, you can run:
 
 ```bash
 ~$ netdiscover -p
@@ -324,7 +324,7 @@ If you're still pulling your hair out, try:
 ~$ arp -e
 ```
 
-To see what hosts are mapped to MAC addresses in Linux. If you still can't see the Mr Robot IP address, check the adapters give the machines IP addresses on teh same (or routable) networks!
+To see what hosts are mapped to MAC addresses in Linux. If you still can't see the Mr Robot IP address, check the adapters give the machines IP addresses on the same (or routable) networks!
 
 The steps for troubleshooting this are similar to those for pinging the internet, only now you don't know which VM it is that's playing up, good luck!
 
@@ -334,9 +334,9 @@ This Lab is a design that works for me and 9/10 of the people I work with, but y
 
 ## Custom Hardware Considerations
 
-How you build your lab can depend on what hardware you have and whetehr you can afford to splash on some new gear. If you think you'll struggle virtualising this lab on a single machine, you could host victims on one machine and attack from another, either using Virtualisation on both hosts, or even going onto bare metal if you need to.
+How you build your lab can depend on what hardware you have and whether you can afford to splash on some new gear. If you think you'll struggle virtualising this lab on a single machine, you could host victims on one machine and attack from another, either using Virtualisation on both hosts, or even going onto bare metal if you need to.
 
-I would recommend that your victim machines always go into virtual machines, since they'll fall over regularly and don't use many resources; attacking from a bare-metal machine is a viable option for the resouce scarce, however.
+I would recommend that your victim machines always go into virtual machines, since they'll fall over regularly and don't use many resources; attacking from a bare-metal machine is a viable option for the resource scarce, however.
 
 ## Custom Hypervisor Considerations
 

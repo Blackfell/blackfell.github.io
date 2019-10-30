@@ -36,7 +36,7 @@ feature_row1:
   - image_path: /assets/images/posts/start_hacking/darknet_diaries.jpg
     alt: "Darknet Diaries"
     title: "Darknet Diaries"
-    excerpt: "**The one for your nan** - Dramatic narritives of famous incidents; everyone can keep up with [Jack Rhysider's](https://twitter.com/jackrhysider) presenting style."
+    excerpt: "**The one for your nan** - Dramatic narratives of famous incidents; everyone can keep up with [Jack Rhysider's](https://twitter.com/jackrhysider) presenting style."
     url: https://darknetdiaries.com
     btn_label: "Read More"
     btn_class: "btn--inverse"
@@ -44,7 +44,7 @@ feature_row2:
   - image_path: /assets/images/posts/start_hacking/malicious_life.png
     alt: "Malicious Life"
     title: "Malicious Life"
-    excerpt: "**The one for your cousin** - Narritives of famous incidents, malware and groups; [Ran Levi](https://twitter.com/ranlevi) gets a little more technical, which is great for those that can handle it."
+    excerpt: "**The one for your cousin** - Narratives of famous incidents, malware and groups; [Ran Levi](https://twitter.com/ranlevi) gets a little more technical, which is great for those that can handle it."
     url: https://malicious.life/
     btn_label: "Read More"
     btn_class: "btn--inverse"
@@ -52,7 +52,7 @@ feature_row3:
   - image_path: /assets/images/posts/start_hacking/sans_isc.jpg
     alt: "SANS ISC Stormcast"
     title: "SANS ISC Stormcast"
-    excerpt: "**Thee one for your 10 minute commute** - News podcast from SANS, the host [Johannes Ullrich](https://twitter.com/johullrich) is highly knowledgable and very technical."
+    excerpt: "**Thee one for your 10 minute commute** - News podcast from SANS, the host [Johannes Ullrich](https://twitter.com/johullrich) is highly knowledgeable and very technical."
     url: https://isc.sans.edu/podcast.html
     btn_label: "Read More"
     btn_class: "btn--inverse"
@@ -60,7 +60,7 @@ feature_row4:
   - image_path: /assets/images/posts/start_hacking/cyberwire.jpg
     alt: "The Cyberwire"
     title: "The Cyberwire"
-    excerpt: "(the one for your boss) - Accessible cyber news, in plain English; there are jokes, accents and good ol' american cheese, but it's a great place to start to understand how businesses treat security."
+    excerpt: "(the one for your boss) - Accessible Cyber news, in plain English; there are jokes, accents and good ol' American cheese, but it's a great place to start to understand how businesses treat security."
     url: https://www.thecyberwire.com/podcasts/daily-podcast.html
     btn_label: "Read More"
     btn_class: "btn--inverse"
@@ -69,7 +69,7 @@ feature_row4:
 
 # So you want to learn security?
 
-Perhaps you're new to a job, starting a course, of just plain interested; whatever the reason you're here, the sheer volume of options avilable to you can be daunting. Let's cut through the noise and get you some solid (if opinionated) learning recomendations that I've found successful working with friends and colleagues.
+Perhaps you're new to a job, starting a course, of just plain interested; whatever the reason you're here, the sheer volume of options available to you can be daunting. Let's cut through the noise and get you some solid (if opinionated) learning recommendations that I've found successful working with friends and colleagues.
 
 This is a guide of two parts. First up is Immersion101, a compressed brief I like to give friends an colleagues that are getting into InfoSec; the second part will focus on some technical, hands on learning strategies, which is, as far as I'm concerned, *by far the best bit!*
 
@@ -86,7 +86,7 @@ A great place to start is with some podcasts; these are free, don't require an a
 {% include feature_row id="feature_row3" type="left" %}
 {% include feature_row id="feature_row4" type="right" %}
 
-You can download a 'podcatcher' app on your phone, subscribe to a few shows an take it from there; like me, you'll find referalls in the shows you like that will point you to more interesting content.
+You can download a 'podcatcher' app on your phone, subscribe to a few shows an take it from there; like me, you'll find referrals in the shows you like that will point you to more interesting content.
 
 ## Social lurking
 
@@ -113,9 +113,9 @@ I like the following online training providers:
 1. SANS [Cyber Aces](https://www.cyberaces.org/) - A Free offering from a leading training provider to introduce you to InfoSec.
 1. [Cybrary](https://www.cybrary.it/) - Online free training provider popular in IT and InfoSec.
 1. [Hacker101](https://www.hacker101.com/) - A Free training course associated with the Hacker1 [bug bounty](https://en.wikipedia.org/wiki/Bug_bounty_program) program.
-1. [Codeacademy](https://www.codecademy.com/learn/learn-python) - free programming courses from web application programming to full on development practicies.
+1. [Codeacademy](https://www.codecademy.com/learn/learn-python) - free programming courses from web application programming to full on development practices.
 
-If nothing grabs your eye, I recommend CompTIA training courses in Security+ Network+ and A+ to total beginners as a starting place; these can be supplemented with Microsoft, Linux and Cisco sysadmin courses; all of which can be founhd for free via Cybrary (number 2.).
+If nothing grabs your eye, I recommend CompTIA training courses in Security+ Network+ and A+ to total beginners as a starting place; these can be supplemented with Microsoft, Linux and Cisco sysadmin courses; all of which can be found for free via Cybrary (number 2.).
 
 Whilst these are good, remember **don't get bogged down in them yet**, read on, build some things and use the training to support where you'd like to find out more on specifics.
 
@@ -124,15 +124,15 @@ Whilst these are good, remember **don't get bogged down in them yet**, read on, 
 Whilst you may get lots of reading material from Twitter and training courses, there are a few places that might be worth a regular look for interesting tech reading. I like to keep an eye on:
 
 1. [Krebs on Security](https://krebsonsecurity.com) - Regular, in depth articles on all things security.
-1. [Hacker News](https://thehackernews.com) - Accesible articles that are a little more like 'popular reading'.
-1. [Security Weekly](https://securityweekly.com) - A more business focussed news site; great for insights into hos businesses approach security.
+1. [Hacker News](https://thehackernews.com) - Accessible articles that are a little more like 'popular reading'.
+1. [Security Weekly](https://securityweekly.com) - A more business focused news site; great for insights into hos businesses approach security.
 1. [NewsNow](https://www.newsnow.co.uk/h/Technology/Security) - A great source of various articles; consider this your screen-scraper for security news, they have everything.
 
 # Hands on Learning
 
 ![We got 'em R2](/assets/images/posts/start_hacking/where_the_fun_begins.gif)
 
-Ok now you have your grounding, lets get into my favourite learning strategy - hands on, project based learning. This is where I encourage people to channel as much of their learning energy as posssible; it has the added benefit of being *far* more engaging than reading books.
+OK now you have your grounding, lets get into my favourite learning strategy - hands on, project based learning. This is where I encourage people to channel as much of their learning energy as possible; it has the added benefit of being *far* more engaging than reading books.
 
 ## Why lab is fab
 
@@ -148,7 +148,7 @@ If you have good reasons to not use a lab, then read on the how to use it sectio
 
 ## Putting that Lab to good use
 
-You can use a lab to learn anything you want, it all depends what you want to do and I **always** suggest that you follow your interests. A general rule of thumb though, is exactly teh same as that I set out in [the online training section](#online-training) - focus on systems admin, networking and programming, then progress to security specific training.
+You can use a lab to learn anything you want, it all depends what you want to do and I **always** suggest that you follow your interests. A general rule of thumb though, is exactly the same as that I set out in [the online training section](#online-training) - focus on systems admin, networking and programming, then progress to security specific training.
 
 If you're a total novice to this, I recommend starting by learning tech basics, install and configure computers and networks, learn to use them with graphical and text interfaces; after you have a basic working knowledge, you can then progress to security specific learning.
 
@@ -158,22 +158,22 @@ There are various online and 'offline' security learning approaches; you can com
 
 ![No wizards here](/assets/images/posts/start_hacking/wizard.jpg)
 
-An effective way of learning foundations skills in systems administration, netowrking and programming, is building things. If you're not able to do any of the following, I recommend considering doing them as a learning task early on in your training plan:
+An effective way of learning foundations skills in systems administration, networking and programming, is building things. If you're not able to do any of the following, I recommend considering doing them as a learning task early on in your training plan:
 
 1. Installing and configuring a Windows server and client(s) in a secure manner; bonus points for implementing central authentication & other services. Hint - free online training can help here.
 1. Installing and working in a Linux environment; get comfortable using the command line (it's not dead yet by a long shot) and satisfy yourself you can find files by name, content & permissions. Can you see what processes are running, who's logged in, can you check some basic logs, can you manage and configure a service like ssh?
-1. Configuring networking settings on Windows, Linux and networking applicances; try setting up a network with a couple of devices, your own custom address range (bonus points for fancy sub-netting) and check everything can talk successfully.
-1. Basic Scripting and programming - this one marries really well with 1 & 2; try using native scripting languages like Powershell and Bash to find files on computers. Try some basic python, maybe do an online course.
+1. Configuring networking settings on Windows, Linux and networking appliances; try setting up a network with a couple of devices, your own custom address range (bonus points for fancy sub-netting) and check everything can talk successfully.
+1. Basic Scripting and programming - this one marries really well with 1 & 2; try using native scripting languages like PowerShell and Bash to find files on computers. Try some basic python, maybe do an online course.
 
-The above are examples you could usea s a start; you don't need to take them to the far end of one, but cosnider getting to a reasonable working level in each, to help you with other tasks.
+The above are examples you could use a s a start; you don't need to take them to the far end of one, but consider getting to a reasonable working level in each, to help you with other tasks.
 
 ### Offline Vulnerable Targets
 
 OK the juicy offline stuff! This is my go to recommendation for security specific training, once people are comfortable with technology basics; this approach involves getting hold of vulnerable machine builds, putting them on a computer (usually virtually, but we'll come on to that later), and breaking in to them.
 
-{% include figure image_path="/assets/images/posts/start_hacking/trinity_nmap.jpg" alt="Starting to feel like you got this?" caption="This is the part where you can start to feel like you're channeling Trinity, with her real life Nmap skills." %}
+{% include figure image_path="/assets/images/posts/start_hacking/trinity_nmap.jpg" alt="Starting to feel like you got this?" caption="This is the part where you can start to feel like you're channelling Trinity, with her real life Nmap skills." %}
 
-There are a whole host of these out there, but I almost always send people to [Vulnhub](https://www.vulnhub.com/); Metasploitable is often recommended as a begineer task, but I'd give caution, as it's lack of workflow and artificial nature can sometimes confuse, or demotivate people.
+There are a whole host of these out there, but I almost always send people to [Vulnhub](https://www.vulnhub.com/); Metasploitable is often recommended as a beginner task, but I'd give caution, as it's lack of workflow and artificial nature can sometimes confuse, or demotivate people.
 
 I like to start people on a [Mr robot themed machine](https://www.vulnhub.com/entry/mr-robot-1,151/); many people are fans of the show (which helps with keeping interest) and I think it's a nice balance of realism and simplicity. As an added bonus, I have produced a [learning-oriented walkthrough]() for the machine, to turn it into a proper learning experience.
 
@@ -193,13 +193,13 @@ The good news with online interactive learning is that you may need fewer resour
 
 {% include figure image_path="/assets/images/posts/start_hacking/over_the_wire.jpg" alt="OverTheWire - Bandit." caption="Over the wire's [Bandit](https://overthewire.org/wargames/bandit/) machine - A Linux command line challenge, which will test & develop your abilities to gather information from Linux machines and work in a Linux command line environment." %}
 
-OverTheWire offer a whole suite of challenges, which are *really* accesible; Bandit is a Linux command line challenge, where you can test and hone your skills, using only a Secure Shell client. Even Linux pros will have fun here.
+OverTheWire offer a whole suite of challenges, which are *really* accessible; Bandit is a Linux command line challenge, where you can test and hone your skills, using only a Secure Shell client. Even Linux pros will have fun here.
 
 #### SANS Holiday Hack
 
-{% include figure image_path="/assets/images/posts/start_hacking/holiday_hack.jpg" alt="OverTheWire - Bandit." caption="The SANS [Holiday Hack](https://holidayhackchallenge.com/) challenges - Humourous online hack-a-thons, whose previous years are still hosted; you may need your own machine for some of the harder stuff, but you can get a long way in a browser." %}
+{% include figure image_path="/assets/images/posts/start_hacking/holiday_hack.jpg" alt="OverTheWire - Bandit." caption="The SANS [Holiday Hack](https://holidayhackchallenge.com/) challenges - Humorous online hack-a-thons, whose previous years are still hosted; you may need your own machine for some of the harder stuff, but you can get a long way in a browser." %}
 
-The SANS Holiday Hack is a really fun online challenge; you can get started with nothing but a browser on many of the challenges and the web based game-style of the challenges is really accesible. There's a great community around these when they are live and the old ones are all still hosted so you can go back and practice.
+The SANS Holiday Hack is a really fun online challenge; you can get started with nothing but a browser on many of the challenges and the web based game-style of the challenges is really accessible. There's a great community around these when they are live and the old ones are all still hosted so you can go back and practice.
 
 #### HackTheBox
 
@@ -209,39 +209,39 @@ HackTheBox offer a virtual lab environment you can hack against; this is great f
 
 #### HackThisSite
 
-{% include figure image_path="/assets/images/posts/start_hacking/hack_this_site.jpg" alt="OverTheWire - Bandit." caption="[hackthissite](https://www.hackthissite.org) - A website with challenges that allow you to discover and exploit web application vulnearbilities." %}
+{% include figure image_path="/assets/images/posts/start_hacking/hack_this_site.jpg" alt="OverTheWire - Bandit." caption="[hackthissite](https://www.hackthissite.org) - A website with challenges that allow you to discover and exploit web application vulnerabilities." %}
 
-HackThisSite is all about Web hacking; the site is free to use and doesn't really require any fancy software beyond your humble browser. This can give you some really good experience, but I usually puch people to the other options here first as the scope of learning here is a little more narrow.
+HackThisSite is all about Web hacking; the site is free to use and doesn't really require any fancy software beyond your humble browser. This can give you some really good experience, but I usually push people to the other options here first as the scope of learning here is a little more narrow.
 
-All of the above are interesting places to get started; I generally recommend them in order of appearance, as depite hackthisstie being aimed at beginners, I prefer other options unless you're resource constrained.
+All of the above are interesting places to get started; I generally recommend them in order of appearance, as despite hackthisstie being aimed at beginners, I prefer other options unless you're resource constrained.
 
-### Offline Homebrew Victims
+### Offline Home-brew Victims
 
-A third option (which in most cases is really jsimilar to the last) is making homebrew targets. This can give you a nice halfway house between dedicated offline targets and online services; you can use vulnerable applications, or old machines to test your skills against, without the hard requirement for running dedicated target machines,though you should, as you may crash or corrupt the device you're working with, and you may lose some of the separation benefits we've discussed so far.
+A third option (which in most cases is really similar to the last) is making home-brew targets. This can give you a nice halfway house between dedicated offline targets and online services; you can use vulnerable applications, or old machines to test your skills against, without the hard requirement for running dedicated target machines,though you should, as you may crash or corrupt the device you're working with, and you may lose some of the separation benefits we've discussed so far.
 
-OWASP offer a [vulnerable web server](https://github.com/OWASP/Vulnerable-Web-Application) project, the [Damn Vulnerable Web Application](http://www.dvwa.co.uk/) project offers a slightly more useable alternative and there are others avilable too.
+OWASP offer a [vulnerable web server](https://github.com/OWASP/Vulnerable-Web-Application) project, the [Damn Vulnerable Web Application](http://www.dvwa.co.uk/) project offers a slightly more usable alternative and there are others available too.
 
-These have the appeal of not requiring a dedicated machine, but I usually don't recommend them at first due to the extensive setup effort adn the chance that you may have misconfigurations that affect your learning.
+These have the appeal of not requiring a dedicated machine, but I usually don't recommend them at first due to the extensive setup effort and the chance that you may have misconfigurations that affect your learning.
 
 # So go and do it!
 
-Hopefully you have a rough idea now of where you want your learning to take you. Depending on your current experience, you may want to take a look at windows configuration, or the Linux [bandit](https://overthewire.org/wargames/bandit/) challenge, or you may be comfortable with your knowledge and ready to jump straight into some vulnerable VMs, or a virtal lab.
+Hopefully you have a rough idea now of where you want your learning to take you. Depending on your current experience, you may want to take a look at windows configuration, or the Linux [bandit](https://overthewire.org/wargames/bandit/) challenge, or you may be comfortable with your knowledge and ready to jump straight into some vulnerable VMs, or a virtual lab.
 
 ## Still not sure?
 
-Ok then, you need a nudge don't you? It's ok to not be sure and I'm happy to provide some hints, here goes!
+OK then, you need a nudge don't you? It's OK to not be sure and I'm happy to provide some hints, here goes!
 
-If you can install windows machines, get a server talking to a client, use Powershell to {download a file, find a file on disk and ping all hosts on your local network} then skip basic windows learning; otherwise, configure a Windows server and client, in a mini Active Directory environment. Make sure you comply with licencing requriements, even if you use [evaluation copies](https://www.microsoft.com/en-us/evalcenter/).
+If you can install windows machines, get a server talking to a client, use PowerShell to {download a file, find a file on disk and ping all hosts on your local network} then skip basic windows learning; otherwise, configure a Windows server and client, in a mini Active Directory environment. Make sure you comply with licensing requirements, even if you use [evaluation copies](https://www.microsoft.com/en-us/evalcenter/).
 
-If you can install Linux and use the command line to {find a file, add a new user, list running processes, configure and enable ssh on port 9999 and ping evey host on your local network} then skip bandit and local linux config tasks; otherwise, install some linux in a lab environment (see next post) and/or complete the [bandit](https://overthewire.org/wargames/bandit/) overthewire challenge.
+If you can install Linux and use the command line to {find a file, add a new user, list running processes, configure and enable ssh on port 9999 and ping every host on your local network} then skip bandit and local Linux config tasks; otherwise, install some Linux in a lab environment (see next post) and/or complete the [bandit](https://overthewire.org/wargames/bandit/) overthewire challenge.
 
-If you know what an IP address is, what a network port, MAC address and the difference between a router adn switch is, then skip a basic networking course for now (but it's super important - you'll pick more up and train as required), otherwise, try a free course like Cybrary's [CompTIA Network +] (https://www.cybrary.it/course/comptia-network-plus/) offering.
+If you know what an IP address is, what a network port, MAC address and the difference between a router and switch is, then skip a basic networking course for now (but it's super important - you'll pick more up and train as required), otherwise, try a free course like Cybrary's [CompTIA Network +] (https://www.cybrary.it/course/comptia-network-plus/) offering.
 
-If you know the basics of how websites are programmed and you know your HTML from our Javascript, what an SQL query is and how CSS works (note, you don't need to be a master), then skil any web learning, otherwise, consider completing some web programming learning, like that offered by [codeacademy](https://www.codecademy.com/learn/paths/web-development) or [w3schools ](https://www.w3schools.com/). Just getting a rough understanding at this point will help.
+If you know the basics of how websites are programmed and you know your HTML from our JavaScript, what an SQL query is and how CSS works (note, you don't need to be a master), then skill any web learning, otherwise, consider completing some web programming learning, like that offered by [codeacademy](https://www.codecademy.com/learn/paths/web-development) or [w3schools ](https://www.w3schools.com/). Just getting a rough understanding at this point will help.
 
 Otherwise, I recommend you try the [Mr Robot Capture the Flag](https://www.vulnhub.com/entry/mr-robot-1,151/) challenge as a starter task, using my (very excellent) [walkthrough]() as a training guide.
 
-In due time, I'd recommend you bolster your web programming knowledge with anotehr programmign or scriptiong language, though this isn't wholly essential at first (IMO). I like Python and codeacademy](https://www.codecademy.com/learn/learn-python) offer good training. This one is up to you though!
+In due time, I'd recommend you bolster your web programming knowledge with another programming or scripting language, though this isn't wholly essential at first (IMO). I like Python and codeacademy](https://www.codecademy.com/learn/learn-python) offer good training. This one is up to you though!
 
 After that, you should have a feel fro where you'd like to go now; as always, contact me via social for more thoughts and advice.
 

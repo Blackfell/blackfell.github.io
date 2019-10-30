@@ -64,7 +64,7 @@ In this case, the problem is using discovery and network sniffing tools to see w
 
 ### Hints
 
-Running a packet sniffer on the network you're attaching the VM to is a good idea here. Active discovery tools may be ok here, but can you find a tool (google if you need to), to discover hosts on eh network passively?
+Running a packet sniffer on the network you're attaching the VM to is a good idea here. Active discovery tools may be OK here, but can you find a tool (google if you need to), to discover hosts on eh network passively?
 
 ## Solution
 
