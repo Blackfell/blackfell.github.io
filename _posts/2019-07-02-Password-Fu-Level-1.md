@@ -36,45 +36,33 @@ In [part one](/security guidance/threats & risk/Lets-Talk-Passwords/) of this se
 
 ## Level Outline
 
-The *'boss'* in this level is a collection of traps people fall into when making passwords; we'll be beating this boss together with **a passphrase worthy of greatness**, that you will generate yourself.
+In this level, you'll be coming up with **a passphrase worthy of greatness**, which you'll generate manually and use  again as you move on to future posts, watch this space!
 
-This will be a human generated passphrase, which we'll be using as we move on to future posts, watch this space!
-
-# The Basics
-
-This part of your training is, as with all great movie montages, all about the basics.
-
-![Wax on](/assets/images/posts/password_level_1/wax_on.jpg)
-
-Lucky for us, instead of hitting a punch bag for hours, or crashing bobsleighs, you get all the journey and none of the mystery - you get to take a shortcut straight to the answer.
-
-As mentioned in [Part 1](/security guidance/threats & risk/Lets-Talk-Passwords/), passphrases must be **hard to guess, unique, memorable and secret**. This post is all about building these passphrases, without them being impossible to remember. We must be careful of avoiding some common traps though!
+As mentioned in [Part 1](/security guidance/threats & risk/Lets-Talk-Passwords/), passphrases must be **hard to guess, unique, memorable and secret**. This post is all about building a passphrase that meets these requirements, without falling into some common traps.
 
 ![It's a trap](/assets/images/posts/password_level_1/trap.gif)
 
 ## Trap 1 - Complexity Requirements
 
-Password requirements from sites and systems can be the bain of strong passwords. Encouraging a formulaic combination of character types has a tendency to get humans to produce formulaic passphrases. If the requirement is a mix of upper-case, lower-case and numbers, someone who dreams up the passphrase flower, will have a tendency to change it to Flower1, or some similar derivative.
+Password requirements from sites and systems often encourage a formulaic combination of character types; the problem is, this has a tendency to get us users to produce formulaic passphrases.
 
-By the time a whole population does this, the patterns can be quite common; so we find Trap # 1.
+If a website requires a mix of upper-case, lower-case and numbers, it's no wonder that we users come up with patterns like turning *'flower*' info *'Flower1'*, or some similar derivative. This doesn't make things weaker, but we should be careful that it doesn't give us a false sense of security.
 
 ## Trap 2 - Predictable Systems
 
-Related to trap # 1 is predictable systems; this occurs where we users design a password system to get around the difficulties of picking and remembering passphrases. This may be us deciding to capitalise the first letter and add a 1 on the end, as in the previous example, but could equally involve picking a colour, capitalising the last letter and adding your year of birth at the end, like: yelloW1987.
+In addition to clever systems to meet complexity needs, we users sometimes pick password systems to help us remember passphrases. This is the *clever trick* that you might use in all your passphrases, like starting them with the number 7, or finishing them all with your year of birth.
 
-The problem with these systems is that they are not always as unique as we think and can give us a false sense of security. Here we find pitfall # 2.
+The problem with these systems is that they are not always as unique as we think and if a passphrase gets leaked in an online breach, your system could be discovered and used to guess other credentials.
 
 ## Trap 3 - Personal information
 
-The third trap I'd like to bring to your attention is personal information. There are tools in existence to build password lists from your personal information. Including your dog's name in your passwords aids memorability, but can become predictable, especially in large groups of people.
+The third trap I'd like to bring to your attention is personal information. There are tools in existence to build password lists from your personal information, which are scarily effective if fed some basics about you.
 
-Here we find pitfall # 3 against our goals of producing 'good' passphrases.
+Including your dog's name in your passwords aids memorability, but can be predicted, even if you add complexity around it. Just trust me on this, avoid it.
 
-# Solutions & Advice
+# Our Solution - Use a system
 
-So what do we do to beat the boss and avoid the traps?
-
-## Use a system
+So what do we do to avoid the traps without having to remember crazy passphrases?
 
 To achieve memorability & use-ability, we're going to need a system. Even if all passphrases are recorded on paper, a system will help us read them off and enter them in our system of choice. We must, however, be careful of traps!
 
@@ -82,33 +70,31 @@ We know this means avoiding complexity patterns, personal information and (perha
 
 The following rules will help you do this.
 
-### Length, not complexity
+## Length, not complexity
 
-All systems will introduce some level of predictability, just because they're there to help you remember; a good way of countering this is using a system that also makes guessing the password with computers much harder. The goal is to use a system you'd be happy to tell an attacker, because even if they knew it, it would take them years to guess.
+If we're going to use a password system, we should make sure that it makes guessing the password with computers difficult. The goal is to use a system you'd be happy to tell an attacker, because even if they knew it, it would take them years to guess.
 
-Maths tells us that length trumps complexity when it comes to guessing with computers, so picking long passphrases is our friend here. This does, however, depend on how the guesser is guessing and we're assuming they're guessing one character at a time.
+Assuming that an attacker guesses one character at a time (aaa, aab, aba, abb), using long passphrases will make guessing take much longer than adding numbers, capitals etc. to a short password. We should therefore build length into our passphrase system as the key defence against passphrase guessers.
 
-#### Maths side-note - length & notes on guessing.
+A simple way of remembering this is **passphrases not passwords**; this way of thinking gets us in a mindset to make much longer credentials and avoid things like single words.
 
-Imagine we are attackers now; we have two lists, one made up of 26 characters (all the letters in the alphabet) and one of 64 characters (all the letters plus numbers and symbols). We're going to guess 6, 8 and 10 character passwords.
+### Maths side-note (for the nerdy)
 
-Attacking character by character requires (number of characters)^(length) guesses. Our 6 character password takes ~308 million guesses with the small character set and ~68 billion with the bigger one. You'd go with more characters right?
+Imagine we are attackers now; we have two lists, one made up of 26 characters (all the letters in the alphabet) and one of 64 characters (all the letters plus numbers and symbols). Two innocent users make passwords (Suzan and Angela); the passwords are both 6 characters long.   Suzan uses the alphabet characters and Angela uses the special character set. Suzan gets *'lodieb'* and Angela gets *'i&H3pS'*.
 
-Well an 8 character password takes 208 billion guesses (26 chars) and 281 trillion (64 chars); a 10 character password takes 141 trillion guesses (26 chars) and 1 million trillion.
+Attacking character by character requires (number of characters)^(length) guesses. Suzan's 6 character password takes ~308 million guesses with the small character set and Angela's takes ~68 billion with the bigger one. Angela's way is better, right?
 
-So what does this mean? Well we need to consider what kind of attacks our system is vulnerable to and protect accordingly. If we use dictionary words, *our dictionary must have enough words in it* to make guessing prohibitive.
+Well yes, more characters does make guessing harder, but it also makes remembering harder; switching Suzan's basic alphabet passphrase from 6 to 8 characters boosts her 308 Million to 208 billion guesses so she can get just as much complexity as Angela (actually a bit more) by adding a couple of letters on the end. Suzan now has *'lodiebam'*.
 
-*Remember this - how many things to choose from N & how many of them to guess L. The effort to crack it is like N^L.* (GRAPH)
+So what does this mean? Well in terms of memorability, large and complex character sets can be a hindrance and just making our passphrases longer would mean we wouldn't really need them as much. Practically the difference is between remembering something like *'i&H3pS'* and *'lodiebam'*.
 
-### Be a Machine
-
-Machines are good at getting rid of problems around predictability. If you choose to use a  word based password, machines can randomly pick words from a bit pool (solving our last problem); if you choose to use random characters, they can randomise a long set of those too.
+## Be a Machine
 
 {% include figure image_path="/assets/images/posts/password_level_1/machine.jpg" alt="Machine Generation" caption="Using machines to generate passphrases can help up bypass most of the pitfalls we identified at the start." %}
 
-This creates problems with remembering passphrases, which we'll cover in later parts of this series (Don't panic!).
+Machines are good at getting rid of problems around predictability. Machines can help us build in some randomness (solving our last problem), this can, however, create problems with remembering passphrases, but we'll come on to that.
 
-### It's what you do with it that counts
+## It's what you do with it that counts
 
 As well as picking a good passphrase, we need to protect it. We must limit its reuse, keep it to ourselves and store it carefully.
 
@@ -116,7 +102,7 @@ For most people, getting into securing their passwords, re-use is the biggest pr
 
 # Examples
 
-That's all well and good, but what should you actually do? Well in the interest of being hard-to-guess, I'm going to encourage you to pick your own passphrase system; it may help, however, to look at some available systems, which you could use, modify or ignore at your leisure.
+So we have some advice, which is all well and good, but what should you actually do? Well in the interest of being hard-to-guess, I'm going to encourage you to pick your own passphrase system; it may help, however, to look at some available systems, which you could use, modify or ignore at your leisure.
 
 ## Three Words
 
@@ -126,42 +112,44 @@ The traps for this method can be the number of words in your word pool and the r
 
 An additional piece of advice on this is that three words can be used with memory techniques, like making a picture of your passphrase, to make it more memorable. I generated three random words online -
 
-*lions fuel bland*
+> rational carrot challenge
 
-To help me remember this phrase, I could imagine lions drinking fuel and finding the whole thing a bit bland. **If it's stupid but it works, it's not stupid.**
+To help me remember this phrase, I could imagine a load of nerdy carrots in a competition to see who's got the Best logic. **If it's stupid but it works, it's not stupid.**
 
 ## Three Words +
 
-If you want something more secure than the three words approach, you may consider a longer passphrase; this is similar to the three words approach, but can be extended to use a greater number of random words, with filler words between if you like. An example would be, five random words - lion fuel bland cluster crazy - which could be turned into a complex sentence, like -
+If you want something more secure than the three words approach, you may consider a longer passphrase; this is similar to the three words approach, but can be extended to use a greater number of random words, with filler words between if you like. An example would be extending out Three words out to five random words - rational carrot challenge slump baby - which could be turned into a complex sentence (don't change it too much, or you lose the randomness factor), like -
 
-**lions fuel up a bland cluster of 6 crafty corvettes.**
+> Rational carrots challenge 4 babies to slump.
 
-These passphrases are long, have added complexity in your filler words and have the option to include numbers and special characters, as makes sense for your passphrase. This doesn't offer much over the three words approach in terms of memorability, but does in added complexity. I would say this one is for the paranoid.
+These passphrases are long, have added complexity in your filler words and have the option to include numbers and special characters, as makes sense for your passphrase. This doesn't offer much over the three words approach in terms of memorability, but does add complexity. I would say this one is for the paranoid.
 
 You may have issues, however, with complexity requirements and length limits for this kind of passphrase - so read on!
 
-
-A good rule of thumb I go by, is that if it's a complex, random passphrase, I'm comfortable with above 15 characters, but always go for as long as bearable; if it's a sentence based system, three words is an absolute minimum, even with very good randomness.
 
 ## Truncated words
 
 The longer sentences approach can be modified to something I call truncated words approach. This is the same as the above, only you select some of the letters from each word to use as your passphrase. In the example above, the passphrase:
 
-**lions fuel up a bland cluster of 6 crafty corvettes**
+> Rational carrots challenge 4 babies to slump.
 
 Could be truncated; the simplest truncation would be the first letter, but let's use the first two. I'll add complexity by capitalising the first letter too.
 
-**LiFuUpABlClOf6CrCo**
+> RaCaCh4Ba2Sl
 
-This passphrase looks random, will fit many length limits, but has the same degree of memorability as the full phrase, provided the truncation system is easy to remember and use.
+But why would we use this system? The main reason is that this is much shorter than the word based approach, some sites and services have short length limits, or maybe you can't reliably type a passphrase that long (I'm looking at you hunt 'n' peck typers). This passphrase has nearly the same degree of memorability as the full phrase, provided the truncation system is easy to remember and use.
 
 Downfalls with this method are a degree of predictability if your truncation system is public, as well as a reduced usability over just the longer phrase itself. This one is good if you have complexity requirements that your full phrase can't meet too.
 
 # A final note on attacks
 
-Now is a good time to call your mind back to part 1, understanding how attacks happen. Now your head is in the right place, consider that attackers will often carry out attacks, first with commonly used passwords (from some pre-built list), then simple passwords based off a dictionary they produce (or buy etc.), these will start with limited complexity from capitalisation and letter substitution (think a+>@), before becoming more complex, before finally a full-blown 'brute force' attack takes place (this is the aaa, aab, aba, abb guessing scheme).
+Now is a good time to call your mind back to [part one](/security guidance/threats & risk/Lets-Talk-Passwords/), where we discussed how attacks happen; take another minute to consider how you'll be attacked before you settle on your final passphrase system.
 
-Now as you go forward, it should be clear, avoid common passwords, avoid words likely to be in a dictionary, then avoid single words, with complexity added in, then make passwords computationally hard to guess.
+Attackers will often carry out attacks, first with commonly used passwords (from some pre-built list), then simple passwords based off a dictionary they produce (or buy etc.), ramping up the complexity of their guesses from capitalisation and letter substitution (password becomes Password, then Password1 then P@ssw0rd1 etc.), before finally a full-blown 'brute force' attack takes place (this is the aaa, aab, aba, abb guessing scheme).
+
+You may also find more attackers starting to try word combination attacks alongside dictionary attacks, where attackers use big word lists to guess against systems like our 'Three Words' idea. Whilst this isn't overly popular now, guidance on three-words-like systems is becoming widespread and we can expect to see this develop in future.
+
+Take this opportunity to double check your system; if you're building out a system based on characters (not words), you need to push that length out, exceed 15 characters if you can, as many as you can manage. If you're going on a word based system, remember that regardless of the numbers, symbols and so on that you add in to the mix, you need at least three randomly generated words in there from a *big pool* or words to give you complexity; use an online generator and if you can, push your word count up nearer 5.
 
 # building your first password
 
@@ -189,7 +177,7 @@ Whether you're using words or characters, google an online generator now and get
 
 I generated the following using [onlinewordgenerator](https://randomwordgenerator.com/):
 
-*decorative legislation brick joy housewife*
+> decorative legislation brick joy housewife
 
 ## does it make a picture?
 
@@ -205,15 +193,16 @@ Make sure it makes sense, are there too many details personal to you? Is it pred
 
 My passphrase doesn't meet the complexity requirements for the system it's going in to; I'm already happy that it's adequately secure, so I'll add a special character and a number in a memorable, but non-standard way.
 
-*decorative legislation < brick joy 2 housewife*
+> decorative legislation < brick joy 2 housewife
 
 This also changes my memory story - now decorative legislation is less than brick-joy to a housewife.
 
 ## It's ready!
 
+
 Now I have my passphrase, I'm going to remove the space characters, since I don't need them and I have:
 
-*decorativelegislation<brickjoy2housewife*
+> decorativelegislation<brickjoy2housewife
 
 Even for paranoid ol' me, I'm happy with the complexity & randomness, it's not related to my personal life and it's not an overly predictable system.
 
@@ -224,5 +213,7 @@ in a way that makes sense to you; I'm going to assume you're a 'normal person' (
 The next part of this series will touch on this more; we need to think about it carefully, so we'll come back to it again.
 
 # Now what?
+
+![It's over](/assets/images/posts/password_level_1/bueller.gif)
 
 Watch out for the next post - Password Kung Fu Level 2 - where you'll take your credential journey on to the next stage; we'll be adding usability, simplicity and automation to your life. Imagine if you could **stop having to remember all those passwords**, well that's where we're going!
