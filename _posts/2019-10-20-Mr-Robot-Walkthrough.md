@@ -76,21 +76,25 @@ Before we start, I'm connecting this VM to my host-only virtual network, which h
 
 Which gives me:
 
-[Figure - network cards]()
+![Networking Info](/assets/images/posts/mr_robot/network.jpg)
 
 so I'm looking to find this device on my eth0 network adapter.
 
 As far as packet capturing tools go, Wireshark is common, but I like tcpdump for this, so I'll run tcpdump, with a few switches (but keeping it fairly simple for now); I like to turn off name resolution (-nn), specify that I want to discover on my host only network device (-i eth0) and that's it, show me all!
 
-[Figure](tcpdump)
+```bash
+~$ tcpdump -nn -i eth0
+```
 
 A quick google for passively discovering hosts might take you to a [stack exchange post](https://unix.stackexchange.com/questions/415270/how-can-i-detect-devices-on-my-local-network-from-a-linux-computer), which recommends a tools called netdiscover. I like to use netdiscover in passive mode as the VM is imported, so that I can see it associating with my virtual network. I'm thinking of the Address Resolution Protocol](https://en.wikipedia.org/wiki/Address_Resolution_Protocol) (ARP) when I do this, as well as DHCP, which my attacking machine should pick up. I run this tool with the -p switch to get passive mode:
 
-[Figure](netdiscover)
+```bash
+~$ netdiscover -p -i eth0
+```
 
-Now I can go ahead and import the appliance.
+Now I can go ahead and import the appliance; I make sure it's on the same network and I see my tools light up!
 
-[Figure](importing)
+![Importing](/assets/images/posts/mr_robot/importing.jpg)
 
 and we have a machine!
 
@@ -110,7 +114,7 @@ We have the machine IP address, so we don't need to find it on the network, but 
 
 **The** network mapper and port scanner is Nmap; there are other ways of portscanning hosts, but this is the tool I like to use and one that you'll find in other CTF write-ups.
 
-I like to run nmap as root, which means it will carry out a [Syn scan](https://networkinferno.net/tcp-syn-scanning) by default; I like to turn off the probe requests and host resolution (-Pn and -n), because I know where my host is, and I like to scan all TCP ports with the -p- option. I usually output to all filetypes (-oA), as well as asking nmap to give us a reason whenever it says a port is open or filtered (--reason); as always, keep that tcpdump sniffer running, so you can see what's going on! The resultant command is:
+I like to run nmap as root, which means (amongst other things) it will carry out a [Syn scan](https://networkinferno.net/tcp-syn-scanning) by default; I like to turn off the probe requests and host resolution (-Pn and -n), because I know where my host is, and I like to scan all TCP ports with the -p- option. I usually output to all filetypes (-oA), as well as asking nmap to give us a reason whenever it says a port is open or filtered (--reason); as always, keep that tcpdump sniffer running, so you can see what's going on! The resultant command is:
 
 > ```bash
 >~$ nmap -Pn -n -p- -oA tcp-all-ports --reason <VM IP Here>
@@ -118,6 +122,9 @@ I like to run nmap as root, which means it will carry out a [Syn scan](https://n
 >~$ ls
 > <NMAP DIR HERE>
 >```
+
+
+![Nmap tcp scan](/assets/images/posts/mr_robot/nmap.jpg)
 
 So we can see what the machine is running; there's a secure shell service (ssh) and web, but that's about it. At this point, we could further evaluate these services, so bonus points if you did this already! I like to discover the open ports first, then enumerate each open port further, as it can really reduce scan times on larger projects and it will help you further on down the line.
 
@@ -130,13 +137,15 @@ Why do we go further? Well open ports are just mapped to known numbers up to now
 > <NMAP DIR HERE>
 >```
 
+![Nmap with scripts](/assets/images/posts/mr_robot/nmap_scripts.jpg)
+
 This now tells us a little more, which may come in useful later; for now I'll wrap up this section by visiting this web page and seeing what we're dealing with.
 
 # Recon continued & Vulnerability Analysis
 
 Now that we have a fairly good service to start looking at (web), let's take a look at the page and try and find any vulnerabilities associated with this service.
 
-![web page](pic_of_web)
+![web page](/assets/images/posts/mr_robot/home_page.jpg)
 
 This looks great! It's an interesting page and if you're a fan of the show, take a while and enjoy!
 
@@ -165,34 +174,21 @@ I like to use nikto for automated web scanning; this can be run simply using:
  <NIKTO OUTPUT HERE>
 ```
 
-Note that the site seems to be running WordPress, there are findings around the [robots.txt file](https://en.wikipedia.org/wiki/Robots_exclusion_standard), as well as some hidden directories, pages and files. Before we go further, take a look back over our nmap output:
+![nikto](/assets/images/posts/mr_robot/nikto.jpg)
 
-![nmap output]()
+Which returns a load of findings, importantly telling us that the site runs Wordpress and has an admin panel. This is in line with the findings from dirb, another tool I tend to run against sites like this:
 
-Note that the nmap scripts found our robots issue, as well as a couple of other interesting pieces of information. This may prove useful in future. Let's take a look at this robots.txt file, before moving on to enumerating further.
+![dirb](/assets/images/posts/mr_robot/dirb.jpg)
 
-![robots.txt]()
+This also references the [robots.txt file](https://en.wikipedia.org/wiki/Robots_exclusion_standard), as well as some hidden directories, pages and files. robots.txt is intended to manage web crawlers indexing the site, but it can sometimes give us some clues.
 
-This file gives us lots of information; robots.txt is intended to stop automated web crawlers indexing these files in search engines, but we're allowed to go and visit them. Given the filenames, we can even just download them immediately using the tool wget:
+![robots.txt](/assets/images/posts/mr_robot/robots.jpg)
 
- ```bash
-~$ wget http://<VM IP Here>/fsocity.dic
-~$ wget http://<VM IP Here>/key-1-of-3.txt
-~$ ls
- <files HERE>
-```
+Given the filenames, we can even just download them immediately using the tool wget:
 
-Great news, We've found flag 1! We also look to have a dictionary file, with some interesting words in it:
+![Robots Files](/assets/images/posts/mr_robot/robot_files.jpg)
 
-![dictionary pic]()
-
-Perhaps we can use this information going forward.
-
-The final piece of enumeration I'd like to mention is an admin page discovered in my nikto scan:
-
-![nikto pic]()
-
-This suggest that an admin panel is present; you may have found this using another web scanning tool, like wpscan (a WordPress scanning tool), or  ###.
+Great news, We've found flag 1! We also look to have a dictionary file, with some interesting words at the top!Perhaps we can use this information going forward.
 
 # Password Attacks
 
