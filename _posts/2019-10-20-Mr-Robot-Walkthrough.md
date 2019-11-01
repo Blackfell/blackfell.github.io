@@ -68,13 +68,7 @@ Running a packet sniffer on the network you're attaching the VM to is a good ide
 
 ## Solution
 
-Before we start, I'm connecting this VM to my host-only virtual network, which has the address range of 192.168.235.0/24. I can check my network adapters with:
-
-```bash
-~$ ip a
-```
-
-Which gives me:
+Before we start, I'm connecting this VM to my host-only virtual network, which has the address range of 192.168.235.0/24. I can check my network adapters with the ip utility.
 
 ![Networking Info](/assets/images/posts/mr_robot/network.jpg)
 
@@ -114,28 +108,13 @@ We have the machine IP address, so we don't need to find it on the network, but 
 
 **The** network mapper and port scanner is Nmap; there are other ways of portscanning hosts, but this is the tool I like to use and one that you'll find in other CTF write-ups.
 
-I like to run nmap as root, which means (amongst other things) it will carry out a [Syn scan](https://networkinferno.net/tcp-syn-scanning) by default; I like to turn off the probe requests and host resolution (-Pn and -n), because I know where my host is, and I like to scan all TCP ports with the -p- option. I usually output to all filetypes (-oA), as well as asking nmap to give us a reason whenever it says a port is open or filtered (--reason); as always, keep that tcpdump sniffer running, so you can see what's going on! The resultant command is:
-
-> ```bash
->~$ nmap -Pn -n -p- -oA tcp-all-ports --reason <VM IP Here>
-> <NMAP OUTPUT HERE>
->~$ ls
-> <NMAP DIR HERE>
->```
-
+I like to run nmap as root, which means (amongst other things) it will carry out a [Syn scan](https://networkinferno.net/tcp-syn-scanning) by default; I like to turn off the probe requests and host resolution (-Pn and -n), because I know where my host is, and I like to scan all TCP ports with the -p- option. I usually output to all filetypes (-oA), as well as asking nmap to give us a reason whenever it says a port is open or filtered (--reason); as always, keep that tcpdump sniffer running, so you can see what's going on!
 
 ![Nmap tcp scan](/assets/images/posts/mr_robot/nmap.jpg)
 
 So we can see what the machine is running; there's a secure shell service (ssh) and web, but that's about it. At this point, we could further evaluate these services, so bonus points if you did this already! I like to discover the open ports first, then enumerate each open port further, as it can really reduce scan times on larger projects and it will help you further on down the line.
 
-Why do we go further? Well open ports are just mapped to known numbers up to now, so if I run http over port 22, nmap will say we have ssh running, if it was run how I ran it at first. To get more concrete results is probably a little overkill for now, but good practice; taking the host & open ports we know, I like to add version detection (-sV) for services discovered, I like to run the default nmap scripts against them (-sC) and I like to run OS detection too (-O). If you run scripts, note you also need version detection on for best results. The new command then becomes:
-
-> ```bash
->~$ nmap -Pn -n -p 22,80,443 -sV -sC -O -oA tcp-open-ports-fingerprinting --reason <VM IP Here>
-> <NMAP OUTPUT HERE>
->~$ ls
-> <NMAP DIR HERE>
->```
+Why do we go further? Well open ports are just mapped to known numbers up to now, so if I run http over port 22, nmap will say we have ssh running, if it was run how I ran it at first. To get more concrete results is probably a little overkill for now, but good practice; taking the host & open ports we know, I like to add version detection (-sV) for services discovered, I like to run the default nmap scripts against them (-sC) and I like to run OS detection too (-O). If you run scripts, note you also need version detection on for best results.
 
 ![Nmap with scripts](/assets/images/posts/mr_robot/nmap_scripts.jpg)
 
@@ -167,12 +146,7 @@ Websites can be manually and automatically evaluated; why not try a bit of both?
 
 ## Solution
 
-I like to use nikto for automated web scanning; this can be run simply using:
-
- ```bash
-~$ nikto -h http://<VM IP Here>
- <NIKTO OUTPUT HERE>
-```
+I like to use nikto for automated web scanning; this can be run simply for our purposes:
 
 ![nikto](/assets/images/posts/mr_robot/nikto.jpg)
 
@@ -188,7 +162,7 @@ Given the filenames, we can even just download them immediately using the tool w
 
 ![Robots Files](/assets/images/posts/mr_robot/robot_files.jpg)
 
-Great news, We've found flag 1! We also look to have a dictionary file, with some interesting words at the top! Perhaps we can use this information going forward.
+Great news, We've found flag 1! We also look to have a dictionary file, since I knew this might be a dictionary with lots of words in it, I just ran the head commadn to see the top few, there look to be some interesting words at the top! Perhaps we can use this file going forward.
 
 # Password Attacks
 
