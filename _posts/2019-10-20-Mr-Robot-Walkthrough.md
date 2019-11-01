@@ -188,7 +188,7 @@ Given the filenames, we can even just download them immediately using the tool w
 
 ![Robots Files](/assets/images/posts/mr_robot/robot_files.jpg)
 
-Great news, We've found flag 1! We also look to have a dictionary file, with some interesting words at the top!Perhaps we can use this information going forward.
+Great news, We've found flag 1! We also look to have a dictionary file, with some interesting words at the top! Perhaps we can use this information going forward.
 
 # Password Attacks
 
@@ -214,16 +214,17 @@ I want to try and use the dictionary file I found to guess usernames and passwor
 
 ```bash
 ~$ cat fsocity.dic | wc -l
-~$ cat fsocity.dic | sort -u | uniq fsocity_new.dic < &1 | wc -l  (or use tee)
+858160
+~$ cat fsocity.dic | sort -u | uniq | tee fsocity_new.dic| wc -l
+11451
 ~$ ls
- <files HERE>
+fsocity.dic   fsocity_new.dic
 ```
 
 I like to use Hydra to guess passwords; the syntax for guessing login forms can be a real pain, however. If you know that the text 'Invalid Username' means we failed, and want to use the dictionary to guess logins, we don't need a correct password, since we're just guessing usernames, so we can guess as follows:
 
 ```bash
 ~$ hydra -L ./fsocity_new.dic -p Password <VM IP> http-form-post '/wp-admin.php:&user=^USER^&password=^PASS^:Invalid Username'
- <Output HERE>
 ```
 
 After a while, I found that the username elliot doesn't return the invalid username code when submitted; this is great, now I can repeat this process for guessing the passwords:
