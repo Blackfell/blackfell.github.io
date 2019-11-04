@@ -195,20 +195,36 @@ I want to try and use the dictionary file I found to guess usernames and passwor
 fsocity.dic   fsocity_new.dic
 ```
 
-I like to use Hydra to guess passwords; the syntax for guessing login forms can be a real pain, however. If you know that the text 'Invalid Username' means we failed, and want to use the dictionary to guess logins, we don't need a correct password, since we're just guessing usernames, so we can guess as follows:
+I like to use Hydra to guess passwords; the syntax for guessing login forms can be a real pain, we need to make sure we fully understand how the login form works, so that we don't get confused.
+
+{% include figure image_path="/assets/images/posts/mr_robot/password_info.jpg" alt="Login form picture" caption="Trying some obviously wrong information shows login form behaviour on unsuccessful logon; right-clicking the form fields and using 'Inspect Element' lets us see the form source, where the login variables **log** and **pwd** can be seen." %}
+
+From looking at an incorrect login attempt, we learn the names of the login variables *log* and *pwd*, as well as the fact that that the text 'Invalid Username' appears if the username is invalid. This is interesting as it allows us to guess usernames and passwords separately; we can guess the username only by running the following command:
 
 ```bash
-~$ hydra -L ./fsocity_new.dic -p Password <VM IP> http-form-post '/wp-admin.php:&user=^USER^&password=^PASS^:Invalid Username'
+~$ hydra -L ./fsocity_new.dic -p testpassword <VM IP> http-form-post '/wp-admin.php:&log=^USER^&pwd=^PASS^:Invalid username'
 ```
 
-After a while, I found that the username elliot doesn't return the invalid username code when submitted; this is great, now I can repeat this process for guessing the passwords:
+This command tells hydra to use our (new shortened) dictionary file (-L ./fsocity_new.dic), along with a (probably wrong) password of *'testpassword'* (-P Password), to try and login to the site. Note that after we tell hydra that it's a *http-form-post* attack, we specify the login path *(/wp-admin.php)*, the login variables *(&log=^USER^&pwd=^PASS^)* and the text returned on a failed login *(Invalid username)*, all separated by colons.
 
-```bash
-~$ hydra -l elliot -P ./fsocity_new.dic <VM IP> http-form-post '/wp-admin.php:&user=^USER^&password=^PASS^:Invalid Password'
- <Output HERE>
-```
+This wont' guess everything we need to login, it will just find any valid usernames that are in our dictionary file; it can be run as follows:
 
-And now we have access to the admin panel.
+{% include figure image_path="/assets/images/posts/mr_robot/user_guessing.jpg" alt="Guessing usernames with hydra" caption="Guessing of usernames with Hydra, logins where the invalid login text isn't seen are shown in green in the output." %}
+
+
+So, we've found that the username elliot doesn't return the invalid username code when submitted; this is great, elliot is our user.
+
+{% include figure image_path="/assets/images/posts/mr_robot/password_info_2.jpg" alt="Login form picture with correct usernsme" caption="Trying some obviously wrong password with a valid username shows us that similar text is shown for invalid passwords." %}
+
+Now we can repeat this process again, but setting the user to elliot and guessing the passwords with our dictionary again; we also have to change the invalid text to that shown below:
+
+{% include figure image_path="/assets/images/posts/mr_robot/password_guessing.jpg" alt="Guessing passwords with hydra" caption="Guessing of passwords with Hydra using a valid logon of *elliot* logins where the invalid login text isn't seen are shown in green in the output." %}
+
+If we take those credentials and try them on the webpage in our browser.
+
+{% include figure image_path="/assets/images/posts/mr_robot/admin_panel.jpg" alt="Logged into the admin panel" caption="Logging into the admin panel with our credentials." %}
+
+We have access to the admin panel.
 
 # Exploitation
 
@@ -224,13 +240,32 @@ WordPress is running on the VM, can you extend its functionality to let you see 
 
 ## Solution
 
-WordPress has lots of functionality, you may have been able to add plugins to browse files (##check##), or explore the machine; I chose to upload a shell payload to WordPress, so that I can have an open interface to do what I want to the machine.
+There are various options available to us, but through the admin panel, one thing that jumps out to me is the plugins option.
 
-There are various options available to us, but through the admin panel, it seems that we can upload WordPress plugins of our own. These plugins are php based, which the server will execute, so I can put my own php in to a plugin and it will run.
+{%
+  include figure
+  image_path="/assets/images/posts/mr_robot/wp_plugins.jpg"
+  alt="Wordpress Plugins Tab"
+  caption="Opening up the WrodPRess plugins tab shos us all teh extra funtionality that's already been installed on thiw WP instance."
+%}
 
-We could write our own php, or use some of the stuff built into Kali, but Pentestmonkey has some great resources online around [getting shells](http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet). I used their infamous [php reverse shell(http://pentestmonkey.net/tag/php)], customising the IP and port to call back to match my own machine:
+These plugins are php based and when enabled the server executes this php to achieve whatever functionality is intended.WordPress has lots of available plugin funtionality and you may have been able to add [plugins to browse files](https://wordpress.org/plugins/wp-file-manager/) and explore the machine, or some other valid solution; I took the easy answer and chose to upload a php shell payload to WordPress, so that I can have a more open interface to do what I want to the machine. Plugins can be edited and our PHP dropped in to execute as a part of a legitimate plugin.
 
-![rev_shell_config]()
+{%
+  include figure
+  image_path="/assets/images/posts/mr_robot/wp_plugin_edit.jpg"
+  alt="Configuring WP Plugins"
+  caption="WordPRess plugins can be edited; adding our PHP in here will get it exetued by WordPress, giving us a shell. Simple!."
+%}
+
+We could write our own php, but other people have beaten us to it and their work is great. Pentestmonkey has some great resources online around [getting shells](http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet) and I used their infamous [php reverse shell](http://pentestmonkey.net/tag/php), which is in Kali 2019 under **/usr/share/webshells/php/php-reverse-shell.php**. I copied this file to my local directory and opened if up in a text editor to configure the reverse shell networking settings.
+
+{%
+  include figure
+  image_path="/assets/images/posts/mr_robot/rev_shell_config.jpg"
+  alt="configuring reverse shell"
+  caption="Opening up the reverse shell in a text editor, you can alter the IP address, port and other settings to make sure the shell works in your environment."
+%}
 
 I then set up a simple listener on my own machine, using netcat. The switches here are listen (l), be verbose (v) and use this port (p), followed by the port number:
 
@@ -238,23 +273,39 @@ I then set up a simple listener on my own machine, using netcat. The switches he
 ~$ nc -lvp 1234
 ```
 
-This will listen on that same port I specified in the shell, such that the php will call back to the listener and let me run commands:
+This will listen on that same port I specified in the shell, such that the php will call back to the listener and let me run commands. With everything configured, I then upload the php shell into an existing plugin, check the plugin is active and run the site:
 
-![rev shell diag]()
+{%
+  include figure
+  image_path="/assets/images/posts/mr_robot/rev_shell_upload.jpg"
+  alt="Uploading reverse shell"
+  caption="Editing the contact form plugin allows us to append our PHP code; note that our shell starts at the highlighted comment; be careful about opening and closing php tag duplicaiton. Once you hit the 'update' button (highlighted red), you'll see a banner appear at the top (also highlighted) to let you know you've been successful."
+%}
 
-Once I have those configured, I then upload the php shell into an existing plugin, check the plugin is active and run the site:
+When I activate the plugin , I get an interesting plugin error:
 
-[uploading php]()
+{%
+  include figure
+  image_path="/assets/images/posts/mr_robot/plugin_error.jpg"
+  alt="Uploading reverse shell - plugin error"
+  caption="Activating this plugin has triggered an error; the text says the plugin triggered a fatal error."
+%}
 
-and presto:
+Now I could go through and troubleshoot the plugin and PHP shell, trying to get them to play nice, but first I checked my netcat listener.
 
-[shell]()
+{%
+  include figure
+  image_path="/assets/images/posts/mr_robot/shell_caught.jpg"
+  alt="Reverse shell caught"
+  caption="Even though the plugin suffered a fatal error, it seems that the shell was able to run before this happened. A directory listing and whoami command tell us we're in teh root diretory as the user *'daemon'*"
+%}
 
-We have shell. Now it's time to find more things :)
+We have shell, but why? I think this is probably because the shell tries to daemonise itself and if successful, the daemon would have continued to run once the parent plugin crashed.
+
 
 # Post exploitation
 
-Enumeration, enumeration, enumeration.
+Now it's time to expand our acess, it's all about enumeration, enumeration, enumeration.
 
 ## What's the problem.
 
