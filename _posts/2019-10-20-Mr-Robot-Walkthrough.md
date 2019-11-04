@@ -42,7 +42,7 @@ This guide is written slightly differently from 'standard' walkthroughs, in that
 
 # Setup and orientation
 
-If you're on this page, you should already have a hacking lab and preferably have read [my post on the matter](/technical guidance/labs & hacking/building-a-lab/). You should know what a VM is and how to import it, as well as some basics around how the internet works, programming and the other topics covered in the [Now What?(link_lab_post) section of my lab post; if you don't know this, don't start this yet.
+If you're on this page, you should already have a hacking lab and preferably have read [my post on the matter](/technical guidance/labs & hacking/building-a-lab/). You should know what a VM is and how to import it, as well as some basics around how the internet works, programming and the other topics covered in my lab post; if you don't know this, that post is a good place to start!
 
 # Discovery & Importing
 
@@ -104,7 +104,7 @@ Now the machine is running, it's time to talk to it, over the network, and see w
 
 ## What's the challenge?
 
-We need to find out what kind of network services are running on the machine; we need to know what versions they are, what function they fulfil and whether they're vulnerable in any way.
+We need to find out what kind of network services are running on the machine; we need to know what versions they are and what function they fulfil. 
 
 ## Hints
 
@@ -134,7 +134,7 @@ Why do we go further? Well open ports are just mapped to known numbers up to now
   caption=""
 %}
 
-This now tells us a little more, which may come in useful later; for now I'll wrap up this section by visiting this web page and seeing what we're dealing with.
+This now tells us a little more, which may come in useful later. 
 
 # Finding Vulnerabilities
 
@@ -225,7 +225,7 @@ Guessing usernames and passwords from lists can be time consuming, can you find 
 
 When accessing the panel, it can help to manually guess some credentials; I usually do admin:admin, because you never know, you may get lucky! On doing this, we get an error message saying that the username is invalid:
 
-![user invalid figure]()
+{% include figure image_path="/assets/images/posts/mr_robot/login_info.jpg" alt="Login form picture" caption="The response on an invalid login gives us clues about whether our user is valid." }
 
 This may allow us to guess usernames, then passwords. Why does this help? Well if there were 10 possible users and 10 passwords, I could guess every combination, which would take 100 guesses, or I could guess 10 users, then ten passwords, a total of 20 guesses. Geddit?
 
@@ -239,6 +239,8 @@ I want to try and use the dictionary file I found to guess usernames and passwor
 ~$ ls
 fsocity.dic   fsocity_new.dic
 ```
+
+Good news, we managed to cut that list down from 858,160 to 11,451. This will speed up our guessing a lot! 
 
 I like to use Hydra to guess passwords; the syntax for guessing login forms can be a real pain, we need to make sure we fully understand how the login form works, so that we don't get confused.
 
@@ -484,3 +486,5 @@ And we have the root flag! Game over!
 # Fin
 
 It's over, well done! If this was your first CTF, I hope you enjoyed it as much as I did; keep on going and hack some moar!
+
+Keep an eye out for future walkthroughs, I'll see you there. 
