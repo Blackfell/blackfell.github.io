@@ -44,17 +44,17 @@ This guide is written slightly differently from 'standard' walkthroughs, in that
 
 If you're on this page, you should already have a hacking lab and preferably have read [my post on the matter](/technical guidance/labs & hacking/building-a-lab/). You should know what a VM is and how to import it, as well as some basics around how the internet works, programming and the other topics covered in the [Now What?(link_lab_post) section of my lab post; if you don't know this, don't start this yet.
 
-## Discovery & Importing
+# Discovery & Importing
 
 If you're following this guide through and are planning to follow my method, then **don't power on the VM yet**; if you have already, power it down and read on.
 
 I like to discover the machine as I power it on; that way I'll know if I was successful importing the machine and I'll probably learn its IP address whilst I'm at it.
 
-### What's the challenge?
+## What's the challenge?
 
 In this case, the problem is using discovery and network sniffing tools to see whether the machine imports and if so, what it's IP address is.
 
-### Hints
+## Hints
 
 Importing the VM should work as normal in your hypervisor of choice and the Mr Robot VM seems well configured such that DHCP just... works.
 
@@ -62,7 +62,7 @@ Running a packet sniffer on the network you're attaching the VM to is a good ide
 
 ## Solution
 
-Before we start, I import the Mr Robot VM in my virtualisaiton software and before I ever power it on, I give it a host-only virtual network adapter; once that's done, I make sure my attacker is configured and prepare to turn our victim on.
+Before we start, I import the Mr Robot VM in my virtualisation software and before I ever power it on, I give it a host-only virtual network adapter; once that's done, I make sure my attacker is configured and prepare to turn our victim on.
 
 My Host only network has the address range of 172.16.187.0/24. I can check my attacker network adapters and IP addresses with the ip utility.
 
@@ -102,7 +102,7 @@ Good news, we have a machine! It's at *172.16.187.145*.
 
 Now the machine is running, it's time to talk to it, over the network, and see what kind of things are there for us to exploit!
 
-### What's the challenge?
+## What's the challenge?
 
 We need to find out what kind of network services are running on the machine; we need to know what versions they are, what function they fulfil and whether they're vulnerable in any way.
 
@@ -136,7 +136,7 @@ Why do we go further? Well open ports are just mapped to known numbers up to now
 
 This now tells us a little more, which may come in useful later; for now I'll wrap up this section by visiting this web page and seeing what we're dealing with.
 
-# Recon continued & Vulnerability Analysis
+# Finding Vulnerabilities
 
 Now that we have a fairly good service to start looking at (web), let's take a look at the page and try and find any vulnerabilities associated with this service.
 
@@ -144,12 +144,12 @@ Now that we have a fairly good service to start looking at (web), let's take a l
   include figure
   image_path="/assets/images/posts/mr_robot/home_page.jpg"
   alt="Web Page"
-  caption=""
+  caption="Browsing to the VMs IP address will show you the web page being hosted; clearly someone's put time into putting this together."
 %}
 
 This looks great! It's an interesting page and if you're a fan of the show, take a while and enjoy!
 
-### What's the challenge?
+## What's the challenge?
 
 We need to get more information about this web page. What is on the site? how is the site configured? What powers the site?
 
@@ -167,56 +167,59 @@ Websites can be manually and automatically evaluated; why not try a bit of both?
 
 ## Solution
 
-I like to use nikto for automated web scanning; this can be run simply for our purposes:
+I like to use nikto for automated web scanning; this can be run without any fancy options for our purposes:
 
 {%
   include figure
   image_path="/assets/images/posts/mr_robot/nikto.jpg"
   alt="Nikto Output"
-  caption=""
+  caption="Nikto run against the VM, with minimal command line options set. Highlighted are key parts of ht output identifying the WordPress engine, as well as Admin and Readme pages."
 %}
 
-Which returns a load of findings, importantly telling us that the site runs Wordpress and has an admin panel. This is in line with the findings from dirb, another tool I tend to run against sites like this:
+Nikto returns a load of findings, importantly telling us that the site runs WordPress and has an admin panel. This is in line with the findings from dirb, another tool I tend to run against sites like this:
 
 {%
   include figure
   image_path="/assets/images/posts/mr_robot/dirb.jpg"
   alt="Dirb Output"
-  caption=""
+  caption="Dirb, run with default options against the site hosted on the VM. Highlighted in red are key findings, including a robots.txt entry not shown by Nikto."
 %}
 
-This also references the [robots.txt file](https://en.wikipedia.org/wiki/Robots_exclusion_standard), as well as some hidden directories, pages and files. robots.txt is intended to manage web crawlers indexing the site, but it can sometimes give us some clues.
+This also references the [robots.txt file](https://en.wikipedia.org/wiki/Robots_exclusion_standard), as well as some hidden directories, pages and files. It is useful to run more than one tool against a machine if you have time, as the outputs can often be complementary.
+
+robots.txt is intended to manage web crawlers indexing the site, but it can sometimes give us some clues.
 
 {%
   include figure
   image_path="/assets/images/posts/mr_robot/robots.jpg"
   alt="robots.txt"
-  caption=""
+  caption="Browsing to the robots.txt file shows some interesting entries."
 %}
 
-Given the filenames, we can even just download them immediately using the tool wget:
-
+The robots.txt file for this site contains two glaring clues, one reference to a key and one to something that looks like it might be a dictionary file; both entries are files, which are probably hosted on the server. Given the filenames, we can even simply download them using wget:
 
 {%
   include figure
   image_path="/assets/images/posts/mr_robot/robot_files.jpg"
   alt="robots.txt files"
-  caption=""
+  caption="Pointing wget at the file paths to get copies downloaded to our working directory; the key-file and dictionary file are both interrogated using cat and head respectively."
 %}
 
-Great news, We've found flag 1! We also look to have a dictionary file, since I knew this might be a dictionary with lots of words in it, I just ran the head commadn to see the top few, there look to be some interesting words at the top! Perhaps we can use this file going forward.
+Great news, We've found flag 1! It looks like we were right about the dictionary file too; since I knew this might be a dictionary with lots of words in it, I just ran the head command to see the top few, there look to be some interesting words at the top! Perhaps we can use this file going forward.
+
+You may choose to look further into some other findings and gather more information (there are a few other Easter eggs and ways in to be found!), but I'm ready to move on to hunting that next flag.
 
 # Password Attacks
 
-Now that we have an admin panel, we could continue to analyse the site for vulnerabilities, but password attacks offer us a low-effort means of accessing a site. They also have the added benefit of being run in the background while we do more analysis.
+Now that we have done some initial vulnerability hunting and even found our first flag, it's time to move on to finding a way in. We have a strong finding in the dictionary file and admin panel; we could continue to analyse the site for vulnerabilities, but password attacks offer us a low-effort means of accessing the site, which looks promising.
 
-### What's the challenge?
+## What's the challenge?
 
-We can't crack this login offline, so we need to guess the password by sending a login request over and over again, until we have a successful login.
+We need to guess the password by sending a login request over and over again, until we have a successful login. Try and automate this in such a way that we find the legitimate login details.
 
 ## Hints
 
-Guessing usernames and passwords from lists can be time consuming, can you find a way to guess one at a time? You have found a dictionary, perhaps this will be useful.
+Guessing usernames and passwords from lists can be time consuming, can you find a way to guess one at a time? You have found a dictionary, perhaps this will be useful. What tools can you find that will let you guess usernames and passwords for web logins, or WordPress installations?
 
 ## Solution
 
@@ -256,15 +259,30 @@ This wont' guess everything we need to login, it will just find any valid userna
 
 So, we've found that the username elliot doesn't return the invalid username code when submitted; this is great, elliot is our user.
 
-{% include figure image_path="/assets/images/posts/mr_robot/password_info_2.jpg" alt="Login form picture with correct usernsme" caption="Trying some obviously wrong password with a valid username shows us that similar text is shown for invalid passwords." %}
+{%
+  include figure
+  image_path="/assets/images/posts/mr_robot/password_info_2.jpg"
+  alt="Login form picture with correct username"
+  caption="Trying some obviously wrong password with a valid username shows us that similar text is shown for invalid passwords."
+%}
 
 Now we can repeat this process again, but setting the user to elliot and guessing the passwords with our dictionary again; we also have to change the invalid text to that shown below:
 
-{% include figure image_path="/assets/images/posts/mr_robot/password_guessing.jpg" alt="Guessing passwords with hydra" caption="Guessing of passwords with Hydra using a valid logon of *elliot* logins where the invalid login text isn't seen are shown in green in the output." %}
+{%
+  include figure
+  image_path="/assets/images/posts/mr_robot/password_guessing.jpg"
+  alt="Guessing passwords with hydra"
+  caption="Guessing of passwords with Hydra using a valid logon of *elliot* logins where the invalid login text isn't seen are shown in green in the output."
+%}
 
 If we take those credentials and try them on the webpage in our browser.
 
-{% include figure image_path="/assets/images/posts/mr_robot/admin_panel.jpg" alt="Logged into the admin panel" caption="Logging into the admin panel with our credentials." %}
+{%
+  include figure
+  image_path="/assets/images/posts/mr_robot/admin_panel.jpg"
+  alt="Logged into the admin panel"
+  caption="Logging into the admin panel with our credentials."
+%}
 
 We have access to the admin panel.
 
@@ -272,7 +290,7 @@ We have access to the admin panel.
 
 Now that we have access to the admin panel, we need to look to carry out further exploitation. Our access doesn't let us see much of the underlying system, so let's change that.
 
-### What's the challenge?
+## What's the challenge?
 
 We need to expand your access, so that you can get more control over this box and find more flags!
 
@@ -287,17 +305,17 @@ There are various options available to us, but through the admin panel, one thin
 {%
   include figure
   image_path="/assets/images/posts/mr_robot/wp_plugins.jpg"
-  alt="Wordpress Plugins Tab"
-  caption="Opening up the WrodPRess plugins tab shos us all teh extra funtionality that's already been installed on thiw WP instance."
+  alt="WordPress Plugins Tab"
+  caption="Opening up the WordPress plugins tab shows us all the extra functionality that's already been installed on this WP instance."
 %}
 
-These plugins are php based and when enabled the server executes this php to achieve whatever functionality is intended.WordPress has lots of available plugin funtionality and you may have been able to add [plugins to browse files](https://wordpress.org/plugins/wp-file-manager/) and explore the machine, or some other valid solution; I took the easy answer and chose to upload a php shell payload to WordPress, so that I can have a more open interface to do what I want to the machine. Plugins can be edited and our PHP dropped in to execute as a part of a legitimate plugin.
+These plugins are php based and when enabled the server executes this php to achieve whatever functionality is intended.WordPress has lots of available plugin functionality and you may have been able to add [plugins to browse files](https://wordpress.org/plugins/wp-file-manager/) and explore the machine, or some other valid solution; I took the easy answer and chose to upload a php shell payload to WordPress, so that I can have a more open interface to do what I want to the machine. Plugins can be edited and our PHP dropped in to execute as a part of a legitimate plugin.
 
 {%
   include figure
   image_path="/assets/images/posts/mr_robot/wp_plugin_edit.jpg"
   alt="Configuring WP Plugins"
-  caption="WordPRess plugins can be edited; adding our PHP in here will get it exetued by WordPress, giving us a shell. Simple!."
+  caption="WordPress plugins can be edited; adding our PHP in here will get it executed by WordPress, giving us a shell. Simple!."
 %}
 
 We could write our own php, but other people have beaten us to it and their work is great. Pentestmonkey has some great resources online around [getting shells](http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet) and I used their infamous [php reverse shell](http://pentestmonkey.net/tag/php), which is in Kali 2019 under **/usr/share/webshells/php/php-reverse-shell.php**. I copied this file to my local directory and opened if up in a text editor to configure the reverse shell networking settings.
@@ -321,7 +339,7 @@ This will listen on that same port I specified in the shell, such that the php w
   include figure
   image_path="/assets/images/posts/mr_robot/rev_shell_upload.jpg"
   alt="Uploading reverse shell"
-  caption="Editing the contact form plugin allows us to append our PHP code; note that our shell starts at the highlighted comment; be careful about opening and closing php tag duplicaiton. Once you hit the 'update' button (highlighted red), you'll see a banner appear at the top (also highlighted) to let you know you've been successful."
+  caption="Editing the contact form plugin allows us to append our PHP code; note that our shell starts at the highlighted comment; be careful about opening and closing php tag duplication. Once you hit the 'update' button (highlighted red), you'll see a banner appear at the top (also highlighted) to let you know you've been successful."
 %}
 
 When I activate the plugin , I get an interesting plugin error:
@@ -339,7 +357,7 @@ Now I could go through and troubleshoot the plugin and PHP shell, trying to get 
   include figure
   image_path="/assets/images/posts/mr_robot/shell_caught.jpg"
   alt="Reverse shell caught"
-  caption="Even though the plugin suffered a fatal error, it seems that the shell was able to run before this happened. A directory listing and whoami command tell us we're in teh root diretory as the user *'daemon'*"
+  caption="Even though the plugin suffered a fatal error, it seems that the shell was able to run before this happened. A directory listing and whoami command tell us we're in the root directory as the user *'daemon'*"
 %}
 
 We have shell, but why? I think this is probably because the shell tries to daemonise itself and if successful, the daemon would have continued to run once the parent plugin crashed.
@@ -347,13 +365,18 @@ We have shell, but why? I think this is probably because the shell tries to daem
 
 # Post exploitation
 
-Now it's time to expand our acess, it's all about enumeration, enumeration, enumeration.
+Now it's time to expand our access, it's all about enumeration, enumeration, enumeration.
 
-### What's the challenge?
+## What's the challenge?
 
-Now that we have a working shell, we must first get the cliches out of the way:
+We'll we have a working shell, yay!
 
->**'I'm in'**
+{%
+  include figure
+  image_path="/assets/images/posts/mr_robot/sim_in.jpg"
+  alt="Use hacker voice to say I'm in."
+  caption=""
+%}
 
 Now we need to pillage and plunder, find our flags and complete this challenge. We need to see what files we can access, see what our privileges are and whether we can escalate, or even become the root user on the machine.
 
@@ -380,7 +403,7 @@ I recommend doing these enumeration steps in a slightly different order for CTFs
 
 This is just my running order for easier CTF boxes, you can do what you like; if I quickly exhaust this list, I usually go back to G0tM1lk's list process.
 
-If you followed the above before getting here, you'll find that point 1 yields some interesting results, namely that in the home directory, we find flag 2 adn an interesting file:
+If you followed the above before getting here, you'll find that point 1 yields some interesting results, namely that in the home directory, we find flag 2 and an interesting file:
 
 {%
   include figure
@@ -395,7 +418,7 @@ We can access the password file, but not the key, only the user robot can do tha
   include figure
   image_path="/assets/images/posts/mr_robot/get_hash.jpg"
   alt="Bringing the hash file to our local machine"
-  caption="Netcat is installed on the machine, so we cat cat the file, pipe the output into netcat, which will fire it over to our attacker machine, where a listener can pick it up and pipe it back into a file. Highlighted are the commands to send adn receive the file above and below respectively."
+  caption="Netcat is installed on the machine, so we cat cat the file, pipe the output into netcat, which will fire it over to our attacker machine, where a listener can pick it up and pipe it back into a file. Highlighted are the commands to send and receive the file above and below respectively."
 %}
 
 Now that we've brought the hash back over to our attacker machine, we can crack it; the file extension tells us that the hash is probably Raw-MD5 format, so I'll run it through John the Ripper in Kali. I'll try our fsocity.dic, then if that doesn't work, some other lists from Kali.
@@ -404,7 +427,7 @@ Now that we've brought the hash back over to our attacker machine, we can crack 
   include figure
   image_path="/assets/images/posts/mr_robot/john.jpg"
   alt="Cracking the hash with John"
-  caption="Cracking the password with John; I specify the format in each command and vary the wordlist used at each stage, progressing to larger, more complete lists. Our wordlist didn't contain a vlid credential, neither did the fasttrack dictionary on Kali, but the RockYou dictionary gives us a match."
+  caption="Cracking the password with John; I specify the format in each command and vary the wordlist used at each stage, progressing to larger, more complete lists. Our wordlist didn't contain a valid credential, neither did the fasttrack dictionary on Kali, but the RockYou dictionary gives us a match."
 %}
 
 Now that we have a valid password for the robot user, we can try it; the command *su* lets us become another user.
@@ -416,36 +439,47 @@ Now that we have a valid password for the robot user, we can try it; the command
   caption="Using **su** to become the robot user, initially, you may get an error saying that, since you don't have a terminal session, you can't use *su*. This can be worked around using a few methods, but since Python is installed, I like to use that one; running a quick *pty.spawn()* command gets us a terminal session and we can *su* as *robot*; it's now possible to read key 2. I again use NetCat to send the key over the network to my attacker machine."
 %}
 
-Once you completed step 1, we continue our post-exploitation to get root on the machine.
+OK, great, Key 2 out of the way; now we need to keep going!
 
-After following on the post-exploitation steps above, you may have found that for privilege escalation , step 4 yields something interesting. There is a setuid binary that always runs as root, but is an unusual choice - Nmap.
+{%
+  include figure
+  image_path="/assets/images/posts/mr_robot/rob_s.gif"
+  alt="You can do it!"
+  caption=""
+%}
+
+Let's continue our post-exploitation to get root on the machine. After following on the post-exploitation steps above, you may have found that for privilege escalation , step 4 yields something interesting.
 
 {%
   include figure
   image_path="/assets/images/posts/mr_robot/nmap_suid.jpg"
   alt="Getting Key 2"
-  caption="Using **su** to become the robot user, it's now possible to read key 2; we can use ."
+  caption="Using a find command listed in the [G0tM1lk privesc guidance](https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/), to fin setuid binaries shows us that Nmap is configured in this way. A quick ls is then used to find that the file is owned (and will therefore run as) root."
 %}
 
-There may be legitimate reasons for running nmap as root, but it sticks out when running through this enumeration. If you google the version of Nmap, you'll find it had an interactive mode, so simply run Nmap in this mode and execute the following:
+There is a setuid binary, meaning that it always runs as a certain user, but is an unusual choice - Nmap. Since it's configured to run as root, this offers us a promising way in.
+
+There may be legitimate reasons for running nmap as root (there are many, including the way it can probe, scan and generally craft packets), but having it configured as setuid sticks out when running through this enumeration.
+
+Spending a little time googling the version of Nmap (which can be found by running nmap -V), you'll find it had an interactive mode; additionally the interactive mode allows for running of shell commands! To test this out, we can simply run Nmap in this mode and execute some basic shell commands.
 
 {%
   include figure
   image_path="/assets/images/posts/mr_robot/get_root.jpg"
   alt="Getting Key 2"
-  caption="Using **su** to become the robot user, it's now possible to read key 2; we can use ."
+  caption="Using Nmap interactive mode to execute basic commands as root."
 %}
 
-You're now root! let's look for that flag:
+Wow, we have You're now root! let's look for that third flag:
 
 {%
   include figure
   image_path="/assets/images/posts/mr_robot/final_pwn.jpg"
   alt="Getting Key 3"
-  caption="Using **su** to become the robot user, it's now possible to read key 2; we can use ."
+  caption="Sure enough, looking in the root home directory gets us the flag. Using the old netcat transfer technique, the flag is transferred to the attacker machine."
 %}
 
-and we have the root flag!
+And we have the root flag! Game over!
 
 # Fin
 
