@@ -38,65 +38,71 @@ This is a guide to completing a Capture The Flag exercise based on the TV series
 
 ## Using this guide
 
-This guide is written slightly differently from 'standard' walkthroughs, in that the answers to problems aren't as important as how the problems were solved; throughout I try to set out a problem, guide you on ways to solve it, *then* give the answer. This means that if you're working the MR Robot VM, you can work through this guide, choosing to solve problems and avoid spoilers if you wish. This is the best way to learn.
-
->'Do it!'
->
->  -Arnold Schwarzenegger
+This guide is written slightly differently from 'standard' walkthroughs, in that the answers to problems aren't as important as how the problems were solved; throughout I try to set out a problem, guide you on ways to solve it, *then* give the answer. This means that if you're working the MR Robot VM, you can work through this guide, choosing to solve problems and avoid spoilers if you wish. I hope that this is helpful to people finding their way on their first CTF, but it only works if you play fair!
 
 # Setup and orientation
 
-If you're on this page, you should already have a hacking lab and preferably have read [my post on the matter](link_lab_post). You should know what a VM is and how to import it, as well as some basics around how the internet works, programming and the other topics covered in the [Now What?(link_lab_post) section of my lab post; if you don't know this, don't start this yet.
+If you're on this page, you should already have a hacking lab and preferably have read [my post on the matter](/technical guidance/labs & hacking/building-a-lab/). You should know what a VM is and how to import it, as well as some basics around how the internet works, programming and the other topics covered in the [Now What?(link_lab_post) section of my lab post; if you don't know this, don't start this yet.
 
-## Importing the VM
+## Discovery & Importing
 
-The VM import for this machine was a simple process for me; the machine seems to have DHCP well configured, to that when you import the appliance and give it a network adapter of your choosing, it picks up an IP address nicely.
+If you're following this guide through and are planning to follow my method, then **don't power on the VM yet**; if you have already, power it down and read on.
 
-## Discovery
+I like to discover the machine as I power it on; that way I'll know if I was successful importing the machine and I'll probably learn its IP address whilst I'm at it.
 
-I like to discover the machine as I import it for two reasons; one reason is that I'll know if I was successful importing, the other is that the import process can create network noise, which I stand a chance of picking up, even if my import went wrong.
-
-I should note that once imported, you can go to the VM, try and log on, check things from there etc. But since this is a challenge to break into the machine over the network, I'll be leaving that out of the scope of this article.
-
-### What's the problem?
+### What's the challenge?
 
 In this case, the problem is using discovery and network sniffing tools to see whether the machine imports and if so, what it's IP address is.
 
 ### Hints
 
-Running a packet sniffer on the network you're attaching the VM to is a good idea here. Active discovery tools may be OK here, but can you find a tool (google if you need to), to discover hosts on eh network passively?
+Importing the VM should work as normal in your hypervisor of choice and the Mr Robot VM seems well configured such that DHCP just... works.
+
+Running a packet sniffer on the network you're attaching the VM to is a good idea here. Active discovery tools may work well, but can you find a tool (google if you need to), to discover hosts on the network passively?
 
 ## Solution
 
-Before we start, I'm connecting this VM to my host-only virtual network, which has the address range of 192.168.235.0/24. I can check my network adapters with the ip utility.
+Before we start, I import the Mr Robot VM in my virtualisaiton software and before I ever power it on, I give it a host-only virtual network adapter; once that's done, I make sure my attacker is configured and prepare to turn our victim on.
 
-![Networking Info](/assets/images/posts/mr_robot/network.jpg)
+My Host only network has the address range of 172.16.187.0/24. I can check my attacker network adapters and IP addresses with the ip utility.
 
-so I'm looking to find this device on my eth0 network adapter.
+{%
+  include figure
+  image_path="/assets/images/posts/mr_robot/network.jpg"
+  alt="Networking info"
+  caption="Running the ip utility, I can see that my attacker machine has an IP of **172.16.187.144**, I'll need that later!"
+%}
 
-As far as packet capturing tools go, Wireshark is common, but I like tcpdump for this, so I'll run tcpdump, with a few switches (but keeping it fairly simple for now); I like to turn off name resolution (-nn), specify that I want to discover on my host only network device (-i eth0) and that's it, show me all!
+I see from my network settings that *eth0* is my only adapter and has an address in my host only range, so I'll point my tools to that.
+
+I like to capture traffic during machine import; I'm thinking of the [Address Resolution Protocol](https://en.wikipedia.org/wiki/Address_Resolution_Protocol) (ARP) when I do this, as well as DHCP, which my attacking machine may also pick up. As far as packet capturing tools go, Wireshark is popular, but I like tcpdump for this, so I'll run tcpdump, with a few switches (but keeping it fairly simple for now); I like to turn off name resolution (-nn), specify that I want to discover on my host only network device (-i eth0) and that's it, show me all!
 
 ```bash
 ~$ tcpdump -nn -i eth0
 ```
 
-A quick google for passively discovering hosts might take you to a [stack exchange post](https://unix.stackexchange.com/questions/415270/how-can-i-detect-devices-on-my-local-network-from-a-linux-computer), which recommends a tools called netdiscover. I like to use netdiscover in passive mode as the VM is imported, so that I can see it associating with my virtual network. I'm thinking of the Address Resolution Protocol](https://en.wikipedia.org/wiki/Address_Resolution_Protocol) (ARP) when I do this, as well as DHCP, which my attacking machine should pick up. I run this tool with the -p switch to get passive mode:
+A quick google for passively discovering hosts might also take you to a [stack exchange post](https://unix.stackexchange.com/questions/415270/how-can-i-detect-devices-on-my-local-network-from-a-linux-computer), which recommends a tool called netdiscover. In addition to tcpdump, I like to use netdiscover in passive mode as the VM is imported, so that I can see it associating with my virtual network.  I run this tool with the -p switch to get passive mode:
 
 ```bash
 ~$ netdiscover -p -i eth0
 ```
 
-Now I can go ahead and import the appliance; I make sure it's on the same network and I see my tools light up!
+Now I can go ahead and power up the Mr Robot VM; I make sure it's on the same network, hit go, and I see my tools light up!
 
-![Importing](/assets/images/posts/mr_robot/importing.jpg)
+{%
+  include figure
+  image_path="/assets/images/posts/mr_robot/importing.jpg"
+  alt="Importing the appliance"
+  caption="Importing the machine, we can see traffic in tcpdump, indicating that ARP requests are flying back and forth to a new IP of **172.16.187.145**; netdiscover picks this up too, so that looks like our target."
+%}
 
-and we have a machine!
+Good news, we have a machine! It's at *172.16.187.145*.
 
 # Recon & First Impressions
 
 Now the machine is running, it's time to talk to it, over the network, and see what kind of things are there for us to exploit!
 
-## What's the Problem?
+### What's the challenge?
 
 We need to find out what kind of network services are running on the machine; we need to know what versions they are, what function they fulfil and whether they're vulnerable in any way.
 
@@ -110,13 +116,23 @@ We have the machine IP address, so we don't need to find it on the network, but 
 
 I like to run nmap as root, which means (amongst other things) it will carry out a [Syn scan](https://networkinferno.net/tcp-syn-scanning) by default; I like to turn off the probe requests and host resolution (-Pn and -n), because I know where my host is, and I like to scan all TCP ports with the -p- option. I usually output to all filetypes (-oA), as well as asking nmap to give us a reason whenever it says a port is open or filtered (--reason); as always, keep that tcpdump sniffer running, so you can see what's going on!
 
-![Nmap tcp scan](/assets/images/posts/mr_robot/nmap.jpg)
+{%
+  include figure
+  image_path="/assets/images/posts/mr_robot/nmap.jpg"
+  alt="Nmap TCP scan Output"
+  caption="A simple nmap scan of all TCP ports "
+%}
 
 So we can see what the machine is running; there's a secure shell service (ssh) and web, but that's about it. At this point, we could further evaluate these services, so bonus points if you did this already! I like to discover the open ports first, then enumerate each open port further, as it can really reduce scan times on larger projects and it will help you further on down the line.
 
 Why do we go further? Well open ports are just mapped to known numbers up to now, so if I run http over port 22, nmap will say we have ssh running, if it was run how I ran it at first. To get more concrete results is probably a little overkill for now, but good practice; taking the host & open ports we know, I like to add version detection (-sV) for services discovered, I like to run the default nmap scripts against them (-sC) and I like to run OS detection too (-O). If you run scripts, note you also need version detection on for best results.
 
-![Nmap with scripts](/assets/images/posts/mr_robot/nmap_scripts.jpg)
+{%
+  include figure
+  image_path="/assets/images/posts/mr_robot/nmap_scripts.jpg"
+  alt="Nmap Output with scripts"
+  caption=""
+%}
 
 This now tells us a little more, which may come in useful later; for now I'll wrap up this section by visiting this web page and seeing what we're dealing with.
 
@@ -124,11 +140,16 @@ This now tells us a little more, which may come in useful later; for now I'll wr
 
 Now that we have a fairly good service to start looking at (web), let's take a look at the page and try and find any vulnerabilities associated with this service.
 
-![web page](/assets/images/posts/mr_robot/home_page.jpg)
+{%
+  include figure
+  image_path="/assets/images/posts/mr_robot/home_page.jpg"
+  alt="Web Page"
+  caption=""
+%}
 
 This looks great! It's an interesting page and if you're a fan of the show, take a while and enjoy!
 
-## What's the problem?
+### What's the challenge?
 
 We need to get more information about this web page. What is on the site? how is the site configured? What powers the site?
 
@@ -148,19 +169,40 @@ Websites can be manually and automatically evaluated; why not try a bit of both?
 
 I like to use nikto for automated web scanning; this can be run simply for our purposes:
 
-![nikto](/assets/images/posts/mr_robot/nikto.jpg)
+{%
+  include figure
+  image_path="/assets/images/posts/mr_robot/nikto.jpg"
+  alt="Nikto Output"
+  caption=""
+%}
 
 Which returns a load of findings, importantly telling us that the site runs Wordpress and has an admin panel. This is in line with the findings from dirb, another tool I tend to run against sites like this:
 
-![dirb](/assets/images/posts/mr_robot/dirb.jpg)
+{%
+  include figure
+  image_path="/assets/images/posts/mr_robot/dirb.jpg"
+  alt="Dirb Output"
+  caption=""
+%}
 
 This also references the [robots.txt file](https://en.wikipedia.org/wiki/Robots_exclusion_standard), as well as some hidden directories, pages and files. robots.txt is intended to manage web crawlers indexing the site, but it can sometimes give us some clues.
 
-![robots.txt](/assets/images/posts/mr_robot/robots.jpg)
+{%
+  include figure
+  image_path="/assets/images/posts/mr_robot/robots.jpg"
+  alt="robots.txt"
+  caption=""
+%}
 
 Given the filenames, we can even just download them immediately using the tool wget:
 
-![Robots Files](/assets/images/posts/mr_robot/robot_files.jpg)
+
+{%
+  include figure
+  image_path="/assets/images/posts/mr_robot/robot_files.jpg"
+  alt="robots.txt files"
+  caption=""
+%}
 
 Great news, We've found flag 1! We also look to have a dictionary file, since I knew this might be a dictionary with lots of words in it, I just ran the head commadn to see the top few, there look to be some interesting words at the top! Perhaps we can use this file going forward.
 
@@ -168,7 +210,7 @@ Great news, We've found flag 1! We also look to have a dictionary file, since I 
 
 Now that we have an admin panel, we could continue to analyse the site for vulnerabilities, but password attacks offer us a low-effort means of accessing a site. They also have the added benefit of being run in the background while we do more analysis.
 
-## What's the problem?
+### What's the challenge?
 
 We can't crack this login offline, so we need to guess the password by sending a login request over and over again, until we have a successful login.
 
@@ -226,11 +268,11 @@ If we take those credentials and try them on the webpage in our browser.
 
 We have access to the admin panel.
 
-# Exploitation
+# Further Exploitation
 
 Now that we have access to the admin panel, we need to look to carry out further exploitation. Our access doesn't let us see much of the underlying system, so let's change that.
 
-## What's the problem?
+### What's the challenge?
 
 We need to expand your access, so that you can get more control over this box and find more flags!
 
@@ -307,9 +349,9 @@ We have shell, but why? I think this is probably because the shell tries to daem
 
 Now it's time to expand our acess, it's all about enumeration, enumeration, enumeration.
 
-## What's the problem.
+### What's the challenge?
 
-Now that we have a working shell, we need to utter the correct phrase:
+Now that we have a working shell, we must first get the cliches out of the way:
 
 >**'I'm in'**
 
@@ -325,37 +367,86 @@ Does google have anything that may help you enumerate and escalate on Linux? Wha
 
 ## Solution
 
-There are lots of resources for Linux enumeration and privilege escalation, but G0tm1lk has some [great guidance](https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/) on the matter. There is a whole load of information in there, don't be disheartened; there is a tool you can run, but being familiar with the process will help you long-term.
+There are lots of resources for Linux enumeration and privilege escalation, but G0tm1lk has some [great guidance](https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/) on the matter. There is a whole load of information in there, as well as a tool you can run to automate the process (though being familiar with the manual way is best).
 
-I recommend doing these in another order, especially for easier VMs; creators of these want you to solve, so I like to follow the following stages on these:
+I recommend doing these enumeration steps in a slightly different order for CTFs, especially for easier VMs; creators of these want you to solve, so I find it helps to follow the following workflow on these:
 
-1. look for all files in home directorates, followed by any configuration or log directory you can access. Get that information! Maybe there'll be passwords!
+1. look for all files in home directorates, followed by any configuration or log directory you can access. Get that information! Maybe there'll be passwords...
 1. Sloppy workarounds - Are other user accounts open? Did someone leave a credential somewhere? Maybe someone has their own /bin/sh that runs as root!?
-1. Other privilege management issues - is there a binary used to elevate privilege, can we hijack it? Maybe this is sudo, maybe its something custom ( note that this is point 1 again, but also not)
+1. Other privilege management issues - is there a binary used to elevate privilege, can we hijack it? Maybe this is sudo, maybe its something custom.
 1. Are there any advanced file permissions on binaries? Setuid and setguid bits on binaries allow them to run as root, if you can influence their execution, you can take over.
 1. Is there any information in process listing? Sometimes credentials are passed to commands in the clear and these can be seen in process monitoring tools, equally, a tool may run as root, taking input from some file you can write to.
 1. Are there any vulnerabilities associated with this version of Linux, could I use a public exploit?
 
-This is just my running order for easier CTF boxes, you can do what you like; if you followed the above before getting here, you'll find that point 1 yields some interesting results, namely that in the home directory, we find flag 2:
+This is just my running order for easier CTF boxes, you can do what you like; if I quickly exhaust this list, I usually go back to G0tM1lk's list process.
 
-[finding flag2]()
+If you followed the above before getting here, you'll find that point 1 yields some interesting results, namely that in the home directory, we find flag 2 adn an interesting file:
 
-Once you completed step 1, you may have found that for privilege escalation 2,3 and 4 are all kind of right. There is a setuid binary that always runs as root, but is an unusual choice - Nmap.
+{%
+  include figure
+  image_path="/assets/images/posts/mr_robot/robots_home.jpg"
+  alt="Browsing to robot home directory"
+  caption="Browsing to the **/home/** folder shows us one user, with some interesting files in their home directory; using ls with the *-lah* flags shows us that there are, however, file permissions associated with the key file, so we can't read it. The password file is readable to us and we can cat its contents."
+%}
 
-![nmap setuid]()
+We can access the password file, but not the key, only the user robot can do that; luckily for us, it seems that the password file is actually a password hash. This password hash can be cracked, but I need the string on my own machine to do this; I like to use NetCat to move things over network on these CTFs, so let's do that.
+
+{%
+  include figure
+  image_path="/assets/images/posts/mr_robot/get_hash.jpg"
+  alt="Bringing the hash file to our local machine"
+  caption="Netcat is installed on the machine, so we cat cat the file, pipe the output into netcat, which will fire it over to our attacker machine, where a listener can pick it up and pipe it back into a file. Highlighted are the commands to send adn receive the file above and below respectively."
+%}
+
+Now that we've brought the hash back over to our attacker machine, we can crack it; the file extension tells us that the hash is probably Raw-MD5 format, so I'll run it through John the Ripper in Kali. I'll try our fsocity.dic, then if that doesn't work, some other lists from Kali.
+
+{%
+  include figure
+  image_path="/assets/images/posts/mr_robot/john.jpg"
+  alt="Cracking the hash with John"
+  caption="Cracking the password with John; I specify the format in each command and vary the wordlist used at each stage, progressing to larger, more complete lists. Our wordlist didn't contain a vlid credential, neither did the fasttrack dictionary on Kali, but the RockYou dictionary gives us a match."
+%}
+
+Now that we have a valid password for the robot user, we can try it; the command *su* lets us become another user.
+
+{%
+  include figure
+  image_path="/assets/images/posts/mr_robot/key_2.jpg"
+  alt="Getting Key 2"
+  caption="Using **su** to become the robot user, initially, you may get an error saying that, since you don't have a terminal session, you can't use *su*. This can be worked around using a few methods, but since Python is installed, I like to use that one; running a quick *pty.spawn()* command gets us a terminal session and we can *su* as *robot*; it's now possible to read key 2. I again use NetCat to send the key over the network to my attacker machine."
+%}
+
+Once you completed step 1, we continue our post-exploitation to get root on the machine.
+
+After following on the post-exploitation steps above, you may have found that for privilege escalation , step 4 yields something interesting. There is a setuid binary that always runs as root, but is an unusual choice - Nmap.
+
+{%
+  include figure
+  image_path="/assets/images/posts/mr_robot/nmap_suid.jpg"
+  alt="Getting Key 2"
+  caption="Using **su** to become the robot user, it's now possible to read key 2; we can use ."
+%}
 
 There may be legitimate reasons for running nmap as root, but it sticks out when running through this enumeration. If you google the version of Nmap, you'll find it had an interactive mode, so simply run Nmap in this mode and execute the following:
 
-``` bash
- !sh
- #whoami
- uid=0 root
-```
+{%
+  include figure
+  image_path="/assets/images/posts/mr_robot/get_root.jpg"
+  alt="Getting Key 2"
+  caption="Using **su** to become the robot user, it's now possible to read key 2; we can use ."
+%}
 
 You're now root! let's look for that flag:
 
-[finding root flag]()
+{%
+  include figure
+  image_path="/assets/images/posts/mr_robot/final_pwn.jpg"
+  alt="Getting Key 3"
+  caption="Using **su** to become the robot user, it's now possible to read key 2; we can use ."
+%}
 
 and we have the root flag!
 
 # Fin
+
+It's over, well done! If this was your first CTF, I hope you enjoyed it as much as I did; keep on going and hack some moar!
