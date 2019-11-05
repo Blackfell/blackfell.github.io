@@ -42,7 +42,7 @@ This guide is written slightly differently from 'standard' walkthroughs, in that
 
 # Setup and orientation
 
-If you're on this page, you should already have a hacking lab and preferably have read [my post on the matter](/technical guidance/labs & hacking/building-a-lab/). You should know what a VM is and how to import it, as well as some basics around how the internet works, programming and the other topics covered in the [Now What?(link_lab_post) section of my lab post; if you don't know this, don't start this yet.
+If you're on this page, you should already have a hacking lab and preferably have read [my post on the matter](/technical guidance/labs & hacking/building-a-lab/). You should know what a VM is and how to import it, as well as some basics around how the internet works, programming and the other topics covered in my lab post; if you don't know this, don't start this yet.
 
 # Discovery & Importing
 
