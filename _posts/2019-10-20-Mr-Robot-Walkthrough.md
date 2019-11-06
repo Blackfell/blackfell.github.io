@@ -38,13 +38,13 @@ This is a guide to completing one of my favourite easy Capture The Flag exercise
 
 ## Using this guide
 
-This guide is written slightly differently from 'standard' walkthroughs, in that it's supposed to be a walkthrough you can follow with minimal spoilers. Throughout I try to set out a problem, guide you on ways to solve it, *then* give the answer.
+This guide is written slightly differently from 'standard' walkthroughs, in that it's supposed to be a guide you can follow with minimal spoilers. Throughout I try to set out a problem, guide you on ways to solve it, *then* give the answer.
 
-This means that if you're working the MR Robot VM, you can work through this guide, choosing to solve problems with a little guidance as you go, before checking against my answers. I hope that this is helpful to you if this is your first CTF machine, but remember, it only works if you play fair!
+This means that if you're working the Mr Robot VM, you can work through this guide, choosing to solve problems with a little guidance as you go, before checking against my answers. I hope that this is helpful to you if this is your first CTF machine, but remember, it only works if you play fair!
 
 # Setup and orientation
 
-If you're on this page, you should already have a hacking lab and preferably have read [my post on the matter](/technical guidance/labs & hacking/building-a-lab/). You should know what a VM is and how to import it, as well as some basics around how the internet works, programming and the other related topics covered in that post; if you don't know this, that post is a good place to start!
+If you're on this page, you should already have a hacking lab and should have a foundation knowledge in computing and security; if you want a quick sanity check, make sure you know what a VM is and how to import it, as well as the basics of Linux, networking and web programming. If you're in doubt whether you're ready, why not check out [my post on security learning](/technical guidance/labs & hacking/so-you-want-to-hack/) or [my post on hacking labs](/technical guidance/labs & hacking/building-a-lab/), depending what you're unsure on.
 
 # Discovery & Importing
 
@@ -112,13 +112,13 @@ We need to find out what kind of network services are running on the machine and
 
 We have the machine IP address, so we don't need to find it on the network, but knowledge of what ports are open and what services are running behind them would be helpful.
 
-You could do this manuall, but if you want to use some automated tools, why not start with a port scan, then try and find out what versions of software might be running behind them? Any information on how these are configured would be a bonus!
+You could do this manually, but if you want to use some automated tools, why not start with a port scan, then try and find out what versions of software might be running behind them? Any information on how these are configured would be a bonus!
 
 ## Solution
 
-You may have manually probed the machine for open ports, oryou may have used your own scripts, but I usually run an automated portscan at this point against our host. Despite a wide choice of port-scanning tools, **the** network mapper and port scanner is Nmap; there are other ways of portscanning hosts, but this is the tool I like to use and one that you'll find in other CTF write-ups.
+You may have manually probed the machine for open ports, or you may have used your own scripts, but I usually run an automated portscan at this point against our host. Despite a wide choice of port-scanning tools, **the** network mapper and port scanner is Nmap; there are other ways of portscanning hosts, but this is the tool I like to use and one that you'll find in other CTF write-ups.
 
-I like to run nmap as root, which means (amongst other things) it will carry out a [Syn scan](https://networkinferno.net/tcp-syn-scanning) by default; I like to turn off the probe requests and host resolution (-Pn and -n), because I know where my host is, and I like to scan all TCP ports (almost, but it will do) with the -p- option. I usually output to all filetypes (-oA), as well as asking nmap to give us a reason whenever it says a port is open or filtered (--reason); as always, keep that tcpdump sniffer running, so you can see what's going on!
+I like to run Nmap as root, which means (amongst other things) it will carry out a [Syn scan](https://networkinferno.net/tcp-syn-scanning) by default; I like to turn off the probe requests and host resolution (-Pn and -n), because I know where my host is, and I like to scan all TCP ports (almost, but it will do) with the -p- option. I usually output to all file types (-oA), as well as asking Nmap to give us a reason whenever it says a port is open or filtered (--reason); as always, keep that tcpdump sniffer running, so you can see what's going on!
 
 {%
   include figure
@@ -128,8 +128,6 @@ I like to run nmap as root, which means (amongst other things) it will carry out
 %}
 
 From the Nmap output, we can see that there's a secure shell service (ssh) running, as well as web on port 80 and 443. The next step is to enumerate these further; you may have done this already as part of your first scan, this is fine, but I like to discover the open ports first, then enumerate each open port further, as it can really reduce scan times on larger projects and it will help you further on down the line.
-
-The services information returned by Nmap in this scan is just a simple lookup (e.g. *'ssh is normally on port 22, so this must be ssh'*), but people could run services on non-standard ports; some more information on service versions may also come in handy as we progress, luckily Nmap version scanning meets both of these needs for us.
 
 Why do we go further? Well the services information returned by Nmap scanning this way is just a simple port-service lookup (e.g. *'ssh is normally on port 22, so this must be ssh'*), but people could run services on non-standard ports; adding version detection (-sV) for services discovered will not only give us some more information on service versions, but it will also check if the port-service mapping is correct.
 
@@ -175,7 +173,7 @@ Websites can be manually and automatically evaluated; why not try a bit of both?
 
 ## Solution
 
-You may have started with some manual check of common web issues, but I normally start with some scanning tools. I like to use nikto for automated web scanning; this can be run without any fancy options for our purposes:
+You may have started with some manual check of common web issues, but I normally start with some scanning tools. I like to use Nikto for automated web scanning; this can be run without any fancy options for our purposes:
 
 {%
   include figure
@@ -215,7 +213,7 @@ The robots.txt file for this site contains two glaring clues, one reference to a
 
 Great news, We've already found flag 1 just by doing recon and vulnerability analysis! It looks like we were right about the dictionary file too; since I knew this might be a dictionary with lots of words in it, I just ran the head command to see the top few lines, there look to be some interesting words in there! Perhaps we can use this file going forward.
 
-You may have chosen to look further into some other findings and gather more information (there are a few other Easter eggs and ways in to be found!), you might have persued the readme files, looked over the licence pages, or run some extra tools, so bonus p[oints if you did! I think I'm done here though and I'm ready to move on to hunting that next flag.
+You may have chosen to look further into some other findings and gather more information (there are a few other Easter eggs and ways in to be found!), you might have pursued the Readme files, looked over the licence pages, or run some extra tools, so bonus points if you did! I think I'm done here though and I'm ready to move on to hunting that next flag.
 
 # Password Attacks
 
@@ -293,7 +291,7 @@ Trying to login unsuccessfully as elliot shows us some new text that can be used
   include figure
   image_path="/assets/images/posts/mr_robot/password_guessing.jpg"
   alt="Guessing passwords with hydra"
-  caption="Guessing of passwords with Hydra using a valid logon of *elliot*, but chaning the failed logon text to *'is incorrect'* as derived from the mrevious figure. Successful logins are again shown in green in the output."
+  caption="Guessing of passwords with Hydra using a valid logon of *elliot*, but changing the failed logon text to *'is incorrect'* as derived from the previous figure. Successful logins are again shown in green in the output."
 %}
 
 Hydra has come back with a potentially valid password for our user elliot, great! If we take those credentials and try them on the webpage in our browser.
@@ -317,7 +315,7 @@ We need to expand your access, so that you can get more control over this box an
 
 ## Hints
 
-WordPress is running on the VM, can you extend its functionality to let you see more about the system? Can you get some access to the machine itself via WordPress? Are there exploit modules and scripts out there that allow you to expland access as an authenticated WordPRess user?
+WordPress is running on the VM, can you extend its functionality to let you see more about the system? Can you get some access to the machine itself via WordPress? Are there exploit modules and scripts out there that allow you to expand access as an authenticated WordPress user?
 
 ## Solution
 
@@ -330,7 +328,7 @@ There are various options available to us, you may have run a Metasploit module 
   caption="Opening up the WordPress plugins tab shows us all the extra functionality that's already been installed on this WP instance."
 %}
 
-These plugins are php based and when enabled the server executes this php to achieve whatever functionality is intended. I chose to upload a php shell payload to WordPress, so that I can have a more open interface to do what I want to the machine. Plugins can be edited and our PHP dropped in to execute as a part of a legitimate plugin.
+These plugins are php based and when enabled the server executes this php to achieve whatever functionality is intended. I chose to skip trying to load legitimate plugins and instead uploaded a php shell payload as a plugin, so that I had a more functional interface to do what I want to the machine. Plugins can be edited and our PHP dropped in to execute as a part of a legitimate plugin.
 
 {%
   include figure
@@ -406,7 +404,7 @@ What files can you access? Are any of them helpful? Maybe some might even be fla
 
 Can you find any interesting software running? Are there any interesting file permissions issues? perhaps you can take control of something legitimate to become root.
 
-Does google have anything that may help you enumerate and escalate on Linux? What about this particular version of Linux? PRivilege escalation is also a goal for you here.
+Does google have anything that may help you enumerate and escalate on Linux? What about this particular version of Linux? Privilege escalation is also a goal for you here.
 
 ## Solution
 
@@ -415,12 +413,12 @@ There are lots of resources for Linux enumeration and privilege escalation, but 
 I recommend doing these enumeration steps in a slightly different order when working manually on these easy CTFs; creators of these want you to solve their challenge and there's often a lesson in what you find, automated tools can sometimes hide these issues (even if they're glaringly obvious). I find it helps to follow the following workflow on these:
 
 1. **look for files** - Search in home directories, followed by any web, configuration and log directories you can access. Get that information! Maybe there'll be passwords...
-1. **Sloppy workarounds & privilege management issues** - Simple sudo misconfigurations, or special root access workarounds can be a *real* quick win. MAybe there are other users on teh box you can become?
-1. **Configurtion, process and PATH issues** - Is there any information in running processes? Sometimes credentials are passed to commands in the clear and these can be seen in process monitoring tools, equally, a tool may run as root, taking input from some file, or the path that you could hijack.
+1. **Sloppy workarounds & privilege management issues** - Simple sudo misconfigurations, or special root access workarounds can be a *real* quick win. Maybe there are other users on the box you can become?
+1. **Configuration, process and PATH issues** - Is there any information in running processes? Sometimes credentials are passed to commands in the clear and these can be seen in process monitoring tools, equally, a tool may run as root, taking input from some file, or the path that you could hijack.
 1. **Are there any advanced file permissions on binaries?** - Setuid and setguid bits on binaries allow them to run as root, if you can influence their execution, you can take over.
 1. **Known Privilege Escalation Bugs** - Are there any vulnerabilities associated with this version of Linux, could you use a public exploit?
 
-This is just my running order for easier CTF boxes, you can do what you like; if I quickly exhaust this list, I usually go back to G0tM1lk's list process.
+This is just my running order for easier CTF boxes, you can do what you like; if I quickly exhaust this list, I usually go back to [G0tM1lk's post](https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/), which has much more exhaustive guidance.
 
 If you followed the above before getting here, you'll find that point 1 yields some interesting results, namely that in the home directory, we find flag 2 and an interesting file:
 
@@ -458,6 +456,10 @@ Now that we have a valid password for the robot user, we can try it; the command
   caption="Using **su** to become the robot user, initially, you may get an error saying that, since you don't have a terminal session, you can't use *su*. This can be worked around using a few methods, but since Python is installed, I like to use that one; running a quick *pty.spawn()* command gets us a terminal session and we can *su* as *robot*; it's now possible to read key 2. I again use NetCat to send the key over the network to my attacker machine."
 %}
 
+At first, you may have found that your *su* command failed; this can occur where your shell process doesn't have an associated pseudo-terminal. Searching online for *'bash shell escape'* will likely turn up [some ideas](https://netsec.ws/?p=337) to help solve this problem, but in essence you need to spawn a full terminal. I used the python pty module to spawn one and su then ran successfully.
+
+On login as robot, we can read the next key, well done!
+
 # Post Exploitation 2 - Getting Root
 
 OK, great, Key 2 out of the way; now we need to keep going!
@@ -473,9 +475,9 @@ OK, great, Key 2 out of the way; now we need to keep going!
 
 Let's continue our post-exploitation to get root on the machine, simple as that!
 
-## hints
+## Hints
 
-You have all the hints for this section, we covered then in the [solution to Post Exploitation 1](#solution-5).
+You have all the hints for this section, we covered then in the [solution to Post Exploitation 1](#solution-5). Just keep working through that privilege escalation process, with a focus on getting root access now.
 
 ## Solution
 
