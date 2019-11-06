@@ -69,7 +69,7 @@ feature_row4:
 
 # So you want to learn security?
 
-Perhaps you're new to a job, starting a course, of just plain interested; whatever the reason you're here, the sheer volume of options available to you can be daunting. Let's cut through the noise and get you some solid (if opinionated) learning recommendations that I've found successful working with friends and colleagues.
+Perhaps you're new to a job, starting a course, of just plain interested; whatever the reason you're here, the sheer volume of learning options available to you can be daunting. Let's cut through the noise and get you some solid (if opinionated) learning recommendations that I've found successful working with friends and colleagues.
 
 This is a guide of two parts. First up is Immersion101, a compressed brief I like to give friends an colleagues that are getting into InfoSec; the second part will focus on some technical, hands on learning strategies, which is, as far as I'm concerned, *by far the best bit!*
 
