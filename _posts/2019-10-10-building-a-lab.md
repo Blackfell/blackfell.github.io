@@ -44,7 +44,7 @@ feature_row1:
 
 # Point Dexter's Lab
 
-In the [last post](/technical guidance/labs & hacking/so-you-want-to-hack/#offline-vulnerable-targets) we discussed how to start your security learning journey. Hopefully you know why you want a lab and have an idea of what you'd like yours to do; let's cut to the good bit, making it.
+In the [last post](/technical guidance/labs & hacking/so-you-want-to-hack) we discussed how to start your security learning journey. Hopefully you know why you want a lab and have an idea of what you'd like yours to do; let's cut to the good bit, making it.
 
 Building a lab isn't just a step towards learning, it's part of it; treat this as a chance to learn and hone some of the skills you'll be developing in your lab.
 
@@ -358,4 +358,4 @@ I keep one Linux VM and one Windows for attacking; the Linux machine is usually 
 
 ![It's over](/assets/images/posts/hacking_lab/finished.jpg)
 
-Now that your testing is complete and everything can talk, you're ready to go! All that's left is to actually use it! Catch up with my [Mr Robot walkthrough]() to put your lab through its paces. Good luck!
+Now that your testing is complete and everything can talk, you're ready to go! All that's left is to actually use it! Catch up with my [Mr Robot walkthrough](https://blackfell.net/technical%20guidance/labs%20&%20hacking/Mr-Robot-Walkthrough/) to put your lab through its paces. Good luck!

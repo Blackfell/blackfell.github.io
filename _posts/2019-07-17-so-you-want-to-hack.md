@@ -113,7 +113,8 @@ I like the following online training providers:
 1. SANS [Cyber Aces](https://www.cyberaces.org/) - A Free offering from a leading training provider to introduce you to InfoSec.
 1. [Cybrary](https://www.cybrary.it/) - Online free training provider popular in IT and InfoSec.
 1. [Hacker101](https://www.hacker101.com/) - A Free training course associated with the Hacker1 [bug bounty](https://en.wikipedia.org/wiki/Bug_bounty_program) program.
-1. [Codeacademy](https://www.codecademy.com/learn/learn-python) - free programming courses from web application programming to full on development practices.
+1. [Codeacademy](https://www.codecademy.com/learn/learn-python) - Free programming courses from web application programming to full on development practices.
+1. [Security Tube](http://www.securitytube.net/) - A collection of videos on all aspects of security, including a good deal of training.
 
 If nothing grabs your eye, I recommend CompTIA training courses in Security+ Network+ and A+ to total beginners as a starting place; these can be supplemented with Microsoft, Linux and Cisco sysadmin courses; all of which can be found for free via Cybrary (number 2.).
 
@@ -160,10 +161,10 @@ There are various online and 'offline' security learning approaches; you can com
 
 An effective way of learning foundations skills in systems administration, networking and programming, is building things. If you're not able to do any of the following, I recommend considering doing them as a learning task early on in your training plan:
 
-1. Installing and configuring a Windows server and client(s) in a secure manner; bonus points for implementing central authentication & other services. Hint - free online training can help here.
-1. Installing and working in a Linux environment; get comfortable using the command line (it's not dead yet by a long shot) and satisfy yourself you can find files by name, content & permissions. Can you see what processes are running, who's logged in, can you check some basic logs, can you manage and configure a service like ssh?
-1. Configuring networking settings on Windows, Linux and networking appliances; try setting up a network with a couple of devices, your own custom address range (bonus points for fancy sub-netting) and check everything can talk successfully.
-1. Basic Scripting and programming - this one marries really well with 1 & 2; try using native scripting languages like PowerShell and Bash to find files on computers. Try some basic python, maybe do an online course.
+1. **Installing and configuring a Windows server and client(s) in a secure manner**- Bonus points for implementing central authentication & other services. Hint - free online training can help here.
+1. **Installing and working in a Linux environment** - Get comfortable using the command line (it's not dead yet by a long shot) and satisfy yourself you can find files by name, content & permissions. Can you see what processes are running, who's logged in, can you check some basic logs, can you manage and configure a service like ssh?
+1. **Configuring networking settings on Windows, Linux and networking appliances** - Try setting up a network with a couple of devices, your own custom address range (bonus points for fancy sub-netting) and check everything can talk successfully.
+1. **Basic Scripting and programming** - This one marries really well with 1 & 2; try using native scripting languages like PowerShell and Bash to find files on computers. Try some basic python, maybe do an online course.
 
 The above are examples you could use a s a start; you don't need to take them to the far end of one, but consider getting to a reasonable working level in each, to help you with other tasks.
 
@@ -175,7 +176,7 @@ OK the juicy offline stuff! This is my go to recommendation for security specifi
 
 There are a whole host of these out there, but I almost always send people to [Vulnhub](https://www.vulnhub.com/); Metasploitable is often recommended as a beginner task, but I'd give caution, as it's lack of workflow and artificial nature can sometimes confuse, or demotivate people.
 
-I like to start people on a [Mr robot themed machine](https://www.vulnhub.com/entry/mr-robot-1,151/); many people are fans of the show (which helps with keeping interest) and I think it's a nice balance of realism and simplicity. As an added bonus, I have produced a [learning-oriented walkthrough]() for the machine, to turn it into a proper learning experience.
+I like to start people on a [Mr robot themed machine](https://www.vulnhub.com/entry/mr-robot-1,151/); many people are fans of the show (which helps with keeping interest) and I think it's a nice balance of realism and simplicity. As an added bonus, I have produced a [learning-oriented walkthrough](https://blackfell.net/technical%20guidance/labs%20&%20hacking/Mr-Robot-Walkthrough/) for the machine, to turn it into a proper learning experience.
 
 Machines aren't the only thing you could go for; you could look to do some wireless security testing in your local environment, you may decide you'd like
 
@@ -235,13 +236,13 @@ If you can install windows machines, get a server talking to a client, use Power
 
 If you can install Linux and use the command line to {find a file, add a new user, list running processes, configure and enable ssh on port 9999 and ping every host on your local network} then skip bandit and local Linux config tasks; otherwise, install some Linux in a lab environment (see next post) and/or complete the [bandit](https://overthewire.org/wargames/bandit/) overthewire challenge.
 
-If you know what an IP address is, what a network port, MAC address and the difference between a router and switch is, then skip a basic networking course for now (but it's super important - you'll pick more up and train as required), otherwise, try a free course like Cybrary's [CompTIA Network +] (https://www.cybrary.it/course/comptia-network-plus/) offering.
+If you know what an IP address is, what a network port, MAC address and the difference between a router and switch is, then skip a basic networking course for now (but it's super important - you'll pick more up and train as required), otherwise, try a free course like Cybrary's [CompTIA Network +](https://www.cybrary.it/course/comptia-network-plus/) offering.
 
 If you know the basics of how websites are programmed and you know your HTML from our JavaScript, what an SQL query is and how CSS works (note, you don't need to be a master), then skill any web learning, otherwise, consider completing some web programming learning, like that offered by [codeacademy](https://www.codecademy.com/learn/paths/web-development) or [w3schools ](https://www.w3schools.com/). Just getting a rough understanding at this point will help.
 
-Otherwise, I recommend you try the [Mr Robot Capture the Flag](https://www.vulnhub.com/entry/mr-robot-1,151/) challenge as a starter task, using my (very excellent) [walkthrough]() as a training guide.
+Otherwise, I recommend you try the [Mr Robot Capture the Flag](https://www.vulnhub.com/entry/mr-robot-1,151/) challenge as a starter task, using my (very excellent) [walkthrough](https://blackfell.net/technical%20guidance/labs%20&%20hacking/Mr-Robot-Walkthrough/) as a training guide.
 
-In due time, I'd recommend you bolster your web programming knowledge with another programming or scripting language, though this isn't wholly essential at first (IMO). I like Python and codeacademy](https://www.codecademy.com/learn/learn-python) offer good training. This one is up to you though!
+In due time, I'd recommend you bolster your web programming knowledge with another programming or scripting language, though this isn't wholly essential at first (IMO). I like Python and [codeacademy](https://www.codecademy.com/learn/learn-python) offer good training. This one is up to you though!
 
 After that, you should have a feel fro where you'd like to go now; as always, contact me via social for more thoughts and advice.
 

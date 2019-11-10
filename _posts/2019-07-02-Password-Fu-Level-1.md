@@ -64,17 +64,13 @@ Including your dog's name in your passwords aids memorability, but can be predic
 
 So what do we do to avoid the traps without having to remember crazy passphrases?
 
-To achieve memorability & use-ability, we're going to need a system. Even if all passphrases are recorded on paper, a system will help us read them off and enter them in our system of choice. We must, however, be careful of traps!
-
-We know this means avoiding complexity patterns, personal information and (perhaps most difficult) predictable/common password systems. Rather tan try and do this *every* time we set a passphrase, we should build these considerations into our system.
+To achieve memorability & use-ability, we're going to need a system. We must, however, be careful of traps! We know this means avoiding complexity patterns, personal information and (perhaps most difficult) predictability. Rather tan try and do this *every* time we set a passphrase, we should build these considerations into our system.
 
 The following rules will help you do this.
 
 ## Length, not complexity
 
-If we're going to use a password system, we should make sure that it makes guessing the password with computers difficult. The goal is to use a system you'd be happy to tell an attacker, because even if they knew it, it would take them years to guess.
-
-Assuming that an attacker guesses one character at a time (aaa, aab, aba, abb), using long passphrases will make guessing take much longer than adding numbers, capitals etc. to a short password. We should therefore build length into our passphrase system as the key defence against passphrase guessers.
+Even though complexity is good, we shouldn't get hung up on it; length can outstrip complexity pretty quickly! Picking longer passphrases will make guessing the password with computers difficult.
 
 A simple way of remembering this is **passphrases not passwords**; this way of thinking gets us in a mindset to make much longer credentials and avoid things like single words.
 
@@ -157,7 +153,7 @@ So, now you have an idea of some possible systems and hopefully you have an idea
 
 ![Just DO IT](/assets/images/posts/password_level_1/do_it.gif)
 
-We're not going to use machine generation here, because I need to remember this passphrase easily; it's one I'll use to protect my most valuable account too, so I'm going to make it of a good strength.
+I need to remember this passphrase easily, it's one I'll use to protect my most valuable account too, so I'm going to make it of a good strength. Let's go!
 
 ## Pick a scheme
 
@@ -187,7 +183,7 @@ I'm going to make a picture of a bit of legislation hung on a wall, while a bric
 
 Stupid, but it works for me.
 
-## Check yo self
+## Check Yo Self
 
 Make sure it makes sense, are there too many details personal to you? Is it predictable? Does it have too simple elements Is it long enough? Will the service or site you're putting it in accept its length and complexity?
 
