@@ -112,7 +112,7 @@ author:
   command             : "~$ whoami"
   avatar           : "/assets/images/generic/author.jpg"
   name          : "Sam."
-  bio              : "I'm a Father, tinker and security enthusiast. I have a particular interest in manual crafts, cars and bikes; I enjoy both digital and analogue things in life, they compliment one another."
+  bio              : "Husband, father and security guy; interested in industrial systems. I like making, mending and the outdoors!"
   location         : "Location - North West England"
   #email            : "info@blackfell.net"
   links:
@@ -125,15 +125,15 @@ author:
     - label: "Or, tweet in my general direction."
       icon: "fab fa-fw fa-twitter-square"
       url: "https://twitter.com/blackf3ll"
-    - label: "Facebook"
+    - label: ""
       icon: "fab fa-fw fa-facebook-square"
       # url: "https://facebook.com/"
-    - label: "My New GitHub"
+    - label: "My New (and slightly empty) GitHub"
       icon: "fab fa-fw fa-github"
-      #url: "https://github.com/Blackfell"
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      # url: "https://instagram.com/"
+      url: "https://github.com/Blackfell"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "www.linkedin.com/in/sam-2aab0b174"
 
 # Site Footer
 footer:
