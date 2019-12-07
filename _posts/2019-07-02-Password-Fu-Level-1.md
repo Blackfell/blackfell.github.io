@@ -32,7 +32,7 @@ tags:
 
 You're here to improve your security and this is the first level; you're about to take control of your passwords and start winning the game.
 
-In [part one](/security guidance/threats & risk/Lets-Talk-Passwords/) of this series, I explained why your account passwords are the first line of defence in your digital life. This post is the follow up, so if you're ready to take control, buckle up.
+In [part one](/security guidance/threats & risk/Lets-Talk-Passwords/){:target="_blank"} of this series, I explained why your account passwords are the first line of defence in your digital life. This post is the follow up, so if you're ready to take control, buckle up.
 
 ## Level Outline
 
@@ -102,7 +102,7 @@ So we have some advice, which is all well and good, but what should you actually
 
 ## Three Words
 
-A popular piece of guidance at the moment is to use the UK National Cyber Security Centre's [three words guidance](https://www.ncsc.gov.uk/blog-post/three-random-words-or-thinkrandom-0?page=1); this provides a turn-key solution you can use, which provides a compromise - very good memorability, but still hard to guess.
+A popular piece of guidance at the moment is to use the UK National Cyber Security Centre's [three words guidance](https://www.ncsc.gov.uk/blog-post/three-random-words-or-thinkrandom-0?page=1){:target="_blank"}; this provides a turn-key solution you can use, which provides a compromise - very good memorability, but still hard to guess.
 
 The traps for this method can be the number of words in your word pool and the randomness they're picked with. I recommend using a random work generator for this method. You should also consider capitalisation, spaces and special characters and whether you'll work these in for when you're forced to use them.
 
@@ -171,7 +171,7 @@ I'm really keen to protect this account so I'm going to aim for 5 words in my pa
 
 Whether you're using words or characters, google an online generator now and get some!
 
-I generated the following using [onlinewordgenerator](https://randomwordgenerator.com/):
+I generated the following using [onlinewordgenerator](https://randomwordgenerator.com/){:target="_blank"}:
 
 > decorative legislation brick joy housewife
 

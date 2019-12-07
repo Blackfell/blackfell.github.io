@@ -48,31 +48,31 @@ This post is a quick hello to everyone, but will get technical quickly and will 
 
 This blog is a GitHub Pages site, made of simple, static content; this means that there's no log in, no databases, no fancy code on my site, it just sends simple, helpful web pages to your device and the device shows them to you. Simple!
 
-The way that developers might normally do this is by building pages from HTML, JavaScript and CSS files, before putting them in a web server to show them to the world; this is what you might get taught on a web design intro course, like those excellent free courses available via [w3 academy](https://www.w3schools.com/). This site, however is built using [Jekyll](https://jekyllrb.com/), which frees me to do less design and maintenance and spend more time doing  writey blog. Great!
+The way that developers might normally do this is by building pages from HTML, JavaScript and CSS files, before putting them in a web server to show them to the world; this is what you might get taught on a web design intro course, like those excellent free courses available via [w3 academy](https://www.w3schools.com/){:target="_blank"}. This site, however is built using [Jekyll](https://jekyllrb.com/){:target="_blank"}, which frees me to do less design and maintenance and spend more time doing  writey blog. Great!
 
 ## What's Jekyll?
-Jekyll is a framework for producing simple static websites; it's written in ruby and lets creators like me quickly pull static sites together and produce content quickly. In addition, the fantastic [Github](https://github.com/) will host your Jekyll site via [GitHub pages](https://pages.github.com/), probably for free (depending who you are).
+Jekyll is a framework for producing simple static websites; it's written in ruby and lets creators like me quickly pull static sites together and produce content quickly. In addition, the fantastic [Github](https://github.com/){:target="_blank"} will host your Jekyll site via [GitHub pages](https://pages.github.com/){:target="_blank"}, probably for free (depending who you are).
 
 ### You said Framework, what's that?
 Frameworks influence the whole design process of software and that's what Jekyll gives me for this blog. As a result of following Jekyll's design philosophy, I get nudged to write in a certain way, then when I'm done, Jekyll does it's stuff and turns my content in to good looking static content.
 
 ### Does Jekyll do it all for you?
-Well, no. Jekyll is great, it helps me write content in simple [Markdown](https://daringfireball.net/projects/markdown/), making my life easier, but more 'decoration' is required to get a good looking site. This is where **themes** come in. Themes are baked into how Jekyll works and I'm using [Michael Rose's](https://twitter.com/mmistakes) [minimal mistakes](https://mmistakes.github.io/minimal-mistakes/) theme.
+Well, no. Jekyll is great, it helps me write content in simple [Markdown](https://daringfireball.net/projects/markdown/){:target="_blank"}, making my life easier, but more 'decoration' is required to get a good looking site. This is where **themes** come in. Themes are baked into how Jekyll works and I'm using [Michael Rose's](https://twitter.com/mmistakes){:target="_blank"} [minimal mistakes](https://mmistakes.github.io/minimal-mistakes/){:target="_blank"} theme.
 
 {% include figure image_path="/assets/images/posts/first_post/markdown.jpg" alt="Markdown rendering photo" caption="A sample of Markdown on the left; this markdown file was used to build the [about](/about) page from this very website (shown on the right). Markdown was designed to let people structure content in a simple, effective way; software like Jekyll allows markdown to be parsed and turned into styled HTML (a mark**up** language) for web pages; this is very easy and a quick way to get content published." %}
 
-There's more still, though; as well as markup, Jekyll lets you write dynamic content, for example, listing all blog posts on a page, using [liquid](https://jekyllrb.com/docs/liquid/). This functionality is a little trickier than writing markdown posts, but you can get loads of information at the Jekyll site.
+There's more still, though; as well as markup, Jekyll lets you write dynamic content, for example, listing all blog posts on a page, using [liquid](https://jekyllrb.com/docs/liquid/){:target="_blank"}. This functionality is a little trickier than writing markdown posts, but you can get loads of information at the Jekyll site.
 
 ## How can I do this?
 Building a site with Jekyll, Minimal Mistakes and GitHub Pages has been a relatively easy and fun learning experience; if you're ready to do the same, the following should summarise all the separate things you'll need to learn and do.
 
 ### Working to your theme
 
-I'd recommend starting with an overview of Jekyll via their own [documentation](https://jekyllrb.com/docs/); don't start yet though, before you get too bogged down think about picking a [theme](http://jekyllthemes.org/) if you want one.
+I'd recommend starting with an overview of Jekyll via their own [documentation](https://jekyllrb.com/docs/){:target="_blank"}; don't start yet though, before you get too bogged down think about picking a [theme](http://jekyllthemes.org/){:target="_blank"} if you want one.
 
 {% include figure image_path="/assets/images/posts/first_post/jekyll_themes.jpg" alt="Jekyll Themes screenshot" caption="Jekyllthemes.org has a large selection of themes you can browse. Once you've chosen a theme you can head over to its web page and find out how best to use it." %}
 
-Now you've picked a theme, it's time to read the documentation for that theme; this will add to your Jekyll knowledge and may actually affect the way you think about your site. If there are some base or default files for your theme, **get them now** these will invariably make your life a *lot* easier. Now you have a feel for your theme, it's probably time to create your blog; Jekyll makes [site creation](https://jekyllrb.com/docs/) incredibly easy.
+Now you've picked a theme, it's time to read the documentation for that theme; this will add to your Jekyll knowledge and may actually affect the way you think about your site. If there are some base or default files for your theme, **get them now** these will invariably make your life a *lot* easier. Now you have a feel for your theme, it's probably time to create your blog; Jekyll makes [site creation](https://jekyllrb.com/docs/){:target="_blank"} incredibly easy.
 
 Now think about your design and get writing some basic content; your mileage will vary heavily here depending on your theme, but I installed Jekyll to a local machine for this part of development to get the basic site together. To host on GitHub Pages, make sure you include your theme **remotely**, meaning you don't download the theme to your machine, but include it in your Jekyll config file for loading at build time.
 
@@ -82,7 +82,7 @@ You should now have some content that looks pretty good when you host it locally
 
 ### Now host it!
 
-Now you're ready to set your site up in GitHub Pages; there are benefits to doing this early - you'll get up and running earlier - but you're going all in and can't practice locally. It's up to you! Setting this up is really easy and all the guidance you'll need is provided on the GitHub Pages [how to page](https://pages.github.com/).
+Now you're ready to set your site up in GitHub Pages; there are benefits to doing this early - you'll get up and running earlier - but you're going all in and can't practice locally. It's up to you! Setting this up is really easy and all the guidance you'll need is provided on the GitHub Pages [how to page](https://pages.github.com/){:target="_blank"}.
 
 This will be a person/organisation site, project sites are linked to specific projects.
 

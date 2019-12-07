@@ -34,7 +34,7 @@ toc_icon: "arrow-circle-down"
 
 # Mr robot Walkthrough
 
-This is a guide to completing one of my favourite easy Capture The Flag exercises, which is based on the TV series [Mr Robot](https://en.wikipedia.org/wiki/Mr._Robot). This CTF is available as a Virtual Machine (VM) from [Vulnhub](https://www.vulnhub.com/entry/mr-robot-1,151/) and I like to recommend it as an early virtual machine for friends and colleagues that are new to CTFs and ethical hacking.
+This is a guide to completing one of my favourite easy Capture The Flag exercises, which is based on the TV series [Mr Robot](https://en.wikipedia.org/wiki/Mr._Robot){:target="_blank"}. This CTF is available as a Virtual Machine (VM) from [Vulnhub](https://www.vulnhub.com/entry/mr-robot-1,151/){:target="_blank"} and I like to recommend it as an early virtual machine for friends and colleagues that are new to CTFs and ethical hacking.
 
 ## Using this guide
 
@@ -44,7 +44,7 @@ This means that if you're working the Mr Robot VM, you can work through this gui
 
 # Setup and orientation
 
-If you're on this page, you should already have a hacking lab and should have a foundation knowledge in computing and security; if you want a quick sanity check, make sure you know what a VM is and how to import it, as well as the basics of Linux, networking and web programming. If you're in doubt whether you're ready, why not check out [my post on security learning](/technical guidance/labs & hacking/so-you-want-to-hack/) or [my post on hacking labs](/technical guidance/labs & hacking/building-a-lab/), depending what you're unsure on.
+If you're on this page, you should already have a hacking lab and should have a foundation knowledge in computing and security; if you want a quick sanity check, make sure you know what a VM is and how to import it, as well as the basics of Linux, networking and web programming. If you're in doubt whether you're ready, why not check out [my post on security learning](/technical guidance/labs & hacking/so-you-want-to-hack/){:target="_blank"} or [my post on hacking labs](/technical guidance/labs & hacking/building-a-lab/){:target="_blank"}, depending what you're unsure on.
 
 # Discovery & Importing
 
@@ -77,13 +77,13 @@ My Host only network has the address range of 172.16.187.0/24. I can check my at
 
 I see from my network settings that *eth0* is my only adapter and has an address in my host only range, so I'll point my tools to that.
 
-I like to capture traffic during machine import; I'm looking for traffic using the [Address Resolution Protocol](https://en.wikipedia.org/wiki/Address_Resolution_Protocol) (ARP), as well as the [Dynamic Host Configuration Protocol](https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol) (DHCP), when doing this. As far as packet capturing tools go, Wireshark is popular, but I like tcpdump for this, so I'll run tcpdump, with a few switches (but keeping it fairly simple for now); I like to turn off name resolution (-nn), specify that I want to discover on my host only network device (-i eth0) and that's it, show me all!
+I like to capture traffic during machine import; I'm looking for traffic using the [Address Resolution Protocol](https://en.wikipedia.org/wiki/Address_Resolution_Protocol){:target="_blank"} (ARP), as well as the [Dynamic Host Configuration Protocol](https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol){:target="_blank"} (DHCP), when doing this. As far as packet capturing tools go, Wireshark is popular, but I like tcpdump for this, so I'll run tcpdump, with a few switches (but keeping it fairly simple for now); I like to turn off name resolution (-nn), specify that I want to discover on my host only network device (-i eth0) and that's it, show me all!
 
 ```bash
 ~$ tcpdump -nn -i eth0
 ```
 
-A quick google for other ways of passively discovering hosts might take you to a [stack exchange post](https://unix.stackexchange.com/questions/415270/how-can-i-detect-devices-on-my-local-network-from-a-linux-computer), which recommends a tool called netdiscover. In addition to tcpdump, I like to use netdiscover in passive mode as the VM is imported, so that I can see it associating with my virtual network.  I run this tool with the -p switch to get passive mode:
+A quick google for other ways of passively discovering hosts might take you to a [stack exchange post](https://unix.stackexchange.com/questions/415270/how-can-i-detect-devices-on-my-local-network-from-a-linux-computer){:target="_blank"}, which recommends a tool called netdiscover. In addition to tcpdump, I like to use netdiscover in passive mode as the VM is imported, so that I can see it associating with my virtual network.  I run this tool with the -p switch to get passive mode:
 
 ```bash
 ~$ netdiscover -p -i eth0
@@ -118,7 +118,7 @@ You could do this manually, but if you want to use some automated tools, why not
 
 You may have manually probed the machine for open ports, or you may have used your own scripts, but I usually run an automated portscan at this point against our host. Despite a wide choice of port-scanning tools, **the** network mapper and port scanner is Nmap; there are other ways of portscanning hosts, but this is the tool I like to use and one that you'll find in other CTF write-ups.
 
-I like to run Nmap as root, which means (amongst other things) it will carry out a [Syn scan](https://networkinferno.net/tcp-syn-scanning) by default; I like to turn off the probe requests and host resolution (-Pn and -n), because I know where my host is, and I like to scan all TCP ports (almost, but it will do) with the -p- option. I usually output to all file types (-oA), as well as asking Nmap to give us a reason whenever it says a port is open or filtered (--reason); as always, keep that tcpdump sniffer running, so you can see what's going on!
+I like to run Nmap as root, which means (amongst other things) it will carry out a [Syn scan](https://networkinferno.net/tcp-syn-scanning){:target="_blank"} by default; I like to turn off the probe requests and host resolution (-Pn and -n), because I know where my host is, and I like to scan all TCP ports (almost, but it will do) with the -p- option. I usually output to all file types (-oA), as well as asking Nmap to give us a reason whenever it says a port is open or filtered (--reason); as always, keep that tcpdump sniffer running, so you can see what's going on!
 
 {%
   include figure
@@ -191,7 +191,7 @@ Nikto returns a load of findings, importantly telling us that the site runs Word
   caption="Dirb, run with default options and wordlist against the site hosted on the VM. Highlighted in red are key findings, including a robots.txt entry not shown by Nikto."
 %}
 
-This also references the [robots.txt file](https://en.wikipedia.org/wiki/Robots_exclusion_standard), as well as some other hidden directories, pages and files. It is useful to run more than one tool against a machine if you have time, as the outputs can often be complementary.
+This also references the [robots.txt file](https://en.wikipedia.org/wiki/Robots_exclusion_standard){:target="_blank"}, as well as some other hidden directories, pages and files. It is useful to run more than one tool against a machine if you have time, as the outputs can often be complementary.
 
 robots.txt is intended to manage web crawlers indexing the site, but it can sometimes give us some clues.
 
@@ -319,7 +319,7 @@ WordPress is running on the VM, can you extend its functionality to let you see 
 
 ## Solution
 
-There are various options available to us, you may have run a Metasploit module or public exploit script to get you some shell access, you may have loaded a [file manage plugin](https://wordpress.org/plugins/wp-file-manager/) to roam the OS, or something else altogether! Looking through the admin panel, one thing that jumped out to me is the plugins option and I decided to approach the problem from there manually, whatever you did, I recommend you are comfortable following through how I approached this manually.
+There are various options available to us, you may have run a Metasploit module or public exploit script to get you some shell access, you may have loaded a [file manage plugin](https://wordpress.org/plugins/wp-file-manager/){:target="_blank"} to roam the OS, or something else altogether! Looking through the admin panel, one thing that jumped out to me is the plugins option and I decided to approach the problem from there manually, whatever you did, I recommend you are comfortable following through how I approached this manually.
 
 {%
   include figure
@@ -337,7 +337,7 @@ These plugins are php based and when enabled the server executes this php to ach
   caption="WordPress plugins can be edited; adding our PHP in here will get it executed by WordPress, giving us a shell. Simple!."
 %}
 
-We could write our own php, but other people have beaten us to it and their work is great. Pentestmonkey has some great resources online around [getting shells](http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet) and I used their infamous [php reverse shell](http://pentestmonkey.net/tag/php), which is in Kali 2019 under **/usr/share/webshells/php/php-reverse-shell.php**. I copied this file to my local directory and opened if up in a text editor to configure the reverse shell networking settings.
+We could write our own php, but other people have beaten us to it and their work is great. Pentestmonkey has some great resources online around [getting shells](http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet){:target="_blank"} and I used their infamous [php reverse shell](http://pentestmonkey.net/tag/php){:target="_blank"}, which is in Kali 2019 under **/usr/share/webshells/php/php-reverse-shell.php**. I copied this file to my local directory and opened if up in a text editor to configure the reverse shell networking settings.
 
 {%
   include figure
@@ -408,7 +408,7 @@ Does google have anything that may help you enumerate and escalate on Linux? Wha
 
 ## Solution
 
-There are lots of resources for Linux enumeration and privilege escalation, but G0tm1lk has some [great guidance](https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/) on the matter. There is a whole load of information in there, as well as a tool you can run to automate the process (though being familiar with the manual way is best).
+There are lots of resources for Linux enumeration and privilege escalation, but G0tm1lk has some [great guidance](https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/){:target="_blank"} on the matter. There is a whole load of information in there, as well as a tool you can run to automate the process (though being familiar with the manual way is best).
 
 I recommend doing these enumeration steps in a slightly different order when working manually on these easy CTFs; creators of these want you to solve their challenge and there's often a lesson in what you find, automated tools can sometimes hide these issues (even if they're glaringly obvious). I find it helps to follow the following workflow on these:
 
@@ -418,7 +418,7 @@ I recommend doing these enumeration steps in a slightly different order when wor
 1. **Are there any advanced file permissions on binaries?** - Setuid and setguid bits on binaries allow them to run as root, if you can influence their execution, you can take over.
 1. **Known Privilege Escalation Bugs** - Are there any vulnerabilities associated with this version of Linux, could you use a public exploit?
 
-This is just my running order for easier CTF boxes, you can do what you like; if I quickly exhaust this list, I usually go back to [G0tM1lk's post](https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/), which has much more exhaustive guidance.
+This is just my running order for easier CTF boxes, you can do what you like; if I quickly exhaust this list, I usually go back to [G0tM1lk's post](https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/){:target="_blank"}, which has much more exhaustive guidance.
 
 If you followed the above before getting here, you'll find that point 1 yields some interesting results, namely that in the home directory, we find flag 2 and an interesting file:
 
@@ -456,7 +456,7 @@ Now that we have a valid password for the robot user, we can try it; the command
   caption="Using **su** to become the robot user, initially, you may get an error saying that, since you don't have a terminal session, you can't use *su*. This can be worked around using a few methods, but since Python is installed, I like to use that one; running a quick *pty.spawn()* command gets us a terminal session and we can *su* as *robot*; it's now possible to read key 2. I again use NetCat to send the key over the network to my attacker machine."
 %}
 
-At first, you may have found that your *su* command failed; this can occur where your shell process doesn't have an associated pseudo-terminal. Searching online for *'bash shell escape'* will likely turn up [some ideas](https://netsec.ws/?p=337) to help solve this problem, but in essence you need to spawn a full terminal. I used the python pty module to spawn one and su then ran successfully.
+At first, you may have found that your *su* command failed; this can occur where your shell process doesn't have an associated pseudo-terminal. Searching online for *'bash shell escape'* will likely turn up [some ideas](https://netsec.ws/?p=337){:target="_blank"} to help solve this problem, but in essence you need to spawn a full terminal. I used the python pty module to spawn one and su then ran successfully.
 
 On login as robot, we can read the next key, well done!
 
