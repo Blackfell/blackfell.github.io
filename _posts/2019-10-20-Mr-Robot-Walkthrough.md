@@ -267,10 +267,10 @@ I like to use Hydra to guess passwords; the syntax for guessing login forms can 
 From looking at an incorrect login attempt, we learn the names of the login variables *log* and *pwd*, as well as the fact that that the text *'Invalid username'* appears if the username is invalid; we can therefore guess the username only by running the following command:
 
 ```bash
-~$ hydra -L ./fsocity_new.dic -p testpassword <VM IP> http-form-post '/wp-admin.php:&log=^USER^&pwd=^PASS^:Invalid username'
+~$ hydra -L ./fsocity_new.dic -p testpassword <VM IP> http-form-post '/wp-login.php:&log=^USER^&pwd=^PASS^:Invalid username'
 ```
 
-This command tells hydra to use our (new shortened) dictionary file *(-L ./fsocity_new.dic)*, along with a (probably wrong) password *(-p testpassword)*, to try and login to the site. Note that after we tell hydra that it's a *http-form-post* attack, we specify the login path *(/wp-admin.php)*, the login variables *(&log=^USER^&pwd=^PASS^)* and the text returned on a failed login *(Invalid username)*, all separated by colons.
+This command tells hydra to use our (new shortened) dictionary file *(-L ./fsocity_new.dic)*, along with a (probably wrong) password *(-p testpassword)*, to try and login to the site. Note that after we tell hydra that it's a *http-form-post* attack, we specify the login path *(/wp-login.php)*, the login variables *(&log=^USER^&pwd=^PASS^)* and the text returned on a failed login *(Invalid username)*, all separated by colons.
 
 This will loop through our dictionary file, submit the login details, then retry until the response no longer contains *'Invalid username'* (i.e. we guessed a valid one).
 
