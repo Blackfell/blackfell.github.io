@@ -36,7 +36,7 @@ In [part one](/security guidance/threats & risk/Lets-Talk-Passwords/){:target="_
 
 ## Level Outline
 
-In this level, you'll be coming up with **a passphrase worthy of greatness**, which you'll generate manually and use  again as you move on to future posts, watch this space!
+In this level, you'll be coming up with **a strong passphrase**, which you'll generate manually and use  again as you move on to future posts, watch this space!
 
 As mentioned in [Part 1](/security guidance/threats & risk/Lets-Talk-Passwords/), passphrases must be **hard to guess, unique, memorable and secret**. This post is all about building a passphrase that meets these requirements, without falling into some common traps.
 
@@ -46,7 +46,7 @@ As mentioned in [Part 1](/security guidance/threats & risk/Lets-Talk-Passwords/)
 
 Password requirements from sites and systems often encourage a formulaic combination of character types; the problem is, this has a tendency to get us users to produce formulaic passphrases.
 
-If a website requires a mix of upper-case, lower-case and numbers, it's no wonder that we users come up with patterns like turning *'flower*' info *'Flower1'*, or some similar derivative. This doesn't make things weaker, but we should be careful that it doesn't give us a false sense of security.
+If a website requires a mix of upper-case, lower-case and numbers, it's no wonder that we users come up with patterns like turning *'flower*' info *'Flower1'*, or some similar derivative. This doesn't make things weaker, but we should be careful that it doesn't give us a false sense of security over using *'flower'* alone.
 
 ## Trap 2 - Predictable Systems
 
@@ -104,7 +104,7 @@ So we have some advice, which is all well and good, but what should you actually
 
 A popular piece of guidance at the moment is to use the UK National Cyber Security Centre's [three words guidance](https://www.ncsc.gov.uk/blog-post/three-random-words-or-thinkrandom-0?page=1){:target="_blank"}; this provides a turn-key solution you can use, which provides a compromise - very good memorability, but still hard to guess.
 
-The traps for this method can be the number of words in your word pool and the randomness they're picked with. I recommend using a random work generator for this method. You should also consider capitalisation, spaces and special characters and whether you'll work these in for when you're forced to use them.
+The traps for this method can be the number of words in your word pool and the randomness they're picked with. I recommend using a random word generator for this method. You should also consider capitalisation, spaces and special characters and whether you'll work these in for when you're forced to use them.
 
 An additional piece of advice on this is that three words can be used with memory techniques, like making a picture of your passphrase, to make it more memorable. I generated three random words online -
 
@@ -118,7 +118,7 @@ If you want something more secure than the three words approach, you may conside
 
 > Rational carrots challenge 4 babies to slump.
 
-These passphrases are long, have added complexity in your filler words and have the option to include numbers and special characters, as makes sense for your passphrase. This doesn't offer much over the three words approach in terms of memorability, but does add complexity. I would say this one is for the paranoid.
+These passphrases are long, have added complexity in your filler words and have the option to include numbers and special characters, as makes sense for your passphrase. This doesn't offer much over the three words approach in terms of memorability, but does add complexity. I would say this one is for the more paranoid that don't like the three words idea.
 
 You may have issues, however, with complexity requirements and length limits for this kind of passphrase - so read on!
 
