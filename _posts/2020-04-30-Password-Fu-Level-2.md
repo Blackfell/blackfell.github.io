@@ -127,9 +127,11 @@ The generic steps for setting online managers up are as follows; you can use the
 
 # Now what?
 
-{% include figure image_path="/assets/images/posts/password_level_2/seen_the_light.gif" alt="Now you've seen the light!" caption="Do you see the light!?" %}
+I hope you're a password manager convert! That wasn't so hard, was it?
 
-I hope you're a password manager convert! That wasn't so hard, was it? You  might be wondering why we didn't change all your passwords; I actually don't recommend this at first, security is a marathon, tkae your time. When an account password needs changing, add it to your manager; along side that, change accounts at a pace that suits you, starting with most serious - main email, banking, personal accounts, any IOS or Microsoft accounts. Do it over time.
+{% include figure image_path="/assets/images/posts/password_level_2/seen_the_light.gif" alt="Now you've seen the light!" caption="" %}
+
+You  might be wondering why we didn't change all your passwords; I actually don't recommend this at first, security is a marathon, tkae your time. When an account password needs changing, add it to your manager; along side that, change accounts at a pace that suits you, starting with most serious - main email, banking, personal accounts, any IOS or Microsoft accounts. Do it over time.
 
 Another vital step now is to log out of everything and log back in; get that super password memorised, or store a backup safely as we discussed in the password blog series [Level 1](/security guidance/threats & risk/Password-Fu-Level-1/){:target="_blank"}.
 
