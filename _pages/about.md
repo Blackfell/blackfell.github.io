@@ -19,7 +19,7 @@ excerpt: "Who am I, anyway?"
 
 # Why am I here?
 
-My name is Sam. I'm a security analyst for money, but I'm writing here because I enjoy playing with technology and this is a place for some of my more popular ramblings; all the information on this site is, of course all my own, and doesn't represent the views of any organisations, people,animals or plants I work for, with or might happen to be associated with in any way.
+My name is Sam. I'm a security analyst for money, but I'm writing here because I enjoy playing with technology and this is a place for some of my more popular ramblings; all the information on this site is, of course all my own, and doesn't represent the views of any organisations, people, animals or plants I work for, with or might happen to be associated with in any way.
 
 Please enjoy the site, party on and remember to always **be excellent to each other**.
 
