@@ -27,7 +27,7 @@ tags:
   - Linux
   - Hacking
 toc: true
-toc_sticky: false
+toc_sticky: true
 toc_label: "What's in this post?"
 toc_icon: "arrow-circle-down"
 feature_row1:
@@ -35,7 +35,7 @@ feature_row1:
     #alt: "Kali Linux"
     #title: "Kali Linux"
     excerpt: "**Kali Linux** is a Linux Distribution, preloaded with a huge number of tools and resources, designed specifically for Penetration Testing"
-    url: https://www.offensive-security.com/kali-linux-vm-vmware-virtualbox-image-download/ {:target="_blank"}
+    url: https://www.offensive-security.com/kali-linux-vm-vmware-virtualbox-image-download/
     btn_label: "Get a Kali VM"
     btn_class: "btn--inverse"
 
@@ -134,7 +134,7 @@ Installing on Windows is easy! Head over to the VirtualBox [Downloads Page](http
 Once you have the installer, it's good practice to verify its integrity; you can do this by opening a PowerShell prompt and typing the following:
 
 ```PowerShell
-PS C:\> Get-Hashfile -Path .\<path_to_your_file> -Algorithm Sha256
+PS C:\> Get-FileHash -Path .\<path_to_your_file> -Algorithm Sha256
 ```
 
 Compare the output from this command with the [hash list](https://www.virtualbox.org/download/hashes/6.0.14/SHA256SUMS){:target="_blank"} for the version you've downloaded; if the hashes match, you're good to start! If you're feeling fancy, you can do this:
