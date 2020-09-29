@@ -119,21 +119,15 @@ author:
     - label: "Send me an email"
       icon: "fas fa-fw fa-envelope-square"
       url: "mailto:info@blackfell.net"
-    - label: "Website"
-      icon: "fas fa-fw fa-link"
-      # url: "https://your-website.com"
     - label: "Tweet in my general direction."
       icon: "fab fa-fw fa-twitter-square"
       url: "https://twitter.com/blackf3ll"
-    - label: ""
-      icon: "fab fa-fw fa-facebook-square"
-      # url: "https://facebook.com/"
     - label: "Try my (growing) GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/Blackfell"
     - label: "Or, find me on LinkedIn"
       icon: "fab fa-fw fa-linkedin"
-      url: "www.linkedin.com/in/sam-2aab0b174"
+      url: "https://www.linkedin.com/in/sam-2aab0b174"
 
 # Site Footer
 footer:
@@ -141,23 +135,15 @@ footer:
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       url: "https://twitter.com/Blackf3ll"
-    - label: "Facebook"
-      icon: "fab fa-fw fa-facebook-square"
-      # url:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/Blackfell"
-      # url:
-    - label: "GitLab"
-      icon: "fab fa-fw fa-gitlab"
-      # url:
-    - label: "Bitbucket"
-      icon: "fab fa-fw fa-bitbucket"
-      # url:
-    - label: "Instagram"
-      icon: "fab fa-fw fa-instagram"
-      # url:
-
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/sam-2aab0b174"
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:info@blackfell.net"
 
 # Reading Files
 include:

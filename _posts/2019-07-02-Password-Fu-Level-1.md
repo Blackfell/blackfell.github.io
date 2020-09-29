@@ -129,11 +129,11 @@ The longer sentences approach can be modified to something I call truncated word
 
 > Rational carrots challenge 4 babies to slump.
 
-Could be truncated; the simplest truncation would be the first letter, but let's use the first two. I'll add complexity by capitalising the first letter too.
+Could be truncated; the simplest truncation would be the first letter, but that's a bit short, so I'll use two and add complexity by capitalising alternate words:
 
-> RaCaCh4Ba2Sl
+> RAcaCH4ba2SL
 
-But why would we use this system? The main reason is that this is much shorter than the word based approach, some sites and services have short length limits, or maybe you can't reliably type a passphrase that long (I'm looking at you hunt 'n' peck typers). This passphrase has nearly the same degree of memorability as the full phrase, provided the truncation system is easy to remember and use.
+This seems worse, so why would we use this system? The main reason is that this is much shorter than the word based approach, some sites and services have short length limits, or maybe you can't reliably type a passphrase that long (I'm looking at you hunt 'n' peck typers). This passphrase has nearly the same degree of memorability as the full phrase, provided the truncation system is easy to remember and use.
 
 Downfalls with this method are a degree of predictability if your truncation system is public, as well as a reduced usability over just the longer phrase itself. This one is good if you have complexity requirements that your full phrase can't meet too.
 

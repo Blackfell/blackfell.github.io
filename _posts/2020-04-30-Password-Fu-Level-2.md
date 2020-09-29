@@ -82,7 +82,7 @@ For a simple rule of thumb, read the following - Offline managers tend to be mor
 
 ## Can't my browser do this?
 
-Yes, but don't! Most modern browsers have this capabiliyt, but it usually comes with fewer security features (zero-knowledge encryption and additional authentication factors), and/or doesn't allow Syncing across devices.
+Yes, but don't! Most modern browsers have this capability, but it usually comes with fewer security features (zero-knowledge encryption and additional authentication factors), and/or doesn't allow Syncing across devices.
 
 If that doesn't deter you, these browser managers are much more likely to be attacked by malware; there are well known tools, with low barriers to entry that will pull browser stored credentials during basic scanning of a system, so I always reccomend to use a dedicated product.
 
@@ -109,7 +109,7 @@ Now, KeePassXC is free (in every sense) and open source; if you like projects li
 
 ### What was that about a key-file?
 
-Key files and second factors are supported in KeePassXC; these are extra login steps you can add, which, in my view, don't add that much security when you're using the software in the ontext of your device, but adds some worthwhile protection for your password file if you lose a backup disk, for example. A Key file is a normal file that the software must read to unlock your Database (KeePassXC can also generate these); by leaving this file on your device and moving the Database around, you should never lose both at the same time, making attacking a lost Database much harder.
+Key files and second factors are supported in KeePassXC; these are extra login steps you can add, which, in my view, don't add that much security when you're using the software in the context of your device, but adds some worthwhile protection for your password file if you lose a backup disk, for example. A Key file is a normal file that the software must read to unlock your Database (KeePassXC can also generate these); by leaving this file on your device and moving the Database around, you should never lose both at the same time, making attacking a lost Database much harder.
 
 ## Online Managers
 
@@ -131,7 +131,7 @@ I hope you're a password manager convert! That wasn't so hard, was it?
 
 {% include figure image_path="/assets/images/posts/password_level_2/seen_the_light.gif" alt="Now you've seen the light!" caption="" %}
 
-You  might be wondering why we didn't change all your passwords; I actually don't recommend this at first, security is a marathon, tkae your time. When an account password needs changing, add it to your manager; along side that, change accounts at a pace that suits you, starting with most serious - main email, banking, personal accounts, any IOS or Microsoft accounts. Do it over time.
+You  might be wondering why we didn't change all your passwords; I actually don't recommend this at first, security is a marathon, take your time. When an account password needs changing, add it to your manager; along side that, change accounts at a pace that suits you, starting with most serious - main email, banking, personal accounts, any IOS or Microsoft accounts. Do it over time.
 
 Another vital step now is to log out of everything and log back in; get that super password memorised, or store a backup safely as we discussed in the password blog series [Level 1](/security guidance/threats & risk/Password-Fu-Level-1/){:target="_blank"}.
 
