@@ -195,14 +195,12 @@ First, we'll install our attacker machine and configure it; most people start wi
 
 {% include feature_row id="feature_row1" type="left" %}
 
-Download these files and generate their sha256 hashes, so that we can check the integrity of the downloaded files; this is worth doing for the time it takes to complete, as it gives us some protection from corrupted or tampered download links. You may even want to follow the more extensive GPG based verification on the [Kali Downloads page](https://www.kali.org/downloads/){:target="_blank"}, if you have GPG installed.
-
-### PowerShell Hashes (Windows)
+Download these files and check the integrity of the downloaded files; this is worth doing for the time it takes to complete, as it gives us some protection from corrupted or tampered download links. You may even want to follow the more extensive GPG based verification on the [Kali Downloads page](https://www.kali.org/downloads/){:target="_blank"}, if you have GPG installed. Otherwise, SHA256 hashes are usually available and can be generated in PowerShell:
 
 ```Powershell
 Get-Filehash -Path./<insert-path-to-file-here> -Algorithm sha256
 ```
-### Bash Hashes (Linux)
+Or if you're on Linux, Bash:
 
 ```Bash
 ~$ sha256sum .<insert-path-to-file-here>
