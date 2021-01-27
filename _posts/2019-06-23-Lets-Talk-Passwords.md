@@ -93,7 +93,7 @@ The way this works is by taking the passphrase and using it to do a complex math
 
 {% include figure
 image_path="/assets/images/posts/password_problem/hashing.svg"
-alt="Passphrase hashing image" caption="Passphrase hashing uses special mathematical algorithms to encode passphrases into seemingly random (but not really) strings of characters. Changing just one character in a passphrase can have a huge effect on the hash that's generated. Reversing hashes is not feasible using computers." %}
+alt="Passphrase hashing image" caption="Passphrase hashing uses special mathematical algorithms to encode passphrases into seemingly random (but not really) strings of characters. Changing just one character in a passphrase can have a huge effect on the hash that's generated. Reversing most modern hashing algorithms is not feasible for most attackers." %}
 
 Because hashes are so difficult to reverse, they are often referred to as 'one way functions'. But this doesn't make them fool proof...
 
