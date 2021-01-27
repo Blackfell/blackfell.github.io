@@ -15,7 +15,7 @@ title:  "Your password problem"
 date:   2019-06-23 23:00:00 +0000
 header:
   overlay_image: /assets/images/posts/password_problem/logon.jpeg
-  teaser: /assets/images/posts/passphrase_problem/logon.jpeg
+  teaser: /assets/images/posts/password_problem/logon.jpeg
 excerpt: "Why passwords can be frustrating and what to do about it."
 categories:
   - Security guidance
@@ -71,7 +71,7 @@ Let's quickly go into the mechanics of each, before we get to how to fix it.
 This is the simplest form to get to grips with; in this case, the attacker tries various passphrases over and over for the given service you have an account for. This could range from guessing the PIN '1234' on a stolen phone, to automatically guessing your Facebook account passphrase over and over using a computer, in very clever ways.
 
 {% include figure
-image_path="/assets/images/posts/passphrase_problem/passphrase_guessing.svg"
+image_path="/assets/images/posts/password_problem/passphrase_guessing.svg"
 alt="passphrase guessing image" caption="passphrase guessing of an online account - this involves the attacker trying one passphrase after another until a successful logon is achieved. This can be done at incredible machine speeds with thousands of passphrases per user in a short time." %}
 
 passphrase guessing is sometimes prevented by the website or service in question (Captchas 'I am not a robot' tests or phone pin lockouts), but is still a real threat, especially if the attacker has some information with which to make informed guesses (lot's of people use their significant other's name, year of birth + exclamation mark, for example).
@@ -92,7 +92,7 @@ For example, [Facebook has stated](https://www.facebook.com/notes/protect-the-gr
 The way this works is by taking the passphrase and using it to do a complex mathematical calculation. These calculations are designed to be easy enough to work out, but so difficult to reverse that it's not worth trying, a bit like how most people find multiplying numbers easier than dividing them. Instead of checking the passphrase, Facebook can work out the hash and then check it's correct, without ever having to store your passphrase.
 
 {% include figure
-image_path="/assets/images/posts/passphrase_problem/hashing.svg"
+image_path="/assets/images/posts/password_problem/hashing.svg"
 alt="passphrase hashing image" caption="passphrase hashing uses special mathematical algorithms to encode passphrases into seemingly random (but not really) strings of characters. Changing just one character in a passphrase can have a huge effect on the hash that's generated. Reversing hashes is not feasible using computers." %}
 
 Because hashes are so difficult to reverse, they are often referred to as 'one way functions'. But this doesn't make them fool proof...
@@ -101,7 +101,7 @@ Because hashes are so difficult to reverse, they are often referred to as 'one w
 Once an attacker has got hold of some hashes from a service, system, or data breach, they 'crack' them. Cracking can most easily be thought of as a 'guess', 'hash', 'compare' cycle; attackers guess what a passphrase could be, hash the guess and then compare with the stolen hash. If the two hashes match, the attacker knows the guess is good.
 
 {% include figure
-image_path="/assets/images/posts/passphrase_problem/cracking.svg"
+image_path="/assets/images/posts/password_problem/cracking.svg"
 alt="passphrase cracking image" caption="When an attacker cracks passphrases, they follow a 'guess, 'hash', 'compare' cycle until a matching hash is found." %}
 
 Because cracking is done on an attackers own computer, they don't need to wait to see if a logon was successful and there's no risk they'll get locked out of an account; this means that cracking can be done incredibly fast and with little risk of getting caught.
