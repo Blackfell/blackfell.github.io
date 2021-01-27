@@ -101,7 +101,7 @@ Because hashes are so difficult to reverse, they are often referred to as 'one w
 Once an attacker has got hold of some hashes from a service, system, or data breach, they 'crack' them. Cracking can most easily be thought of as a 'guess', 'hash', 'compare' cycle; attackers guess what a passphrase could be, hash the guess and then compare with the stolen hash. If the two hashes match, the attacker knows the guess is good.
 
 {% include figure
-image_path="/assets/images/posts/password_problem/cracking.svg"
+image_path="/assets/images/posts/password_problem/password_cracking.svg"
 alt="Passphrase cracking image" caption="When an attacker cracks passphrases, they follow a 'guess, 'hash', 'compare' cycle until a matching hash is found." %}
 
 Because cracking is done on an attackers own computer, they don't need to wait to see if a logon was successful and there's no risk they'll get locked out of an account; this means that cracking can be done incredibly fast and with little risk of getting caught.
