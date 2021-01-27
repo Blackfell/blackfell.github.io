@@ -14,7 +14,7 @@ defaults:
 title:  "Your password problem"
 date:   2019-06-23 23:00:00 +0000
 header:
-  overlay_image: /assets/images/posts/passphrase_problem/logon.jpeg
+  overlay_image: /assets/images/posts/password_problem/logon.jpeg
   teaser: /assets/images/posts/passphrase_problem/logon.jpeg
 excerpt: "Why passwords can be frustrating and what to do about it."
 categories:
@@ -40,7 +40,7 @@ The stealing of passwords (or some secret) has been at the heart of so many brea
 
 ## What will we do about it?
 
-First and foremost, a huge problem with Passwords is that that little **'word'** part at the end leads people down a certain line of thought (Interested? Try [Psycholinguistics](https://en.wikipedia.org/wiki/Psycholinguistics){:target="_blank"} !), so we're going to change our life by calling them **passphrases** from now on. 
+First and foremost, a huge problem with Passwords is that that little **'word'** part at the end leads people down a certain line of thought (Interested? Try [Psycholinguistics](https://en.wikipedia.org/wiki/Psycholinguistics){:target="_blank"} !), so we're going to change our life by calling them **passphrases** from now on.
 
 In this post I'll be taking you through some of the important weaknesses and considerations around passphrases and in later parts I'll explain what you can do to cut through the noise of advice and get a simple plan to get over the passphrase problem.
 
