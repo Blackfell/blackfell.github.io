@@ -165,7 +165,7 @@ I'll be using Three Words + for this passphrase.
 
 Decide on the length requirement you'll go for; I like at least 15 characters if you're going for characters, or at least 3 words if going for a phrase.
 
-I'm really keen to protect this account so I'm going to aim for 5 words in my passphrase.
+I'm really keen to protect this account so I'm going to aim for 5 words in my passphrase, hopefully we'll see that being this paranoid isn't even that difficult!
 
 ## Get random seed
 
@@ -175,7 +175,7 @@ I generated the following using [onlinewordgenerator](https://randomwordgenerato
 
 > decorative legislation brick joy housewife
 
-## does it make a picture?
+## Does it make a picture?
 
 Use some good memory aides, make a picture, tell a story, whatever works for you; you may wish to record this along with your passphrase.
 
