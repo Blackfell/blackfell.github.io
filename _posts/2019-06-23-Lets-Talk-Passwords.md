@@ -30,7 +30,7 @@ tags:
 
 ---
 
-# Why passphrases in particular?
+# Why passwords in particular?
 
 The stealing of passwords (or some secret) has been at the heart of so many breaches, hacks and takeovers (or whatever you want to call them!). Whether you like it or not, passwords are probably the **first line of defence** in your online life and despite what you may have read, they're probably here to stay.
 
@@ -72,9 +72,9 @@ This is the simplest form to get to grips with; in this case, the attacker tries
 
 {% include figure
 image_path="/assets/images/posts/password_problem/password_guessing.svg"
-alt="passphrase guessing image" caption="passphrase guessing of an online account - this involves the attacker trying one passphrase after another until a successful logon is achieved. This can be done at incredible machine speeds with thousands of passphrases per user in a short time." %}
+alt="Passphrase guessing image" caption="Passphrase guessing of an online account - this involves the attacker trying one passphrase after another until a successful logon is achieved. This can be done at incredible machine speeds with thousands of passphrases per user in a short time." %}
 
-passphrase guessing is sometimes prevented by the website or service in question (Captchas 'I am not a robot' tests or phone pin lockouts), but is still a real threat, especially if the attacker has some information with which to make informed guesses (lot's of people use their significant other's name, year of birth + exclamation mark, for example).
+Passphrase guessing is sometimes prevented by the website or service in question (Captchas 'I am not a robot' tests or phone pin lockouts), but is still a real threat, especially if the attacker has some information with which to make informed guesses (lot's of people use their significant other's name, year of birth + exclamation mark, for example).
 
 ## Breaches & cracking
 Breaches happen when a company loses data either accidentally or as part of some deliberate attack. There have been numerous online breaches in the past, like the [Yahoo](https://www.infosecurity-magazine.com/news/yahoo-confirms-the-breach-of-500mn/){:target="_blank"}, [Adobe](https://krebsonsecurity.com/2013/10/adobe-breach-impacted-at-least-38-million-users/){:target="_blank"} and [RockYou](https://techcrunch.com/2009/12/14/rockyou-hack-security-myspace-facebook-passwords/?guccounter=1&guce_referrer=aHR0cHM6Ly9kdWNrZHVja2dvLmNvbS8&guce_referrer_sig=AQAAAHgn9MBfg8QnKtULXKCw3REA4Ckq7iQlR5isYkAMWQSYtOaunB_3y-erN-74U0BQMu2rgvv5M4lVk7qzStk8UcrTSQ3EvR8pUkfOTWmd3uGhU6ZN4gx5gvbh1-mFMmULmEOvP8vmDDjf_ib8-y7m8skEoTKIi9hE-9nbJWMAO5zi){:target="_blank"} breaches; similar events continue to this day.
@@ -93,7 +93,7 @@ The way this works is by taking the passphrase and using it to do a complex math
 
 {% include figure
 image_path="/assets/images/posts/password_problem/hashing.svg"
-alt="passphrase hashing image" caption="Passphrase hashing uses special mathematical algorithms to encode passphrases into seemingly random (but not really) strings of characters. Changing just one character in a passphrase can have a huge effect on the hash that's generated. Reversing hashes is not feasible using computers." %}
+alt="Passphrase hashing image" caption="Passphrase hashing uses special mathematical algorithms to encode passphrases into seemingly random (but not really) strings of characters. Changing just one character in a passphrase can have a huge effect on the hash that's generated. Reversing hashes is not feasible using computers." %}
 
 Because hashes are so difficult to reverse, they are often referred to as 'one way functions'. But this doesn't make them fool proof...
 
@@ -102,7 +102,7 @@ Once an attacker has got hold of some hashes from a service, system, or data bre
 
 {% include figure
 image_path="/assets/images/posts/password_problem/cracking.svg"
-alt="passphrase cracking image" caption="When an attacker cracks passphrases, they follow a 'guess, 'hash', 'compare' cycle until a matching hash is found." %}
+alt="Passphrase cracking image" caption="When an attacker cracks passphrases, they follow a 'guess, 'hash', 'compare' cycle until a matching hash is found." %}
 
 Because cracking is done on an attackers own computer, they don't need to wait to see if a logon was successful and there's no risk they'll get locked out of an account; this means that cracking can be done incredibly fast and with little risk of getting caught.
 
