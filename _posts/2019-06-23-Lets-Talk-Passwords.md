@@ -97,7 +97,7 @@ alt="Passphrase hashing image" caption="Passphrase hashing uses special mathemat
 
 Because hashes are so difficult to reverse, they are often referred to as 'one way functions'. But this doesn't make them fool proof...
 
-### passphrase cracking
+### Passphrase cracking
 Once an attacker has got hold of some hashes from a service, system, or data breach, they 'crack' them. Cracking can most easily be thought of as a 'guess', 'hash', 'compare' cycle; attackers guess what a passphrase could be, hash the guess and then compare with the stolen hash. If the two hashes match, the attacker knows the guess is good.
 
 {% include figure
