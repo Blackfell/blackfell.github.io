@@ -196,7 +196,7 @@ This also changes my memory story - now decorative legislation is less than bric
 ## It's ready!
 
 
-Now I have my passphrase, I'm going to remove the space characters, since I don't need them and I have:
+Now I have my passphrase, I'm going to remove the space characters, since they're 'banned' in the service I'm authenticating to. So now, I have:
 
 > decorativelegislation<brickjoy2housewife
 
