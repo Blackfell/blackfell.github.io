@@ -212,4 +212,4 @@ The next part of this series will touch on this more; we need to think about it 
 
 ![It's over](/assets/images/posts/password_level_1/bueller.gif)
 
-Watch out for the next post - Password Kung Fu Level 2 - where you'll take your credential journey on to the next stage; we'll be adding usability, simplicity and automation to your life. Imagine if you could **stop having to remember all those passwords**, well that's where we're going!
+Watch out for the next post - [Password Kung Fu Level 2](/security guidance/threats & risk/Password-Fu-Level-2/) - where you'll take your credential journey on to the next stage; we'll be adding usability, simplicity and automation to your life. Imagine if you could **stop having to remember all those passwords**, well that's where we're going!
