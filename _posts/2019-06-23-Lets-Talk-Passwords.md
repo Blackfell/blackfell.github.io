@@ -32,11 +32,11 @@ tags:
 
 # Why passphrases in particular?
 
-Passwords are a pain. We're told to use complicated ones, change them for every site every few months, we forget them and worst of all, we're not actually that good at making them. But it doesn't have to be this way at all.
+The stealing of passwords (or some secret) has been at the heart of so many breaches, hacks and takeovers (or whatever you want to call them!). Whether you like it or not, passwords are probably the **first line of defence** in your online life and despite what you may have read, they're probably here to stay.
+
+But passwords are a pain! We're told to use complicated ones, change them for every site every few months, we forget them and worst of all, we're not actually that good at making them. But it doesn't have to be this way at all.
 
 This post is part of a short series, designed to let you be free to get on with the things you love in life and not worry about passwords any more!
-
-The stealing of passwords (or some secret) has been at the heart of so many breaches, hacks and takeovers (or whatever you want to call them!). Whether you like it or not, passwords are probably the **first line of defence** in your online life and despite what you may have read, they're probably here to stay.
 
 ## What will we do about it?
 
