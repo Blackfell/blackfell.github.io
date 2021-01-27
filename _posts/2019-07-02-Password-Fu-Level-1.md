@@ -204,7 +204,7 @@ Even for paranoid ol' me, I'm happy with the complexity & randomness, it's not r
 
 ## Record this - look forward
 
-in a way that makes sense to you; I'm going to assume you're a 'normal person' (whatever that means), so we'll write it down, with a view to storing it securely in a safe or hidden location, maybe just until we remember it.
+Record your phrase in a way that makes sense to you; I'm going to assume you're a 'normal person' (whatever that means), so we'll write it down, with a view to storing it securely in a safe or hidden location, maybe just until we remember it.
 
 The next part of this series will touch on this more; we need to think about it carefully, so we'll come back to it again.
 
