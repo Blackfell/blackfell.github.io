@@ -182,7 +182,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -191,7 +191,7 @@
      inkscape:groupmode="layer"
      id="layer1">
     <rect
-       style="fill:#f9f9f9;stroke:#1a1a1a;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       style="fill:#f9f9f9;stroke:#1a1a1a;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers;"
        id="rect1309"
        width="77.157669"
        height="20.748558"
@@ -200,13 +200,13 @@
     <text
        xml:space="preserve"
        id="text1311"
-       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect1313);fill:#000000;fill-opacity:1;stroke:none;stroke-width:3.22028;stroke-miterlimit:4;stroke-dasharray:none;"
+       style="font-style:normal;font-weight:normal;font-size:10.16043902px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect1313);fill:#000000;fill-opacity:1;stroke:none;stroke-width:3.22028;stroke-miterlimit:4;stroke-dasharray:none;-inkscape-font-specification:'sans-serif, Normal';font-stretch:normal;font-variant:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;"
        transform="matrix(1.0866285,0,0,1.0870946,-51.847688,-36.136794)"><tspan
          x="76.455078"
-         y="67.541783"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5833px;font-family:'Cousine for Powerline';-inkscape-font-specification:'Cousine for Powerline, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:3.22028;stroke-miterlimit:4;stroke-dasharray:none">Password1</tspan></tspan></text>
+         y="67.114608"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.1604px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:3.22028;stroke-miterlimit:4;stroke-dasharray:none">Password1</tspan></tspan></text>
     <rect
-       style="fill:#f9f9f9;stroke:#1a1a1a;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       style="fill:#f9f9f9;stroke:#1a1a1a;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers;"
        id="rect6633"
        width="77.157669"
        height="20.748558"
@@ -215,18 +215,18 @@
     <text
        xml:space="preserve"
        id="text6637"
-       style="font-style:normal;font-weight:normal;font-size:10.58329997px;line-height:1.25;font-family:'Cousine for Powerline';letter-spacing:0px;word-spacing:0px;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:3.22028;stroke-miterlimit:4;stroke-dasharray:none;shape-inside:url(#rect6639);-inkscape-font-specification:'Cousine for Powerline, Normal';font-stretch:normal;font-variant:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;"
+       style="font-style:normal;font-weight:normal;font-size:10.16043902px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:3.22028;stroke-miterlimit:4;stroke-dasharray:none;shape-inside:url(#rect6639);-inkscape-font-specification:'sans-serif, Normal';font-stretch:normal;font-variant:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;"
        transform="matrix(1.0866285,0,0,1.0870946,85.499786,-37.257525)"><tspan
          x="76.455078"
-         y="67.541783"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5833px;font-family:'Cousine for Powerline';-inkscape-font-specification:'Cousine for Powerline, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">8mpl0nq3i</tspan></tspan></text>
+         y="67.114608"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.1604px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">8mpl0nq3i</tspan></tspan></text>
     <path
-       style="fill:none;stroke:#00dd20;stroke-width:0.765002;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker3652)"
+       style="fill:none;stroke:#00dd20;stroke-width:0.765002;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker3652);"
        d="m 104.34435,32.895943 h 52.5566"
        id="path6641" />
     <text
        xml:space="preserve"
-       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5834px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;opacity:0.99;fill:#00dd20;fill-opacity:1;stroke:none;stroke-width:0.264584"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.04299024px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;opacity:0.99;fill:#00dd20;fill-opacity:1;stroke:none;stroke-width:0.264584;"
        x="118.14652"
        y="29.874298"
        id="text6741"><tspan
@@ -234,10 +234,10 @@
          id="tspan6739"
          x="118.14652"
          y="29.874298"
-         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5834px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#00dd20;fill-opacity:1;stroke-width:0.264584">Hash</tspan></text>
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.04299024px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#00dd20;fill-opacity:1;stroke-width:0.264584;">Hash</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5834px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;opacity:0.99;fill:#00dd20;fill-opacity:1;stroke:none;stroke-width:0.264584"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.04299024px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;opacity:0.99;fill:#00dd20;fill-opacity:1;stroke:none;stroke-width:0.264584;"
        x="114.79012"
        y="43.450695"
        id="text6745"><tspan
@@ -245,9 +245,9 @@
          id="tspan6743"
          x="114.79012"
          y="43.450695"
-         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5834px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#00dd20;fill-opacity:1;stroke-width:0.264584">(Easy)</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.04299024px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#00dd20;fill-opacity:1;stroke-width:0.264584;">(Easy)</tspan></text>
     <rect
-       style="fill:#f9f9f9;stroke:#1a1a1a;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       style="fill:#f9f9f9;stroke:#1a1a1a;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers;"
        id="rect6783"
        width="77.157669"
        height="20.748558"
@@ -256,13 +256,13 @@
     <text
        xml:space="preserve"
        id="text6787"
-       style="font-style:normal;font-weight:normal;font-size:10.5833px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect6805);fill:#000000;fill-opacity:1;stroke:none;stroke-width:3.22028;stroke-miterlimit:4;stroke-dasharray:none;"
+       style="font-style:normal;font-weight:normal;font-size:10.16043902px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect6805);fill:#000000;fill-opacity:1;stroke:none;stroke-width:3.22028;stroke-miterlimit:4;stroke-dasharray:none;-inkscape-font-specification:'sans-serif, Normal';font-stretch:normal;font-variant:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;"
        transform="matrix(1.0866285,0,0,1.0870946,-51.847688,5.2546284)"><tspan
          x="76.455078"
-         y="67.541783"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5833px;font-family:'Cousine for Powerline';-inkscape-font-specification:'Cousine for Powerline, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:3.22028;stroke-miterlimit:4;stroke-dasharray:none">Password1</tspan></tspan></text>
+         y="67.114608"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.1604px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:3.22028;stroke-miterlimit:4;stroke-dasharray:none">Password1</tspan></tspan></text>
     <rect
-       style="fill:#f9f9f9;stroke:#1a1a1a;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
+       style="fill:#f9f9f9;stroke:#1a1a1a;stroke-width:3.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers;"
        id="rect6789"
        width="77.157669"
        height="20.748558"
@@ -271,18 +271,18 @@
     <text
        xml:space="preserve"
        id="text6793"
-       style="font-style:normal;font-weight:normal;font-size:10.58329997px;line-height:1.25;font-family:'Cousine for Powerline';letter-spacing:0px;word-spacing:0px;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:3.22028;stroke-miterlimit:4;stroke-dasharray:none;shape-inside:url(#rect6807);-inkscape-font-specification:'Cousine for Powerline, Normal';font-stretch:normal;font-variant:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;"
+       style="font-style:normal;font-weight:normal;font-size:10.16043902px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;fill:#000000;fill-opacity:1;stroke:none;stroke-width:3.22028;stroke-miterlimit:4;stroke-dasharray:none;shape-inside:url(#rect6807);-inkscape-font-specification:'sans-serif, Normal';font-stretch:normal;font-variant:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;"
        transform="matrix(1.0866285,0,0,1.0870946,85.499786,4.1338974)"><tspan
          x="76.455078"
-         y="67.541783"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5833px;font-family:'Cousine for Powerline';-inkscape-font-specification:'Cousine for Powerline, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">8mpl0nq3i</tspan></tspan></text>
+         y="67.114608"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.1604px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">8mpl0nq3i</tspan></tspan></text>
     <path
-       style="fill:none;stroke:#e9a805;stroke-width:0.765002;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker6811)"
+       style="fill:none;stroke:#e9a805;stroke-width:0.765002;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker6811);"
        d="M 158.1798,74.287366 H 105.6232"
        id="path6795" />
     <text
        xml:space="preserve"
-       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5834px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;opacity:0.99;fill:#e9a805;fill-opacity:1;stroke:none;stroke-width:0.264584"
+       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.04299024px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;opacity:0.99;fill:#e9a805;fill-opacity:1;stroke:none;stroke-width:0.264584;"
        x="109.84723"
        y="71.265724"
        id="text6799"><tspan
@@ -290,10 +290,10 @@
          id="tspan6797"
          x="109.84723"
          y="71.265724"
-         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5834px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#e9a805;fill-opacity:1;stroke-width:0.264584">Reverse</tspan></text>
+         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.04299024px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#e9a805;fill-opacity:1;stroke-width:0.264584;">Reverse</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5834px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;opacity:0.99;fill:#e9a805;fill-opacity:1;stroke:none;stroke-width:0.264584"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.04299024px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;letter-spacing:0px;word-spacing:0px;opacity:0.99;fill:#e9a805;fill-opacity:1;stroke:none;stroke-width:0.264584;"
        x="114.50848"
        y="84.842125"
        id="text6803"><tspan
@@ -301,6 +301,6 @@
          id="tspan6801"
          x="114.50848"
          y="84.842125"
-         style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10.5834px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Italic';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#e9a805;fill-opacity:1;stroke-width:0.264584">(Hard)</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.04299024px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#e9a805;fill-opacity:1;stroke-width:0.264584;">(Hard)</tspan></text>
   </g>
 </svg>

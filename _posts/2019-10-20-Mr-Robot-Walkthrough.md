@@ -225,7 +225,7 @@ We need to guess the login credentials for the site by conducting online passwor
 
 ## Hints
 
-Guessing usernames and passwords from lists can be time consuming, can you find a way to cut down the time taken to guess a large list of users **and** passwords? You have found a dictionary, perhaps this will be useful, maybe you'd like to build your own website from the Mr Robot wiki page. What tools can you find that will let you guess usernames and passwords for web logins, or WordPress installations?
+Guessing usernames and passwords from lists can be time consuming, can you find a way to cut down the time taken to guess a large list of users **and** passwords? You have found a dictionary, perhaps this will be useful, maybe you'd like to build your own wordlist from the Mr Robot wiki page. What tools can you find that will let you guess usernames and passwords for web logins, or WordPress installations?
 
 ## Solution
 

@@ -26,7 +26,7 @@ tags:
   - Hashes
   - Cracking
   - Social Engineering
-  - Breeches
+  - Breaches
 
 ---
 
@@ -79,7 +79,7 @@ Passphrase guessing is sometimes prevented by the website or service in question
 ## Breaches & cracking
 Breaches happen when a company loses data either accidentally or as part of some deliberate attack. There have been numerous online breaches in the past, like the [Yahoo](https://www.infosecurity-magazine.com/news/yahoo-confirms-the-breach-of-500mn/){:target="_blank"}, [Adobe](https://krebsonsecurity.com/2013/10/adobe-breach-impacted-at-least-38-million-users/){:target="_blank"} and [RockYou](https://techcrunch.com/2009/12/14/rockyou-hack-security-myspace-facebook-passwords/?guccounter=1&guce_referrer=aHR0cHM6Ly9kdWNrZHVja2dvLmNvbS8&guce_referrer_sig=AQAAAHgn9MBfg8QnKtULXKCw3REA4Ckq7iQlR5isYkAMWQSYtOaunB_3y-erN-74U0BQMu2rgvv5M4lVk7qzStk8UcrTSQ3EvR8pUkfOTWmd3uGhU6ZN4gx5gvbh1-mFMmULmEOvP8vmDDjf_ib8-y7m8skEoTKIi9hE-9nbJWMAO5zi){:target="_blank"} breaches; similar events continue to this day.
 
-A breach may include all sorts of interesting data, but they can publicly disclose legitimate usernames and passphrases from wherever the breech originates. An attacker who causes a breach, or who buys access to breach data can use these details to steal accounts and the most frustrating part is that as a user, you may have done everything right with you passphrase, but it still gets leaked!
+A breach may include all sorts of interesting data, but they can publicly disclose legitimate usernames and passphrases from wherever the breach originates. An attacker who causes a breach, or who buys access to breach data can use these details to steal accounts and the most frustrating part is that as a user, you may have done everything right with you passphrase, but it still gets leaked!
 
 If you're curious about breaches and whether you might be involved, Troy Hunt's [have I been pwned](https://haveibeenpwned.com/){:target="_blank"} site will let you look up your email address and see if you're part of one of the well known data breaches that have been communicated to the site owners. But remember! Just because you're not in there doesn't mean you're not in an *unknown* data breach.
 
