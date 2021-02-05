@@ -40,9 +40,12 @@ This week, I dug out my dusty copy of Black Hat Go, a book I've been getting aro
 
 ## How will this change my life?
 
-If you're into your security, particularly form an offensive side, using Go will add a really nice new skillset to your toolbox. Go will let you build tools (simple or complex, up to you!) that compile to a single 'blob', run fast and  manage lot's of the hard programming (concurrency included) for you.  
+If you're into your offensive security, using Go will add a really nice new skillset to your box of tricks. Go will let you build tools (simple or complex, up to you!) that compile to a single (fairly small) 'blob', with simple concurrency and thread management, excellent cross-compilation (No Wine!) and actually a compilation and testing command that's almost as simple as developing a Python script.  
 
-I'd suggest that working witih Go like this is probably going to be a bit easier if you are comfortable working with Bash or maybe a little bit of Python (even just being able to read these will be enough), but don't let that hold you back if you're keen.  I've gone through the first chapter or two so far and in just a few evenings, the book has guided me through some really nice simple TCP tooling. My exposure to compiled languages stems from awkward Mathematical problems at Univeristy and learning Go was a little outfacing because I wanted to avoid that again, but Go is givine me serious Python vibes in the prevalence and usability of core Libraries, I think I might be a convert!
+I'd suggest that working with Go like this is probably going to be a bit easier if you are comfortable working with Bash or maybe a little bit of Python (even just being able to read these will be enough), but don't let that hold you back if you're keen.  I've gone through the first chapter or two so far and in just a couple of evenings, the book has guided me through
+ some really nice simple TCP tooling. 
+
+My exposure to compiled languages stems from awkward Mathematical problems at Univeristy and learning Go was a little outfacing because I wanted to avoid that again, but Go is giving me serious Python vibes in the prevalence and usability of (mostly core) Libraries, I think I might be a convert! If you're worried about the learning curve, you could always get the basic syntax and conventions down via Codeacademy, Sololearn etc. etc. etc.
 
 # Netgopher
 
