@@ -16,8 +16,7 @@ date:   2021-01-30 21:00:00 +0000
 header:
   overlay_image: /assets/images/posts/netgopher/go.gif
   teaser: /assets/images/posts/netgopher/go.gif
-  caption: A very excellent animated gopher courtesy of 
-  [egonelbre](https://github.com/egonelbre) - Check them out, they're very nice!
+  caption: A very excellent animated gopher courtesy of [egonelbre](https://github.com/egonelbre) - Check them out, they're very nice!
 excerpt: "New tool who dis?"
 categories:
   - Labs & Hacking
@@ -27,9 +26,7 @@ tags:
   - Go
 feature_row1:
   - image_path: /assets/images/posts/netgopher/BHG.webp
-    excerpt: "Black Hat Go is an excellent No Starch Press book covering the 
-    use of Golang for Pen Testing, bug bounty and other offensive security 
-    practices. It also has a pretty cool cover."
+    excerpt: "Black Hat Go is an excellent No Starch Press book covering the use of Golang for Pen Testing, bug bounty and other offensive security practices. It also has a pretty cool cover."
     url: https://nostarch.com/blackhatgo
     btn_label: "Check out The Book"
     btn_class: "btn--inverse"
