@@ -86,7 +86,7 @@ starting two connections via Netgopher." %}
 
 So if you're curious about Go, maybe you're thinking about it, why not grab this 
 script and have a go? If I can do this in a couple of evenings, you definately 
-can! Read the source and play with NetGopher as set out below and happy hacking! 
+can! Read the source and play with Netgopher as set out below and happy hacking! 
 
 The rest of this post is actually a glorified excerpt from the README on the 
 [Github Repo](https://github.com/blackfell/ng){:target="_blank"}. So feel free 
@@ -131,7 +131,6 @@ Usage of ng:
 The simplest examples are the classic netcat connect and listen functions. You 
 can try this out with a listener/connection pair:
 
-![Listener & connect example image](/assets/images/posts/netgopher/basic.gif)
 {% include figure
 image_path="/assets/images/posts/netgopher/basic.gif"
 alt="Example gif of listener and connection usage" caption="An example of 
