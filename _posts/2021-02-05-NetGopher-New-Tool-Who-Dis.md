@@ -16,6 +16,7 @@ date:   2021-01-30 21:00:00 +0000
 header:
   overlay_image: /assets/images/posts/netgopher/go.gif
   teaser: /assets/images/posts/netgopher/go.gif
+  caption: A very excellent animated gopher courtesy of [egonelbre](https://github.com/egonelbre) - Check them out, they're very nice!
 excerpt: "New tool who dis?"
 categories:
   - Labs & Hacking
@@ -37,8 +38,6 @@ This week, I dug out my dusty copy of Black Hat Go, a book I've been getting aro
 
 {% include feature_row id="feature_row1" type="left" %}
 
-Also, the very excellent animated gopher is from [egonelbre](https://github.com/egonelbre), who has released this and some friends uder Creative Commons - Very nice!
-
 ## How will this change my life?
 
 If you're into your security, particularly form an offensive side, using Go will add a really nice new skillset to your toolbox. Go will let you build tools (simple or complex, up to you!) that compile to a single 'blob', run fast and  manage lot's of the hard programming (concurrency included) for you.  
@@ -47,15 +46,21 @@ I'd suggest that working witih Go like this is probably going to be a bit easier
 
 # Netgopher
 
-This is where Netgopher comes in; this is my super simple implementation of Netcat, built using Go from the material covered in the first few chapters of the book (plus some command line parsing and options goodness). Most of the Netcat 'extra features' are not included, but I've kept it to those things I find most useful during a CTF, TCP connections, execution and port relays. 
+Enter Netgopher. *What is that?* I hear you cry? Well to be honest, it's the same example Netcat mimic that every person starting on Black Hat Go or Black Hat Python (Another No Starch belter) puts on their Github! That said, I've tried to make my super simple implementation of Netcat (built using Go, following the first two chapters of the book, of course) a bit more useful for myself as I work CTFs and so on. 
 
-![Example gif of relay usage](/assets/images/posts/netgopher/relay.gif)
+In addition to the usual example TCP connection functionality, I've Googled it up and added some better command line parsing and options goodness, whilst most of the Netcat 'extra features' (hexdump, UDP etc.) are not included, you can do enough to get by on simple HackTheBox/TryHackMe/VulnHub boxes with TCP connections, command execution and built-in  port relaying (best bit IMHO). 
 
-You can get, read the source and play with NetGopher as set out below; the rest of this post is actually a glorified excerpt from the README on the [Github Repo](https://github.com/blackfell/ng){:target="_blank"}. So feel free to check that out too.
+{% include figure
+image_path="/assets/images/posts/netgopher/relay.gif"
+alt="Example gif of Relay usage" caption="An example of a connection to connection relay. A Pair of listeners are started, then a connecting relay is set up, by starting two connections via Netgopher." %}
+
+So if you're curious about Go, maybe you're thinking about it, why not grab this script and have a go? If I can do this in a couple of evenings, you definately can! Read the source and play with NetGopher as set out below and happy hacking! 
+
+The rest of this post is actually a glorified excerpt from the README on the [Github Repo](https://github.com/blackfell/ng){:target="_blank"}. So feel free to check that out too if you know where you're going from here.
 
 # Installation
 
-You can **but probably shouldn't**  get Netgopher easily with:
+You can **but probably shouldn't**  get Netgopher by running the following command once you have Go installed:
 
 ```
 ❯ go get -u "github.com/blackfell/ng"
@@ -63,9 +68,9 @@ You can **but probably shouldn't**  get Netgopher easily with:
 
 ## Why not? 
 
-Well this will only install ng in your local $GOPATH; additionally, the binary will be fairly large, compiled only for your OS. 
+Well installing this way will only install ng in your local $GOPATH; additionally, the binary will be fairly large and compiled only for your OS. 
 
-I wrote this version to use during CTFs meaning I want a smaller binary, preferably with multi-platform support, so... **grab a copy of all the [released binaries](https://github.com/Blackfell/ng/releases/tag/v0.1) instead**, which have been cross compileed and stripped down to ~ 2MB. 
+I wrote this little application with CTFs in mind, meaning I want a smaller binary, preferably with multi-platform support, so... **grab a copy of all the [released binaries](https://github.com/Blackfell/ng/releases/tag/v0.1) instead**, which have been cross compileed and stripped down to ~ 2MB. 
 
 # Examples
 
@@ -84,9 +89,12 @@ Usage of ng:
   -v    Display detailed progress messages.
 ```
 
-The simplest examples are the classic netcat connect and listen functions. You can try this out with a listener/conneciton pair:
+The simplest examples are the classic netcat connect and listen functions. You can try this out with a listener/connection pair:
 
 ![Listener & connect example image](/assets/images/posts/netgopher/basic.gif)
+{% include figure
+image_path="/assets/images/posts/netgopher/basic.gif"
+alt="Example gif of listener and connection usage" caption="An example of listeners and connections.A listener is started, then a connection made from the same host." %}
 
 ## CTF Use Cases
 Some really common use cases I have are:
@@ -118,13 +126,15 @@ C:\Windowss\system32>
 ❯ ng -c local_hostname:1234 -c 127.0.0.1:445
 # Your local machine now has access to that remote port 445 on 127.0.0.1:445
 ```
-# Port 'spoofing' - Forward incoming connections to local port:
+### Port 'spoofing' - Forward incoming connections to local port:
 ```
 # Listen on port 1234 and forward connections to ssh server
 ❯ ng -l 1234 -c 127.0.0.1:22
 ```
-# Thoughts?
+# That's it!
 
-If you have any thoughts, I welcome issues, pulls, emails, tweets and more, just hit one of the socials below. I hope I've insipired you to check out some Go, or even program a little in something - anything.
+So there you have it - if this peaked your interest why not grab a copy of Netgopher and have a messaround, or read the source? If you have any thoughts, I welcome issues, pulls, emails, tweets and more, just hit one of the socials below. I hope I've insipired you to check out some Go, or even program a little in something - anything.
 
-If you're into this, [Humble Bundle](https://www.humblebundle.com/) also host periodic super cheap sales of No Starch Press books- that's where I got my copy (in eBook form) and it might be a good idea to keep your eyes peeled for similar sales in future. Peace!
+## Get your copy on sale
+
+It's also worth noting that if you're into this, [Humble Bundle](https://www.humblebundle.com/) also host periodic super cheap sales of No Starch Press books- that's where I got my copy (in eBook form) and it might be a good idea to keep your eyes peeled for similar sales in future. Peace!
