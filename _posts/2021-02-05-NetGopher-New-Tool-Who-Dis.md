@@ -31,28 +31,27 @@ feature_row1:
     btn_class: "btn--inverse"
 ---
 
-
 # What's all this about?
 
-This week, I dug out my copy of Black Hat Go, a book I've been getting roudn to reading for an age, and I loved the first couple of chapters so much I thought I'd recommend it. 
+This week, I dug out my dusty copy of Black Hat Go, a book I've been getting around to reading for an age. Long story short - I loved the first couple of chapters so much I thought I'd recommend it right off the bat. 
 
 {% include feature_row id="feature_row1" type="left" %}
 
-NOTE - The very excellent animated gopher is from [egonelbre](https://github.com/egonelbre), who has made these public, nice!
+Also, the very excellent animated gopher is from [egonelbre](https://github.com/egonelbre), who has released this and some friends uder Creative Commons - Very nice!
 
 ## How will this change my life?
 
 If you're into your security, particularly form an offensive side, using Go will add a really nice new skillset to your toolbox. Go will let you build tools (simple or complex, up to you!) that compile to a single 'blob', run fast and  manage lot's of the hard programming (concurrency included) for you.  
 
-I'd suggest that working witih Go like this is probably most useful for people who are comfortable working with Bash or maybe a little bit of Python, but don't let that hold you back if you're keen.  I've gone through the first chapter or two so far and in just a few evenings, the book has guided me through some really nice simple TCP tooling. 
+I'd suggest that working witih Go like this is probably going to be a bit easier if you are comfortable working with Bash or maybe a little bit of Python (even just being able to read these will be enough), but don't let that hold you back if you're keen.  I've gone through the first chapter or two so far and in just a few evenings, the book has guided me through some really nice simple TCP tooling. My exposure to compiled languages stems from awkward Mathematical problems at Univeristy and learning Go was a little outfacing because I wanted to avoid that again, but Go is givine me serious Python vibes in the prevalence and usability of core Libraries, I think I might be a convert!
 
 # Netgopher
 
-This is where Netgopher comes in; this is my super simple implementation of Netcat, built using Go. Most of the Netcat 'extra features' are not included, but I've kept it to those things I find most useful during a CTF, TCP connections, execution and port relays. 
+This is where Netgopher comes in; this is my super simple implementation of Netcat, built using Go from the material covered in the first few chapters of the book (plus some command line parsing and options goodness). Most of the Netcat 'extra features' are not included, but I've kept it to those things I find most useful during a CTF, TCP connections, execution and port relays. 
 
-![Example gif of relay usage](assets/images/posts/netgopher/relay.gif)
+![Example gif of relay usage](/assets/images/posts/netgopher/relay.gif)
 
-You can get NetGopher as set out below; the rest of this post is actually en excerpt from the README on the [Github Repo](https://github.com/blackfell/ng){:target="_blank"}
+You can get, read the source and play with NetGopher as set out below; the rest of this post is actually a glorified excerpt from the README on the [Github Repo](https://github.com/blackfell/ng){:target="_blank"}. So feel free to check that out too.
 
 # Installation
 
@@ -87,7 +86,7 @@ Usage of ng:
 
 The simplest examples are the classic netcat connect and listen functions. You can try this out with a listener/conneciton pair:
 
-![Listener & connect example image](assets/images/posts/netgopher/basic.gif)
+![Listener & connect example image](/assets/images/posts/netgopher/basic.gif)
 
 ## CTF Use Cases
 Some really common use cases I have are:
@@ -124,5 +123,8 @@ C:\Windowss\system32>
 # Listen on port 1234 and forward connections to ssh server
 ❯ ng -l 1234 -c 127.0.0.1:22
 ```
-# Feedback?
-Issues, pulls, emails, tweets all welcome!
+# Thoughts?
+
+If you have any thoughts, I welcome issues, pulls, emails, tweets and more, just hit one of the socials below. I hope I've insipired you to check out some Go, or even program a little in something - anything.
+
+If you're into this, [Humble Bundle](https://www.humblebundle.com/) also host periodic super cheap sales of No Starch Press books- that's where I got my copy (in eBook form) and it might be a good idea to keep your eyes peeled for similar sales in future. Peace!
