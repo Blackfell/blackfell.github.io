@@ -29,9 +29,8 @@ feature_row1:
     url: https://nostarch.com/blackhatgo
     btn_label: "Check out The Book"
     btn_class: "btn--inverse"
---
+---
 
-NOTE - very excellent gophers from [egonelbre](https://github.com/egonelbre), who has made these public, nice!
 
 # What's all this about?
 
