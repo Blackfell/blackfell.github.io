@@ -40,7 +40,7 @@ This week, I dug out my dusty copy of Black Hat Go, a book I've been getting aro
 
 ## How will this change my life?
 
-If you're into your offensive security, using Go will add a really nice new skillset to your box of tricks. Go will let you build tools (simple or complex, up to you!) that compile to a single (fairly small) 'blob', with simple concurrency and thread management, excellent cross-compilation (No Wine!) and actually a compilation and testing command that's almost as simple as developing a Python script.  
+If you're into your offensive security, using Go will add a really nice new skillset to your box of tricks. Go will let you build tools (simple or complex, up to you!) that compile to a single (fairly small) 'blob', with simple concurrency and thread management, excellent cross-compilation (No Wine!) and a compilation/testing command that's almost as simple as developing a Python script.  
 
 I'd suggest that working with Go like this is probably going to be a bit easier if you are comfortable working with Bash or maybe a little bit of Python (even just being able to read these will be enough), but don't let that hold you back if you're keen.  I've gone through the first chapter or two so far and in just a couple of evenings, the book has guided me through
  some really nice simple TCP tooling. 
