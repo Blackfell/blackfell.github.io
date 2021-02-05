@@ -55,7 +55,7 @@ Most of my exposure to compiled languages comes from solving awkward Mathematica
 
 # Netgopher
 
-Enter Netgopher. *What is that?* I hear you cry? Well to be honest, it's the same example Netcat mimic that every person starting on Black Hat Go or Black Hat Python (Another No Starch belter) puts on their Github! That said, I've tried to make my super simple implementation of Netcat (built using Go, following the first two chapters of the book, of course) a bit more useful for myself as I work CTFs and so on. 
+Enter Netgopher. *What is that?* I hear you cry? Well to be honest, it's the same example Netcat mimic that every person starting on Black Hat Go or Black Hat Python (Another No Starch belter) puts on their Github! That said, I've tried to make my super simple implementation of Netcat a bit more useful for myself as I work CTFs and so on. 
 
 In addition to the usual example TCP connection functionality, I've Googled it up and added some better command line parsing and options goodness, whilst most of the Netcat 'extra features' (hexdump, UDP etc.) are not included, you can do enough to get by on simple HackTheBox/TryHackMe/VulnHub boxes with TCP connections, command execution and built-in  port relaying (best bit IMHO). 
 
