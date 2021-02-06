@@ -55,7 +55,7 @@ simple usages or concepts, like variables, bits and bytes and so on. If you're
 comfortable working with Bash or maybe a little bit of Python (even just being 
 able to read these) you'll have a great start. but don't let that hold you back 
 if you're keen! I've gone through the first chapter or two so far and in just 
-a couple of evenings, the book has guided me through some really nice conepts
+a couple of evenings, the book has guided me through some really nice concepts
 in such a simple way.
 
 Most of my exposure to compiled languages comes from solving awkward Mathematical
@@ -65,8 +65,8 @@ Python vibes in the ease of drafting, testing and availability/usability of
 (mostly core) Libraries. I think I might be a convert! 
 
 With all that said, If you're worried about the learning curve, you could always 
-get the basic syntax and conventions down via Codeacademy, Sololearn etc. it's 
-atually really begineer friendly and you should **just do it!**
+get the basic syntax and conventions down via Codeacademy, Sololearn etc. first,
+then pick up something more technical like this, **just do it!**
 
 # Netgopher
 
@@ -89,12 +89,13 @@ relay. A Pair of listeners are started, then a connecting relay is set up, by
 starting two connections via Netgopher." %}
 
 So if you're curious about Go, maybe you're thinking about it, why not grab this 
-script and have a go? If I can do this in a couple of evenings, you definately 
-can! Read the source and play with Netgopher as set out below and happy hacking! 
+script and see what it's capable of? If I can do this in a couple of evenings, 
+you definately can! Read the source and play with Netgopher as set out below 
+and happy hacking! 
 
-The rest of this post is actually a glorified excerpt from the README on the 
-[Github Repo](https://github.com/blackfell/ng){:target="_blank"}. So feel free 
-to check that out too if you know where you're going from here.
+The rest of this post is actually a glorified excerpt from the README for ng on 
+my [Github Repo](https://github.com/blackfell/ng){:target="_blank"}. So feel 
+free to check that out too if you know where you're going from here.
 
 # Installation
 
@@ -180,8 +181,8 @@ C:\Windowss\system32>
 ```
 # That's it!
 
-So there you have it - if this peaked your interest why not grab a copy of 
-Netgopher and have a messaround, or read the source? If you have any thoughts, 
+So there you have it - if this piqued your interest why not grab a copy of 
+Netgopher and have a mess around, or read the source? If you have any thoughts, 
 I welcome issues, pulls, emails, tweets and more, just hit one of the socials 
 below. I hope I've insipired you to check out some Go, or even program a 
 little in something - anything.
