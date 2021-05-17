@@ -1,3 +1,4 @@
+---
 title:  "Writing Shellcode"
 date:   2021-05-17 23:00:00 +0000
 header:
@@ -8,11 +9,10 @@ categories:
   - Technical
 tags:
   - CTF
-  - Exploit Developmentn
-
+  - Exploit Development
 ---
 
-Working on the [pwn.college](http://pwn.college) shellcoding challenges has been great. I've come across shellcode before in various pieces of exploit development training, but it's always been an overview - 'this is how shellcode is written, don't worry, it's not really a thing so much anymore'. Well, I exxagerate, but you get the idea, there's lots of tooling and existing shellcode out there and I've got away with relying on that almost entirely. Until now...
+I've recently been working on the [pwn.college](http://pwn.college) shellcoding challenges and it's been great. I've come across shellcode before in various pieces of exploit development training, but it's always been an overview - *'this is how shellcode is written, don't worry, it's not really a thing so much anymore'*. Well, I exagerate, but you get the idea, there's lots of tooling and existing shellcode out there and I've got away with relying on that almost entirely. Until now...
 
 The [pwn.college](http://pwn.college) shellcode challenges execute input you provide and are written to make any other type of exploit difficult. This forces you to write an tailor shellcode and to be honest - it's been a lot of fun.
 
