@@ -91,7 +91,7 @@ So let's do it:
 
 Because we created an ELF when we compiled, we can get nice disassembly of the shellcode with tools like `objdump`:
 
-![assets/images/posts/shellcoding/Untitled.png](assets/images/posts/shellcoding/Untitled.png)
+![assets/images/posts/shellcoding/Untitled.png](/assets/images/posts/shellcoding/Untitled.png)
 
 In this image, we can see that the null bytes are introduced in four of our lines of assembly - when we mov 0x3b into rax (1), when we mov the string into rbx (2), when we mov 0x0 into rsi (3) and when we mov 0x0 into rdx (4).
 
@@ -99,11 +99,11 @@ In this image, we can see that the null bytes are introduced in four of our line
 
 Knowing which instructions give rise to our bad bytes, let's understand why; I'll start at the start with `mov rax, 0x3b` which is moving the syscall number into rax. TO understand why there are nulls here, let's add some extra instructions:
 
-![assets/images/posts/shellcoding/Untitled%201.png](assets/images/posts/shellcoding/Untitled%201.png)
+![assets/images/posts/shellcoding/Untitled%201.png](/assets/images/posts/shellcoding/Untitled%201.png)
 
 Now after we do the rax move, we move the same value with leading 0s into rax (1), then we move the same value into the lower 32 bits of rax (2), then the lower 16 bits (3) and finally the lower 8 bits of rax (4). Viewing the disassembly we see the corresponding opcodes:
 
-![assets/images/posts/shellcoding/Untitled%202.png](assets/images/posts/shellcoding/Untitled%202.png)
+![assets/images/posts/shellcoding/Untitled%202.png](/assets/images/posts/shellcoding/Untitled%202.png)
 
 1. The leading 0s version is exactly the same set of opcodes, this is because when we say `mov rax, 0x3b` what we're really telling our assembler is to zero out the rest of the register - so the first two lines are the same instruction, just written differently in our shellcode source. Now you might expect there to be 7 null bytes - one for each spare byte in the 64 bit rax register- the reason there aren't more 0s for the rax moves that on amd64 architecture, zeroing out eax also zeros our rax, it's just the way it is, so we only need to send the three extra null bytes.
 2. The eax version (2) actually includes the same number of 0s (but fewer opcodes to define the operation and register),,the upshot of this is that you dont need any more 0s in your bytecode to clear rax than eax. 
@@ -112,19 +112,19 @@ Now after we do the rax move, we move the same value with leading 0s into rax (1
 
 To further visualise this, we can use [rappel](https://github.com/yrp604/rappel) to emulate 64 bit registers and see the opcodes working, first we'll place all fs in rax so we can see any zeroing taking place:
 
-![assets/images/posts/shellcoding/Untitled%203.png](assets/images/posts/shellcoding/Untitled%203.png)
+![assets/images/posts/shellcoding/Untitled%203.png](/assets/images/posts/shellcoding/Untitled%203.png)
 
 Now we can see our mov instruction in action:
 
-![assets/images/posts/shellcoding/Untitled%204.png](assets/images/posts/shellcoding/Untitled%204.png)
+![assets/images/posts/shellcoding/Untitled%204.png](/assets/images/posts/shellcoding/Untitled%204.png)
 
 Now we can verify that doing the same with eax has the same effect:
 
-![assets/images/posts/shellcoding/Untitled%205.png](assets/images/posts/shellcoding/Untitled%205.png)
+![assets/images/posts/shellcoding/Untitled%205.png](/assets/images/posts/shellcoding/Untitled%205.png)
 
 Bingo! Now going down the smaller registers:
 
-![assets/images/posts/shellcoding/Untitled%206.png](assets/images/posts/shellcoding/Untitled%206.png)
+![assets/images/posts/shellcoding/Untitled%206.png](/assets/images/posts/shellcoding/Untitled%206.png)
 
 We see that the higher bits are left well alone. This is important for us in shellcode land, because when we make a syscall, rax is passed to the kernel and any junk left in those registers might lead to unwanted behaviour.
 
@@ -138,15 +138,15 @@ Now if we knew for sure what state rax would be in, we could subtract that value
 
 I'm afraid I'm going to cheat, because I already know that XOR-ing a register with itself will zero it out without any null bytes, so I'll comment out our bad shellcode (1) and replace it by trying to zero the register with an XOR (2), then move 0x3b into al (3), hopefully avoiding nulls:
 
-![assets/images/posts/shellcoding/Untitled%207.png](assets/images/posts/shellcoding/Untitled%207.png)
+![assets/images/posts/shellcoding/Untitled%207.png](/assets/images/posts/shellcoding/Untitled%207.png)
 
 Compile and test:
 
-![assets/images/posts/shellcoding/Untitled%208.png](assets/images/posts/shellcoding/Untitled%208.png)
+![assets/images/posts/shellcoding/Untitled%208.png](/assets/images/posts/shellcoding/Untitled%208.png)
 
 Amazing! Now we know this works, but we could continue enumerating options, for example, I said before xoring eax and eax also zeros out rax:
 
-![assets/images/posts/shellcoding/Untitled%209.png](assets/images/posts/shellcoding/Untitled%209.png)
+![assets/images/posts/shellcoding/Untitled%209.png](/assets/images/posts/shellcoding/Untitled%209.png)
 
 This actually comes in one byte shorter, so I'm going to select that. 
 
@@ -156,7 +156,7 @@ Now with my option selected, I'm free to move on to the next instructions.
 
 We know that the mov instructions into rsi and rdx are also zeroing out registers, so I'll leave it to the reader to remove those nulls, but what about us moving our string into rbx? That's difficult, because we need that string to be null terminated, so what other alternative are available to us before we select one? Luckily the lecture material covers this big time, what we can do there is zero out our register, then load part of the string into eax. Once this part is there, we can bit-shift the string left and fill the empty bits with the rest. Let's see it in rappel again:
 
-![assets/images/posts/shellcoding/Untitled%2010.png](assets/images/posts/shellcoding/Untitled%2010.png)
+![assets/images/posts/shellcoding/Untitled%2010.png](/assets/images/posts/shellcoding/Untitled%2010.png)
 
 Here we load ebx full of most of the string (1), bit shift the register left, to make room to load ax up (eax or higher would zero out the register again) (2), then load another 2 bytes in (3), shift left one more time (4) and load in the last byte(5). 
 
@@ -179,15 +179,15 @@ The lectures cover this really well, but don't really expand on how some of the 
 
 You'll need your memory to be RWX where your shellcode is loaded, let's start simple, with an xor to clear eax:
 
-![assets/images/posts/shellcoding/Untitled%2011.png](assets/images/posts/shellcoding/Untitled%2011.png)
+![assets/images/posts/shellcoding/Untitled%2011.png](/assets/images/posts/shellcoding/Untitled%2011.png)
 
 Let's imagine that 0x31 was a bad byte, so we can instead have raw shellcode bytes `\xc0\x30` (because little endian) and increment the first byte on the fly (also note the first instruction is a nop, for some reason having an inc as the first instruction in the compiled ELF file doesn't run right):
 
-![assets/images/posts/shellcoding/Untitled%2012.png](assets/images/posts/shellcoding/Untitled%2012.png)
+![assets/images/posts/shellcoding/Untitled%2012.png](/assets/images/posts/shellcoding/Untitled%2012.png)
 
 So we start with the increment instruction, then write the raw shellcode bytes in. We can watch this in gdb by running `gdb ./pop_shell_demo.s.elf` and breaking at _start:
 
-![assets/images/posts/shellcoding/Untitled%2013.png](assets/images/posts/shellcoding/Untitled%2013.png)
+![assets/images/posts/shellcoding/Untitled%2013.png](/assets/images/posts/shellcoding/Untitled%2013.png)
 
 Now breaking at start (1), we can carry out the first nop (2) (needed to effectively write to RIP for some reason when running the standalone shellcode ELF), then we're at the inc BYTE PTR instruction (3) - note that rip will actually point to _start + 0x7, becuase RIP will advance on this instruction. Finally, our instruction has been modified, yay!
 
