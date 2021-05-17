@@ -4,7 +4,7 @@ date:   2021-05-17 23:00:00 +0000
 header:
   overlay_image: /assets/images/posts/shellcoding/banner.png
   teaser: /assets/images/posts/shellcoding/banner.png
-excerpt: "My workflow for shellcode challenges."
+excerpt: "A Workflow for solving shellcode challenges"
 categories:
   - Technical
 tags:
