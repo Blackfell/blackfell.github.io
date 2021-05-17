@@ -16,7 +16,7 @@ I've recently been working on the [pwn.college](http://pwn.college) shellcoding 
 
 I've come across shellcode before in various pieces of exploit development training, but it's always been an overview - *'this is how shellcode is written, don't worry, it's not really a thing so much anymore'*. Well, I exagerate, but you get the idea, there's lots of tooling and existing shellcode out there and I've got away with relying on that almost entirely. Until now...
 
-The [pwn.college](http://pwn.college) shellcode challenges execute input you provide and are written to make any other type of exploit difficult. This forces you to write an tailor shellcode and to be honest - it's been a lot of fun.
+The [pwn.college](http://pwn.college) shellcode challenges execute some shellcode you provide and are designed to make any other type of exploit difficult. This forces you to write and tailor shellcode to solve the challenges and to be honest - it's been a lot of fun.
 
 I should note that the focus of this training is almost entirely Linux, Windows shellcode is even more of a mystery to me, but I feel inspired to check it out now. 
 
@@ -99,7 +99,7 @@ In this image, we can see that the null bytes are introduced in four of our line
 
 ### Understand why bad-bytes are there
 
-Knowing which instructions give rise to our bad bytes, let's understand why; I'll start at the start with `mov rax, 0x3b` which is moving the syscall number into rax. TO understand why there are nulls here, let's add some extra instructions:
+Knowing which instructions give rise to our bad bytes, let's understand why; I'll start at the start with `mov rax, 0x3b` which is moving the syscall number into rax. To understand why there are nulls here, let's add some extra instructions:
 
 ![assets/images/posts/shellcoding/Untitled%201.png](/assets/images/posts/shellcoding/Untitled%201.png)
 
@@ -108,7 +108,7 @@ Now after we do the rax move, we move the same value with leading 0s into rax (1
 ![assets/images/posts/shellcoding/Untitled%202.png](/assets/images/posts/shellcoding/Untitled%202.png)
 
 1. The leading 0s version is exactly the same set of opcodes, this is because when we say `mov rax, 0x3b` what we're really telling our assembler is to zero out the rest of the register - so the first two lines are the same instruction, just written differently in our shellcode source. Now you might expect there to be 7 null bytes - one for each spare byte in the 64 bit rax register- the reason there aren't more 0s for the rax moves that on amd64 architecture, zeroing out eax also zeros our rax, it's just the way it is, so we only need to send the three extra null bytes.
-2. The eax version (2) actually includes the same number of 0s (but fewer opcodes to define the operation and register),,the upshot of this is that you dont need any more 0s in your bytecode to clear rax than eax. 
+2. The eax version includes the same number of 0s as before for the reasons set out above, but we can note that there are fewer bytes needed to define the operation and register, this might be handy as length limits come in on your shellcode, as this principle follows for a few other instructions - operating on the 32 bit version of a register costs fewer bytes of shellcode. 
 3. As we go to smaller registers (this time ax - 16 bits) we see that there's only one spare null byte now, one byte for each null needed to clear the rest of ax.
 4. Finally, moving a single byte into al doesn't include any null bytes at all, because the value and register are the same size.
 
@@ -128,7 +128,7 @@ Bingo! Now going down the smaller registers:
 
 ![assets/images/posts/shellcoding/Untitled%206.png](/assets/images/posts/shellcoding/Untitled%206.png)
 
-We see that the higher bits are left well alone. This is important for us in shellcode land, because when we make a syscall, rax is passed to the kernel and any junk left in those registers might lead to unwanted behaviour.
+In the last two examples, we see that the higher bits are left well alone, this is just an intricacy of amd64 architecture, but this is important for us in shellcode land, because when we make a syscall, rax is passed to the kernel and any junk left in those registers might lead to unwanted behaviour.
 
 ### Enumerate Alternatives
 
@@ -191,7 +191,7 @@ So we start with the increment instruction, then write the raw shellcode bytes i
 
 ![assets/images/posts/shellcoding/Untitled%2013.png](/assets/images/posts/shellcoding/Untitled%2013.png)
 
-Now breaking at start (1), we can carry out the first nop (2) (needed to effectively write to RIP for some reason when running the standalone shellcode ELF), then we're at the inc BYTE PTR instruction (3) - note that rip will actually point to _start + 0x7, becuase RIP will advance on this instruction. Finally, our instruction has been modified, yay!
+Now breaking at start (1), we can carry out the first nop (2) (needed to effectively write to RIP for some reason when running the standalone shellcode ELF), then we're at the inc BYTE PTR instruction (3) - note that rip will actually point to _start + 0x7, becuase RIP will advance on this instruction. Finally, our instruction has been modified(4), it's switched from an al xor to an eax xor, yay!
 
 ## Read more shellcode in
 
