@@ -77,7 +77,7 @@ This is a guide of two parts. First up is Immersion101, a compressed brief I lik
 
 I like to encourage people to build a general, risk oriented and well informed view of the security world. In my opinion, the best way to do this is to immerse yourself; hang out on social media, listen to news, read articles and watch videos. Consume. Assimilate.
 
-## Catching Podcats & Pugcasts
+## Catching Podcats
 
 A great place to start is with some podcasts; these are free, don't require an account and have lots to give. Here are a few suggestions, pick those that sound most helpful to you; if you find more, send them my way!
 
@@ -115,6 +115,9 @@ I like the following online training providers:
 1. [Hacker101](https://www.hacker101.com/){:target="_blank"} - A Free training course associated with the Hacker1 [bug bounty](https://en.wikipedia.org/wiki/Bug_bounty_program){:target="_blank"} program.
 1. [Codeacademy](https://www.codecademy.com/learn/learn-python){:target="_blank"} - Free programming courses from web application programming to full on development practices.
 1. [Security Tube](http://www.securitytube.net/){:target="_blank"} - A collection of videos on all aspects of security, including a good deal of training.
+1. [TryHackMe](https://tryhackme.com/){:target="_blank"} - A totally interactive learning platform, where you walk through exercises, even using an online attack machine if you don't have one of your own.
+1. [pwn.college](https://pwn.college){:target="_blank"} - An exploit development oriented platform, with open lecture material and exercises based on CTFd. This one is definately a more advanced learning platform.
+1. [Portswigger Academy](https://portswigger.net/web-security){:target="_blank"} - An excellent web hacking training platform from the makers of BurpSuite, one of the best web hacking proxies out there.
 
 If nothing grabs your eye, I recommend CompTIA training courses in Security+ Network+ and A+ to total beginners as a starting place; these can be supplemented with Microsoft, Linux and Cisco sysadmin courses; all of which can be found for free via Cybrary (number 2.).
 
@@ -208,13 +211,15 @@ The SANS Holiday Hack is a really fun online challenge; you can get started with
 
 HackTheBox offer a virtual lab environment you can hack against; this is great for people who are more comfortable working basic CTF challenges, but the forums have plenty of support, so don't rule this out if you're looking for introductory options.
 
-#### HackThisSite
+#### TryHackMe Labs
 
-{% include figure image_path="/assets/images/posts/start_hacking/hack_this_site.jpg" alt="OverTheWire - Bandit." caption="[hackthissite](https://www.hackthissite.org) - A website with challenges that allow you to discover and exploit web application vulnerabilities." %}
+{% include figure image_path="/assets/images/posts/start_hacking/thm.png" alt="Try Hack Me Labs" caption="[TryHackMe Labs](https://tryhackme.com/) - One of my favourite training platforms for new starts, THM offers interactive and heavily guided learning resources, complete with hosted attack machines, so you don't even need a full lab." %}
 
-HackThisSite is all about Web hacking; the site is free to use and doesn't really require any fancy software beyond your humble browser. This can give you some really good experience, but I usually push people to the other options here first as the scope of learning here is a little more narrow.
+TryHackMe has become very popular recently for good reason, they offer interactive CTF style exercises, often with really good supporting notes and material. The focus here isn't so much on giving you difficult challenges as it is about teaching you real skills and providing information to enable you to solve them.
 
-All of the above are interesting places to get started; I generally recommend them in order of appearance, as despite hackthisstie being aimed at beginners, I prefer other options unless you're resource constrained.
+Once you have a THM account, you can join 'rooms' for various kinds of subject matter and work through reading material and challenges; if the challenge requires you to use hacking tools, you can spawn an 'attack box', which will give you a browser based VM to work in - great if you don't have a full lab, but you may wish to pay for a subscription if you plan to use this for long periods as the free version is a little limited.
+
+As with all exercises where walkthrough information exists, I recommend that to really maximise the value you get from the tasks, set yourself a 'cheat' rule. Depending on how difficult the challenge is for my level, I pick an amount of time (say 20 mins) I have to try before I let myself read a hint or walkthrough. I find this is a nice balance between learning the most from a single exercise (by trying harder) and getting through a high volume of exercises in the time I have available (by moving on to something else).
 
 ### Offline Home-brew Victims
 
