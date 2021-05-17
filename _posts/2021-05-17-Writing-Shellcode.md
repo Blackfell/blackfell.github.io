@@ -12,7 +12,9 @@ tags:
   - Exploit Development
 ---
 
-I've recently been working on the [pwn.college](http://pwn.college) shellcoding challenges and it's been great. I've come across shellcode before in various pieces of exploit development training, but it's always been an overview - *'this is how shellcode is written, don't worry, it's not really a thing so much anymore'*. Well, I exagerate, but you get the idea, there's lots of tooling and existing shellcode out there and I've got away with relying on that almost entirely. Until now...
+I've recently been working on the [pwn.college](http://pwn.college) shellcoding challenges and it's been great.
+
+I've come across shellcode before in various pieces of exploit development training, but it's always been an overview - *'this is how shellcode is written, don't worry, it's not really a thing so much anymore'*. Well, I exagerate, but you get the idea, there's lots of tooling and existing shellcode out there and I've got away with relying on that almost entirely. Until now...
 
 The [pwn.college](http://pwn.college) shellcode challenges execute input you provide and are written to make any other type of exploit difficult. This forces you to write an tailor shellcode and to be honest - it's been a lot of fun.
 
@@ -224,3 +226,6 @@ If you're struggling (I did on the very short shellcode challenges) consider the
 2. Try [other syscalls](https://filippo.io/linux-syscall-table/), for challenges with flags, why not mess with the file permissions?
 3. Use junk opcodes - if you've got sorted or mangeld shellcode, you could always insert junk commands (increment a register you're not using, add some values) to bypass a filter.
 
+# Go forth
+
+Now what? Why not head over to [pwn.college](https://pwn.college) and try and solve some of the shellcoding challenges? You'll have fun!
