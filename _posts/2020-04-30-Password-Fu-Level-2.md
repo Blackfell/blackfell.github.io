@@ -32,10 +32,10 @@ feature_row1:
     btn_label: "Check out KeePassXC"
     btn_class: "btn--inverse"
 feature_row2:
-  - image_path: /assets/images/posts/password_level_2/lastpass.png
-    excerpt: "**LastPass** is a Freemium password manager, meaning basic accounts are free, advanced features are not. It's available on most platforms and devices via browser extensions or official Apps."
-    url: https://lastpass.com/
-    btn_label: "Check out LastPass"
+  - image_path: /assets/images/posts/password_level_2/bitwarden.jpg
+    excerpt: "**BitWarden** is a Freemium Open Source password manager, meaning basic accounts are free, advanced features are not. It's available on most platforms and devices via browser extensions or official Apps."
+    url: https://bitwarden.com/
+    btn_label: "Check out BitWarden"
     btn_class: "btn--inverse"
 
 ---
@@ -115,11 +115,11 @@ Key files and second factors are supported in KeePassXC; these are extra login s
 
 Online managers aren't much harder to set up than an offline manager, they just include a registration step, which is usually pretty simple; you can use your super secure password from [Level 1](/security guidance/threats & risk/Password-Fu-Level-1/){:target="_blank"} again here.
 
-I have friends that have success with [LastPass](https://lastpass.com){:target="_blank"}, [Dashlane](https://dashlane.com){:target="_blank"} and [1password](https://1password.com){:target="_blank"}. Most provide good protection and there are plenty of reviews you can look at online; for this walkthrough, I'm going to cynically assume we want to do this on the cheap and so we'll go with LastPass.
+I have friends that have success with [BitWarden](https://bitwarden.com/){:target="_blank"}, [Dashlane](https://dashlane.com){:target="_blank"} and [1password](https://1password.com){:target="_blank"}. Most provide good protection and there are plenty of reviews you can look at online; for this walkthrough, I'm going to cynically assume we want to do this on the cheap and so we'll go with BitWarden, which also happens to be highly functional and open source.
 
 {% include feature_row id="feature_row2" type="right" %}
 
-The generic steps for setting online managers up are as follows; you can use these steps to set up your LastPass manager if you think an online manager is the way to go for you:
+The generic steps for setting online managers up are as follows; you can use these steps to set up your BitWarden manager if you think an online manager is the way to go for you:
   1. Download the application from the vendor site, app store etc. or get the browser extension for your broswer of choice (**cough** Firefox).
   1. Sign up for an acount, using your mega passphrase from [Level 1](/security guidance/threats & risk/Password-Fu-Level-1/){:target="_blank"}.
   1. Once your acount is activated, sign in and orientate yourself.
