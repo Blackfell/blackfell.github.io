@@ -47,7 +47,11 @@ functionality:
 The manager binary is a Position Independant Executable (PIE) and has a 
 non-executable stack, but hasn't been stripped, so we have really nice 
 decompilation available natively in e.g. [Ghidra](https://ghidra-sre.org/) to 
-understand behaviour. Taking a look at the *main()* function:
+understand behaviour. 
+
+## Basic Binary Behaviour
+
+Taking a look at the *main()* function:
 
 ![Disassembly of manager main function](/assets/images/posts/pwn_manager/HTBBCTF2.png)
 
@@ -57,15 +61,17 @@ the stack later to see how its laid out. Next we have a while loop (2) to run
 *menu()* over and over, which is probably taking our user input for what we 
 want to do. 
 
-The menu output is parsed as *iVar1* in the above, after which, the two main 
-options are executed - either we chose 1 and we're viewing and employee, or 2 
-to edit one. In both cases, the boxed code is similar and we read into *local_32* 
-with the format speficier in *&DAT_00102045*, which turns out to be *%d*, for an 
-integer read. 
+The value returned from *menu()* is stored in *iVar1* and used to decide which 
+of the two later blocks (4/5) are executed - either we chose 1 and we're 
+viewing an employee, or we chose 2 to edit an employee. In both cases, the 
+boxed code is similar - we ask for the employee to be edited or read, then read 
+user input into *local_32* via scanf, with the format speficier in 
+*&DAT_00102045*, which turns out to be *%d* - an integer read. 
 
-Finally, either *edit_employee* or *print_employee* are called with the argument 
-consisting of the address of the start of our stack data (1) plus an offset 
-defined by our input.
+Finally, either *edit_employee* or *print_employee* are called with the data we
+just read into *local_32*. In both cases (4/5), the actual argument is the 
+address of the data instantiated at the start of *main()*, plus an offset 
+defined by *local_32*. Don't worry, we'll see this on the stack shortly.
 
 Taking a look at *print_employee* in Ghidra:
 
