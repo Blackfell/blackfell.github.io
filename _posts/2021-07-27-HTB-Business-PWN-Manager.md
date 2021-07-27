@@ -39,14 +39,14 @@ The *manager* binary is a basic console app, when we run it we get options to
 view & edit 'employees'. Playing around with the binary, we can see the intended 
 functionality:
 
-![Manager binary behaviour](assets/images/posts/pwn_manager/HTBBCTF1.png)
+![Manager binary behaviour](/assets/images/posts/pwn_manager/HTBBCTF1.png)
 
 The manager binary is a Position Independant Executable (PIE) and has a 
 non-executable stack, but hasn't been stripped, so we have really nice 
 decompilation available natively in e.g. [Ghidra](https://ghidra-sre.org/) to 
 understand behaviour. Taking a look at the *main()* function:
 
-![Disassembly of manager main function](assets/images/posts/pwn_manager/HTBBCTF2.png)
+![Disassembly of manager main function](/assets/images/posts/pwn_manager/HTBBCTF2.png)
 
 We can see there's a load of data instantiated on the stack (1), Ghidra has 
 this as an array and then individual bytes, but we'll take a look at this on 
@@ -66,14 +66,14 @@ defined by our input.
 
 Taking a look at *print_employee* in Ghidra:
 
-![Disassembly of manager print_employee function](assets/images/posts/pwn_manager/HTBBCTF3.png)
+![Disassembly of manager print_employee function](/assets/images/posts/pwn_manager/HTBBCTF3.png)
 
 We see that it's super simple, printing out and unsigned long at the address we 
 pass to it, then another at that address plus 4 bytes. This isn't super clear 
 from this static analysis so we'll debug the process. I ran some GDB commands 
 in a GDB script to check out the stack at this point:
 
-```bash
+```
 info func
 break main
 run
@@ -84,18 +84,18 @@ continue
 Running gdb with this script, we break at the start of *print_employee* and can 
 print employee 1, say, by selecting 1 at each prompt:
 
-![Printing employee in debugged instance of the program](assets/images/posts/pwn_manager/HTBBCTF4.png)
+![Printing employee in debugged instance of the program](/assets/images/posts/pwn_manager/HTBBCTF4.png)
 
  Then since we have a break shortly after this, we can check out the stack at 
 this point:
 
-![The stack when printing employee data](assets/images/posts/pwn_manager/HTBBCTF5.png)
+![The stack when printing employee data](/assets/images/posts/pwn_manager/HTBBCTF5.png)
 
 We don't have to look far before we can see our data on the stack, right at 
 *$rsp + 0x20* we have the first values declared in our array in c. If we 
 progress execution, we can see which ones are printed:
 
-![Data for employee 1 when printed](assets/images/posts/pwn_manager/HTBBCTF6.png)
+![Data for employee 1 when printed](/assets/images/posts/pwn_manager/HTBBCTF6.png)
 
 We see that in this case, selecting employee **1** prints **41** and **31** in 
 decimal, or in hex **0x29** and **0x1f** - the values stored at *$rsp + 0x28* 
@@ -111,7 +111,7 @@ OK So we have a viable info leak, but can we take control? We know that
 *print_employee* gets us read access to memory, so what are the odds that
 *edit_employee* gets us write control over memory?
 
-![Decomipled edit_employee](assets/images/posts/pwn_manager/HTBBCTF7.png)
+![Decomipled edit_employee](/assets/images/posts/pwn_manager/HTBBCTF7.png)
 
 Again, a simple function, where the user input is used as the location to write 
 data into memory. In this case, the scanf specifiers are *%u*, meaning a write 
@@ -123,7 +123,7 @@ the intended array on the stack we control.
 Now it's not as simple as writing wherever we please, there are limits on our 
 employee index in that it can only be 32 bits long:
 
-![Restraints in edit_employee](assets/images/posts/pwn_manager/HTBBCTF8.png)
+![Restraints in edit_employee](/assets/images/posts/pwn_manager/HTBBCTF8.png)
 
 In the above screenshot, we move the 32 bit unsigned int scanf wrote to into 
 eax, where it's sign extended, shifted left by *0x3* and added to the stack 
@@ -135,7 +135,7 @@ added to the stack address.
 Luckily, this whole write operation happens in a function - *edit_user*, whose 
 return adress is right here on the stack, where we're reading/writing:
 
-![Stack frame inside edit_user](assets/images/posts/pwn_manager/HTBBCTF9.png)
+![Stack frame inside edit_user](/assets/images/posts/pwn_manager/HTBBCTF9.png)
 
 Where we have our write address (1), our Saved Frame Pointer (2) and our Return 
 Pointer (3). This is the new stack frame inside our edit_user function, as we 
@@ -156,7 +156,7 @@ control of RP for some ROP.
 So since we're working with a PIE, let's check out what is actually on the stack 
 to leak at the time of the printf call in main:
 
-![Stack frame inside main](assets/images/posts/pwn_manager/HTBBCTF10.png)
+![Stack frame inside main](/assets/images/posts/pwn_manager/HTBBCTF10.png)
 
 The stack layout is ideal! We have our intended array data (1), then 
 **immediately** afterwards, there's the address of *csu_init* (2), a function 
@@ -191,7 +191,7 @@ constraints:
 There are some promising candidates here, I put a break at the return of 
 *edit_employee* and simply ran up to that point to check out the register states:
 
-![Register state at edit_employee return](assets/images/posts/pwn_manager/HTBBCTF11.png)
+![Register state at edit_employee return](/assets/images/posts/pwn_manager/HTBBCTF11.png)
 
 We see that $rsi (1) and $r12 (2) are not NULL, but that isn't important since 
 our one_gadget requirements are just OR conditions. So any gadget will work just 
@@ -263,7 +263,7 @@ but I'm lazy, so I just let this run up to the leak, then hit Ctrl^C to break
 into gdb shell. We can check out leak offset from libc base with GDB 
 via `info proc map`:
 
-![Leaked stack address vs debugged memory map](assets/images/posts/pwn_manager/HTBBCTF12.png)
+![Leaked stack address vs debugged memory map](/assets/images/posts/pwn_manager/HTBBCTF12.png)
 
 Those addresses are `0x270b3` Apart, so now we just add this line before 
 interactive to get our full leak code:
@@ -308,7 +308,7 @@ for our write operation. Next we set up the offset from the stack data to
 overwrite RP, then finally, we execute and employee edit to our offset of -3, 
 sending the rate and hours and the two parts of our return address. 
 
-![Working Exploit](assets/images/posts/pwn_manager/HTBBCTF13.png)
+![Working Exploit](/assets/images/posts/pwn_manager/HTBBCTF13.png)
 
 ## The final code
 
