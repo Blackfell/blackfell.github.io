@@ -5,6 +5,8 @@ header:
   overlay_image: /assets/images/posts/pwn_manager/banner.png
   teaser: /assets/images/posts/pwn_manager/banner.png
 excerpt: "Employee Manager PWN Challenge"
+layout: single
+classes: wide
 categories:
   - Technical
   - Labs
