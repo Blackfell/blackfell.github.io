@@ -19,7 +19,7 @@ header:
 excerpt: "Build and configure your personal InfoSec playground."
 categories:
   - Technical
-  - labs
+  - Labs
 tags:
   - Lab
   - Virtual Machines
