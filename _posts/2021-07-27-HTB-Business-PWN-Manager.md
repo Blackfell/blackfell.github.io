@@ -13,11 +13,14 @@ tags:
   - Exploit Development
 ---
 
+# The Employee Manager PWN Challenge
+
 In the recent 
 [Hack The Box Business CTF](https://www.hackthebox.eu/htb-business-ctf-2021), 
-I actually didn't succeed in solving this challenge in time - frustratingly I 
-only managed the solve during the after-event, but still wanted to post a 
-writeup. 
+I actually didn't succeed in solving this *pwn* challenge in time - 
+frustratingly I only managed the solve during the after-event. In any case, 
+this post will walk through the solution I eventually came to, albeit for no 
+points! 
 
 # Challenge Overview
 
