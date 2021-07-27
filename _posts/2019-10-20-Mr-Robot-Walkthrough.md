@@ -17,8 +17,8 @@ header:
   teaser: /assets/images/posts/mr_robot/rubiks.jpg
 excerpt: "Capture The Flag Walkthrough"
 categories:
-  - technical
-  - labs
+  - Technical
+  - Labs
 tags:
   - Lab
   - Networking

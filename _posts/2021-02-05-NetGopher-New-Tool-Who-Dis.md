@@ -19,7 +19,7 @@ header:
   caption: A very excellent animated gopher courtesy of [egonelbre](https://github.com/egonelbre).
 excerpt: "New tool who dis?"
 categories:
-  - labs
+  - Labs
   - Programming
 tags:
   - Lab

@@ -6,8 +6,8 @@ header:
   teaser: /assets/images/posts/shellcoding/banner.png
 excerpt: "A Workflow for solving shellcode challenges"
 categories:
-  - technical
-  - labs
+  - Technical
+  - Labs
 tags:
   - CTF
   - Exploit Development

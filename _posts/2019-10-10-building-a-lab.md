@@ -18,7 +18,7 @@ header:
   teaser: /assets/images/posts/hacking_lab/lab.jpg
 excerpt: "Build and configure your personal InfoSec playground."
 categories:
-  - technical
+  - Technical
   - labs
 tags:
   - Lab
