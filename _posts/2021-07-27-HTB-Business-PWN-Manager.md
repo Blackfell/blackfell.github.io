@@ -153,10 +153,11 @@ go to the next address (as in downwards in the above diagram) we see the start
 of the old stack frame from main (4). 
 
 Since we control the offset on the stack, if we offset to a negative value, we 
-can land in the new stack frame. Setting this value to be **-3** will result in 
-the stack address being the same as the Return Pointer. If this isn't obvious, 
-just count back from the *$rdx* indicator at $rsp + 0x30 three addresses in the 
-above diagram. 
+can land in the new stack frame. Setting the employee value to **-3** will 
+result in the address being written to being the same as the Return Pointer
+inside edit_employee, meaning we'll be able to hijack execution. If this isn't 
+obvious, just count from the *$rdx* indicator at $rsp + 0x30 three addresses 
+into the new stack frame in the above diagram. 
 
 So there's our strategy, we can write data to the RP in edit_employee and take 
 control of RP for some ROP. 
