@@ -124,8 +124,8 @@ OK So we have a viable info leak, but can we take control? We know that
 
 Again, a simple function, where the user input is used as the location to write 
 data into memory. In this case, the scanf specifiers are *%u*, meaning a write 
-would be made in two 32 bit chunks into a full 64 bit address, at an offset from 
-the intended array on the stack we control. 
+would be made in two 32 bit chunks into a full 64 bit address, at an offset (that we control) from 
+the intended array on the stack. 
 
 ## Limits on control
 
@@ -134,7 +134,8 @@ employee index in that it can only be 32 bits long:
 
 ![Restraints in edit_employee](/assets/images/posts/pwn_manager/HTBBCTF8.png)
 
-In the above screenshot, we move the 32 bit unsigned int scanf wrote to into 
+In the above screenshot, we're stepping through the instructions after our 
+user input read. Here we move the 32 bit unsigned int from scanf into 
 eax, where it's sign extended, shifted left by *0x3* and added to the stack 
 address of our intended array. This means we can only really go 32 bits worth 
 up and down from the stack addresses, since forcing a sign extension to 
