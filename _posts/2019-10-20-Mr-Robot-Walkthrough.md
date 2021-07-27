@@ -17,8 +17,8 @@ header:
   teaser: /assets/images/posts/mr_robot/rubiks.jpg
 excerpt: "Capture The Flag Walkthrough"
 categories:
-  - Technical Guidance
-  - Labs & Hacking
+  - technical
+  - labs
 tags:
   - Lab
   - Networking
@@ -44,7 +44,7 @@ This means that if you're working the Mr Robot VM, you can work through this gui
 
 # Setup and orientation
 
-If you're on this page, you should already have a hacking lab and should have a foundation knowledge in computing and security; if you want a quick sanity check, make sure you know what a VM is and how to import it, as well as the basics of Linux, networking and web programming. If you're in doubt whether you're ready, why not check out [my post on security learning](/technical guidance/labs & hacking/so-you-want-to-hack/){:target="_blank"} or [my post on hacking labs](/technical guidance/labs & hacking/building-a-lab/){:target="_blank"}, depending what you're unsure on.
+If you're on this page, you should already have a hacking lab and should have a foundation knowledge in computing and security; if you want a quick sanity check, make sure you know what a VM is and how to import it, as well as the basics of Linux, networking and web programming. If you're in doubt whether you're ready, why not check out [my post on security learning](/technical/labs/so-you-want-to-hack/){:target="_blank"} or [my post on hacking labs](/technical/labs/building-a-lab/){:target="_blank"}, depending what you're unsure on.
 
 # Discovery & Importing
 

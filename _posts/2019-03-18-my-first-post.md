@@ -19,7 +19,7 @@ header:
 excerpt: "Hello, World!"
 categories:
   - Social
-  - Technical Guidance
+  - technical
 tags:
   - Jekyll
   - Web

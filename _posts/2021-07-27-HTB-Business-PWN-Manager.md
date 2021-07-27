@@ -6,8 +6,8 @@ header:
   teaser: /assets/images/posts/pwn_manager/banner.png
 excerpt: "Employee Manager PWN Challenge"
 categories:
-  - Technical Guidance
-  - Labs & Hacking
+  - technical
+  - labs
 tags:
   - CTF
   - Exploit Development

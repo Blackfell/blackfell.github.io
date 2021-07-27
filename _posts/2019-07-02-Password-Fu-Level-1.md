@@ -18,8 +18,8 @@ header:
   teaser: /assets/images/posts/password_level_1/nes.jpeg
 excerpt: "Cyber self defence - Level 1."
 categories:
-  - Security guidance
-  - Threats & Risk
+  - Guidance
+  - Threats
 tags:
   - Passwords
   - Two Factor Authentication
@@ -32,13 +32,13 @@ tags:
 
 You're here to improve your security and this is the first level; you're about to take control of your passwords and start winning the game.
 
-In [part one](/security guidance/threats & risk/Lets-Talk-Passwords/){:target="_blank"} of this series, I explained why your account passwords are the first line of defence in your digital life. This post is the follow up, so if you're ready to take control, buckle up.
+In [part one](/guidance/threats/Lets-Talk-Passwords/){:target="_blank"} of this series, I explained why your account passwords are the first line of defence in your digital life. This post is the follow up, so if you're ready to take control, buckle up.
 
 ## Level Outline
 
 In this level, you'll be coming up with **a strong passphrase**, which you'll generate manually and use  again as you move on to future posts, watch this space!
 
-As mentioned in [Part 1](/security guidance/threats & risk/Lets-Talk-Passwords/), passphrases must be **hard to guess, unique, memorable and secret**. This post is all about building a passphrase that meets these requirements, without falling into some common traps.
+As mentioned in [Part 1](/guidance/threats/Lets-Talk-Passwords/), passphrases must be **hard to guess, unique, memorable and secret**. This post is all about building a passphrase that meets these requirements, without falling into some common traps.
 
 ![It's a trap](/assets/images/posts/password_level_1/trap.gif)
 
@@ -139,7 +139,7 @@ Downfalls with this method are a degree of predictability if your truncation sys
 
 # A final note on attacks
 
-Now is a good time to call your mind back to [part one](/security guidance/threats & risk/Lets-Talk-Passwords/), where we discussed how attacks happen; take another minute to consider how you'll be attacked before you settle on your final passphrase system.
+Now is a good time to call your mind back to [part one](/guidance/threats/Lets-Talk-Passwords/), where we discussed how attacks happen; take another minute to consider how you'll be attacked before you settle on your final passphrase system.
 
 Attackers will often carry out attacks, first with commonly used passwords (from some pre-built list), then simple passwords based off a dictionary they produce (or buy etc.), ramping up the complexity of their guesses from capitalisation and letter substitution (password becomes Password, then Password1 then P@ssw0rd1 etc.), before finally a full-blown 'brute force' attack takes place (this is the aaa, aab, aba, abb guessing scheme).
 
@@ -212,4 +212,4 @@ The next part of this series will touch on this more; we need to think about it 
 
 ![It's over](/assets/images/posts/password_level_1/bueller.gif)
 
-Watch out for the next post - [Password Kung Fu Level 2](/security guidance/threats & risk/Password-Fu-Level-2/) - where you'll take your credential journey on to the next stage; we'll be adding usability, simplicity and automation to your life. Imagine if you could **stop having to remember all those passwords**, well that's where we're going!
+Watch out for the next post - [Password Kung Fu Level 2](/guidance/threats/Password-Fu-Level-2/) - where you'll take your credential journey on to the next stage; we'll be adding usability, simplicity and automation to your life. Imagine if you could **stop having to remember all those passwords**, well that's where we're going!

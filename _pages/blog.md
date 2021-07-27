@@ -27,7 +27,7 @@ feature_row:
   - image_path: /assets/images/generic/clouds.jpg
     alt: "Posts by category"
     title: "Find posts by category"
-    excerpt: "Posts are assigned categories and you can browse these to find content. This can help if you're interested in technical content only, or if you're looking for general security guidance."
+    excerpt: "Posts are assigned categories and you can browse these to find content. This can help if you're interested in technical content only, or if you're looking for general guidance."
     url: "/categories/"
     btn_label: "Browse Categories"
     btn_class: "btn--inverse"

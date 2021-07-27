@@ -18,8 +18,8 @@ header:
   teaser: /assets/images/posts/start_hacking/empty_corridoor.jpg
 excerpt: "Finding your path to enlightenment."
 categories:
-  - Technical Guidance
-  - Labs & Hacking
+  - technical
+  - labs
 tags:
   - Lab
   - Virtual Machines
@@ -253,4 +253,4 @@ After that, you should have a feel fro where you'd like to go now; as always, co
 
 # Now What?
 
-I've told you what to do, but how do you do it? Well I believe it all starts with getting your lab together, so let's head over to the next post [building a lab](/technical guidance/labs & hacking/building-a-lab/) and get our house in order to get cracking.
+I've told you what to do, but how do you do it? Well I believe it all starts with getting your lab together, so let's head over to the next post [building a lab](/technical/labs/building-a-lab/) and get our house in order to get cracking.

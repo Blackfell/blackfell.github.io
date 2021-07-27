@@ -18,8 +18,8 @@ header:
   teaser: /assets/images/posts/hacking_lab/lab.jpg
 excerpt: "Build and configure your personal InfoSec playground."
 categories:
-  - Technical Guidance
-  - Labs & Hacking
+  - technical
+  - labs
 tags:
   - Lab
   - Virtual Machines
@@ -44,7 +44,7 @@ feature_row1:
 
 # Point Dexter's Lab
 
-In the [last post](/technical guidance/labs & hacking/so-you-want-to-hack){:target="_blank"} we discussed how to start your security learning journey. Hopefully you know why you want a lab and have an idea of what you'd like yours to do; let's cut to the good bit, making it.
+In the [last post](/technical/labs/so-you-want-to-hack){:target="_blank"} we discussed how to start your security learning journey. Hopefully you know why you want a lab and have an idea of what you'd like yours to do; let's cut to the good bit, making it.
 
 Building a lab isn't just a step towards learning, it's part of it; treat this as a chance to learn and hone some of the skills you'll be developing in your lab.
 

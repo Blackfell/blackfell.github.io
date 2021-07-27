@@ -18,8 +18,8 @@ header:
   teaser: /assets/images/posts/password_problem/logon.jpeg
 excerpt: "Why passwords can be frustrating and what to do about it."
 categories:
-  - Security guidance
-  - Threats & Risk
+  - Guidance
+  - Threats
 tags:
   - Passphrases
   - Passwords
@@ -137,4 +137,4 @@ The solution to this problem has been done to death online, and traditionally go
 But I don't think this is clear, simple, or even accessible for a lot of the people I know. This is why I've created some guidance on how to practically achieve this as a normal person with real-life priorities, something I think is missing in the guidance we get day-to-day as users.
 
 ## Part 2 - The saga continues
-That's why I made [part 2](/security guidance/threats & risk/Password-Fu-Level-1/) of this series, to you some practical, accessible examples of how to 'sort your life out' when it comes to passphrases. **See you there.**
+That's why I made [part 2](/guidance/threats/Password-Fu-Level-1/) of this series, to you some practical, accessible examples of how to 'sort your life out' when it comes to passphrases. **See you there.**
