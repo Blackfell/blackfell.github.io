@@ -165,7 +165,7 @@ control of RP for some ROP.
 # Leak some info
 
 So since we're working with a PIE, let's check out what is actually on the stack 
-to leak at the time of the printf call in main:
+to leak at the time of the printf call in *print_employee*:
 
 ![Stack frame inside main](/assets/images/posts/pwn_manager/HTBBCTF10.png)
 
@@ -216,7 +216,11 @@ return pointer, so controlling execution shouldn't be a huge issue.
 ## Start with the leak
 
 Simplicity counts and we only need to know where libc is loaded for this, so 
-we'll start with a pwntools script to leak the libc base address:
+we'll start with a pwntools script to leak the libc base address. Remember from 
+our [previous investigations](#leak-some-info) of the stack in print_employee 
+that offset 1 gave us the data at $rsp + 0x38 (0x29 and 0x1f), which is 0x30
+away from the libc address we identified (3) at 0x68 in the diagram. To reach 
+this, we'll simply read from the 7th 'employee' since `(0x68-0x30)/0x8 = 0x7`:
 
 ```python
 #!/usr/bin/env python3
