@@ -27,7 +27,7 @@ points!
 In the supplied challenge archive is a binary, copy of libc, a docker file and
 helper script. The helper script builds and runs a docker container,  which 
 serves our target binary out over a TCP port for the challenge. Looking at the 
-Dockerfile, we see we have a simple binary served over a TCP port:
+Dockerfile we see the use of Socat to serve over a TCP port:
 
 ```bash
 FROM ubuntu:20.04
