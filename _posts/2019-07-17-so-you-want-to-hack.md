@@ -18,8 +18,8 @@ header:
   teaser: /assets/images/posts/start_hacking/empty_corridoor.jpg
 excerpt: "Finding your path to enlightenment."
 categories:
-  - technical
-  - labs
+  - Technical
+  - Labs
 tags:
   - Lab
   - Virtual Machines
