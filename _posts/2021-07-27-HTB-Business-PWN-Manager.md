@@ -77,7 +77,7 @@ Taking a look at *print_employee* in Ghidra:
 
 ![Disassembly of manager print_employee function](/assets/images/posts/pwn_manager/HTBBCTF3.png)
 
-We see that it's super simple, printing out and unsigned long at the address we 
+We see that it's super simple, printing out an unsigned long at the address we 
 pass to it, then another at that address plus 4 bytes. This isn't super clear 
 from this static analysis so we'll debug the process. I ran some GDB commands 
 in a GDB script to check out the stack at this point:
@@ -95,8 +95,8 @@ print employee 1, say, by selecting 1 at each prompt:
 
 ![Printing employee in debugged instance of the program](/assets/images/posts/pwn_manager/HTBBCTF4.png)
 
- Then since we have a break shortly after this, we can check out the stack at 
-this point:
+Which will execute the binary right into our breakpoint at print_employee, where 
+we can check out the stack:
 
 ![The stack when printing employee data](/assets/images/posts/pwn_manager/HTBBCTF5.png)
 
