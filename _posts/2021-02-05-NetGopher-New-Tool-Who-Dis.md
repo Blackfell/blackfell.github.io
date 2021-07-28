@@ -22,6 +22,7 @@ classes: wide
 categories:
   - Labs
   - Programming
+  - Technical
 tags:
   - Lab
   - Go
