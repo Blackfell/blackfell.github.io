@@ -5,6 +5,7 @@ header:
   overlay_image: /assets/images/posts/shellcoding/banner.png
   teaser: /assets/images/posts/shellcoding/banner.png
 excerpt: "A Workflow for solving shellcode challenges"
+classes: wide
 categories:
   - Technical
   - Labs
