@@ -90,6 +90,8 @@ So what does this mean? Well in terms of memorability, large and complex charact
 
 Machines are good at getting rid of problems around predictability. Machines can help us build in some randomness (solving our last problem), this can, however, create problems with remembering passphrases, but we'll come on to that.
 
+For now, let's continue and create a manual passphrase, but going forward, we could decide to stop worrying about this any more, by handing off these problems to a machine. Watch this space.
+
 ## It's what you do with it that counts
 
 As well as picking a good passphrase, we need to protect it. We must limit its reuse, keep it to ourselves and store it carefully.
@@ -147,7 +149,7 @@ You may also find more attackers starting to try word combination attacks alongs
 
 Take this opportunity to double check your system; if you're building out a system based on characters (not words), you need to push that length out, exceed 15 characters if you can, as many as you can manage. If you're going on a word based system, remember that regardless of the numbers, symbols and so on that you add in to the mix, you need at least three randomly generated words in there from a *big pool* or words to give you complexity; use an online generator and if you can, push your word count up nearer 5.
 
-# building your first password
+# Building your first password
 
 So, now you have an idea of some possible systems and hopefully you have an idea of what systems suit you. **Let's make a passphrase**.
 
@@ -165,7 +167,7 @@ I'll be using Three Words + for this passphrase.
 
 Decide on the length requirement you'll go for; I like at least 15 characters if you're going for characters, or at least 3 words if going for a phrase.
 
-I'm really keen to protect this account so I'm going to aim for 5 words in my passphrase, hopefully we'll see that being this paranoid isn't even that difficult!
+I'm fairly keen to protect this account so I'm going to aim for 4 words in my passphrase, hopefully we'll see that being this paranoid isn't difficult!
 
 ## Get random seed
 
@@ -173,13 +175,13 @@ Whether you're using words or characters, google an online generator now and get
 
 I generated the following using [onlinewordgenerator](https://randomwordgenerator.com/){:target="_blank"}:
 
-> decorative legislation brick joy housewife
+> work ready friendly grudge
 
 ## Does it make a picture?
 
 Use some good memory aides, make a picture, tell a story, whatever works for you; you may wish to record this along with your passphrase.
 
-I'm going to make a picture of a bit of legislation hung on a wall, while a brick brings great joy to a housewife.
+I'm going to imagine the character [The Grudge](https://en.wikipedia.org/wiki/The_Grudge) applying for a job, so she's 'work ready' and 'friendly' on her CV.
 
 Stupid, but it works for me.
 
@@ -187,18 +189,17 @@ Stupid, but it works for me.
 
 Make sure it makes sense, are there too many details personal to you? Is it predictable? Does it have too simple elements Is it long enough? Will the service or site you're putting it in accept its length and complexity?
 
-My passphrase doesn't meet the complexity requirements for the system it's going in to; I'm already happy that it's adequately secure, so I'll add a special character and a number in a memorable, but non-standard way.
+My passphrase doesn't meet the complexity requirements for the system it's going in to; I'm already happy that it's adequately secure, so I'll add a special character and an upper case letter in a memorable, but non-standard way.
 
-> decorative legislation < brick joy 2 housewife
+> work ready & friendly Grudge
 
-This also changes my memory story - now decorative legislation is less than brick-joy to a housewife.
+This also changes my memory story slightly - now I've received the CV of a 'work ready & friendly Grudge'..
 
 ## It's ready!
 
-
 Now I have my passphrase, I'm going to remove the space characters, since they're 'banned' in the service I'm authenticating to. So now, I have:
 
-> decorativelegislation<brickjoy2housewife
+> workready&friendlyGrudge
 
 Even for paranoid ol' me, I'm happy with the complexity & randomness, it's not related to my personal life and it's not an overly predictable system.
 
