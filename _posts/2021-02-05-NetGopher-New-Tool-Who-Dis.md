@@ -18,6 +18,7 @@ header:
   teaser: /assets/images/posts/netgopher/go.gif
   caption: A very excellent animated gopher courtesy of [egonelbre](https://github.com/egonelbre).
 excerpt: "New tool who dis?"
+classes: wide
 categories:
   - Labs
   - Programming
