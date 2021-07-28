@@ -1,5 +1,6 @@
 ---
 permalink: "/latest/"
+classes: wide
 
 ---
 
