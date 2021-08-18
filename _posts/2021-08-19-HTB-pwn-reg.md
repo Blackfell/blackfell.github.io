@@ -6,7 +6,6 @@ header:
   teaser: /assets/images/posts/pwn_reg/banner.png
 excerpt: "Make a move into binary exploitation CTFs and challenges"
 layout: single
-classes: wide
 toc: true
 categories:
   - Technical
@@ -324,7 +323,7 @@ HTB and use netcat to pipe this straight over and get the flag:
 
 ![Terminal Screenshot](/assets/images/posts/pwn_reg/Image25.png)
 
-## Exploiting this the fancy way
+## Exploiting the fancy way
 
 If you're going to get into this space, especially with CTFs, pwntools is 
 going to be a valuable tool in your toolbox, so let's see how to automate the 
@@ -475,7 +474,7 @@ And pwntools finds the symbol just fine:
 
 ![Terminal Screenshot](/assets/images/posts/pwn_reg/Image30.png)
 
-### Building our exploit
+### Build our exploit
 
 Now the final step was to append our address to the attack buffer and check it all 
 works in GDB. We can amend the pwntools we have so far (throwing away the code we 
