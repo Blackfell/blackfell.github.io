@@ -295,7 +295,7 @@ gef➤  run < <(python2 -c 'print "A" * 0x30 + "S" * 0x8 + "\x06\x12\x40\x00\x00
 
 Note that I've also padded out the address to a full 8 bytes with null bytes; 
 this is just for completeness - because we're overwriting an address already 
-jpacked out with zeros in this particular binary they aren't strictly needed. 
+packed out with zeros in this particular binary, they aren't strictly needed. 
 Running this, we see that the RP has been nicely overwritten with the address 
 of the winner function:
 
