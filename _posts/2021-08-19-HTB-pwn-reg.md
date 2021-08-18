@@ -114,7 +114,7 @@ printed to the console (5) before the function returns.
 This has all the makings of a classic buffer overflow - the stack frame inside 
 the *run()* function is 0x30 bytes in size and gets will read user controlled 
 input until a null terminator, so we can write data into the stack at a length we 
-control. If we wirte more than 0x30 bytes, we can overwrite the saved frame 
+control. If we write more than 0x30 bytes, we can overwrite the saved frame 
 pointer and return pointer placed there during the 
 [function prologue](https://en.wikipedia.org/wiki/Function_prologue); since we 
 then control the return pointer at the function epilogue, we can control 
