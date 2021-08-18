@@ -161,10 +161,11 @@ substitute - in our case a useful function - *winner()*.
 # Exploitation Method
 
 So how do we do this? Well all we need to do is fill up the stack frame (which 
-was 0x30 bytes in size) and anything after that will overwrite the SFP, then 
-RP in that order. We know we want to return to *winner()* and we know that the 
-binary isn't compiled to be position independent (PIE), so we can simply use an 
-absolute address to overwrite the RP and return to *winner()*.
+was 0x30 bytes in size) and anything after that will overwrite the Saved Frame 
+Pointer (SFP), then the Return Pointer (RP) in that order. We know we want to 
+return to *winner()* and we know that the binary isn't compiled to be position 
+independent (PIE), so we can simply use an absolute address to overwrite the 
+RP and return to *winner()*.
 
 ## Manual Exploitation
 
