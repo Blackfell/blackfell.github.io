@@ -50,7 +50,7 @@ and what that means for program control flow. A basic knowledge of C and Assembl
 will probably come with that too, but if you're still struggling, check out some 
 shellcoding resources, or [basic C learning material.](https://www.learn-c.org/) 
 If you're still struggling, honestly, just set yourself a mini project in C or 
-assembly, even if it's just 'hello, World!'. 
+assembly, even if it's just 'Hello, World!'. 
 
 That said, reg is a really good exercise for getting people into binary 
 exploitation challenges, be it on HTB, for CTFs or further learning in general. 
@@ -74,12 +74,12 @@ benefits from:
 
 ![Terminal Screenshot](/assets/images/posts/pwn_reg/Image2.png)
 
-So the stack is not executable, which will render a traditional buffer overflow, 
-returning to shellcode ineffective, so this will be a good into to exploiting a 
-binary with a non executable stack! Luckily, we're not dealing with any other 
-protections (especially ASLR), though we do have partial RELRO, which gives 
-protection for writing to certain stored function addresses in more advanced 
-attacks. 
+The stack is not executable, which will render a basic stack buffer overflow
+technique (returning to shellcode) ineffective, so this will be a good intro 
+to exploiting a binary with a non executable stack! Luckily, we're not dealing 
+with any other protections (especially ASLR), though we do have partial RELRO, 
+which gives protection for writing to certain stored function addresses, but
+we don't need to worry about that until we do more advanced attacks. 
 
 # Enumeration
 
