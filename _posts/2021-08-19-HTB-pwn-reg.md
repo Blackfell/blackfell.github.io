@@ -93,9 +93,8 @@ any fancy reverse engineering and get straight into debugging in GDB:
 
 Looking at the disassembly of *main()* we see that all this really does is call 
 *run()* (1), so disassembling that, we see 0x30 bytes of stack memory being 
-allocated (2), before 'Enter your name:' is printed to the console (3). 
-
-Next gets is called (4) - starting at the instruction after (3) and leading up 
+allocated (2), before 'Enter your name:' is printed to the console (3). Next, 
+*gets()* is called (4) - starting at the instruction after (3) and leading up 
 to the *gets()* call (4), we see:
 
 1. The effective address pointed to by `$rbp - 0x30` is loaded into RAX - this 
