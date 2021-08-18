@@ -7,6 +7,7 @@ header:
 excerpt: "Make a move into binary exploitation CTFs and challenges"
 layout: single
 classes: wide
+toc: true
 categories:
   - Technical
   - Labs
