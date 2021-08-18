@@ -14,6 +14,7 @@ categories:
 tags:
   - CTF
   - Exploit Development
+  - PWN
 ---
 
 # The Reg PWN Challenge
