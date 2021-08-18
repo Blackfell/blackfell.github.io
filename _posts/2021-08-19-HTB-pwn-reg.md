@@ -361,12 +361,12 @@ what output to expect:
 
 ![Terminal Screenshot](/assets/images/posts/pwn_reg/Image26.png)
 
-As you'll see from the above, running pwntools with `log_level="DEBUG"`  
-gives us a lot of information about the binary, but ultimately, all we're 
-seeing here is the normal operation of the binary in the console, we're just 
-doing it programmatically. Try it and see what's going on for now, as we get 
-more advanced, we can automate the I/O into the process in a more compex way 
-than our previous use of basic python *print* statements. 
+As you'll see from the above, running pwntools with `log_level="DEBUG"` gives 
+us a lot of information about the binary, but ultimately, all we're seeing here
+ is the normal operation of the binary in the console, we're just doing it 
+programmatically. Try it and see what's going on for now, as we get more 
+advanced, we can automate the I/O into the process in a more compex way than 
+our previous use of basic python *print* statements. 
 
 Now we'll add some more functionality to our script, we'll configure GDB and 
 attach to the process, so that we can inspect the stack as we did previously. 
