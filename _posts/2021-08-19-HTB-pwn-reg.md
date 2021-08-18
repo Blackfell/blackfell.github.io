@@ -280,7 +280,7 @@ gef➤  run < <(python2 -c 'print "A" * 0x30 + "S" * 0x8 + "\x11\x22\x33\x44\x55
 So we might expect RP to be overwritten to `0x1122334455667788`, but what does 
 GDB tell us?
 
-[Terminal Screenshot](/assets/images/posts/pwn_reg/Image21.png)
+![Terminal Screenshot](/assets/images/posts/pwn_reg/Image21.png)
 
 Well we see our padding agin (1) and our SFP overwrite (2), but the RP has been 
 overwritten with our byte-wise return address reversed (3). This is an 
