@@ -3,7 +3,7 @@ title:  "HTB Reg Walkthrough [pwn]"
 date:   2021-08-19 23:00:00 +0000
 header:
   overlay_image: /assets/images/posts/pwn_reg/banner.png
-  teaser: /assets/images/posts/pwn_reg/banner.png
+  teaser: /assets/images/posts/pwn_reg/teaser.png
 excerpt: "Make a move into binary exploitation CTFs and challenges"
 layout: single
 classes: wide
