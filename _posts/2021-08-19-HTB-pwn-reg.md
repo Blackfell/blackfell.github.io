@@ -154,7 +154,7 @@ chains - this gentle intro will help us massively when it comes to writing
 something more complex in future. 
 
 If it's still not clear to you why we're going to return to winner and how this 
-es different to a traditional BOF, consider that our classic approach is still a 
+is different to a traditional BOF, consider that our classic approach is still a 
 return oriented attack - we simply return-to-shellcode when we have executable 
 stack. Now we're changing that approach to a return-to-X, where X is a shellcode 
 substitute - in our case a useful function - *winner()*. 
