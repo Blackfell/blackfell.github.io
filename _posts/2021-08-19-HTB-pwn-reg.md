@@ -6,6 +6,7 @@ header:
   teaser: /assets/images/posts/pwn_reg/banner.png
 excerpt: "Make a move into binary exploitation CTFs and challenges"
 layout: single
+classes: wide
 toc: true
 categories:
   - Technical
