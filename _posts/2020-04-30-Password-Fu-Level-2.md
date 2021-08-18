@@ -133,6 +133,6 @@ I hope you're a password manager convert! That wasn't so hard, was it?
 
 You  might be wondering why we didn't change all your passwords; I actually don't recommend this at first, security is a marathon, take your time. When an account password needs changing, add it to your manager; along side that, change accounts at a pace that suits you, starting with most serious - main email, banking, personal accounts, any IOS or Microsoft accounts. Do it over time.
 
-Another vital step now is to log out of everything and log back in; get that super password memorised, or store a backup safely as we discussed in the password blog series [Level 1](/guidance/threats/Password-Fu-Level-1/){:target="_blank"}.
+Another vital step now is to log out of your password manager and log back in, you're relying on access to this manager now, so make sure your account isn't going to be forgotten. Get that super password memorised, or store a backup safely as we discussed in the password blog series [Level 1](/guidance/threats/Password-Fu-Level-1/){:target="_blank"}.
 
 You might have noticed me mention 'factors of authentication' throughout this post; if this is something you're unsure about, or a foreign term to you, you're in luck! Our next post will be your password-fu black belt, taking your account security to new heights. See you there.
