@@ -465,7 +465,7 @@ This is where pwntools comes into its own! We know that reg isn't using ASLR,
 but if it was and we had the information to tell pwntools where the binary is 
 loaded in memory, this would still work too so a really useful way of working. 
 In our simple case, We simply ask pwntools to tell us where the symbol for 
-winner Is with:
+winner is with:
 
 ```python
 winner = context.binary.symbols['winner']
@@ -658,6 +658,7 @@ This also makes for a nice neat output:
 We walked through the reg binary, found the vulnerability in a debugger, built 
 our exploit manually, then used python-fu and 
 [pwntools](https://docs.pwntools.com/en/stable/) to automate our attack. I hope 
-that this helped you build your understanding of pwn challenges, but if not, I 
-hope you had fun! This is the kind of challenge that made me catch the bug for 
-binary exploitation and I hope you'll be joining me in future challenges!
+that this helped you build your understanding of pwn challenges, but if you 
+already knew it all, I hope you at least had fun! This is the kind of challenge 
+that made me catch the bug for binary exploitation and I hope you'll be joining 
+me for some more challenges in future!
