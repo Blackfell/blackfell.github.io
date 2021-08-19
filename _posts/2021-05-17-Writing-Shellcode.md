@@ -134,7 +134,7 @@ In the last two examples, we see that the higher bits are left well alone, this 
 
 ### Enumerate Alternatives
 
-Now we know why we have bad bytes, I like to enumerate alternative instructions. I use an arduous manual process that basically involves having an editor window and a terminal window opening, adding and instruction, compiling and checking the resultant bytes for nulls.
+Now we know why we have bad bytes, I like to enumerate alternative instructions. I use an arduous manual process that basically involves having an editor window and a terminal window open, adding or changing an instruction, compiling and checking the resultant bytes for nulls, or whatever bad byte we're trying to eradicate.
 
 Taking this approach for our first instruction in pop_shell.s, I know that moving a small number into rax leads to nulls, but a small one into al doesn't. This is good, but I also need to keep the most significant bits in rax clean, by zeroing them out. 
 
