@@ -185,7 +185,7 @@ You'll need your memory to be RWX where your shellcode is loaded, let's start si
 
 ![assets/images/posts/shellcoding/Untitled%2011.png](/assets/images/posts/shellcoding/Untitled%2011.png)
 
-Let's imagine that 0x31 was a bad byte, so we can instead have raw shellcode bytes `\xc0\x30` (because little endian) and increment the first byte on the fly (also note the first instruction is a nop, for some reason having an inc as the first instruction in the compiled ELF file doesn't run right):
+Let's imagine that 0x31 was a bad byte, what can we do? Well we can instead change the raw shellcode bytes `\xc0\x31` (because little endian) to `\xc0\x30`, but obviously this changes the shellcode, so once that's passed the filter, we'll need to use some other shellcode to increment the `\x30` byte on the fly and restore the shellcode to the intended state in memory. Note that the first instruction included in the below is a nop, for some reason having an inc as the first instruction in the compiled ELF file doesn't run right on my setup and an additional NOP is acceptable for me:
 
 ![assets/images/posts/shellcoding/Untitled%2012.png](/assets/images/posts/shellcoding/Untitled%2012.png)
 
