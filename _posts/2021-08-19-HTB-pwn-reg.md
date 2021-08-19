@@ -137,7 +137,7 @@ binary with `info func` in GDB:
 
 ![Terminal Screenshot](/assets/images/posts/pwn_reg/Image4.png)
 
-We can wee here a method called winner, so let's have a look at it:
+We can see here a method called winner, so let's have a look at it:
 
 ![Terminal Screenshot](/assets/images/posts/pwn_reg/Image5.png)
 
