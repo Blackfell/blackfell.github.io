@@ -69,17 +69,17 @@ feature_row4:
 
 # So you want to learn security?
 
-Perhaps you're new to a job, starting a course, of just plain interested; whatever the reason you're here, the sheer volume of learning options available to you can be daunting. Let's cut through the noise and get you some solid (if opinionated) learning recommendations that I've found successful working with friends and colleagues.
+Perhaps you're new to a job in 'Cyber', starting a course, of just plain interested; whatever the reason you're here, the learning options available to you can be daunting. Let's cut through the noise and get you some solid (if opinionated) ways to learn.
 
-This is a guide of two parts. First up is Immersion101, a compressed brief I like to give friends an colleagues that are getting into InfoSec; the second part will focus on some technical, hands on learning strategies, which is, as far as I'm concerned, *by far the best bit!*
+This is a guide of two parts. First up is Immersion101, a compressed guide to immerse yourself into the InfoSec world; the second part will focus on more technical, hands on learning strategies, which is, as far as I'm concerned, *by far the best bit!*
 
 # Immersion 101
 
-I like to encourage people to build a general, risk oriented and well informed view of the security world. In my opinion, the best way to do this is to immerse yourself; hang out on social media, listen to news, read articles and watch videos. Consume. Assimilate.
+I try to build mysefl a broad, risk oriented and well informed view of the security world and I encourage anyone that will listen (!) to do likewise. In my opinion, the best way to do this is to immerse yourself; hang out on social media, listen to news, read articles and watch videos. Consume!
 
 ## Catching Podcats
 
-A great place to start is with some podcasts; these are free, don't require an account and have lots to give. Here are a few suggestions, pick those that sound most helpful to you; if you find more, send them my way!
+A great place to start is with some podcasts; these are free, don't require any sign up and have lots to give. Here are a few suggestions, pick those that sound most helpful to you; if you find more, send them my way!
 
 {% include feature_row id="feature_row1" type="left" %}
 {% include feature_row id="feature_row2" type="right" %}
@@ -90,38 +90,38 @@ You can download a 'podcatcher' app on your phone, subscribe to a few shows an t
 
 ## Social lurking
 
-Social media is fairly limited in Information Security and though it pains me to say it, InfoSec Twitter is an active and interesting place to pick up news, opinions, reports and blog posts.
+Social media in Information Security probably needs a health warning. InfoSec Twitter is an active and interesting place to pick up news, opinions, reports and blog posts; join in and look out for each other. 
 
-Some people use Twitter as a platform for tool releases:
+Some people use Twitter as a platform for tool, vulnerability or exploit releases:
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">I&#39;ve released PoisonTap; attacks *locked* machines, siphons cookies, exposes router &amp; backdoors browser w/RasPi&amp;Node <a href="https://t.co/mbTAti33wy">https://t.co/mbTAti33wy</a></p>&mdash; Samy Kamkar (@samykamkar) <a href="https://twitter.com/samykamkar/status/798857880015245312?ref_src=twsrc%5Etfw">November 16, 2016</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-Some post details of new exploits and vulnerabilities, often including blog posts to explain them to you:
+Some people post details of new exploits and vulnerabilities:
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Initial Metasploit Exploit Module for BlueKeep (CVE-2019-0708) <a href="https://t.co/TOeXhRH52B">https://t.co/TOeXhRH52B</a></p>&mdash; HD Moore @ Texas Cyber Summit (@hdmoore) <a href="https://twitter.com/hdmoore/status/1170046501042753536?ref_src=twsrc%5Etfw">September 6, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-There's two accounts you can follow for starters, but just start with [searching for the hashtag #InfoSec](https://twitter.com/search?q=%23InfoSec&src=typed_query){:target="_blank"}; since obviously you already [follow me](https://twitter.com/blackf3ll){:target="_blank"} (!) you could always follow my follows.
-
-But beware! InfoSec Twitter can also be a less-than-friendly environment; it's worth the risk adn getting better, so remember, when the fun stops, stop.
+The above quotes are two accounts you can follow for starters, but just start with [searching for the hashtag #InfoSec](https://twitter.com/search?q=%23InfoSec&src=typed_query){:target="_blank"}; since obviously you already [follow me](https://twitter.com/blackf3ll){:target="_blank"} (!) you could always follow my follows. A great place to pick up more connections is at local free/cheap conferences, such as [BSides](http://www.securitybsides.com/w/page/12194156/FrontPage){target="_blank"}.
 
 ## Online training
 
 If you're totally new to the security game, I recommend you focus of your reading and training on security basics; learn about security risk and why businesses use risk, learn about systems administration, networking and programming.
 
-I like the following online training providers:
+I like the following online training providers (in loose order of preference):
 
-1. SANS [Cyber Aces](https://www.cyberaces.org/){:target="_blank"} - A Free offering from a leading training provider to introduce you to InfoSec.
-1. [Cybrary](https://www.cybrary.it/){:target="_blank"} - Online free training provider popular in IT and InfoSec.
-1. [Hacker101](https://www.hacker101.com/){:target="_blank"} - A Free training course associated with the Hacker1 [bug bounty](https://en.wikipedia.org/wiki/Bug_bounty_program){:target="_blank"} program.
-1. [Codeacademy](https://www.codecademy.com/learn/learn-python){:target="_blank"} - Free programming courses from web application programming to full on development practices.
-1. [Security Tube](http://www.securitytube.net/){:target="_blank"} - A collection of videos on all aspects of security, including a good deal of training.
 1. [TryHackMe](https://tryhackme.com/){:target="_blank"} - A totally interactive learning platform, where you walk through exercises, even using an online attack machine if you don't have one of your own.
+1. SANS [Cyber Aces](https://www.cyberaces.org/){:target="_blank"} - A Free offering from a leading training provider to introduce you to InfoSec.
+1. [Hacker101](https://www.hacker101.com/){:target="_blank"} - A Free training course associated with the Hacker1 [bug bounty](https://en.wikipedia.org/wiki/Bug_bounty_program){:target="_blank"} program.
 1. [pwn.college](https://pwn.college){:target="_blank"} - An exploit development oriented platform, with open lecture material and exercises based on CTFd. This one is definately a more advanced learning platform.
 1. [Portswigger Academy](https://portswigger.net/web-security){:target="_blank"} - An excellent web hacking training platform from the makers of BurpSuite, one of the best web hacking proxies out there.
+1. [Hack The Box](https://hackthebox.eu){:target="_blank"} - Another interactive learning platform, generally more challening than TryHackMe, with less guidance. A great progression once you have some more skills. .
+1. [Udemy](https://udemy.com){:target="_blank"} - Low cost courses on practially anything.
+1. [Codeacademy](https://www.codecademy.com/learn/learn-python){:target="_blank"} - Free programming courses from web application programming to full on development practices.
+1. [Cybrary](https://www.cybrary.it/){:target="_blank"} - Online free training provider popular in IT and InfoSec.
+1. [Security Tube](http://www.securitytube.net/){:target="_blank"} - A collection of videos on all aspects of security, including a good deal of training.
 
-If nothing grabs your eye, I recommend CompTIA training courses in Security+ Network+ and A+ to total beginners as a starting place; these can be supplemented with Microsoft, Linux and Cisco sysadmin courses; all of which can be found for free via Cybrary (number 2.).
+If nothing grabs your eye, I recommend CompTIA training courses in Security+ Network+ and A+ to total beginners as a starting place; these can be supplemented with Microsoft, Linux and Cisco sysadmin courses; all of which can be found for free via Cybrary (number 2.). If you have a bigger budget, or are training through your employer, [SANS](https://www.sans.org/){:target="_blank"}  training is excellent and [Offesnive Security](https://www.offensive-security.com/courses-and-certifications/){:target="_blank"}  and [eLearn Security](https://elearnsecurity.com/){:target="_blank"}  options are excellent medium cost alternatives, but are generally more advanced.
 
-Whilst these are good, remember **don't get bogged down in them yet**, read on, build some things and use the training to support where you'd like to find out more on specifics.
+Whilst these are all good, remember **don't get bogged down in them yet**, read on, build some things and use the training to support where you'd like to find out more on specifics.
 
 ## Reading material
 
