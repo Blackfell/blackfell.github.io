@@ -19,13 +19,13 @@ excerpt: "Who am I, anyway?"
 
 # Why am I here?
 
-My name is Sam. I'm a security analyst for money, but I'm writing here because I enjoy playing with technology and this is a place for some of my personal notes and more popular ramblings to live. Every word, opinion, picture and pixel on this site is, of course, my own fault. My content doesn't represent the views of any organisations (or people, animals or plants) I work for or in any way associate with.
+My name is Sam. I'm a security consultant for money, but I'm writing here because I enjoy playing with technology and this is a place for some of my personal notes and ramblings to live. Every word, opinion, picture and pixel on this site is, of course, my own fault. My content doesn't represent the views of any organisations (or people, animals or plants) I work for or in any way associate with.
 
 Please enjoy the site, party on and remember to always **be excellent to each other**.
 
 ## How can I help you?
 
-I'm always open to new challenges and opportunities; if you have something you think I can help with, why not get in touch?
+I'm always open to new challenges,if you have something you think I can help with, why not get in touch?
 
 ### Blog posts
 
