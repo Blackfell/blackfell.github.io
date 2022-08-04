@@ -52,7 +52,7 @@ In this level, you'll be using your **super passphrase** to protect the rest of 
 
 ## Why do I need one a password manager?
 
-If you take one thing away from this post, let it be that a personal Password Manager will make your life easier ane your accunts more secure.
+If you take one thing away from this post, let it be that a personal Password Manager will make your life easier ane your accounts more secure.
 
 ![What is a password manager?](/assets/images/posts/password_level_2/Kirk_what.gif)
 
