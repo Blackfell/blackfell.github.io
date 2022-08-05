@@ -179,7 +179,7 @@ OK the juicy offline stuff! This is my go to recommendation for security specifi
 
 There are a whole host of these out there, but I almost always send people to [Vulnhub](https://www.vulnhub.com/){:target="_blank"}; Metasploitable is often recommended as a beginner task, but I'd give caution, as it's lack of workflow and artificial nature can sometimes confuse, or demotivate people.
 
-I like to start people on a [Mr robot themed machine](https://www.vulnhub.com/entry/mr-robot-1,151/){:target="_blank"}; many people are fans of the show (which helps with keeping interest) and I think it's a nice balance of realism and simplicity. As an added bonus, I have produced a [learning-oriented walkthrough](https://blackfell.net/technical%20guidance/labs%20&%20hacking/Mr-Robot-Walkthrough/){:target="_blank"} for the machine, to turn it into a proper learning experience.
+I like to start people on a [Mr robot themed machine](https://www.vulnhub.com/entry/mr-robot-1,151/){:target="_blank"}; many people are fans of the show (which helps with keeping interest) and I think it's a nice balance of realism and simplicity. As an added bonus, I have produced a [learning-oriented walkthrough](https://blackfell.net/technical/labs/Mr-Robot-Walkthrough/){:target="_blank"} for the machine, to turn it into a proper learning experience.
 
 Machines aren't the only thing you could go for; you could look to do some wireless security testing in your local environment, you may decide you'd like
 
@@ -245,7 +245,7 @@ If you know what an IP address is, what a network port, MAC address and the diff
 
 If you know the basics of how websites are programmed and you know your HTML from our JavaScript, what an SQL query is and how CSS works (note, you don't need to be a master), then skill any web learning, otherwise, consider completing some web programming learning, like that offered by [codeacademy](https://www.codecademy.com/learn/paths/web-development){:target="_blank"} or [w3schools ](https://www.w3schools.com/). Just getting a rough understanding at this point will help.
 
-Otherwise, I recommend you try the [Mr Robot Capture the Flag](https://www.vulnhub.com/entry/mr-robot-1,151/){:target="_blank"} challenge as a starter task, using my (very excellent) [walkthrough](https://blackfell.net/technical%20guidance/labs%20&%20hacking/Mr-Robot-Walkthrough/){:target="_blank"} as a training guide.
+Otherwise, I recommend you try the [Mr Robot Capture the Flag](https://www.vulnhub.com/entry/mr-robot-1,151/){:target="_blank"} challenge as a starter task, using my (very excellent) [walkthrough](https://blackfell.net/technical/labs/Mr-Robot-Walkthrough/){:target="_blank"} as a training guide.
 
 In due time, I'd recommend you bolster your web programming knowledge with another programming or scripting language, though this isn't wholly essential at first (IMO). I like Python and [codeacademy](https://www.codecademy.com/learn/learn-python){:target="_blank"} offer good training. This one is up to you though!
 

@@ -356,4 +356,4 @@ I keep one Linux VM and one Windows for attacking; the Linux machine is usually 
 
 ![It's over](/assets/images/posts/hacking_lab/finished.jpg)
 
-Now that your testing is complete and everything can talk, you're ready to go! All that's left is to actually use it! Catch up with my [Mr Robot walkthrough](https://blackfell.net/technical%20guidance/labs%20&%20hacking/Mr-Robot-Walkthrough/) to put your lab through its paces. Good luck!
+Now that your testing is complete and everything can talk, you're ready to go! All that's left is to actually use it! Catch up with my [Mr Robot walkthrough](https://blackfell.net/technical/labs/Mr-Robot-Walkthrough/) to put your lab through its paces. Good luck!
