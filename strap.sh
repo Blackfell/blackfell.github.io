@@ -178,11 +178,10 @@ install_git_tools(){
     #bloodhound - old version  ly4k with certipy support
     sudo mkdir -p /opt/bloodhoundly4k && sudo chown -R ${USER}:${USER} /opt/bloodhoundly4k
     if [ ! -f /opt/bloodhoundly4k/BloodHound ]; then
-        wget -q https://github.com/ly4k/BloodHound/releases/download/v4.2.0-ly4k/BloodHound-linux-x64.zip -O /opt/bloodhoundly4k/Bloodound-x64lin.zip
-        7z x /opt/bloodhoundly4k/Bloodound-x64lin.zip -o/opt/bloodhoundly4k
+        wget -q https://github.com/ly4k/BloodHound/releases/download/v4.2.0-ly4k/BloodHound-linux-x64.zip -O /opt/bloodhoundly4k/BloodHound-x64lin.zip
+        7z x /opt/bloodhoundly4k/BloodHound-x64lin.zip 
         # Sadly there's a directory in the zip
-        mv /opt/bloodhoundly4k/BloodHound-linux-x64/* /opt/bloodhoundly4k/
-        add_rc_path /opt/bloodhoundly4k/
+        add_rc_path /opt/bloodhoundly4k/BloodHound-linux-x64/
     fi
 
     # Not-Really-Git-Ghidra (used to do Nessus but now separate)
