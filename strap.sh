@@ -49,11 +49,11 @@ generic_setup() {
         # Ensure this is set in $HOME/.config/qterminal.org/qterminal.ini ApplicationTransparency=0
         sed -i '/^ApplicationTransparency=/c\ApplicationTransparency=0' "$HOME/.config/qterminal.org/qterminal.ini" || echo "ApplicationTransparency=0" >> "$HOME/.config/file.ini"
         # Nessus
-	if [ ! -f $HOME/Nessus-10.8.3-debian10_amd64.deb ]; then
+	if [ ! -f /opt/nessus/sbin/nessusd ]; then
         	curl --request GET --url 'https://www.tenable.com/downloads/api/v2/pages/nessus/files/Nessus-10.8.3-debian10_amd64.deb' --output "$HOME/Nessus-10.8.3-debian10_amd64.deb"
         	sudo dpkg -i "$HOME/Nessus-10.8.3-ubuntu1604_amd64.deb"
 	else
- 		echo "[+] Nessus deb already here, skipping install..."
+ 		echo "[+] Nessus already here, skipping install..."
  	fi
 
         #rtl8812au - Kali and wifitre helpers
@@ -83,11 +83,11 @@ generic_setup() {
         clone_or_update_repo https://github.com/SpiderLabs/Responder
         add_rc_path /opt/Responder
         # Nessus
-	if [ ! -f $HOME/Nessus-10.8.3-ubuntu1604_amd64.debccessories] ; then
+	if [ ! -f /opt/nessus/sbin/nessusd ] ; then
 		curl --request GET --url 'https://www.tenable.com/downloads/api/v2/pages/nessus/files/Nessus-10.8.3-ubuntu1604_amd64.deb'  --output "$HOME/Nessus-10.8.3-ubuntu1604_amd64.debccessories"
 	        sudo dpkg -i "$HOME/Nessus-10.8.3-ubuntu1604_amd64.deb"ccessories
 	else
- 		echo "[+] Nessus deb already here, skipping install..."
+ 		echo "[+] Nessus already here, skipping install..."
 	fi
         # Impacket
         pipx install impacket
