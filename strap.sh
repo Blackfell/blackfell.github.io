@@ -66,7 +66,7 @@ generic_setup() {
         echo "Detected Ubuntu. Installing would-be Kali shit."
         # Base tools first
         sudo DEBIAN_FRONTEND=noninteractiv apt install -y thefuck byobu vim flashrom nmap bashtop  esptool plocate golang-go docker.io  python3-venv pipx curl nmap
-        sudo snap install rustup
+        sudo snap install rustup --classic
         # Pwntools
         pipx install pwntools
         # Seclists
