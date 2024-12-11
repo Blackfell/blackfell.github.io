@@ -276,7 +276,7 @@ install_git_tools(){
 # Logging
 LOGFILE="/tmp/bfstrap.log"
 echo "[+] Saving all output to $LOGFILE"
-exec > $LOGFILE 2>&1
+exec > >(tee -a $LOGFILE) 2>&1
 
 # Determine the OS
 if grep -iq "ubuntu" /etc/os-release; then
