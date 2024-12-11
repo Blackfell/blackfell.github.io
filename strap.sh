@@ -39,8 +39,66 @@ clone_or_update_repo() {
 }
 
 generic_setup() {
-    # Tools that get installed regardless
-    sudo apt install -y thefuck byobu vim flashrom nmap bashtop python3-pwntools esptool plocate golang-go docker.io rustup python3-venv pipx curl nmap
+    OS=$1
+    # Tools that get installed at the beggining
+    if [ $OS = "kali" ]; then
+        echo "Detected Kali Linux. Installing Kali specifics."
+        # Base tools first
+        sudo apt install -y thefuck byobu vim flashrom nmap bashtop python3-pwntools esptool plocate golang-go docker.io rustup python3-venv pipx curl nmap
+
+        # Ensure this is set in $HOME/.config/qterminal.org/qterminal.ini ApplicationTransparency=0
+        sed -i '/^ApplicationTransparency=/c\ApplicationTransparency=0' "$HOME/.config/qterminal.org/qterminal.ini" || echo "ApplicationTransparency=0" >> "$HOME/.config/file.ini"
+        # Nessus
+        curl --request GET --url 'https://www.tenable.com/downloads/api/v2/pages/nessus/files/Nessus-10.8.3-debian10_amd64.deb' --output "$HOME/Nessus-10.8.3-debian10_amd64.deb"
+        sudo dpkg -i "$HOME/Nessus-10.8.3-ubuntu1604_amd64.deb"
+
+        #rtl8812au - Kali and wifitre helpers
+        sudo apt install -y linux-headers-amd64 realtek-rtl88xxau-dkms hcxdumptool hcxtools
+
+        # Desktop background
+        sudo apt install pcmanfm -y
+        wget -q https://blackfell.net/kali_lincox_mine.png -O $HOME/kali_background.png
+        xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -s  $HOME/kali_background.png    
+        xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/last-image-style -s 1
+        
+
+    elif [ $OS = "ubuntu" ]; then
+        echo "Detected Ubuntu. Installing would-be Kali shit."
+        # Base tools first
+        sudo apt install -y thefuck byobu vim flashrom nmap bashtop  esptool plocate golang-go docker.io  python3-venv pipx curl nmap
+        sudo snap install rustup
+        # Pwntools
+        pipx install pwntools
+        # Seclists
+        clone_or_update_repo git clone https://github.com/danielmiessler/SecLists.git
+        sudo ln -s /opt/SecLists /usr/share/seclists/
+        # DNSChef
+        clone_or_update_repo https://github.com/iphelix/dnschef  
+        add_rc_path /opt/dnschef    
+        # Responder
+        clone_or_update_repo https://github.com/SpiderLabs/Responder
+        add_rc_path /opt/Responder
+        # Nessus
+        curl --request GET --url 'https://www.tenable.com/downloads/api/v2/pages/nessus/files/Nessus-10.8.3-ubuntu1604_amd64.deb'  --output "$HOME/Nessus-10.8.3-ubuntu1604_amd64.deb"
+        sudo dpkg -i "$HOME/Nessus-10.8.3-ubuntu1604_amd64.deb"
+        # Impacket
+        pipx install impacket
+        # Certipy
+        pipx install certipy-ad
+        # Coercer
+        pipx install coercer
+        # Bloodhound
+        pipx install bloodhound
+        # Wifi stuff
+        sudo DEBIAN_FRONTEND=noninteractiv apt install wifite rtl8812au-dkms -y
+        # Generic hacking tools (snaps)
+        sudo snap install metasploit-framework 
+        sudo snap install sqlmap 
+        sudo snap install code --classic
+        
+    fi
+    
+    # Configure rust environment
     rustup default stable
     
     #PMapper
@@ -120,7 +178,6 @@ generic_setup() {
     wget -q https://github.com/Blackfell/ansible-hax/raw/refs/heads/main/roles/bf_arch_base/files/vimrc  -O $HOME/.vimrc
     wget -q https://github.com/Blackfell/ansible-hax/blob/main/roles/bf_arch_desktop/files/BFBackground.png?raw=true  -O $HOME/BFBackground.png
     sudo gsettings set org.gnome.desktop.background picture-uri "file://$HOME/BFBackground.png"
-
 
 }
 
@@ -287,60 +344,8 @@ else
     exit 1
 fi
 
-generic_setup
+generic_setup $OS
 install_git_tools
 install_go_tools
-
-# OS specific steps to finish up
-if [ $OS = "ubuntu" ]; then
-    echo "Detected Ubuntu. Installing would-be Kali shit."
-    # Seclists
-    clone_or_update_repo git clone https://github.com/danielmiessler/SecLists.git
-    sudo ln -s /opt/SecLists /usr/share/seclists/
-    # DNSChef
-    clone_or_update_repo https://github.com/iphelix/dnschef  
-    add_rc_path /opt/dnschef    
-    # Responder
-    clone_or_update_repo https://github.com/SpiderLabs/Responder
-    add_rc_path /opt/Responder
-    # Nessus
-    curl --request GET --url 'https://www.tenable.com/downloads/api/v2/pages/nessus/files/Nessus-10.8.3-ubuntu1604_amd64.deb'  --output "$HOME/Nessus-10.8.3-ubuntu1604_amd64.deb"
-    sudo dpkg -i "$HOME/Nessus-10.8.3-ubuntu1604_amd64.deb"
-    # Impacket
-    pipx install impacket
-    # Certipy
-    pipx install certipy-ad
-    # Coercer
-    pipx install coercer
-    # Bloodhound
-    pipx install bloodhound
-    # Wifi stuff
-    sudo DEBIAN_FRONTEND=noninteractiv apt install wifite rtl8812au-dkms -y
-    # Generic hacking tools (snaps)
-    sudo snap install metasploit-framework 
-    sudo snap install sqlmap 
-    sudo snap install code --classic
-    
-    
-
-elif [ $OS = "kali" ]; then
-    echo "Detected Kali Linux. Installing Kali specifics."
-    # Ensure this is set in $HOME/.config/qterminal.org/qterminal.ini ApplicationTransparency=0
-    sed -i '/^ApplicationTransparency=/c\ApplicationTransparency=0' "$HOME/.config/qterminal.org/qterminal.ini" || echo "ApplicationTransparency=0" >> "$HOME/.config/file.ini"
-    # Nessus
-    curl --request GET --url 'https://www.tenable.com/downloads/api/v2/pages/nessus/files/Nessus-10.8.3-debian10_amd64.deb' --output "$HOME/Nessus-10.8.3-debian10_amd64.deb"
-    sudo dpkg -i "$HOME/Nessus-10.8.3-ubuntu1604_amd64.deb"
-
-    #rtl8812au - Kali and wifitre helpers
-    sudo apt install -y linux-headers-amd64 realtek-rtl88xxau-dkms hcxdumptool hcxtools
-
-    # Desktop background
-    sudo apt install pcmanfm -y
-    wget -q https://blackfell.net/kali_lincox_mine.png -O $HOME/kali_background.png
-    xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -s  $HOME/kali_background.png    
-    xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/last-image-style -s 1
-
-
-fi
 
 echo "[+] Done. You can check the log - $LOGFILE"
