@@ -92,7 +92,7 @@ generic_setup() {
     pipx install scoutsuite
 
     # Sliver
-    curl https://sliver.sh/install | sudo bash
+    if ! which sliver >/dev/null; then curl https://sliver.sh/install | sudo bash; fi
 
     # NRF Connect
     if [ ! -f /opt/nrfconnect/nrfconnect-5.1.0-x86_64.appimage ]; then 
