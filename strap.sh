@@ -42,8 +42,12 @@ generic_setup() {
     OS=$1
 
     # Start off with a oh-my-zsh install
-    sudo apt install -y zsh
-    CHSH="yes" sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    if [ ! -d $HOME/.oh-my-zsh ]; then 
+        sudo apt install -y zsh
+        CHSH="yes" sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    else
+        echo "[+] Zsh already configured. Skipping..."
+    fi
     
     
     # Tools that get installed at the beggining
