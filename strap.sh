@@ -40,6 +40,10 @@ clone_or_update_repo() {
 
 generic_setup() {
     OS=$1
+
+    # Start off with a oh-my-zsh install
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    
     # Tools that get installed at the beggining
     if [ $OS = "kali" ]; then
         echo "Detected Kali Linux. Installing Kali specifics."
