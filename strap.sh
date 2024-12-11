@@ -71,10 +71,10 @@ generic_setup() {
         sudo mkdir -p /opt/frida-server
         sudo chown -R $USER:$USER /opt/frida-server
         pushd /opt/frida-server
-        wget https://github.com/frida/frida/releases/download/16.5.9/frida-server-16.5.9-android-arm64.xz
-        wget https://github.com/frida/frida/releases/download/16.5.9/frida-server-16.5.9-android-arm.xz
-        wget https://github.com/frida/frida/releases/download/16.5.9/frida-server-16.5.9-android-x86.xz
-        wget https://github.com/frida/frida/releases/download/16.5.9/frida-server-16.5.9-android-x86_64.xz
+        wget -q https://github.com/frida/frida/releases/download/16.5.9/frida-server-16.5.9-android-arm64.xz
+        wget -q https://github.com/frida/frida/releases/download/16.5.9/frida-server-16.5.9-android-arm.xz
+        wget -q https://github.com/frida/frida/releases/download/16.5.9/frida-server-16.5.9-android-x86.xz
+        wget -q https://github.com/frida/frida/releases/download/16.5.9/frida-server-16.5.9-android-x86_64.xz
         popd
     fi
 
@@ -82,7 +82,7 @@ generic_setup() {
     if [ ! /opt/JLink/JLink_Linux_x86_64.deb ]; then
         sudo mkdir -p /opt/JLink
         pushd /opt/JLink
-        wget https://www.segger.com/downloads/jlink/JLink_Linux_x86_64.deb
+        wget -q https://www.segger.com/downloads/jlink/JLink_Linux_x86_64.deb
         sudo dpkg -i ./JLink_Linux_x86_64.deb
         popd
     fi
@@ -99,12 +99,12 @@ generic_setup() {
         sudo mkdir -p /opt/nrfconnect
         sudo chown -R $USER:$USER /opt/nrfconnect
         pushd /opt/nrfconnect
-        wget https://nsscprodmedia.blob.core.windows.net/prod/software-and-other-downloads/desktop-software/nrf-connect-for-desktop/5-1-0/nrfconnect-5.1.0-x86_64.appimage
+        wget -q  https://nsscprodmedia.blob.core.windows.net/prod/software-and-other-downloads/desktop-software/nrf-connect-for-desktop/5-1-0/nrfconnect-5.1.0-x86_64.appimage
         popd
     fi
 
     # Burpsuite Pro
-    wget 'https://portswigger-cdn.net/burp/releases/download?product=pro&version=2024.10.3&type=Linux'  -O $USER/Downloads/burp_installer
+    wget -q 'https://portswigger-cdn.net/burp/releases/download?product=pro&version=2024.10.3&type=Linux'  -O $USER/Downloads/burp_installer
     echo "[!] Don't forget to install your own burp (GUI), it's here - $USER/Downloads/burp_installer"
 
 
@@ -117,8 +117,8 @@ generic_setup() {
     add_rc_path "$HOME/go/bin"
     add_rc_path "$HOME/.local/bin"
     add_line_if_not_exists "eval \$(thefuck --alias)" "$HOME/.zshrc"
-    wget https://github.com/Blackfell/ansible-hax/raw/refs/heads/main/roles/bf_arch_base/files/vimrc  -O $HOME/.vimrc
-    wget https://github.com/Blackfell/ansible-hax/blob/main/roles/bf_arch_desktop/files/BFBackground.png?raw=true  -O $HOME/BFBackground.png
+    wget -q https://github.com/Blackfell/ansible-hax/raw/refs/heads/main/roles/bf_arch_base/files/vimrc  -O $HOME/.vimrc
+    wget -q https://github.com/Blackfell/ansible-hax/blob/main/roles/bf_arch_desktop/files/BFBackground.png?raw=true  -O $HOME/BFBackground.png
     sudo gsettings set org.gnome.desktop.background picture-uri "file://$HOME/BFBackground.png"
 
 
@@ -178,7 +178,7 @@ install_git_tools(){
     #bloodhound - old version  ly4k with certipy support
     sudo mkdir -p /opt/bloodhoundly4k && sudo chown -R ${USER}:${USER} /opt/bloodhoundly4k
     if [ ! -f /opt/bloodhoundly4k/BloodHound ]; then
-        wget https://github.com/ly4k/BloodHound/releases/download/v4.2.0-ly4k/BloodHound-linux-x64.zip -O /opt/bloodhoundly4k/Bloodound-x64lin.zip
+        wget -q https://github.com/ly4k/BloodHound/releases/download/v4.2.0-ly4k/BloodHound-linux-x64.zip -O /opt/bloodhoundly4k/Bloodound-x64lin.zip
         7z x /opt/bloodhoundly4k/Bloodound-x64lin.zip -o/opt/bloodhoundly4k
         # Sadly there's a directory in the zip
         mv /opt/bloodhoundly4k/BloodHound-linux-x64/* /opt/bloodhoundly4k/
@@ -188,14 +188,14 @@ install_git_tools(){
     # Not-Really-Git-Ghidra (used to do Nessus but now separate)
     sudo mkdir -p /opt/Ghidra11.2.1 && sudo chown -R $USER:$USER /opt/Ghidra11.2.1
     pushd /opt/Ghidra11.2.1
-    wget https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_11.2.1_build/ghidra_11.2.1_PUBLIC_20241105.zip -O ghidra_11.2.1_PUBLIC_20241105.zip
+    wget -q https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_11.2.1_build/ghidra_11.2.1_PUBLIC_20241105.zip -O ghidra_11.2.1_PUBLIC_20241105.zip
     7z x ghidra_11.2.1_PUBLIC_20241105.zip
     popd
 
     # Not-Really-git-Jadx
     sudo mkdir -p /opt/jadx && sudo chown $USER:$USER /opt/jadx
     pushd /opt/jadx
-    wget https://github.com/skylot/jadx/releases/download/v1.5.1/jadx-1.5.1.zip -O jadx-1.5.1.zip
+    wget -q https://github.com/skylot/jadx/releases/download/v1.5.1/jadx-1.5.1.zip -O jadx-1.5.1.zip
     7z x jadx-1.5.1.zip
     popd
 
@@ -250,12 +250,12 @@ install_git_tools(){
     clone_or_update_repo https://github.com/peass-ng/PEASS-ng
     if [ ! -f /opt/PEASS-ng/linpeas.sh ]; then
         pushd /opt/PEASS-ng
-        wget https://github.com/peass-ng/PEASS-ng/releases/download/20241205-c8c0c3e5/linpeas.sh
-        wget https://github.com/peass-ng/PEASS-ng/releases/download/20241205-c8c0c3e5/linpeas_fat.sh
-        wegt https://github.com/peass-ng/PEASS-ng/releases/download/20241205-c8c0c3e5/linpeas_linux_amd64
-        wget https://github.com/peass-ng/PEASS-ng/releases/download/20241205-c8c0c3e5/winPEASany.exe
-        wget https://github.com/peass-ng/PEASS-ng/releases/download/20241205-c8c0c3e5/winPEAS.bat
-        wget https://github.com/peass-ng/PEASS-ng/releases/download/20241205-c8c0c3e5/winPEASany_ofs.exe
+        wget -q https://github.com/peass-ng/PEASS-ng/releases/download/20241205-c8c0c3e5/linpeas.sh
+        wget -q https://github.com/peass-ng/PEASS-ng/releases/download/20241205-c8c0c3e5/linpeas_fat.sh
+        wegt -q https://github.com/peass-ng/PEASS-ng/releases/download/20241205-c8c0c3e5/linpeas_linux_amd64
+        wget -q https://github.com/peass-ng/PEASS-ng/releases/download/20241205-c8c0c3e5/winPEASany.exe
+        wget -q https://github.com/peass-ng/PEASS-ng/releases/download/20241205-c8c0c3e5/winPEAS.bat
+        wget -q https://github.com/peass-ng/PEASS-ng/releases/download/20241205-c8c0c3e5/winPEASany_ofs.exe
         popd
     fi
 
@@ -316,7 +316,7 @@ if [ $OS = "ubuntu" ]; then
     # Bloodhound
     pipx install bloodhound
     # Wifi stuff
-    sudo apt install wifite rtl8812au-dkms -y
+    sudo DEBIAN_FRONTEND=noninteractiv apt install wifite rtl8812au-dkms -y
     # Generic hacking tools (snaps)
     sudo snap install metasploit-framework 
     sudo snap install sqlmap 
@@ -337,7 +337,7 @@ elif [ $OS = "kali" ]; then
 
     # Desktop background
     sudo apt install pcmanfm -y
-    wget https://blackfell.net/kali_lincox_mine.png -O $HOME/kali_background.png
+    wget -q https://blackfell.net/kali_lincox_mine.png -O $HOME/kali_background.png
     xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -s  $HOME/kali_background.png    
     xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/last-image-style -s 1
 
