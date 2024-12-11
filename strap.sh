@@ -42,6 +42,7 @@ generic_setup() {
     OS=$1
 
     # Start off with a oh-my-zsh install
+    sudo apt install -y zsh
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     
     # Tools that get installed at the beggining
