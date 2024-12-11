@@ -44,7 +44,7 @@ generic_setup() {
     if [ $OS = "kali" ]; then
         echo "Detected Kali Linux. Installing Kali specifics."
         # Base tools first
-        sudo apt install -y thefuck byobu vim flashrom nmap bashtop python3-pwntools esptool plocate golang-go docker.io rustup python3-venv pipx curl nmap
+        sudo DEBIAN_FRONTEND=noninteractiv apt install -y thefuck byobu vim flashrom nmap bashtop python3-pwntools esptool plocate golang-go docker.io rustup python3-venv pipx curl nmap
 
         # Ensure this is set in $HOME/.config/qterminal.org/qterminal.ini ApplicationTransparency=0
         sed -i '/^ApplicationTransparency=/c\ApplicationTransparency=0' "$HOME/.config/qterminal.org/qterminal.ini" || echo "ApplicationTransparency=0" >> "$HOME/.config/file.ini"
@@ -53,10 +53,10 @@ generic_setup() {
         sudo dpkg -i "$HOME/Nessus-10.8.3-ubuntu1604_amd64.deb"
 
         #rtl8812au - Kali and wifitre helpers
-        sudo apt install -y linux-headers-amd64 realtek-rtl88xxau-dkms hcxdumptool hcxtools
+        sudo DEBIAN_FRONTEND=noninteractiv apt install -y linux-headers-amd64 realtek-rtl88xxau-dkms hcxdumptool hcxtools
 
         # Desktop background
-        sudo apt install pcmanfm -y
+        sudo DEBIAN_FRONTEND=noninteractiv apt install pcmanfm -y
         wget -q https://blackfell.net/kali_lincox_mine.png -O $HOME/kali_background.png
         xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -s  $HOME/kali_background.png    
         xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/last-image-style -s 1
@@ -65,7 +65,7 @@ generic_setup() {
     elif [ $OS = "ubuntu" ]; then
         echo "Detected Ubuntu. Installing would-be Kali shit."
         # Base tools first
-        sudo apt install -y thefuck byobu vim flashrom nmap bashtop  esptool plocate golang-go docker.io  python3-venv pipx curl nmap
+        sudo DEBIAN_FRONTEND=noninteractiv apt install -y thefuck byobu vim flashrom nmap bashtop  esptool plocate golang-go docker.io  python3-venv pipx curl nmap
         sudo snap install rustup
         # Pwntools
         pipx install pwntools
@@ -256,12 +256,12 @@ install_git_tools(){
     popd
 
     # Not-Really-Git-proxmark3
-    sudo apt install -y --no-install-recommends git ca-certificates build-essential pkg-config \
+    sudo DEBIAN_FRONTEND=noninteractiv apt install -y --no-install-recommends git ca-certificates build-essential pkg-config \
         libreadline-dev gcc-arm-none-eabi libnewlib-dev qtbase5-dev \
         libbz2-dev liblz4-dev libbluetooth-dev libpython3-dev libssl-dev libgd-dev
     sudo systemctl stop ModemManager
     sudo systemctl disable ModemManager
-    sudo apt remove modemmanager -y
+    sudo DEBIAN_FRONTEND=noninteractiv apt remove modemmanager -y
     clone_or_update_repo https://github.com/RfidResearchGroup/proxmark3
     pushd /opt/proxmark3
     make accessrights # Give write to serial device
@@ -293,7 +293,7 @@ install_git_tools(){
     add_rc_path /opt/esp32_image_parser
 
     # Radamsa
-    sudo apt-get install gcc make git wget -y
+    sudo DEBIAN_FRONTEND=noninteractiv apt install gcc make git wget -y
     clone_or_update_repo https://gitlab.com/akihe/radamsa
     if [ ! -f /opt/radamsa/bin/radamsa ]; then
         pushd /opt/radamsa
@@ -319,7 +319,7 @@ install_git_tools(){
     clone_or_update_repo https://github.com/SourceArcade/flashprog
     if [ ! -f /opt/flashprog/flashprog ]; then 
         pushd /opt/flashprog 
-        sudo apt install libpci-dev libftdi-dev  libusb-1.0-0 libusb-1.0-0-dev libusb-dev libjaylink-dev  libgpiod-dev pkgconf -y
+        sudo DEBIAN_FRONTEND=noninteractiv apt install libpci-dev libftdi-dev  libusb-1.0-0 libusb-1.0-0-dev libusb-dev libjaylink-dev  libgpiod-dev pkgconf -y
         make 
         popd
     fi
