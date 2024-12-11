@@ -312,7 +312,7 @@ install_git_tools(){
 
     # ESP32 image parser 
     clone_or_update_repo https://github.com/tenable/esp32_image_parser
-    for pkg in $(cat /opt/esp32_image_parser); do pipx install $pkg; done
+    for pkg in $(cat /opt/esp32_image_parser/requirements.txt); do pipx install $pkg; done
     add_rc_path /opt/esp32_image_parser
 
     # Radamsa
