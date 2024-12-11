@@ -40,7 +40,7 @@ clone_or_update_repo() {
 
 generic_setup() {
     # Tools that get installed regardless
-    sudo apt install -y thefuck byobu vim flashrom nmap bashtop python3-pwntools esptool plocate golang-go docker.io rustup python3-venv pipx curl
+    sudo apt install -y thefuck byobu vim flashrom nmap bashtop python3-pwntools esptool plocate golang-go docker.io rustup python3-venv pipx curl nmap
     rustup default stable
     
     #PMapper
@@ -91,6 +91,9 @@ generic_setup() {
     # YOLO
     pipx install scoutsuite
 
+    # Sliver
+    curl https://sliver.sh/install | sudo bash
+
     # NRF Connect
     if [ ! -f /opt/nrfconnect/nrfconnect-5.1.0-x86_64.appimage ]; then 
         sudo mkdir -p /opt/nrfconnect
@@ -99,6 +102,10 @@ generic_setup() {
         wget https://nsscprodmedia.blob.core.windows.net/prod/software-and-other-downloads/desktop-software/nrf-connect-for-desktop/5-1-0/nrfconnect-5.1.0-x86_64.appimage
         popd
     fi
+
+    # Burpsuite Pro
+    wget https://portswigger-cdn.net/burp/releases/download?product=pro&version=2024.10.3&type=Linux -o $USER/Downloads/burp_installer
+    echo "[!] Don't forget to install your own burp (GUI), it's here - $USER/Downloads/burp_installer"
 
 
     # Customisation
@@ -110,9 +117,11 @@ generic_setup() {
     add_rc_path "$HOME/go/bin"
     add_rc_path "$HOME/.local/bin"
     add_line_if_not_exists "eval \$(thefuck --alias)" "$HOME/.zshrc"
-    wget https://github.com/Blackfell/ansible-hax/raw/refs/heads/main/roles/bf_arch_base/files/vimrc -o ~/.vimrc
-    wget https://github.com/Blackfell/ansible-hax/blob/main/roles/bf_arch_desktop/files/BFBackground.png?raw=true -o ~/BFBackground.png
-    gsettings set org.gnome.desktop.background picture-uri "file://$HOME/BFBAckground.png"
+    wget https://github.com/Blackfell/ansible-hax/raw/refs/heads/main/roles/bf_arch_base/files/vimrc -o $HOME/.vimrc
+    wget https://github.com/Blackfell/ansible-hax/blob/main/roles/bf_arch_desktop/files/BFBackground.png?raw=true -o $HOME/BFBackground.png
+    sudo gsettings set org.gnome.desktop.background picture-uri "file://$HOME/BFBackground.png"
+
+
 }
 
 install_go_tools(){
@@ -184,7 +193,7 @@ install_git_tools(){
     popd
 
     # Not-Really-git-Jadx
-    sudo mkdir -p /opt/jadx && sudo chorn $USER:$USER /opt/jadx
+    sudo mkdir -p /opt/jadx && sudo chown $USER:$USER /opt/jadx
     pushd /opt/jadx
     wget https://github.com/skylot/jadx/releases/download/v1.5.1/jadx-1.5.1.zip -o jadx-1.5.1.zip
     7z x jadx-1.5.1.zip
@@ -196,7 +205,7 @@ install_git_tools(){
         libbz2-dev liblz4-dev libbluetooth-dev libpython3-dev libssl-dev libgd-dev
     sudo systemctl stop ModemManager
     sudo systemctl disable ModemManager
-    sudo apt remove modemmanager
+    sudo apt remove modemmanager -y
     clone_or_update_repo https://github.com/RfidResearchGroup/proxmark3
     pushd /opt/proxmark3
     make accessrights # Give write to serial device
@@ -295,6 +304,16 @@ if [ $OS = "ubuntu" ]; then
     sudo dpkg -i "$HOME/Nessus-10.8.3-ubuntu1604_amd64.deb"
     # Impacket
     pipx install impacket
+    # Certipy
+    pipx install certipy-ad
+    # Bloodhound
+    pipx install bloodhound
+    # Wifi stuff
+    sudo apt install wifite rtl8812au-dkms -y
+    # Generic hacking tools (snaps)
+    sudo snap install metasploit-framework sqlmap -y
+    
+    
 
 elif [ $OS = "kali" ]; then
     echo "Detected Kali Linux. Installing Kali specifics."
@@ -303,8 +322,12 @@ elif [ $OS = "kali" ]; then
     # Nessus
     curl --request GET --url 'https://www.tenable.com/downloads/api/v2/pages/nessus/files/Nessus-10.8.3-debian10_amd64.deb' --output "$HOME/Nessus-10.8.3-debian10_amd64.deb"
     sudo dpkg -i "$HOME/Nessus-10.8.3-ubuntu1604_amd64.deb"
-    
+
     #rtl8812au - Kali and wifitre helpers
     sudo apt install -y linux-headers-amd64 realtek-rtl88xxau-dkms hcxdumptool hcxtools
+
+    # Desktop background
+    sudo apt install lxappearance -y
+    wget https://blackfell.net/kali_lincox_mine.png -o $HOME/kali_background.png
 
 fi
