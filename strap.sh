@@ -52,7 +52,9 @@ generic_setup() {
 	if [ ! -f $HOME/Nessus-10.8.3-debian10_amd64.deb ]; then
         	curl --request GET --url 'https://www.tenable.com/downloads/api/v2/pages/nessus/files/Nessus-10.8.3-debian10_amd64.deb' --output "$HOME/Nessus-10.8.3-debian10_amd64.deb"
         	sudo dpkg -i "$HOME/Nessus-10.8.3-ubuntu1604_amd64.deb"
-	 fi
+	else
+ 		echo "[+] Nessus deb already here, skipping install..."
+ 	fi
 
         #rtl8812au - Kali and wifitre helpers
         sudo DEBIAN_FRONTEND=noninteractiv apt install -y linux-headers-amd64 realtek-rtl88xxau-dkms hcxdumptool hcxtools
@@ -84,6 +86,8 @@ generic_setup() {
 	if [ ! -f $HOME/Nessus-10.8.3-ubuntu1604_amd64.debccessories] ; then
 		curl --request GET --url 'https://www.tenable.com/downloads/api/v2/pages/nessus/files/Nessus-10.8.3-ubuntu1604_amd64.deb'  --output "$HOME/Nessus-10.8.3-ubuntu1604_amd64.debccessories"
 	        sudo dpkg -i "$HOME/Nessus-10.8.3-ubuntu1604_amd64.deb"ccessories
+	else
+ 		echo "[+] Nessus deb already here, skipping install..."
 	fi
         # Impacket
         pipx install impacket
@@ -238,7 +242,7 @@ install_git_tools(){
 
     #bloodhound - old version  ly4k with certipy support
     sudo mkdir -p /opt/bloodhoundly4k && sudo chown -R ${USER}:${USER} /opt/bloodhoundly4k
-    if [ ! -f /opt/bloodhoundly4k/BloodHound ]; then
+    if [ ! -f /opt/bloodhoundly4k/BloodHound-linux-x64/BloodHound ]; then
         pushd /opt/bloodhoundly4k
         echo "[-] Downloading Bloodhound, please wait..."
         wget -q https://github.com/ly4k/BloodHound/releases/download/v4.2.0-ly4k/BloodHound-linux-x64.zip -O /opt/bloodhoundly4k/BloodHound-x64lin.zip
