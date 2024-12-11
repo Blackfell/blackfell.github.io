@@ -252,7 +252,8 @@ install_git_tools(){
         pushd /opt/bloodhoundly4k
         echo "[-] Downloading Bloodhound, please wait..."
         sudo wget -q https://github.com/ly4k/BloodHound/releases/download/v4.2.0-ly4k/BloodHound-linux-x64.zip -O /opt/bloodhoundly4k/BloodHound-x64lin.zip
-        sudo 7z x /opt/bloodhoundly4k/BloodHound-x64lin.zip 
+        sudo unzip /opt/bloodhoundly4k/BloodHound-x64lin.zip 
+	sudo chmod -R 04755 /opt/bloodhoundly4k/BloodHound-linux-x64/chrome-sandbox
         # Sadly there's a directory in the zip
         add_line_if_not_exists "alias bloodhound-nosandbox='/opt/bloodhoundly4k/BloodHound-linux-x64/BloodHound --no-sandbox'" "$HOME/.zshrc" 
         popd
