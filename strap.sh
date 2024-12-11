@@ -245,33 +245,39 @@ install_git_tools(){
     fi
 
     # Not-Really-Git-Ghidra (used to do Nessus but now separate)
-    sudo mkdir -p /opt/Ghidra11.2.1 && sudo chown -R $USER:$USER /opt/Ghidra11.2.1
-    pushd /opt/Ghidra11.2.1
-    echo "[-] Downloading Ghidra, please wait..."
-    wget -q https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_11.2.1_build/ghidra_11.2.1_PUBLIC_20241105.zip -O ghidra_11.2.1_PUBLIC_20241105.zip
-    7z x ghidra_11.2.1_PUBLIC_20241105.zip
-    popd
+    if [ ! -f /opt/Ghidra11.2.1/ghidra_11.2.1_PUBLIC/ghidraRun ]; then
+        sudo mkdir -p /opt/Ghidra11.2.1 && sudo chown -R $USER:$USER /opt/Ghidra11.2.1
+        pushd /opt/Ghidra11.2.1
+        echo "[-] Downloading Ghidra, please wait..."
+        wget -q https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_11.2.1_build/ghidra_11.2.1_PUBLIC_20241105.zip -O ghidra_11.2.1_PUBLIC_20241105.zip
+        7z x ghidra_11.2.1_PUBLIC_20241105.zip
+        popd
+    fi
 
     # Not-Really-git-Jadx
-    sudo mkdir -p /opt/jadx && sudo chown $USER:$USER /opt/jadx
-    pushd /opt/jadx
-    echo "[-] Downloading Jadx, please wait..."
-    wget -q https://github.com/skylot/jadx/releases/download/v1.5.1/jadx-1.5.1.zip -O jadx-1.5.1.zip
+    if [ ! -f /opt/jadx/bin/jadx ]; then
+        sudo mkdir -p /opt/jadx && sudo chown $USER:$USER /opt/jadx
+        pushd /opt/jadx
+        echo "[-] Downloading Jadx, please wait..."
+        wget -q https://github.com/skylot/jadx/releases/download/v1.5.1/jadx-1.5.1.zip -O jadx-1.5.1.zip
     7z x jadx-1.5.1.zip
     popd
+    fi
 
     # Not-Really-Git-proxmark3
-    sudo DEBIAN_FRONTEND=noninteractiv apt install -y --no-install-recommends git ca-certificates build-essential pkg-config \
-        libreadline-dev gcc-arm-none-eabi libnewlib-dev qtbase5-dev \
-        libbz2-dev liblz4-dev libbluetooth-dev libpython3-dev libssl-dev libgd-dev
-    sudo systemctl stop ModemManager
-    sudo systemctl disable ModemManager
-    sudo DEBIAN_FRONTEND=noninteractiv apt remove modemmanager -y
-    clone_or_update_repo https://github.com/RfidResearchGroup/proxmark3
-    pushd /opt/proxmark3
-    make accessrights # Give write to serial device
-    make clean && make -j
-    popd 
+    if [ ! -f /opt/proxmark3/pm3 ]; then
+        sudo DEBIAN_FRONTEND=noninteractiv apt install -y --no-install-recommends git ca-certificates build-essential pkg-config \
+            libreadline-dev gcc-arm-none-eabi libnewlib-dev qtbase5-dev \
+            libbz2-dev liblz4-dev libbluetooth-dev libpython3-dev libssl-dev libgd-dev
+        sudo systemctl stop ModemManager
+        sudo systemctl disable ModemManager
+        sudo DEBIAN_FRONTEND=noninteractiv apt remove modemmanager -y
+        clone_or_update_repo https://github.com/RfidResearchGroup/proxmark3
+        pushd /opt/proxmark3
+        make accessrights # Give write to serial device
+        make clean && make -j
+        popd 
+    fi
 
     #john
     clone_or_update_repo https://github.com/openwall/john
