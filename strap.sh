@@ -236,6 +236,7 @@ install_git_tools(){
     sudo mkdir -p /opt/bloodhoundly4k && sudo chown -R ${USER}:${USER} /opt/bloodhoundly4k
     if [ ! -f /opt/bloodhoundly4k/BloodHound ]; then
         pushd /opt/bloodhoundly4k
+        echo "[-] Downloading Bloodhound, please wait..."
         wget -q https://github.com/ly4k/BloodHound/releases/download/v4.2.0-ly4k/BloodHound-linux-x64.zip -O /opt/bloodhoundly4k/BloodHound-x64lin.zip
         7z x /opt/bloodhoundly4k/BloodHound-x64lin.zip 
         # Sadly there's a directory in the zip
@@ -246,6 +247,7 @@ install_git_tools(){
     # Not-Really-Git-Ghidra (used to do Nessus but now separate)
     sudo mkdir -p /opt/Ghidra11.2.1 && sudo chown -R $USER:$USER /opt/Ghidra11.2.1
     pushd /opt/Ghidra11.2.1
+    echo "[-] Downloading Ghidra, please wait..."
     wget -q https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_11.2.1_build/ghidra_11.2.1_PUBLIC_20241105.zip -O ghidra_11.2.1_PUBLIC_20241105.zip
     7z x ghidra_11.2.1_PUBLIC_20241105.zip
     popd
@@ -253,6 +255,7 @@ install_git_tools(){
     # Not-Really-git-Jadx
     sudo mkdir -p /opt/jadx && sudo chown $USER:$USER /opt/jadx
     pushd /opt/jadx
+    echo "[-] Downloading Jadx, please wait..."
     wget -q https://github.com/skylot/jadx/releases/download/v1.5.1/jadx-1.5.1.zip -O jadx-1.5.1.zip
     7z x jadx-1.5.1.zip
     popd
@@ -308,6 +311,7 @@ install_git_tools(){
     clone_or_update_repo https://github.com/peass-ng/PEASS-ng
     if [ ! -f /opt/PEASS-ng/linpeas.sh ]; then
         pushd /opt/PEASS-ng
+        echo "[-] Downloading PEASS archives, please wait..."
         wget -q https://github.com/peass-ng/PEASS-ng/releases/download/20241205-c8c0c3e5/linpeas.sh
         wget -q https://github.com/peass-ng/PEASS-ng/releases/download/20241205-c8c0c3e5/linpeas_fat.sh
         wegt -q https://github.com/peass-ng/PEASS-ng/releases/download/20241205-c8c0c3e5/linpeas_linux_amd64
