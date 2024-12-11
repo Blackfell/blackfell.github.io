@@ -49,8 +49,10 @@ generic_setup() {
         # Ensure this is set in $HOME/.config/qterminal.org/qterminal.ini ApplicationTransparency=0
         sed -i '/^ApplicationTransparency=/c\ApplicationTransparency=0' "$HOME/.config/qterminal.org/qterminal.ini" || echo "ApplicationTransparency=0" >> "$HOME/.config/file.ini"
         # Nessus
-        curl --request GET --url 'https://www.tenable.com/downloads/api/v2/pages/nessus/files/Nessus-10.8.3-debian10_amd64.deb' --output "$HOME/Nessus-10.8.3-debian10_amd64.deb"
-        sudo dpkg -i "$HOME/Nessus-10.8.3-ubuntu1604_amd64.deb"
+	if [ ! -f $HOME/Nessus-10.8.3-debian10_amd64.deb ]; then
+        	curl --request GET --url 'https://www.tenable.com/downloads/api/v2/pages/nessus/files/Nessus-10.8.3-debian10_amd64.deb' --output "$HOME/Nessus-10.8.3-debian10_amd64.deb"
+        	sudo dpkg -i "$HOME/Nessus-10.8.3-ubuntu1604_amd64.deb"
+	 fi
 
         #rtl8812au - Kali and wifitre helpers
         sudo DEBIAN_FRONTEND=noninteractiv apt install -y linux-headers-amd64 realtek-rtl88xxau-dkms hcxdumptool hcxtools
@@ -79,8 +81,10 @@ generic_setup() {
         clone_or_update_repo https://github.com/SpiderLabs/Responder
         add_rc_path /opt/Responder
         # Nessus
-        curl --request GET --url 'https://www.tenable.com/downloads/api/v2/pages/nessus/files/Nessus-10.8.3-ubuntu1604_amd64.deb'  --output "$HOME/Nessus-10.8.3-ubuntu1604_amd64.deb"
-        sudo dpkg -i "$HOME/Nessus-10.8.3-ubuntu1604_amd64.deb"
+	if [ ! -f $HOME/Nessus-10.8.3-ubuntu1604_amd64.debccessories] ; then
+		curl --request GET --url 'https://www.tenable.com/downloads/api/v2/pages/nessus/files/Nessus-10.8.3-ubuntu1604_amd64.deb'  --output "$HOME/Nessus-10.8.3-ubuntu1604_amd64.debccessories"
+	        sudo dpkg -i "$HOME/Nessus-10.8.3-ubuntu1604_amd64.deb"ccessories
+	fi
         # Impacket
         pipx install impacket
         # Certipy
