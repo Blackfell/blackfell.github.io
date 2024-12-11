@@ -319,7 +319,7 @@ install_git_tools(){
     clone_or_update_repo https://github.com/SourceArcade/flashprog
     if [ ! -f /opt/flashprog/flashprog ]; then 
         pushd /opt/flashprog 
-        sudo DEBIAN_FRONTEND=noninteractiv apt install libpci-dev libftdi-dev  libusb-1.0-0 libusb-1.0-0-dev libusb-dev libjaylink-dev  libgpiod-dev pkgconf -y
+        sudo DEBIAN_FRONTEND=noninteractiv apt install libpci-dev libftdi-dev libftdi1-dev libftdi1 libusb-1.0-0 libusb-1.0-0-dev libusb-dev libjaylink-dev  libgpiod-dev pkgconf -y
         make 
         popd
     fi
