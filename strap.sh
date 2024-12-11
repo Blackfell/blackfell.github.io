@@ -241,12 +241,12 @@ install_git_tools(){
     add_rc_path "/opt/binwalk_v3.1.0/"
 
     #bloodhound - old version  ly4k with certipy support
-    sudo mkdir -p /opt/bloodhoundly4k && sudo chown -R ${USER}:${USER} /opt/bloodhoundly4k
+    sudo mkdir -p /opt/bloodhoundly4k 
     if [ ! -f /opt/bloodhoundly4k/BloodHound-linux-x64/BloodHound ]; then
         pushd /opt/bloodhoundly4k
         echo "[-] Downloading Bloodhound, please wait..."
-        wget -q https://github.com/ly4k/BloodHound/releases/download/v4.2.0-ly4k/BloodHound-linux-x64.zip -O /opt/bloodhoundly4k/BloodHound-x64lin.zip
-        7z x /opt/bloodhoundly4k/BloodHound-x64lin.zip 
+        sudo wget -q https://github.com/ly4k/BloodHound/releases/download/v4.2.0-ly4k/BloodHound-linux-x64.zip -O /opt/bloodhoundly4k/BloodHound-x64lin.zip
+        sudo 7z x /opt/bloodhoundly4k/BloodHound-x64lin.zip 
         # Sadly there's a directory in the zip
         add_rc_path /opt/bloodhoundly4k/BloodHound-linux-x64/
         popd
