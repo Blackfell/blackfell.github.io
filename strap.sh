@@ -43,7 +43,8 @@ generic_setup() {
 
     # Start off with a oh-my-zsh install
     sudo apt install -y zsh
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    CHSH="yes" sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    add_line_if_not_exists "alias bloodhound-nosandbox='BloodHound --no-sandbox'" "$HOME/.zshrc"
     
     # Tools that get installed at the beggining
     if [ $OS = "kali" ]; then
