@@ -44,7 +44,7 @@ generic_setup() {
     # Start off with a oh-my-zsh install
     sudo apt install -y zsh
     CHSH="yes" sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    add_line_if_not_exists "alias bloodhound-nosandbox='BloodHound --no-sandbox'" "$HOME/.zshrc"
+    
     
     # Tools that get installed at the beggining
     if [ $OS = "kali" ]; then
@@ -254,7 +254,7 @@ install_git_tools(){
         sudo wget -q https://github.com/ly4k/BloodHound/releases/download/v4.2.0-ly4k/BloodHound-linux-x64.zip -O /opt/bloodhoundly4k/BloodHound-x64lin.zip
         sudo 7z x /opt/bloodhoundly4k/BloodHound-x64lin.zip 
         # Sadly there's a directory in the zip
-        add_rc_path /opt/bloodhoundly4k/BloodHound-linux-x64/
+        add_line_if_not_exists "alias bloodhound-nosandbox='/opt/bloodhoundly4k/BloodHound-linux-x64/BloodHound --no-sandbox'" "$HOME/.zshrc" 
         popd
     fi
 
