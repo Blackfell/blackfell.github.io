@@ -104,7 +104,7 @@ generic_setup() {
     fi
 
     # Burpsuite Pro
-    wget https://portswigger-cdn.net/burp/releases/download?product=pro&version=2024.10.3&type=Linux -o $USER/Downloads/burp_installer
+    wget https://portswigger-cdn.net/burp/releases/download?product=pro&version=2024.10.3&type=Linux -O $USER/Downloads/burp_installer
     echo "[!] Don't forget to install your own burp (GUI), it's here - $USER/Downloads/burp_installer"
 
 
@@ -117,8 +117,8 @@ generic_setup() {
     add_rc_path "$HOME/go/bin"
     add_rc_path "$HOME/.local/bin"
     add_line_if_not_exists "eval \$(thefuck --alias)" "$HOME/.zshrc"
-    wget https://github.com/Blackfell/ansible-hax/raw/refs/heads/main/roles/bf_arch_base/files/vimrc -o $HOME/.vimrc
-    wget https://github.com/Blackfell/ansible-hax/blob/main/roles/bf_arch_desktop/files/BFBackground.png?raw=true -o $HOME/BFBackground.png
+    wget https://github.com/Blackfell/ansible-hax/raw/refs/heads/main/roles/bf_arch_base/files/vimrc -O $HOME/.vimrc
+    wget https://github.com/Blackfell/ansible-hax/blob/main/roles/bf_arch_desktop/files/BFBackground.png?raw=true -O $HOME/BFBackground.png
     sudo gsettings set org.gnome.desktop.background picture-uri "file://$HOME/BFBackground.png"
 
 
@@ -188,14 +188,14 @@ install_git_tools(){
     # Not-Really-Git-Ghidra (used to do Nessus but now separate)
     sudo mkdir -p /opt/Ghidra11.2.1 && sudo chown -R $USER:$USER /opt/Ghidra11.2.1
     pushd /opt/Ghidra11.2.1
-    wget https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_11.2.1_build/ghidra_11.2.1_PUBLIC_20241105.zip -o ghidra_11.2.1_PUBLIC_20241105.zip
+    wget https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_11.2.1_build/ghidra_11.2.1_PUBLIC_20241105.zip -O ghidra_11.2.1_PUBLIC_20241105.zip
     7z x ghidra_11.2.1_PUBLIC_20241105.zip
     popd
 
     # Not-Really-git-Jadx
     sudo mkdir -p /opt/jadx && sudo chown $USER:$USER /opt/jadx
     pushd /opt/jadx
-    wget https://github.com/skylot/jadx/releases/download/v1.5.1/jadx-1.5.1.zip -o jadx-1.5.1.zip
+    wget https://github.com/skylot/jadx/releases/download/v1.5.1/jadx-1.5.1.zip -O jadx-1.5.1.zip
     7z x jadx-1.5.1.zip
     popd
 
@@ -311,12 +311,16 @@ if [ $OS = "ubuntu" ]; then
     pipx install impacket
     # Certipy
     pipx install certipy-ad
+    # Coercer
+    pipx install coercer
     # Bloodhound
     pipx install bloodhound
     # Wifi stuff
     sudo apt install wifite rtl8812au-dkms -y
     # Generic hacking tools (snaps)
-    sudo snap install metasploit-framework sqlmap -y
+    sudo snap install metasploit-framework 
+    sudo snap install sqlmap 
+    sudo snap install code --classic
     
     
 
@@ -332,8 +336,11 @@ elif [ $OS = "kali" ]; then
     sudo apt install -y linux-headers-amd64 realtek-rtl88xxau-dkms hcxdumptool hcxtools
 
     # Desktop background
-    sudo apt install lxappearance -y
-    wget https://blackfell.net/kali_lincox_mine.png -o $HOME/kali_background.png
+    sudo apt install pcmanfm -y
+    wget https://blackfell.net/kali_lincox_mine.png -O $HOME/kali_background.png
+    xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -s  $HOME/kali_background.png    
+    xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/last-image-style -s 1
+
 
 fi
 
