@@ -273,6 +273,11 @@ install_git_tools(){
 
 ####### MAIN ########
 
+# Logging
+LOGFILE="/tmp/bfstrap.log"
+echo "[+] Saving all output to $LOGFILE"
+exec > $LOGFILE 2>&1
+
 # Determine the OS
 if grep -iq "ubuntu" /etc/os-release; then
     OS="ubuntu"
@@ -331,3 +336,5 @@ elif [ $OS = "kali" ]; then
     wget https://blackfell.net/kali_lincox_mine.png -o $HOME/kali_background.png
 
 fi
+
+echo "[+] Done. You can check the log - $LOGFILE"
