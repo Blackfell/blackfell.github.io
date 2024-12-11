@@ -104,7 +104,7 @@ generic_setup() {
     fi
 
     # Burpsuite Pro
-    wget https://portswigger-cdn.net/burp/releases/download?product=pro&version=2024.10.3&type=Linux -O $USER/Downloads/burp_installer
+    wget 'https://portswigger-cdn.net/burp/releases/download?product=pro&version=2024.10.3&type=Linux'  -O $USER/Downloads/burp_installer
     echo "[!] Don't forget to install your own burp (GUI), it's here - $USER/Downloads/burp_installer"
 
 
@@ -117,8 +117,8 @@ generic_setup() {
     add_rc_path "$HOME/go/bin"
     add_rc_path "$HOME/.local/bin"
     add_line_if_not_exists "eval \$(thefuck --alias)" "$HOME/.zshrc"
-    wget https://github.com/Blackfell/ansible-hax/raw/refs/heads/main/roles/bf_arch_base/files/vimrc -O $HOME/.vimrc
-    wget https://github.com/Blackfell/ansible-hax/blob/main/roles/bf_arch_desktop/files/BFBackground.png?raw=true -O $HOME/BFBackground.png
+    wget https://github.com/Blackfell/ansible-hax/raw/refs/heads/main/roles/bf_arch_base/files/vimrc  -O $HOME/.vimrc
+    wget https://github.com/Blackfell/ansible-hax/blob/main/roles/bf_arch_desktop/files/BFBackground.png?raw=true  -O $HOME/BFBackground.png
     sudo gsettings set org.gnome.desktop.background picture-uri "file://$HOME/BFBackground.png"
 
 
