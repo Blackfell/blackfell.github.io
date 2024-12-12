@@ -129,7 +129,7 @@ generic_setup() {
         sudo mkdir -p /opt/kingstVIS 
         pushd /opt/kingstVIS
         sudo chown -R $USER:$USER /opt/kingstVIS        
-        wget http://www.qdkingst.com/download/vis_linux
+        wget -q http://www.qdkingst.com/download/vis_linux
         tar -xf vis_linux
         if lsusb | grep -qi 77a1 ; then
             echo "[!] ERROR: You may have a kingst device plugged in, not installing..."
