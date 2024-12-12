@@ -55,7 +55,7 @@ generic_setup() {
     if [ $OS = "kali" ]; then
         echo "Detected Kali Linux. Installing Kali specifics."
         # Base tools first
-        sudo DEBIAN_FRONTEND=noninteractiv apt install -y thefuck byobu vim flashrom nmap bashtop python3-pwntools esptool plocate golang-go docker.io rustup python3-venv pipx curl nmap
+        sudo DEBIAN_FRONTEND=noninteractiv apt install -y thefuck byobu vim flashrom nmap bashtop python3-pwntools esptool plocate golang-go docker.io rustup python3-venv pipx curl nmap vlc
 
         # Ensure this is set in $HOME/.config/qterminal.org/qterminal.ini ApplicationTransparency=0
         sed -i '/^ApplicationTransparency=/c\ApplicationTransparency=0' "$HOME/.config/qterminal.org/qterminal.ini" || echo "ApplicationTransparency=0" >> "$HOME/.config/file.ini"
@@ -80,7 +80,7 @@ generic_setup() {
     elif [ $OS = "ubuntu" ]; then
         echo "Detected Ubuntu. Installing would-be Kali shit."
         # Base tools first
-        sudo DEBIAN_FRONTEND=noninteractiv apt install -y thefuck byobu vim flashrom nmap bashtop  esptool plocate golang-go docker.io  python3-venv pipx curl nmap gnome-tweaks
+        sudo DEBIAN_FRONTEND=noninteractiv apt install -y thefuck byobu vim flashrom nmap bashtop  esptool plocate golang-go docker.io  python3-venv pipx curl nmap gnome-tweaks vlc
         sudo snap install rustup --classic
         # Pwntools
         pipx install pwntools
