@@ -301,7 +301,7 @@ install_git_tools(){
 
     #john
     clone_or_update_repo https://github.com/openwall/john
-    pushd /opt/john
+    pushd /opt/john/src
     /configure && make -sj$(nproc)
     popd
 
