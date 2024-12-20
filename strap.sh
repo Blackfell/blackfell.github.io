@@ -181,7 +181,7 @@ generic_setup() {
     fi
 
     # Burpsuite Pro
-    wget -q 'https://portswigger-cdn.net/burp/releases/download?product=pro&version=2024.10.3&type=Linux'  -O $USER/Downloads/burp_installer
+    wget -q 'https://portswigger-cdn.net/burp/releases/download?product=pro&version=2024.10.3&type=Linux'  -O $HOME/Downloads/burp_installer
     echo "[!] Don't forget to install your own burp (GUI), it's here - $USER/Downloads/burp_installer"
 
 
