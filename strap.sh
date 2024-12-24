@@ -200,6 +200,8 @@ generic_setup() {
 
     # MQTT Explorer
     sudo DEBIAN_FRONTEND=noninteractiv apt install -y  snapd 
+    sudo systemctl enable snapd
+    sudo systemctl start snapd
     sudo snap install mqtt-explorer
 
 
