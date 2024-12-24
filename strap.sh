@@ -204,6 +204,7 @@ generic_setup() {
     systemctl enable --now snapd.apparmor
     sudo systemctl start snapd
     sudo snap install mqtt-explorer
+    add_rc_path /snap/bin
 
 
 }
