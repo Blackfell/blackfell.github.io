@@ -198,6 +198,11 @@ generic_setup() {
     wget -q https://github.com/Blackfell/ansible-hax/blob/main/roles/bf_arch_desktop/files/BFBackground.png?raw=true  -O $HOME/BFBackground.png
     sudo gsettings set org.gnome.desktop.background picture-uri "file://$HOME/BFBackground.png"
 
+    # MQTT Explorer
+    sudo DEBIAN_FRONTEND=noninteractiv apt install -y  snapd 
+    sudo snap install mqtt-explorer
+
+
 }
 
 install_go_tools(){
