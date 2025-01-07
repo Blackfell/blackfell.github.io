@@ -206,6 +206,9 @@ generic_setup() {
     sudo snap install mqtt-explorer
     add_rc_path /snap/bin
 
+    # Pass the cert
+    clone_or_update_repo https://github.com/AlmondOffSec/PassTheCert
+
 
 }
 
