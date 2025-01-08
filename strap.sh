@@ -100,8 +100,9 @@ generic_setup() {
 	else
  		echo "[+] Nessus already here, skipping install..."
 	fi
-        # Impacket
+        # Impacket and nxc
         pipx install impacket
+	pipx install netexec
         # Certipy
         pipx install certipy-ad
         # Coercer
