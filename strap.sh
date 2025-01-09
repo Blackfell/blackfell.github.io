@@ -125,7 +125,6 @@ generic_setup() {
     pipx install principalmapper
 
     # Kingst
-    
     if [ ! -f /opt/kingstVIS/vis_linux ]; then 
         sudo mkdir -p /opt/kingstVIS 
         pushd /opt/kingstVIS
@@ -199,8 +198,10 @@ generic_setup() {
     wget -q https://github.com/Blackfell/ansible-hax/blob/main/roles/bf_arch_desktop/files/BFBackground.png?raw=true  -O $HOME/BFBackground.png
     sudo gsettings set org.gnome.desktop.background picture-uri "file://$HOME/BFBackground.png"
 
-    # MQTT Explorer
-    sudo DEBIAN_FRONTEND=noninteractiv apt install -y  snapd 
+    # Final APT tools
+    sudo DEBIAN_FRONTEND=noninteractiv apt install -y  snapd bettercap 
+
+    # Snap tools
     sudo systemctl enable --now snapd
     systemctl enable --now snapd.apparmor
     sudo systemctl start snapd
