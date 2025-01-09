@@ -85,7 +85,7 @@ generic_setup() {
         # Pwntools
         pipx install pwntools
         # Seclists
-        clone_or_update_repo git clone https://github.com/danielmiessler/SecLists.git
+        clone_or_update_repo https://github.com/danielmiessler/SecLists.git
         sudo ln -s /opt/SecLists /usr/share/seclists/
         # DNSChef
         clone_or_update_repo https://github.com/iphelix/dnschef  
