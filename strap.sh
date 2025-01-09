@@ -203,7 +203,7 @@ generic_setup() {
 
     # Snap tools
     sudo systemctl enable --now snapd
-    systemctl enable --now snapd.apparmor
+    sudo systemctl enable --now snapd.apparmor
     sudo systemctl start snapd
     sudo snap install mqtt-explorer
     add_rc_path /snap/bin
