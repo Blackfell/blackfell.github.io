@@ -199,7 +199,7 @@ generic_setup() {
     sudo gsettings set org.gnome.desktop.background picture-uri "file://$HOME/BFBackground.png"
 
     # Final APT tools
-    sudo DEBIAN_FRONTEND=noninteractiv apt install -y  snapd bettercap 
+    sudo DEBIAN_FRONTEND=noninteractiv apt install -y  snapd bettercap apktool
 
     # Snap tools
     sudo systemctl enable --now snapd
