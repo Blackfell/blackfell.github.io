@@ -211,6 +211,10 @@ generic_setup() {
     # Pass the cert
     clone_or_update_repo https://github.com/AlmondOffSec/PassTheCert
 
+    # Documentation
+    clone_or_update_repo https://github.com/Pennyw0rth/NetExec-Wiki
+    clone_or_update_repo https://github.com/HackTricks-wiki/hacktricks
+
 }
 
 install_go_tools(){
