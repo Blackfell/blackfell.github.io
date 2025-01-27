@@ -211,23 +211,24 @@ generic_setup() {
     # Pass the cert
     clone_or_update_repo https://github.com/AlmondOffSec/PassTheCert
 
-
 }
 
 install_go_tools(){
-    # GO Tools
-    go install -v github.com/tomnomnom/httprobe@latest
-    go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest
-    go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
-    go install -v github.com/sensepost/gowitness@latest
-    go install -v github.com/tomnomnom/assetfinder@latest
-    go install -v github.com/tomnomnom/meg@latest
-    go install -v github.com/tomnomnom/gron@latest
-    go install -v github.com/tomnomnom/waybackurls@latest
-    go install -v github.com/harleo/knockknock@latest
-    go install -v github.com/owasp-amass/amass/v3/...@latest
+    # GO Tools for recon and OSINT
+    go install github.com/tomnomnom/httprobe@latest
+    go install github.com/projectdiscovery/dnsx/cmd/dnsx@latest
+    go install github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
+    go install github.com/sensepost/gowitness@latest
+    go install github.com/tomnomnom/assetfinder@latest
+    go install github.com/tomnomnom/meg@latest
+    go install github.com/tomnomnom/gron@latest
+    go install github.com/tomnomnom/waybackurls@latest
+    go install github.com/harleo/knockknock@latest
+    go install github.com/owasp-amass/amass/v3/...@latest
     # And SSH brute forcing
     go install ktbs.dev/ssb@latest
+    # APK URL GREP
+    go install github.com/ndelphit/apkurlgrep@latest
 }
 
 install_git_tools(){
