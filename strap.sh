@@ -212,9 +212,31 @@ generic_setup() {
     clone_or_update_repo https://github.com/AlmondOffSec/PassTheCert
 
     # Documentation
-    clone_or_update_repo https://github.com/Pennyw0rth/NetExec-Wiki
-    clone_or_update_repo https://github.com/HackTricks-wiki/hacktricks
+    clone_documentation https://github.com/Pennyw0rth/NetExec-Wiki
+    clone_documentation https://github.com/HackTricks-wiki/hacktricks
 
+}
+
+clone_documentation() {
+    # Documentation - args are $1 repo and $2 (optional) name to clone to in /opt/bfdocs
+    sudo mkdir -p /opt/bfdocs
+    sudo chown -R $USER:$USER /opt/bfdocs
+    local REPO_URL="$1"
+    local REPO_NAME=$(basename -s .git "$REPO_URL")
+    if [ -n "$2" ]; then 
+	    local REPO_NAME="${REPO_NAME}_$2"
+    fi
+    local TARGET_DIR="/opt/bfdocs/$REPO_NAME"
+    sudo mkdir -p $TARGET_DIR
+    sudo chown $USER:$USER $TARGET_DIR
+    if [ -z "$(ls -A "$TARGET_DIR")" ]; then
+        echo "$TARGET_DIR created, but empty, cloning..."
+        git clone "$REPO_URL" "$TARGET_DIR"
+    else
+        echo "Directory $TARGET_DIR already exists. Pulling latest changes..."
+        # Navigate to the directory and pull the latest changes
+        git -C "$TARGET_DIR" pull
+    fi
 }
 
 install_go_tools(){
