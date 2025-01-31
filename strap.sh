@@ -116,6 +116,9 @@ generic_setup() {
         sudo snap install sqlmap 
         sudo snap install code --classic
 
+ 	# Web tooling
+  	cargo install feroxbuster
+
  	# OT tools
   	pipx install opcua-client
    	clone_or_update_repo https://github.com/meeas/plcscan
