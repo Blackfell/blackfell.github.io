@@ -115,6 +115,14 @@ generic_setup() {
         sudo snap install metasploit-framework 
         sudo snap install sqlmap 
         sudo snap install code --classic
+
+ 	# OT tools
+  	pipx install opcua-client
+   	clone_or_update_repo https://github.com/meeas/plcscan
+    	clone_or_update_repo https://github.com/klsecservices/s7scan
+     	clone_or_update_repo https://github.com/mssabr01/sixnet-tools/tree/new_master/SIXNET%20tools
+    
+    	
         
     fi
     
