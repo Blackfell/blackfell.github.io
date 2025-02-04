@@ -153,7 +153,7 @@ generic_setup() {
     fi
     
     # Mobile incl. Frida and objection
-    sudo DEBIAN_FRONTEND=noninteractiv apt install -y adb
+    sudo DEBIAN_FRONTEND=noninteractiv apt install -y adb apktool apksigner aapt
     pipx install frida-tools
     pipx install objection
     if [ ! -f /opt/frida-server/frida-server-16.5.9-android-arm64.xz ]; then
