@@ -211,8 +211,8 @@ generic_setup() {
     wget -q https://github.com/Blackfell/ansible-hax/blob/main/roles/bf_arch_desktop/files/BFBackground.png?raw=true  -O $HOME/BFBackground.png
     sudo gsettings set org.gnome.desktop.background picture-uri "file://$HOME/BFBackground.png"
 
-    # Final APT tools
-    sudo DEBIAN_FRONTEND=noninteractiv apt install -y  snapd bettercap apktool hostapd qemu-system qemu-user
+    # Some general APT tools on both OS
+    sudo DEBIAN_FRONTEND=noninteractiv apt install -y  snapd bettercap apktool hostapd qemu-system qemu-user mitmproxy 
 
     # Snap tools
     sudo systemctl enable --now snapd
