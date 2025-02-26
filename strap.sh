@@ -276,6 +276,9 @@ generic_setup() {
         sudo make install
         sudo ldconfig
         popd
+
+ 	# Udev rule for access:
+        echo 'ACTION=="add" BUS=="usb" SYSFS{idVendor}=="1d50" SYSFS{idProduct}=="6002" GROUP:="plugdev" MODE:="0660"' | sudo tee /etc/udev/rules.d/99-ubertooth.rules
     fi
 
 }
