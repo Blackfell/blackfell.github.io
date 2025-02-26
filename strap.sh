@@ -212,7 +212,7 @@ generic_setup() {
     sudo gsettings set org.gnome.desktop.background picture-uri "file://$HOME/BFBackground.png"
 
     # Some general APT tools on both OS
-    sudo DEBIAN_FRONTEND=noninteractiv apt install -y  snapd bettercap apktool hostapd qemu-system qemu-user mitmproxy 
+    sudo DEBIAN_FRONTEND=noninteractiv apt install -y  snapd bettercap apktool hostapd qemu-system qemu-user mitmproxy cmake
 
     # Snap tools
     sudo systemctl enable --now snapd
@@ -265,7 +265,6 @@ generic_setup() {
     sudo make install
     sudo ldconfig
     popd
-    echo in $(cwd) after uberooth install
 
 }
 
