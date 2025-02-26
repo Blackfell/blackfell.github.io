@@ -245,9 +245,9 @@ generic_setup() {
     cd libbtbb-2020-12-R1
     mkdir -p build
     cd build
+    cmake ..
     # Probably the worst little build fix I've ever done in my whole life, sorry...
     sed -i "s/version\s*=\s*''/version\t\t= '0.5'/g" /opt/libbtbb/libbtbb-2020-12-R1/build/python/pcaptools/setup.py
-    cmake ..
     make
     sudo make install
     sudo ldconfig
