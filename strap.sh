@@ -234,8 +234,7 @@ generic_setup() {
     sudo dpkg -i /opt/segger/JLink_Linux_V812f_x86_64.deb
 	
     # Ubertooth
-    sudo apt install cmake libusb-1.0-0-dev make gcc g++ libbluetooth-dev wget \
-    pkg-config python3-numpy python3-qtpy python3-distutils python3-setuptools
+    sudo DEBIAN_FRONTEND=noninteractiv apt install -y cmake libusb-1.0-0-dev make gcc g++ libbluetooth-dev wget pkg-config python3-numpy python3-qtpy python3-distutils python3-setuptools
     #libbtbb bit
     sudo mkdir -p /opt/libbtbb
     sudo chown -R $USER:$USER /opt/libbtbb
