@@ -228,6 +228,45 @@ generic_setup() {
     clone_documentation https://github.com/Pennyw0rth/NetExec-Wiki
     clone_documentation https://github.com/HackTricks-wiki/hacktricks
 
+    # Segger
+    sudo mkdir -p /opt/segger
+    sudo wget https://www.segger.com/downloads/jlink/JLink_Linux_V812f_x86_64.deb -O /opt/segger/JLink_Linux_V812f_x86_64.deb
+    sudo dpkg -i /opt/segger/JLink_Linux_V812f_x86_64.deb
+	
+    # Ubertooth
+    sudo apt install cmake libusb-1.0-0-dev make gcc g++ libbluetooth-dev wget \
+    pkg-config python3-numpy python3-qtpy python3-distutils python3-setuptools
+    #libbtbb bit
+    sudo mkdir -p /opt/libbtbb
+    sudo chown -R $USER:$USER /opt/libbtbb
+    wget https://github.com/greatscottgadgets/libbtbb/archive/2020-12-R1.tar.gz -O /opt/libbtbb/libbtbb-2020-12-R1.tar.gz
+    pushd /opt/libbtbb
+    tar -xf libbtbb-2020-12-R1.tar.gz
+    cd libbtbb-2020-12-R1
+    mkdir build
+    cd build
+    cmake ..
+    make
+    sudo make install
+    sudo ldconfig
+    popd
+    
+    # Main ubertooth app
+    sudo mkdir -p /opt/ubertooth
+    sudo chown -R $USER:$USER /opt/ubertooth
+    pushd  /opt/ubertooth
+    wget https://github.com/greatscottgadgets/ubertooth/releases/download/2020-12-R1/ubertooth-2020-12-R1.tar.xz
+    tar -xf ubertooth-2020-12-R1.tar.xz
+    cd ubertooth-2020-12-R1/host
+    mkdir build
+    cd build
+    cmake ..
+    make
+    sudo make install
+    sudo ldconfig
+    popd
+    echo in $(cwd) after uberooth install
+
 }
 
 clone_documentation() {
