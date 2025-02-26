@@ -263,7 +263,8 @@ generic_setup() {
     mkdir -p build
     cd build
     cmake ..
-    sed -i "s/version\s*=\s*''/version\t\t= '0.5'/g"  /opt/ubertooth/ubertooth-2020-12-R1/host/build/python/specan_ui/setup.py"
+    # Clearly I wasn't that sorry because I make a horrific jank fix a second time
+    sed -i "s/version\s*=\s*''/version\t\t= '0.5'/g"  /opt/ubertooth/ubertooth-2020-12-R1/host/build/python/specan_ui/setup.py
     make
     sudo make install
     sudo ldconfig
