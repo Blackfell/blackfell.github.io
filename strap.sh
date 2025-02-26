@@ -230,45 +230,53 @@ generic_setup() {
     clone_documentation https://github.com/HackTricks-wiki/hacktricks
 
     # Segger
-    sudo mkdir -p /opt/segger
-    sudo wget https://www.segger.com/downloads/jlink/JLink_Linux_V812f_x86_64.deb -O /opt/segger/JLink_Linux_V812f_x86_64.deb
-    sudo dpkg -i /opt/segger/JLink_Linux_V812f_x86_64.deb
+    if which JLinkExe>/dev/null; then 
+        echo "[!] - JLink already installed, skipping..."
+    else
+        sudo mkdir -p /opt/segger
+        sudo wget https://www.segger.com/downloads/jlink/JLink_Linux_V812f_x86_64.deb -O /opt/segger/JLink_Linux_V812f_x86_64.deb
+        sudo dpkg -i /opt/segger/JLink_Linux_V812f_x86_64.deb
+    fi
 	
-    # Ubertooth #TODO make it not install every time...
-    sudo DEBIAN_FRONTEND=noninteractiv apt install -y cmake libusb-1.0-0-dev make gcc g++ libbluetooth-dev wget pkg-config python3-numpy python3-qtpy python3-distutils python3-setuptools
-    #libbtbb bit
-    sudo mkdir -p /opt/libbtbb
-    sudo chown -R $USER:$USER /opt/libbtbb
-    wget https://github.com/greatscottgadgets/libbtbb/archive/2020-12-R1.tar.gz -O /opt/libbtbb/libbtbb-2020-12-R1.tar.gz
-    pushd /opt/libbtbb
-    tar -xf libbtbb-2020-12-R1.tar.gz
-    cd libbtbb-2020-12-R1
-    mkdir -p build
-    cd build
-    cmake ..
-    # Probably the worst little build fix I've ever done in my whole life, sorry...
-    sed -i "s/version\s*=\s*''/version\t\t= '0.5'/g" /opt/libbtbb/libbtbb-2020-12-R1/build/python/pcaptools/setup.py
-    make
-    sudo make install
-    sudo ldconfig
-    popd
+    # Ubertooth 
+    if which ubertooth-util>/dev/null; then 
+        echo "[!] - Ubertooth already installed, skipping..."
+    else
+        sudo DEBIAN_FRONTEND=noninteractiv apt install -y cmake libusb-1.0-0-dev make gcc g++ libbluetooth-dev wget pkg-config python3-numpy python3-qtpy python3-distutils python3-setuptools
+        #libbtbb bit
+        sudo mkdir -p /opt/libbtbb
+        sudo chown -R $USER:$USER /opt/libbtbb
+        wget https://github.com/greatscottgadgets/libbtbb/archive/2020-12-R1.tar.gz -O /opt/libbtbb/libbtbb-2020-12-R1.tar.gz
+        pushd /opt/libbtbb
+        tar -xf libbtbb-2020-12-R1.tar.gz
+        cd libbtbb-2020-12-R1
+        mkdir -p build
+        cd build
+        cmake ..
+        # Probably the worst little build fix I've ever done in my whole life, sorry...
+        sed -i "s/version\s*=\s*''/version\t\t= '0.5'/g" /opt/libbtbb/libbtbb-2020-12-R1/build/python/pcaptools/setup.py
+        make
+        sudo make install
+        sudo ldconfig
+        popd
     
-    # Main ubertooth app
-    sudo mkdir -p /opt/ubertooth
-    sudo chown -R $USER:$USER /opt/ubertooth
-    pushd  /opt/ubertooth
-    wget https://github.com/greatscottgadgets/ubertooth/releases/download/2020-12-R1/ubertooth-2020-12-R1.tar.xz
-    tar -xf ubertooth-2020-12-R1.tar.xz
-    cd ubertooth-2020-12-R1/host
-    mkdir -p build
-    cd build
-    cmake ..
-    # Clearly I wasn't that sorry because I make a horrific jank fix a second time
-    sed -i "s/version\s*=\s*''/version\t\t= '0.5'/g"  /opt/ubertooth/ubertooth-2020-12-R1/host/build/python/specan_ui/setup.py
-    make
-    sudo make install
-    sudo ldconfig
-    popd
+        # Main ubertooth app
+        sudo mkdir -p /opt/ubertooth
+        sudo chown -R $USER:$USER /opt/ubertooth
+        pushd  /opt/ubertooth
+        wget https://github.com/greatscottgadgets/ubertooth/releases/download/2020-12-R1/ubertooth-2020-12-R1.tar.xz
+        tar -xf ubertooth-2020-12-R1.tar.xz
+        cd ubertooth-2020-12-R1/host
+        mkdir -p build
+        cd build
+        cmake ..
+        # Clearly I wasn't that sorry because I make a horrific jank fix a second time
+        sed -i "s/version\s*=\s*''/version\t\t= '0.5'/g"  /opt/ubertooth/ubertooth-2020-12-R1/host/build/python/specan_ui/setup.py
+        make
+        sudo make install
+        sudo ldconfig
+        popd
+    fi
 
 }
 
