@@ -279,7 +279,7 @@ generic_setup() {
 
  	# Udev rule for access:
         echo 'ACTION=="add" BUS=="usb" SYSFS{idVendor}=="1d50" SYSFS{idProduct}=="6002" GROUP:="plugdev" MODE:="0660"' | sudo tee /etc/udev/rules.d/99-ubertooth.rules
-	udevadm control --reload-rules
+	sudo udevadm control --reload-rules
     fi
 
 }
