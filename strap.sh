@@ -39,10 +39,12 @@ clone_or_update_repo() {
     if [ -z "$(ls -A "$TARGET_DIR")" ]; then
         echo "$TARGET_DIR created, but empty, cloning..."
         git clone $BRANCH "$REPO_URL" "$TARGET_DIR"
+	return $true	# if true we'll run build
     else
         echo "Directory $TARGET_DIR already exists. Pulling latest changes..."
         # Navigate to the directory and pull the latest changes
-        git -C "$TARGET_DIR" pull
+        CHANGED=$(git -C "$TARGET_DIR" pull | grep -v "Already up-to-date")
+	return $CHANGED # returns true if a change has happened so we'll build again
     fi
 
 }
@@ -378,10 +380,11 @@ install_git_tools(){
     fi
 
     #john
-    clone_or_update_repo https://github.com/openwall/john
-    pushd /opt/john/src
-    ./configure && make -sj$(nproc)
-    popd
+    if clone_or_update_repo https://github.com/openwall/john; then
+    	pushd /opt/john/src
+    	./configure && make -sj$(nproc)
+    	popd
+     fi
 
     #linux-router - TODO add custom redirect scripts
     clone_or_update_repo https://github.com/garywill/linux-router
@@ -397,19 +400,19 @@ install_git_tools(){
     add_rc_path /opt/snafflepy
 
     # ESP32 image parser 
-    clone_or_update_repo https://github.com/tenable/esp32_image_parser
-    for pkg in $(cat /opt/esp32_image_parser/requirements.txt); do pipx_fuckery $pkg; done
-    add_rc_path /opt/esp32_image_parser
+    if clone_or_update_repo https://github.com/tenable/esp32_image_parser; then
+    	for pkg in $(cat /opt/esp32_image_parser/requirements.txt); do pipx_fuckery $pkg; done
+    	add_rc_path /opt/esp32_image_parser
+     fi
 
     # Radamsa
     sudo DEBIAN_FRONTEND=noninteractiv apt install gcc make git wget -y
-    clone_or_update_repo https://gitlab.com/akihe/radamsa
-    if [ ! -f /opt/radamsa/bin/radamsa ]; then
+    if clone_or_update_repo https://gitlab.com/akihe/radamsa; then 
         pushd /opt/radamsa
         sudo make install 
         popd
+        add_rc_path /opt/radamsa/bin/radamsa
     fi
-    add_rc_path /opt/radamsa/bin/radamsa
 
     # PEASS-ng
     clone_or_update_repo https://github.com/peass-ng/PEASS-ng
@@ -426,8 +429,7 @@ install_git_tools(){
     fi
 
     # Flashprog
-    clone_or_update_repo https://github.com/SourceArcade/flashprog
-    if [ ! -f /opt/flashprog/flashprog ]; then 
+    if clone_or_update_repo https://github.com/SourceArcade/flashprog; then  
         pushd /opt/flashprog 
         sudo DEBIAN_FRONTEND=noninteractiv apt install libpci-dev libftdi-dev libftdi1-dev libftdi1 libusb-1.0-0 libusb-1.0-0-dev libusb-dev libjaylink-dev  libgpiod-dev pkgconf -y
         make 
