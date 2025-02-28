@@ -45,8 +45,7 @@ clone_or_update_repo() {
         echo "Directory $TARGET_DIR already exists. Pulling latest changes..."
         # Navigate to the directory and pull the latest changes
         CHANGED=$(git -C "$TARGET_DIR" pull | grep -v "Already up-to-date")
-	echo -n "[+] - Pulled $REPO_URL and is it changed?"
- 	if $CHANGED; then echo "Yes."; else echo "No."; fi
+ 	if $CHANGED; then echo "[!] - Repo $REPO_URL is changed! Will build again if needed."; else echo "[+] - Repo $REPO_URL is not changed."; fi
 	return $CHANGED # returns true if a change has happened so we'll build again
     fi
 
