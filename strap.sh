@@ -37,6 +37,7 @@ clone_or_update_repo() {
     sudo mkdir -p $TARGET_DIR
     sudo chown $USER:$USER $TARGET_DIR
     if [ -z "$(ls -A "$TARGET_DIR")" ]; then
+        echo "[!] - fresh clone of $REPO_URL"
         echo "$TARGET_DIR created, but empty, cloning..."
         git clone $BRANCH "$REPO_URL" "$TARGET_DIR"
 	return $true	# if true we'll run build
@@ -44,6 +45,8 @@ clone_or_update_repo() {
         echo "Directory $TARGET_DIR already exists. Pulling latest changes..."
         # Navigate to the directory and pull the latest changes
         CHANGED=$(git -C "$TARGET_DIR" pull | grep -v "Already up-to-date")
+	echo -n "[+] - Pulled $REPO_URL and is it changed?"
+ 	if $CHANGED; then echo "Yes."; else echo "No."; fi
 	return $CHANGED # returns true if a change has happened so we'll build again
     fi
 
