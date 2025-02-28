@@ -483,12 +483,17 @@ install_git_tools(){
     fi
 
     # NCC Sniffle for sonoff sniffer
-    sudo mkdir -p /opt/sniffle
-    sudo chown -R $USER:$USER /opt/sniffle
-    pushd /opt/sniffle
-    wget https://github.com/nccgroup/Sniffle/archive/refs/tags/v1.10.0.tar.gz
-    tar xvf v1.10.0.tar.gz
-    popd
+    if [  ! -d /opt/sniffle/Sniffle-1.10.0/python_cli  ]; then
+        echo "[+] - Sniffle not installed! Installing at 1.10.0..."
+        sudo mkdir -p /opt/sniffle
+        sudo chown -R $USER:$USER /opt/sniffle
+        pushd /opt/sniffle
+        wget https://github.com/nccgroup/Sniffle/archive/refs/tags/v1.10.0.tar.gz
+        tar xvf v1.10.0.tar.gz
+        popd
+    else
+        echo "[+] - Sniffle already installed at 1.10.0"
+    fi
     
 }
 
