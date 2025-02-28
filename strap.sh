@@ -249,8 +249,9 @@ generic_setup() {
 
     # Segger
     if which JLinkExe>/dev/null; then 
-        echo "[!] - JLink already installed, skipping..."
+        echo "[+] - JLink already installed, skipping..."
     else
+         echo "[!] - JLink not found. Installing..."
         sudo mkdir -p /opt/segger
         sudo wget https://www.segger.com/downloads/jlink/JLink_Linux_V812f_x86_64.deb -O /opt/segger/JLink_Linux_V812f_x86_64.deb
         sudo dpkg -i /opt/segger/JLink_Linux_V812f_x86_64.deb
@@ -319,6 +320,7 @@ install_git_tools(){
     # Binwalk v3.1.0
     clone_or_update_repo "https://github.com/ReFirmLabs/binwalk" "v3.1.0"
     if [ ! -f "/opt/binwalk_v3.1.0/binwalkv3" ]; then
+        echo "[!] - Binwalk not found. Installing..."
         pushd "/opt/binwalk_v3.1.0"
         python3 -m venv venv
         source venv/bin/activate
@@ -440,8 +442,9 @@ install_git_tools(){
 
     # Ubertooth 
     if which ubertooth-util>/dev/null; then 
-        echo "[!] - Ubertooth already installed, skipping..."
+        echo "[+] - Ubertooth already installed, skipping..."
     else
+        echo "[!] - Ubertooth not found. Installing..."
         sudo DEBIAN_FRONTEND=noninteractiv apt install -y cmake libusb-1.0-0-dev make gcc g++ libbluetooth-dev wget pkg-config python3-numpy python3-qtpy python3-distutils python3-setuptools
         #libbtbb bit
         sudo mkdir -p /opt/libbtbb
