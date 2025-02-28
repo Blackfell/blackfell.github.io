@@ -17,6 +17,15 @@ add_rc_path () {
     add_line_if_not_exists "export PATH=\$PATH:$1" "$HOME/.bashrc"
 }
 
+pipx_fuckery () {
+    # Check if a tool is installed, if not install, if so update
+    if pipx list | grep $1 | grep installed ; then
+        pipx upgrade $1
+    else
+        pipx install $1
+    fi
+}
+
 clone_or_update_repo() {
     local REPO_URL="$1"
     local REPO_NAME=$(basename -s .git "$REPO_URL")
@@ -83,7 +92,7 @@ generic_setup() {
         sudo DEBIAN_FRONTEND=noninteractiv apt install -y thefuck byobu vim flashrom nmap bashtop  esptool plocate golang-go docker.io  python3-venv pipx curl nmap gnome-tweaks vlc
         sudo snap install rustup --classic
         # Pwntools
-        pipx install pwntools
+        pipx_fuckery pwntools
         # Seclists
         clone_or_update_repo https://github.com/danielmiessler/SecLists.git
         sudo ln -s /opt/SecLists /usr/share/seclists/
@@ -101,14 +110,19 @@ generic_setup() {
  		echo "[+] Nessus already here, skipping install..."
 	fi
         # Impacket and nxc
-        pipx install impacket
-	pipx install netexec
+        pipx_fuckery impacket
+	# NCX is from git so different install procedure...
+ 	if pipx list | grep ncx | grep installed; then
+        	pipx upgrade git+https://github.com/Pennyw0rth/NetExec
+	else
+  		pipx install git+https://github.com/Pennyw0rth/NetExec
+    	fi
         # Certipy
-        pipx install certipy-ad
+        pipx_fuckery certipy-ad
         # Coercer
-        pipx install coercer
+        pipx_fuckery coercer
         # Bloodhound
-        pipx install bloodhound
+        pipx_fuckery bloodhound
         # Wifi stuff
         sudo DEBIAN_FRONTEND=noninteractiv apt install wifite rtl8812au-dkms -y
         # Generic hacking tools (snaps)
@@ -121,7 +135,7 @@ generic_setup() {
   	cargo install feroxbuster
 
  	# OT tools
-  	pipx install opcua-client
+  	pipx_fuckery opcua-client
    	clone_or_update_repo https://github.com/meeas/plcscan
     	clone_or_update_repo https://github.com/klsecservices/s7scan
      	clone_or_update_repo https://github.com/mssabr01/sixnet-tools/tree/new_master/SIXNET%20tools
@@ -134,7 +148,7 @@ generic_setup() {
     rustup default stable
     
     #PMapper
-    pipx install principalmapper
+    pipx_fuckery principalmapper
 
     # Kingst
     if [ ! -f /opt/kingstVIS/vis_linux ]; then 
@@ -155,8 +169,8 @@ generic_setup() {
     
     # Mobile incl. Frida and objection
     sudo DEBIAN_FRONTEND=noninteractiv apt install -y adb apktool apksigner aapt
-    pipx install frida-tools
-    pipx install objection
+    pipx_fuckery frida-tools
+    pipx_fuckery objection
     if [ ! -f /opt/frida-server/frida-server-16.5.9-android-arm64.xz ]; then
         sudo mkdir -p /opt/frida-server
         sudo chown -R $USER:$USER /opt/frida-server
@@ -179,7 +193,7 @@ generic_setup() {
 
     # Scout suite
     # YOLO
-    pipx install scoutsuite
+    pipx_fuckery scoutsuite
 
     # Sliver
     if ! which sliver >/dev/null; then curl https://sliver.sh/install | sudo bash; fi
@@ -384,7 +398,7 @@ install_git_tools(){
 
     # ESP32 image parser 
     clone_or_update_repo https://github.com/tenable/esp32_image_parser
-    for pkg in $(cat /opt/esp32_image_parser/requirements.txt); do pipx install $pkg; done
+    for pkg in $(cat /opt/esp32_image_parser/requirements.txt); do pipx_fuckery $pkg; done
     add_rc_path /opt/esp32_image_parser
 
     # Radamsa
@@ -466,7 +480,7 @@ install_git_tools(){
 
     # NCC Sniffle for sonoff sniffer
     sudo mkdir -p /opt/sniffle
-    sudo shown -R $USER:$USER /opt/sniffle
+    sudo chown -R $USER:$USER /opt/sniffle
     pushd /opt/sniffle
     wget https://github.com/nccgroup/Sniffle/archive/refs/tags/v1.10.0.tar.gz
     tar xvf v1.10.0.tar.gz
