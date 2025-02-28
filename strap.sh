@@ -40,11 +40,11 @@ clone_or_update_repo() {
         echo "[!] - fresh clone of $REPO_URL"
         echo "$TARGET_DIR created, but empty, cloning..."
         git clone $BRANCH "$REPO_URL" "$TARGET_DIR"
-	return $true	# if true we'll run build
+	return 1	# if true we'll run build
     else
         echo "Directory $TARGET_DIR already exists. Pulling latest changes..."
         # Navigate to the directory and pull the latest changes
-        CHANGED=$(git -C "$TARGET_DIR" pull | grep -v "Already up-to-date")
+        if git -C "$TARGET_DIR" pull | grep -v "Already up-to-date"; then CHANGED=0; else CHANGED=1; fi
  	if $CHANGED; then echo "[!] - Repo $REPO_URL at $TARGET_DIR is changed! Will build again if needed."; else echo "[+] - Repo $REPO_URL at $TARGET_DIR is not changed."; fi
 	return $CHANGED # returns true if a change has happened so we'll build again
     fi
