@@ -45,7 +45,7 @@ clone_or_update_repo() {
         echo "Directory $TARGET_DIR already exists. Pulling latest changes..."
         # Navigate to the directory and pull the latest changes
         CHANGED=$(git -C "$TARGET_DIR" pull | grep -v "Already up-to-date")
- 	if $CHANGED; then echo "[!] - Repo $REPO_URL is changed! Will build again if needed."; else echo "[+] - Repo $REPO_URL is not changed."; fi
+ 	if $CHANGED; then echo "[!] - Repo $REPO_URL at $TARGET_DIR is changed! Will build again if needed."; else echo "[+] - Repo $REPO_URL at $TARGET_DIR is not changed."; fi
 	return $CHANGED # returns true if a change has happened so we'll build again
     fi
 
@@ -403,7 +403,7 @@ install_git_tools(){
 
     # ESP32 image parser 
     if clone_or_update_repo https://github.com/tenable/esp32_image_parser; then
-    	for pkg in $(cat /opt/esp32_image_parser/requirements.txt); do pipx_fuckery $pkg; done
+    	python3 -m pip install -r /opt/esp32_image_parser/requirements.txt --break-system-packages
     	add_rc_path /opt/esp32_image_parser
      fi
 
