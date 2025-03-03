@@ -516,7 +516,8 @@ else
     echo "[!] This script is for Ubuntu or Kali. If you want to use it with another OS, edit it yourself."
     exit 1
 fi
-
+# Refresh apt then go!
+sudo apt update 
 generic_setup $OS
 install_git_tools
 install_go_tools
