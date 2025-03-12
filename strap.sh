@@ -230,7 +230,7 @@ generic_setup() {
     sudo gsettings set org.gnome.desktop.background picture-uri "file://$HOME/BFBackground.png"
 
     # Some general APT tools on both OS
-    sudo DEBIAN_FRONTEND=noninteractiv apt install -y  snapd bettercap apktool hostapd qemu-system qemu-user mitmproxy cmake
+    sudo DEBIAN_FRONTEND=noninteractiv apt install -y  snapd bettercap apktool hostapd qemu-system qemu-user mitmproxy cmake hashcat-nvidia hcxtools
 
     # Snap tools
     sudo systemctl enable --now snapd
@@ -387,6 +387,10 @@ install_git_tools(){
     if clone_or_update_repo https://github.com/openwall/john; then
     	pushd /opt/john/src
     	./configure && make -sj$(nproc)
+        cd /opt/john
+	python3 -m venv johnvenv
+        source /opt/john/johnvenv/bin/activate
+	python -m pip install -r requirements.txt
     	popd
      fi
 
