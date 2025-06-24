@@ -56,9 +56,10 @@ generic_setup() {
 
     # Start off with a oh-my-zsh install
     if [ ! -d $HOME/.oh-my-zsh ]; then 
+        echo "[+] Installing oh-my-zsh"
         sudo apt install -y zsh
         CHSH="yes" sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-	sed -i 's/^ZSH_THEME=.*$/ZSH_THEME="alanpeabody"/g'
+	sed -i 's/^ZSH_THEME=.*$/ZSH_THEME="alanpeabody"/g' $HOME/.zshrc
     else
         echo "[+] Zsh already configured. Skipping..."
     fi
