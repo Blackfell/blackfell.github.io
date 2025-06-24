@@ -24,7 +24,7 @@ pipx_fuckery () {
     else
         pipx install $1
     fi
-}
+
 
 clone_or_update_repo() {
     local REPO_URL="$1"
@@ -93,7 +93,7 @@ generic_setup() {
     elif [ $OS = "ubuntu" ]; then
         echo "Detected Ubuntu. Installing would-be Kali shit."
         # Base tools first
-        sudo DEBIAN_FRONTEND=noninteractiv apt install -y thefuck byobu vim flashrom nmap bashtop  esptool plocate golang-go docker.io  python3-venv pipx curl nmap gnome-tweaks vlc
+        sudo DEBIAN_FRONTEND=noninteractiv apt install -y thefuck byobu vim flashrom nmap bashtop  esptool plocate golang-go docker.io  python3-venv pipx curl nmap gnome-tweaks vlc openssh-server
         sudo snap install rustup --classic
         # Pwntools
         pipx_fuckery pwntools
@@ -170,6 +170,21 @@ generic_setup() {
         fi
         popd
     fi
+
+    # Saleae
+    if [ ! -f /opt/saleae/log ]; then
+        sudo mkdir -p /opt/saleae 
+        pushd /opt/saleae
+        sudo chown -R $USER:$USER /opt/saleae
+        wget -q https://downloads2.saleae.com/logic2/Logic-2.4.29-linux-x64.AppImage
+        sudo chmod +x /opt/saleae/Logic-2.4.29-linux-x64.AppImage
+        echo '#!/bin/bash' | sudo tee /opt/saleae/logic > /dev/null
+	echo "sudo /opt/saleae/Logic-2.4.29-linux-x64.AppImage --no-sandbox" | sudo tee /opt/saleae/logic > /dev/null
+        sudo chmod +x /opt/saleae/logic
+	add_rc_path /opt/saleae/logic
+        popd
+    fi
+    
     
     # Mobile incl. Frida and objection
     sudo DEBIAN_FRONTEND=noninteractiv apt install -y adb apktool apksigner aapt
@@ -231,6 +246,8 @@ generic_setup() {
 
     # Some general APT tools on both OS
     sudo DEBIAN_FRONTEND=noninteractiv apt install -y  snapd bettercap apktool hostapd qemu-system qemu-user mitmproxy cmake hashcat-nvidia hcxtools openocd gqrx-sdr inspectrum minicom picocom 
+    # FS Tools
+    sudo DEBIAN_FRONTEND=noninteractiv apt install -y fusecram fusefat fuseiso fuse2fs
 
     # Snap tools
     sudo systemctl enable --now snapd
