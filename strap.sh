@@ -206,7 +206,7 @@ generic_setup() {
     if [ ! /opt/JLink/JLink_Linux_x86_64.deb ]; then
         sudo mkdir -p /opt/JLink
         pushd /opt/JLink
-        wget -q https://www.segger.com/downloads/jlink/JLink_Linux_x86_64.deb
+        curl -X POST https://www.segger.com/downloads/jlink/JLink_Linux_x86_64.deb --data-raw 'accept_license_agreement=accepted&submit=Download+software'  -o JLink_Linux_x86_64.deb
         sudo dpkg -i ./JLink_Linux_x86_64.deb
         popd
     fi
