@@ -202,14 +202,6 @@ generic_setup() {
         popd
     fi
 
-    # JLink
-    if [ ! /opt/JLink/JLink_Linux_x86_64.deb ]; then
-        sudo mkdir -p /opt/JLink
-        pushd /opt/JLink
-        curl -X POST https://www.segger.com/downloads/jlink/JLink_Linux_x86_64.deb --data-raw 'accept_license_agreement=accepted&submit=Download+software'  -o JLink_Linux_x86_64.deb
-        sudo dpkg -i ./JLink_Linux_x86_64.deb
-        popd
-    fi
 
     # Scout suite
     # YOLO
@@ -271,8 +263,8 @@ generic_setup() {
     else
          echo "[!] - JLink not found. Installing..."
         sudo mkdir -p /opt/segger
-        sudo wget https://www.segger.com/downloads/jlink/JLink_Linux_V812f_x86_64.deb -O /opt/segger/JLink_Linux_V812f_x86_64.deb
-        sudo dpkg -i /opt/segger/JLink_Linux_V812f_x86_64.deb
+        sudo curl -X POST https://www.segger.com/downloads/jlink/JLink_Linux_x86_64.deb --data-raw 'accept_license_agreement=accepted&submit=Download+software'  -o /opt/segger/JLink_Linux_x86_64.deb
+        sudo dpkg -i /opt/segger/JLink_Linux_x86_64.deb
     fi
 	
 }
