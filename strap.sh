@@ -507,6 +507,11 @@ install_git_tools(){
         pushd /opt/sniffle
         wget https://github.com/nccgroup/Sniffle/archive/refs/tags/v1.10.0.tar.gz
         tar xvf v1.10.0.tar.gz
+	# Install Wireshark extcap for user and root only
+	mkdir -p $HOME/.local/lib/wireshark/extcap
+        ln -s /opt/sniffle/Sniffle-1.10.0/python_cli/sniffle_extcap.py $HOME/.local/lib/wireshark/extcap
+        sudo mkdir -p /root/.local/lib/wireshark/extcap
+        sudo ln -s /opt/sniffle/Sniffle-1.10.0/python_cli/sniffle_extcap.py /root/.local/lib/wireshark/extcap
         popd
     else
         echo "[+] - Sniffle already installed at 1.10.0"
