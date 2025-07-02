@@ -505,6 +505,7 @@ install_git_tools(){
         sudo mkdir -p /opt/sniffle
         sudo chown -R $USER:$USER /opt/sniffle
         pushd /opt/sniffle
+	wget https://github.com/nccgroup/Sniffle/releases/download/v1.10.0/sniffle_cc1352p1_cc2652p1_1M.hex
         wget https://github.com/nccgroup/Sniffle/archive/refs/tags/v1.10.0.tar.gz
         tar xvf v1.10.0.tar.gz
 	# Install Wireshark extcap for user and root only
