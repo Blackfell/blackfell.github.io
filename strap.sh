@@ -573,7 +573,7 @@ install_git_tools(){
 
      # Chipwhisperer
      clone_or_update_repo https://github.com/newaetech/chipwhisperer # always pull latest
-     if ! -d /opt/chipwhisperer ]; then
+     if [ ! -d /opt/chipwhisperer ]; then
      	sudo DEBIAN_FRONTEND=noninteractiv apt install make git avr-libc gcc-avr \
     		gcc-arm-none-eabi libusb-1.0-0-dev usbutils python3 python3-venv python3-dev -y
 	# Venv
@@ -600,6 +600,7 @@ install_git_tools(){
   
      else
      	echo "[+] Chipwhisperer already installed, skipping..."
+     fi
     
 }
 
