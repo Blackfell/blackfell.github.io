@@ -94,7 +94,7 @@ generic_setup() {
     elif [ $OS = "ubuntu" ]; then
         echo "Detected Ubuntu. Installing would-be Kali shit."
         # Base tools first
-        sudo DEBIAN_FRONTEND=noninteractiv apt install -y thefuck byobu vim flashrom nmap bashtop  esptool plocate golang-go docker.io  python3-venv pipx curl nmap gnome-tweaks vlc openssh-server wireshark netdiscover rpcbind
+        sudo DEBIAN_FRONTEND=noninteractiv apt install -y thefuck byobu vim flashrom nmap bashtop  esptool plocate golang-go docker.io  python3-venv pipx curl nmap hydra gnome-tweaks vlc openssh-server wireshark netdiscover rpcbind
         sudo snap install rustup --classic
         # Pwntools
         pipx_fuckery pwntools
