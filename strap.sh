@@ -518,6 +518,58 @@ install_git_tools(){
     else
         echo "[+] - Sniffle already installed at 1.10.0"
     fi
+
+    # Zephyr for NRF Dev Kits
+    if [  ! -d /opt/zephyr ]; then
+	    sudo mkdir -p /opt/zephyr
+	    sudo chown -R $USER:$USER /opt/zephyr
+	    pushd /opt/zephyr
+	    # Get nrfUtil if you don't already
+	    sudo wget https://files.nordicsemi.com/ui/api/v1/download?repoKey=swtools&path=external/nrfutil/executables/x86_64-unknown-linux-gnu/nrfutil&isNativeBrowsing=false -O /usr/local/bin/nrfutil
+	    sudo chmod 0755 /usr/local/bin/nrfutil
+	    nrfutil install device 
+	    nrfutil install completion
+	    nrfutil completion install zsh
+	    nrfutil completion install bash
+	    wget https://github.com/NordicSemiconductor/nrf-udev/releases/download/v1.0.1/nrf-udev_1.0.1-all.deb -O nrf-udev_1.0.1-all.deb
+	    sudo dpkg -i nrf-udev_1.0.1-all.deb
+	    # You may need Segger installed, let's do that anyway 
+	    sudo mkdir -p /opt/segger
+	    sudo curl -X POST https://www.segger.com/downloads/jlink/JLink_Linux_V818_x86_64.deb --data-raw 'accept_license_agreement=accepted&submit=Download+software'  -o /opt/segger/JLink_Linux_V818_x86_64.deb
+	    sudo dpkg -i /opt/segger/JLink_Linux_V818_x86_64.deb
+	    # Main Zephyr install
+	    sudo apt install --no-install-recommends git cmake ninja-build gperf \
+	         ccache dfu-util device-tree-compiler wget \
+	        python3-dev python3-pip python3-setuptools python3-tk python3-wheel \
+	        xz-utils file make gcc gcc-multilib g++-multilib libsdl2-dev libmagic1 \
+	        python3-venv ninja-build -y
+	    python3 -m venv /opt/zephyr/.venv
+	    source /opt/zephyr/.venv/bin/activate
+	    pip install west
+	    west init /opt/zephyr
+	    west update
+	    west zephyr-export
+	    pip install -r /opt/zephyr/zephyr/scripts/requirements.txt
+	    # Install the zephyr project SDK into /opt, rather than $HOME
+	    wget https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.16.0/zephyr-sdk-0.16.0_linux-x86_64.tar.xz
+	    if wget -O - https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.16.0/sha256.sum | shasum --check --ignore-missing ; then
+	        echo '[+] SDK downloaded OK.'
+	        tar xvf zephyr-sdk-0.16.0_linux-x86_64.tar.xz
+	        # Now actually move it into /opt
+	        sudo mv zephyr-sdk-0.16.0 /opt
+	        pushd /opt/zephyr-sdk-0.16.0
+	        ./setup.sh
+	        # Apply udev rules
+	        sudo /opt/zephyr-sdk-0.16.0/sysroots/x86_64-pokysdk-linux/usr/share/openocd/contrib/60-openocd.rules /etc/udev/rules.d
+	        sudo udevadm control --reload
+	       popd
+	    else
+	        echo '[!] SDK download checksum failed. You are on your own, sorry...'
+	    fi
+	    popd  # In case you were doing something beforehand - youre' welcome
+     else
+     	echo "[+] Zephyr already installed, skipping..."
+     fi
     
 }
 
