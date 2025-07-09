@@ -538,7 +538,7 @@ install_git_tools(){
 	    sudo curl -X POST https://www.segger.com/downloads/jlink/JLink_Linux_V818_x86_64.deb --data-raw 'accept_license_agreement=accepted&submit=Download+software'  -o /opt/segger/JLink_Linux_V818_x86_64.deb
 	    sudo dpkg -i /opt/segger/JLink_Linux_V818_x86_64.deb
 	    # Main Zephyr install
-	    sudo apt install --no-install-recommends git cmake ninja-build gperf \
+	    sudo DEBIAN_FRONTEND=noninteractiv apt install --no-install-recommends git cmake ninja-build gperf \
 	         ccache dfu-util device-tree-compiler wget \
 	        python3-dev python3-pip python3-setuptools python3-tk python3-wheel \
 	        xz-utils file make gcc gcc-multilib g++-multilib libsdl2-dev libmagic1 \
@@ -570,6 +570,36 @@ install_git_tools(){
      else
      	echo "[+] Zephyr already installed, skipping..."
      fi
+
+     # Chipwhisperer
+     clone_or_update_repo https://github.com/newaetech/chipwhisperer # always pull latest
+     if ! -d /opt/chipwhisperer ]; then
+     	sudo DEBIAN_FRONTEND=noninteractiv apt install make git avr-libc gcc-avr \
+    		gcc-arm-none-eabi libusb-1.0-0-dev usbutils python3 python3-venv python3-dev -y
+	# Venv
+	pushd /opt/chipwhisperer
+	python3 -m venv .cwvenv
+	source /opt/chipwhisperer/.cwvenv/bin/activate
+ 	# UDev rules
+	sudo cp 50-newae.rules /etc/udev/rules.d/50-newae.rules
+	sudo udevadm control --reload-rules
+	sudo groupadd -f chipwhisperer
+	sudo usermod -aG chipwhisperer $USER
+	sudo usermod -aG plugdev $USER
+	git submodule update --init jupyter
+	# Deps
+	python -m pip install -e .
+	python -m pip install -r jupyter/requirements.txt
+        echo "#!/usr/bin/env bash" | tee /opt/chipwhisperer/run.sh
+	echo "source /opt/chipwhisperer/.cwvenv/bin/activate" | tee /opt/chipwhisperer/run.sh
+ 	echo "pushd /opt/chipwhisperer/" | tee /opt/chipwhisperer/run.sh
+  	echo "jupyter notebook" | tee /opt/chipwhisperer/run.sh
+  	echo "deactivate" | tee /opt/chipwhisperer/run.sh
+   	echo "popd" | tee /opt/chipwhisperer/run.sh
+    	chmod +x /opt/chipwhisperer/run.sh
+  
+     else
+     	echo "[+] Chipwhisperer already installed, skipping..."
     
 }
 
