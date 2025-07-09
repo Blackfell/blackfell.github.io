@@ -24,7 +24,7 @@ pipx_fuckery () {
     else
         pipx install $1
     fi
-
+}
 
 clone_or_update_repo() {
     local REPO_URL="$1"
@@ -59,7 +59,7 @@ generic_setup() {
         echo "[+] Installing oh-my-zsh"
         sudo apt install -y zsh
         CHSH="yes" sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-	sed -i 's/^ZSH_THEME=.*$/ZSH_THEME="alanpeabody"/g' $HOME/.zshrc
+	    sed -i 's/^ZSH_THEME=.*$/ZSH_THEME="alanpeabody"/g' $HOME/.zshrc
     else
         echo "[+] Zsh already configured. Skipping..."
     fi
@@ -94,7 +94,7 @@ generic_setup() {
     elif [ $OS = "ubuntu" ]; then
         echo "Detected Ubuntu. Installing would-be Kali shit."
         # Base tools first
-        sudo DEBIAN_FRONTEND=noninteractiv apt install -y thefuck byobu vim flashrom nmap bashtop  esptool plocate golang-go docker.io  python3-venv pipx curl nmap dos2unix hydra medusa gnome-tweaks vlc openssh-server wireshark netdiscover rpcbind
+        sudo DEBIAN_FRONTEND=noninteractiv apt install -y thefuck byobu vim flashrom nmap bashtop  esptool plocate golang-go docker.io  python3-venv pipx curl nmap hydra medusa gnome-tweaks vlc openssh-server wireshark netdiscover rpcbind
         sudo snap install rustup --classic
         # Pwntools
         pipx_fuckery pwntools
@@ -134,18 +134,16 @@ generic_setup() {
         sudo snap install metasploit-framework 
         sudo snap install sqlmap 
         sudo snap install code --classic
-	sudo snap install searchsploit
+	    sudo snap install searchsploit
 
- 	# Web tooling
-  	cargo install feroxbuster
+ 	    # Web tooling
+  	    cargo install feroxbuster
 
- 	# OT tools
-  	pipx_fuckery opcua-client
-   	clone_or_update_repo https://github.com/meeas/plcscan
+ 	    # OT tools
+  	    pipx_fuckery opcua-client
+   	    clone_or_update_repo https://github.com/meeas/plcscan
     	clone_or_update_repo https://github.com/klsecservices/s7scan
      	clone_or_update_repo https://github.com/mssabr01/sixnet-tools/tree/new_master/SIXNET%20tools
-    
-    	
         
     fi
     
@@ -310,7 +308,7 @@ install_go_tools(){
 }
 
 install_git_tools(){
-#### GIT TOOLS ####
+    #### GIT TOOLS ####
     # Helper scripts
     clone_or_update_repo https://github.com/lapolis/helper-scripts
     add_rc_path "/opt/helper-scripts"
@@ -352,7 +350,7 @@ install_git_tools(){
         echo "[-] Downloading Bloodhound, please wait..."
         sudo wget -q https://github.com/ly4k/BloodHound/releases/download/v4.2.0-ly4k/BloodHound-linux-x64.zip -O /opt/bloodhoundly4k/BloodHound-x64lin.zip
         sudo unzip /opt/bloodhoundly4k/BloodHound-x64lin.zip 
-	sudo chmod -R 04755 /opt/bloodhoundly4k/BloodHound-linux-x64/chrome-sandbox
+	    sudo chmod -R 04755 /opt/bloodhoundly4k/BloodHound-linux-x64/chrome-sandbox
         # Sadly there's a directory in the zip
         add_line_if_not_exists "alias bloodhound-nosandbox='/opt/bloodhoundly4k/BloodHound-linux-x64/BloodHound --no-sandbox'" "$HOME/.zshrc" 
         popd
@@ -374,8 +372,8 @@ install_git_tools(){
         pushd /opt/jadx
         echo "[-] Downloading Jadx, please wait..."
         wget -q https://github.com/skylot/jadx/releases/download/v1.5.1/jadx-1.5.1.zip -O jadx-1.5.1.zip
-    7z x jadx-1.5.1.zip
-    popd
+        7z x jadx-1.5.1.zip
+        popd
     fi
 
     # Not-Really-Git-proxmark3
@@ -398,9 +396,9 @@ install_git_tools(){
     	pushd /opt/john/src
     	./configure && make -sj$(nproc)
         cd /opt/john
-	python3 -m venv johnvenv
+	    python3 -m venv johnvenv
         source /opt/john/johnvenv/bin/activate
-	python -m pip install -r requirements.txt
+	    python -m pip install -r requirements.txt
     	popd
      fi
 
@@ -496,7 +494,7 @@ install_git_tools(){
 
  	# Udev rule for access:
         echo 'ACTION=="add" BUS=="usb" SYSFS{idVendor}=="1d50" SYSFS{idProduct}=="6002" GROUP:="plugdev" MODE:="0660"' | sudo tee /etc/udev/rules.d/99-ubertooth.rules
-	sudo udevadm control --reload-rules
+	    sudo udevadm control --reload-rules
     fi
 
     # NCC Sniffle for sonoff sniffer
@@ -505,12 +503,12 @@ install_git_tools(){
         sudo mkdir -p /opt/sniffle
         sudo chown -R $USER:$USER /opt/sniffle
         pushd /opt/sniffle
-	wget https://github.com/nccgroup/Sniffle/releases/download/v1.10.0/sniffle_cc1352p1_cc2652p1_1M.hex
+	    wget https://github.com/nccgroup/Sniffle/releases/download/v1.10.0/sniffle_cc1352p1_cc2652p1_1M.hex
         git clone https://github.com/sultanqasim/cc2538-bsl.git # The flashign util in case we need it
         wget https://github.com/nccgroup/Sniffle/archive/refs/tags/v1.10.0.tar.gz
         tar xvf v1.10.0.tar.gz
-	# Install Wireshark extcap for user and root only
-	mkdir -p $HOME/.local/lib/wireshark/extcap
+	    # Install Wireshark extcap for user and root only
+	    mkdir -p $HOME/.local/lib/wireshark/extcap
         ln -s /opt/sniffle/Sniffle-1.10.0/python_cli/sniffle_extcap.py $HOME/.local/lib/wireshark/extcap
         sudo mkdir -p /root/.local/lib/wireshark/extcap
         sudo ln -s /opt/sniffle/Sniffle-1.10.0/python_cli/sniffle_extcap.py /root/.local/lib/wireshark/extcap
@@ -567,41 +565,40 @@ install_git_tools(){
 	        echo '[!] SDK download checksum failed. You are on your own, sorry...'
 	    fi
 	    popd  # In case you were doing something beforehand - youre' welcome
-     else
+    else
      	echo "[+] Zephyr already installed, skipping..."
-     fi
+    fi
 
-     # Chipwhisperer
-     clone_or_update_repo https://github.com/newaetech/chipwhisperer # always pull latest
-     if [ ! -d /opt/chipwhisperer ]; then
+    # Chipwhisperer
+    clone_or_update_repo https://github.com/newaetech/chipwhisperer # always pull latest
+    if [ ! -d /opt/chipwhisperer ]; then
      	sudo DEBIAN_FRONTEND=noninteractiv apt install make git avr-libc gcc-avr \
     		gcc-arm-none-eabi libusb-1.0-0-dev usbutils python3 python3-venv python3-dev -y
-	# Venv
-	pushd /opt/chipwhisperer
-	python3 -m venv .cwvenv
-	source /opt/chipwhisperer/.cwvenv/bin/activate
- 	# UDev rules
-	sudo cp 50-newae.rules /etc/udev/rules.d/50-newae.rules
-	sudo udevadm control --reload-rules
-	sudo groupadd -f chipwhisperer
-	sudo usermod -aG chipwhisperer $USER
-	sudo usermod -aG plugdev $USER
-	git submodule update --init jupyter
-	# Deps
-	python -m pip install -e .
-	python -m pip install -r jupyter/requirements.txt
-        echo "#!/usr/bin/env bash" | tee /opt/chipwhisperer/run.sh
-	echo "source /opt/chipwhisperer/.cwvenv/bin/activate" | tee /opt/chipwhisperer/run.sh
- 	echo "pushd /opt/chipwhisperer/" | tee /opt/chipwhisperer/run.sh
-  	echo "jupyter notebook" | tee /opt/chipwhisperer/run.sh
-  	echo "deactivate" | tee /opt/chipwhisperer/run.sh
-   	echo "popd" | tee /opt/chipwhisperer/run.sh
-    	chmod +x /opt/chipwhisperer/run.sh
-  
-     else
+        # Venv
+        pushd /opt/chipwhisperer
+        python3 -m venv .cwvenv
+        source /opt/chipwhisperer/.cwvenv/bin/activate
+        # UDev rules
+        sudo cp 50-newae.rules /etc/udev/rules.d/50-newae.rules
+        sudo udevadm control --reload-rules
+        sudo groupadd -f chipwhisperer
+        sudo usermod -aG chipwhisperer $USER
+        sudo usermod -aG plugdev $USER
+        git submodule update --init jupyter
+        # Deps
+        python -m pip install -e .
+        python -m pip install -r jupyter/requirements.txt
+            echo "#!/usr/bin/env bash" | tee /opt/chipwhisperer/chipwhisperer_notebook
+        echo "source /opt/chipwhisperer/.cwvenv/bin/activate" | tee -a /opt/chipwhisperer/chipwhisperer_notebook
+        echo "pushd /opt/chipwhisperer/" | tee -a /opt/chipwhisperer/chipwhisperer_notebook
+        echo "jupyter notebook" | tee -a /opt/chipwhisperer/chipwhisperer_notebook
+        echo "deactivate" | tee -a /opt/chipwhisperer/chipwhisperer_notebook
+        echo "popd" | tee -a /opt/chipwhisperer/chipwhisperer_notebook
+        chmod +x /opt/chipwhisperer/chipwhisperer_notebook
+        add_rc_path /opt/chipwhisperer/
+    else
      	echo "[+] Chipwhisperer already installed, skipping..."
-     fi
-    
+    fi
 }
 
 ####### MAIN ########
@@ -620,6 +617,7 @@ else
     echo "[!] This script is for Ubuntu or Kali. If you want to use it with another OS, edit it yourself."
     exit 1
 fi
+
 # Refresh apt then go!
 sudo apt update 
 generic_setup $OS
