@@ -573,7 +573,8 @@ install_git_tools(){
     if [ ! -d /opt/chipwhisperer ]; then
     	clone_or_update_repo https://github.com/newaetech/chipwhisperer 
      	sudo DEBIAN_FRONTEND=noninteractiv apt install make git avr-libc gcc-avr \
-    		gcc-arm-none-eabi libusb-1.0-0-dev usbutils python3 python3-venv python3-dev -y
+    		gcc-arm-none-eabi libusb-1.0-0-dev usbutils python3 python3-venv python3-dev \
+      		libnewlib-arm-none-eabi  -y
         # Venv
         pushd /opt/chipwhisperer
         python3 -m venv .cwvenv
