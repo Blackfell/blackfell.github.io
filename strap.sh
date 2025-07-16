@@ -128,6 +128,8 @@ generic_setup() {
         pipx_fuckery coercer
         # Bloodhound
         pipx_fuckery bloodhound
+	# PyWerview
+ 	pipx_fuckery pywerview
         # Wifi stuff
         sudo DEBIAN_FRONTEND=noninteractiv apt install wifite rtl8812au-dkms -y
         # Generic hacking tools (snaps)
