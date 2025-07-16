@@ -96,6 +96,8 @@ generic_setup() {
         # Base tools first
         sudo DEBIAN_FRONTEND=noninteractiv apt install -y thefuck byobu vim flashrom nmap bashtop  esptool plocate golang-go docker.io  python3-venv pipx curl nmap hydra medusa gnome-tweaks vlc openssh-server wireshark netdiscover rpcbind
         sudo snap install rustup --classic
+	# ensure pipx path
+ 	add_rc_path "/home/blackfell/.local/bin"
         # Pwntools
         pipx_fuckery pwntools
         # Seclists
