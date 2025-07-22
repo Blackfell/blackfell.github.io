@@ -111,8 +111,8 @@ generic_setup() {
         add_rc_path /opt/Responder
         # Nessus
 	if [ ! -f /opt/nessus/sbin/nessusd ] ; then
-		curl --request GET --url 'https://www.tenable.com/downloads/api/v2/pages/nessus/files/Nessus-10.8.3-ubuntu1604_amd64.deb'  --output "$HOME/Nessus-10.8.3-ubuntu1604_amd64.debccessories"
-	        sudo dpkg -i "$HOME/Nessus-10.8.3-ubuntu1604_amd64.deb"ccessories
+		curl --request GET --url 'https://www.tenable.com/downloads/api/v2/pages/nessus/files/Nessus-10.8.3-ubuntu1604_amd64.deb'  --output "$HOME/Nessus-10.8.3-ubuntu1604_amd64.deb"
+	        sudo dpkg -i "$HOME/Nessus-10.8.3-ubuntu1604_amd64.deb"
 	else
  		echo "[+] Nessus already here, skipping install..."
 	fi
