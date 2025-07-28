@@ -240,7 +240,7 @@ generic_setup() {
     sudo gsettings set org.gnome.desktop.background picture-uri "file://$HOME/BFBackground.png"
 
     # Some general APT tools on both OS
-    sudo DEBIAN_FRONTEND=noninteractiv apt install -y  snapd bettercap apktool hostapd qemu-system qemu-user mitmproxy cmake hashcat-nvidia hcxtools openocd gqrx-sdr inspectrum minicom picocom 
+    sudo DEBIAN_FRONTEND=noninteractiv apt install -y  snapd bettercap apktool hostapd qemu-system qemu-user mitmproxy cmake hashcat-nvidia hcxtools openocd gqrx-sdr inspectrum minicom picocom lsscsi  pcscd libacsccid1 libccid  pcsc-tools cardpeek cardpeek-data
     # FS Tools
     sudo DEBIAN_FRONTEND=noninteractiv apt install -y fusecram fusefat fuseiso fuse2fs
 
@@ -605,6 +605,10 @@ install_git_tools(){
      	clone_or_update_repo https://github.com/newaetech/chipwhisperer # always pull latest
 	echo "[+] Chipwhisperer already installed, skipping..."
     fi
+
+    # scsi SIM card reader
+    clone_or_update_repo https://github.com/ccoff/scsisim
+    
 }
 
 ####### MAIN ########
