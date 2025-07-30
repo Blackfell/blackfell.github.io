@@ -138,7 +138,8 @@ generic_setup() {
         sudo snap install metasploit-framework 
         sudo snap install sqlmap 
         sudo snap install code --classic
-	    sudo snap install searchsploit
+	sudo snap install searchsploit
+        sudo snap install crackmapexec
 
  	    # Web tooling
   	    cargo install feroxbuster
