@@ -611,7 +611,7 @@ install_git_tools(){
     clone_or_update_repo https://github.com/ccoff/scsisim
 
     # JWT Tool
-    if [ ! -f /opt/jwt_tool/jwttool ]; then
+    if [ ! -f /opt/jwt_tool/bin/jwttool ]; then
         clone_or_update_repo https://github.com/ticarpi/jwt_tool
         pushd /opt/jwt_tool
         echo "[-] Installing JWT tool in venv..."
