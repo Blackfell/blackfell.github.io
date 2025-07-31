@@ -620,6 +620,7 @@ install_git_tools(){
  	python3 -m pip install -r requirements.txt
   	mkdir /opt/jwt_tool/bin
   	echo -e '#!/usr/bin/env bash\nsource /opt/jwt_tool/jwtvenv/bin/activate\n/opt/jwt_tool/jwt_tool.py $@\ndeactivate' > /opt/jwt_tool/bin/jwttool
+   	chmod +x /opt/jwt_tool/bin/jwttool
 	add_rc_path /opt/jwt_tool/bin
   	deactivate
         popd
