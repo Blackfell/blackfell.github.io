@@ -609,6 +609,21 @@ install_git_tools(){
 
     # scsi SIM card reader
     clone_or_update_repo https://github.com/ccoff/scsisim
+
+    # JWT Tool
+    if [ ! -f /opt/jwt_tool/jwttool ]; then
+        clone_or_update_repo https://github.com/ticarpi/jwt_tool
+        pushd /opt/jwt_tool
+        echo "[-] Installing JWT tool in venv..."
+        python3 -m venv jwtvenv
+	source jwtvenv/bin/activate
+ 	python3 -m pip install -r requirements.txt
+  	mkdir /opt/jwt_tool/bin
+  	echo -e '#!/usr/bin/env bash\nsource /opt/jwt_tool/jwtvenv/bin/activate\n/opt/jwt_tool/jwt_tool.py\ndeactivate' >> /opt/jwt_tool/bin/jwttool
+	add_rc_path /opt/jwt_tool/bin
+  	deactivate
+        popd
+    fi 
     
 }
 
