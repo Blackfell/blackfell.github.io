@@ -194,14 +194,14 @@ generic_setup() {
     sudo DEBIAN_FRONTEND=noninteractiv apt install -y adb apktool apksigner aapt
     pipx_fuckery frida-tools
     pipx_fuckery objection
-    if [ ! -f /opt/frida-server/frida-server-16.5.9-android-arm64.xz ]; then
+    if [ ! -f /opt/frida-server/frida-server-17.2.17-android-arm64.xz ]; then
         sudo mkdir -p /opt/frida-server
         sudo chown -R $USER:$USER /opt/frida-server
         pushd /opt/frida-server
-        wget -q https://github.com/frida/frida/releases/download/16.5.9/frida-server-16.5.9-android-arm64.xz
-        wget -q https://github.com/frida/frida/releases/download/16.5.9/frida-server-16.5.9-android-arm.xz
-        wget -q https://github.com/frida/frida/releases/download/16.5.9/frida-server-16.5.9-android-x86.xz
-        wget -q https://github.com/frida/frida/releases/download/16.5.9/frida-server-16.5.9-android-x86_64.xz
+        wget -q https://github.com/frida/frida/releases/download/17.2.17/frida-server-17.2.17-android-arm64.xz 
+        wget -q https://github.com/frida/frida/releases/download/17.2.17/frida-server-17.2.17-android-arm.xz
+        wget -q https://github.com/frida/frida/releases/download/17.2.17/frida-server-17.2.17-android-x86.xz
+        wget -q https://github.com/frida/frida/releases/download/17.2.17/frida-server-17.2.17-android-x86_64.xz
         popd
     fi
 
