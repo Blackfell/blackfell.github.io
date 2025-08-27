@@ -625,6 +625,17 @@ install_git_tools(){
   	deactivate
         popd
     fi 
+
+ 	# Android unpinner
+  	clone_or_update_repo https://github.com/mitmproxy/android-unpinner.git
+    if [ ! -f /opt/android-unpinner/unpinvenv ]; then
+		pushd /opt/android-unpinner
+        python3 -m venv unpinvenv
+		source unpinvenv/bin/activate
+		pip install -e .
+  		deactivate
+		popd
+    fi
     
 }
 
