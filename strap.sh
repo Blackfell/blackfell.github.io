@@ -194,7 +194,7 @@ generic_setup() {
     sudo DEBIAN_FRONTEND=noninteractiv apt install -y adb apktool apksigner aapt
     pipx_fuckery frida-tools
     pipx_fuckery objection
-    if [ ! -f /opt/frida-server/frida-server-17.2.17-android-arm64.xz ]; then
+    if [ ! -f /opt/frida-server/frida-server-17.2.17-android-arm.xz ]; then
         sudo mkdir -p /opt/frida-server
         sudo chown -R $USER:$USER /opt/frida-server
         pushd /opt/frida-server
