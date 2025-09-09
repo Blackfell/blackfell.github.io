@@ -376,8 +376,8 @@ install_git_tools(){
         sudo mkdir -p /opt/jadx && sudo chown $USER:$USER /opt/jadx
         pushd /opt/jadx
         echo "[-] Downloading Jadx, please wait..."
-        wget -q https://github.com/skylot/jadx/releases/download/v1.5.1/jadx-1.5.1.zip -O jadx-1.5.1.zip
-        7z x jadx-1.5.1.zip
+        wget -q https://github.com/skylot/jadx/releases/download/v1.5.3/jadx-1.5.3.zip -O jadx-1.5.3.zip
+		7z x jadx-1.5.3.zip
         popd
     fi
 
