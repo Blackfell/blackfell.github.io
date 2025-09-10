@@ -636,7 +636,19 @@ install_git_tools(){
   		deactivate
 		popd
     fi
-    
+
+	if clone_or_update_repo https://github.com/gchq/CyberChef; then 
+ 		echo "[+] Changes to Cyberchef source, building..."
+ 		pushd /opt/CyberChef
+		sudo docker build --tag cyberchef --ulimit nofile=10000 .
+  		echo '#!/usr/bin/env bash' > /opt/CyberChef/run.sh
+ 		echo "sudo docker run -dt -p 8888:80 cyberchef" >> /opt/CyberChef/run.sh
+   		echo "open http://127.0.0.1:8888" >> /opt/CyberChef/run.sh
+		chmod +x /opt/CyberChef/run.sh
+ 		popd
+   	else
+		echo "[+] Cyberchef already built, continuing..."
+  	fi
 }
 
 ####### MAIN ########
