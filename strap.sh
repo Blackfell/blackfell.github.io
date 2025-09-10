@@ -650,7 +650,7 @@ install_git_tools(){
 		echo "[+] Cyberchef already built, continuing..."
   	fi
 
-   clone_or_update_repo https://github.com/AonCyberLabs/Windows-Exploit-Suggester
+   clone_or_update_repo https://github.com/Pwnistry/Windows-Exploit-Suggester-python3 # https://github.com/AonCyberLabs/Windows-Exploit-Suggester
 }
 
 ####### MAIN ########
