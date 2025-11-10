@@ -408,7 +408,8 @@ install_git_tools(){
   		source venv/bin/activate
   		pip3 install -r requirements.txt
   		deactivate
-		echo 'pushd ChameleonUltra/software/script' > /opt/ChameleonUltra/software/script/run.sh
+		echo '#!/bin/bash' > /opt/ChameleonUltra/software/script/run.sh
+		echo 'pushd /opt/ChameleonUltra/software/script' >> /opt/ChameleonUltra/software/script/run.sh
 		echo 'source venv/bin/activate' >> /opt/ChameleonUltra/software/script/run.sh
 		echo 'python3 chameleon_cli_main.py' >> /opt/ChameleonUltra/software/script/run.sh
 		echo 'deactivate' >> /opt/ChameleonUltra/software/script/run.sh
