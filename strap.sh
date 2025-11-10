@@ -396,6 +396,27 @@ install_git_tools(){
         popd 
     fi
 
+	# Proxmark Chameleon Ultra
+	if [ ! -f /opt/ChameleonUltra/software/script/run.sh ]; then
+		clone_or_update_repo https://github.com/RfidResearchGroup/ChameleonUltra
+  		mkdir -p /opt/ChameleonUltra/software/src/out
+		pushd /opt/ChameleonUltra/software/src/out
+    	cmake ..
+    	cmake --build . --config Release
+		cd /opt/ChameleonUltra/software/script
+  		python3 -m venv venv
+  		source venv/bin/activate
+  		pip3 install -r requirements.txt
+  		deactivate
+		echo 'pushd ChameleonUltra/software/script' > /opt/ChameleonUltra/software/script/run.sh
+		echo 'source venv/bin/activate' >> /opt/ChameleonUltra/software/script/run.sh
+		echo 'python3 chameleon_cli_main.py' >> /opt/ChameleonUltra/software/script/run.sh
+		echo 'deactivate' >> /opt/ChameleonUltra/software/script/run.sh
+		echo 'popd' >> /opt/ChameleonUltra/software/script/run.sh
+		chmod +x /opt/ChameleonUltra/software/script/run.sh
+  		popd
+	fi
+
     #john
     if clone_or_update_repo https://github.com/openwall/john; then
     	pushd /opt/john/src
