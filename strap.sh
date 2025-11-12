@@ -51,9 +51,87 @@ clone_or_update_repo() {
 
 }
 
+kali_install() {
+	echo "Detected Kali Linux. Installing Kali specifics."
+	# Base tools first
+	sudo DEBIAN_FRONTEND=noninteractiv apt install -y thefuck byobu vim flashrom nmap bashtop python3-pwntools esptool plocate golang-go docker.io rustup python3-venv pipx curl nmap vlc
+
+	# Ensure this is set in $HOME/.config/qterminal.org/qterminal.ini ApplicationTransparency=0
+	sed -i '/^ApplicationTransparency=/c\ApplicationTransparency=0' "$HOME/.config/qterminal.org/qterminal.ini" || echo "ApplicationTransparency=0" >> "$HOME/.config/file.ini"
+	# Nessus
+	if [ ! -f /opt/nessus/sbin/nessusd ]; then
+			curl --request GET --url 'https://www.tenable.com/downloads/api/v2/pages/nessus/files/Nessus-10.8.3-debian10_amd64.deb' --output "$HOME/Nessus-10.8.3-debian10_amd64.deb"
+			sudo dpkg -i "$HOME/Nessus-10.8.3-ubuntu1604_amd64.deb"
+	else
+		echo "[+] Nessus already here, skipping install..."
+	fi
+
+	#rtl8812au - Kali and wifitre helpers
+	sudo DEBIAN_FRONTEND=noninteractiv apt install -y linux-headers-amd64 realtek-rtl88xxau-dkms hcxdumptool hcxtools
+
+	# Desktop background
+	sudo DEBIAN_FRONTEND=noninteractiv apt install pcmanfm -y
+	wget -q https://blackfell.net/kali_lincox_mine.png -O $HOME/kali_background.png
+	xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -s  $HOME/kali_background.png    
+	xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/last-image-style -s 1
+}
+
+ubuntu_install() {
+	echo "Detected Ubuntu. Installing would-be Kali shit."
+	# Base tools first
+	sudo DEBIAN_FRONTEND=noninteractiv apt install -y thefuck byobu vim flashrom nmap bashtop traceroute esptool plocate golang-go docker.io  python3-venv pipx curl nmap hydra medusa gnome-tweaks vlc openssh-server wireshark netdiscover rpcbind testssl.sh jython
+	sudo snap install rustup --classic
+	# ensure pipx path
+	add_rc_path "/home/blackfell/.local/bin"
+	# Pwntools
+	pipx_fuckery pwntools
+	# Seclists
+	clone_or_update_repo https://github.com/danielmiessler/SecLists.git
+	sudo ln -s /opt/SecLists /usr/share/seclists/
+	# DNSChef
+	clone_or_update_repo https://github.com/iphelix/dnschef  
+	add_rc_path /opt/dnschef    
+	# Responder
+	clone_or_update_repo https://github.com/SpiderLabs/Responder
+	add_rc_path /opt/Responder
+	# Nessus
+	if [ ! -f /opt/nessus/sbin/nessusd ] ; then
+		curl --request GET --url 'https://www.tenable.com/downloads/api/v1/public/pages/nessus/downloads/26040/download?i_agree_to_tenable_license_agreement=true'  --output "$HOME/Nessus-10.8.3-ubuntu1604_amd64.deb"
+			sudo dpkg -i "$HOME/Nessus-10.8.3-ubuntu1604_amd64.deb"
+	else
+		echo "[+] Nessus already here, skipping install..."
+	fi
+	# Impacket and nxc
+	pipx_fuckery impacket
+	# NXC is from git so different install procedure...
+	if pipx list | grep ncx | grep installed; then
+			pipx upgrade git+https://github.com/Pennyw0rth/NetExec
+	else
+		pipx install git+https://github.com/Pennyw0rth/NetExec
+	fi
+	# Certipy
+	pipx_fuckery certipy-ad
+	# Coercer
+	pipx_fuckery coercer
+	# Bloodhound
+	pipx_fuckery bloodhound
+	# PyWerview
+	pipx_fuckery pywerview
+	# Wifi stuff
+	sudo DEBIAN_FRONTEND=noninteractiv apt install wifite rtl8812au-dkms -y
+	# Generic hacking tools (snaps)
+	sudo snap install metasploit-framework 
+	sudo snap install sqlmap 
+	sudo snap install code --classic
+	sudo snap install searchsploit
+	sudo snap install crackmapexec
+
+	# Web tooling
+	cargo install feroxbuster
+}
+
 generic_setup() {
     OS=$1
-
     # Start off with a oh-my-zsh install
     if [ ! -d $HOME/.oh-my-zsh ]; then 
         echo "[+] Installing oh-my-zsh"
@@ -64,93 +142,25 @@ generic_setup() {
         echo "[+] Zsh already configured. Skipping..."
     fi
     
-    
-    # Tools that get installed at the beggining
+    # stuff that needs to be OS specific
     if [ $OS = "kali" ]; then
-        echo "Detected Kali Linux. Installing Kali specifics."
-        # Base tools first
-        sudo DEBIAN_FRONTEND=noninteractiv apt install -y thefuck byobu vim flashrom nmap bashtop python3-pwntools esptool plocate golang-go docker.io rustup python3-venv pipx curl nmap vlc
-
-        # Ensure this is set in $HOME/.config/qterminal.org/qterminal.ini ApplicationTransparency=0
-        sed -i '/^ApplicationTransparency=/c\ApplicationTransparency=0' "$HOME/.config/qterminal.org/qterminal.ini" || echo "ApplicationTransparency=0" >> "$HOME/.config/file.ini"
-        # Nessus
-	if [ ! -f /opt/nessus/sbin/nessusd ]; then
-        	curl --request GET --url 'https://www.tenable.com/downloads/api/v2/pages/nessus/files/Nessus-10.8.3-debian10_amd64.deb' --output "$HOME/Nessus-10.8.3-debian10_amd64.deb"
-        	sudo dpkg -i "$HOME/Nessus-10.8.3-ubuntu1604_amd64.deb"
-	else
- 		echo "[+] Nessus already here, skipping install..."
- 	fi
-
-        #rtl8812au - Kali and wifitre helpers
-        sudo DEBIAN_FRONTEND=noninteractiv apt install -y linux-headers-amd64 realtek-rtl88xxau-dkms hcxdumptool hcxtools
-
-        # Desktop background
-        sudo DEBIAN_FRONTEND=noninteractiv apt install pcmanfm -y
-        wget -q https://blackfell.net/kali_lincox_mine.png -O $HOME/kali_background.png
-        xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/image-path -s  $HOME/kali_background.png    
-        xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/last-image-style -s 1
-        
-
+        kali_install
     elif [ $OS = "ubuntu" ]; then
-        echo "Detected Ubuntu. Installing would-be Kali shit."
-        # Base tools first
-        sudo DEBIAN_FRONTEND=noninteractiv apt install -y thefuck byobu vim flashrom nmap bashtop traceroute esptool plocate golang-go docker.io  python3-venv pipx curl nmap hydra medusa gnome-tweaks vlc openssh-server wireshark netdiscover rpcbind testssl.sh jython
-        sudo snap install rustup --classic
-	# ensure pipx path
- 	add_rc_path "/home/blackfell/.local/bin"
-        # Pwntools
-        pipx_fuckery pwntools
-        # Seclists
-        clone_or_update_repo https://github.com/danielmiessler/SecLists.git
-        sudo ln -s /opt/SecLists /usr/share/seclists/
-        # DNSChef
-        clone_or_update_repo https://github.com/iphelix/dnschef  
-        add_rc_path /opt/dnschef    
-        # Responder
-        clone_or_update_repo https://github.com/SpiderLabs/Responder
-        add_rc_path /opt/Responder
-        # Nessus
-	if [ ! -f /opt/nessus/sbin/nessusd ] ; then
-		curl --request GET --url 'https://www.tenable.com/downloads/api/v1/public/pages/nessus/downloads/26040/download?i_agree_to_tenable_license_agreement=true'  --output "$HOME/Nessus-10.8.3-ubuntu1604_amd64.deb"
-	        sudo dpkg -i "$HOME/Nessus-10.8.3-ubuntu1604_amd64.deb"
-	else
- 		echo "[+] Nessus already here, skipping install..."
-	fi
-        # Impacket and nxc
-        pipx_fuckery impacket
-	# NCX is from git so different install procedure...
- 	if pipx list | grep ncx | grep installed; then
-        	pipx upgrade git+https://github.com/Pennyw0rth/NetExec
-	else
-  		pipx install git+https://github.com/Pennyw0rth/NetExec
-    	fi
-        # Certipy
-        pipx_fuckery certipy-ad
-        # Coercer
-        pipx_fuckery coercer
-        # Bloodhound
-        pipx_fuckery bloodhound
-	# PyWerview
- 	pipx_fuckery pywerview
-        # Wifi stuff
-        sudo DEBIAN_FRONTEND=noninteractiv apt install wifite rtl8812au-dkms -y
-        # Generic hacking tools (snaps)
-        sudo snap install metasploit-framework 
-        sudo snap install sqlmap 
-        sudo snap install code --classic
-	sudo snap install searchsploit
-        sudo snap install crackmapexec
-
- 	    # Web tooling
-  	    cargo install feroxbuster
-
- 	    # OT tools
-  	    pipx_fuckery opcua-client
-   	    clone_or_update_repo https://github.com/meeas/plcscan
-    	clone_or_update_repo https://github.com/klsecservices/s7scan
-     	clone_or_update_repo https://github.com/mssabr01/sixnet-tools/tree/new_master/SIXNET%20tools
-        
+        ubuntu_install        
     fi
+
+	# STUFF THAT IS OS GENERIC
+	
+    # Some general APT tools on both OS
+    sudo DEBIAN_FRONTEND=noninteractiv apt install -y  snapd bettercap apktool hostapd qemu-system qemu-user mitmproxy cmake hashcat-nvidia hcxtools openocd gqrx-sdr inspectrum minicom picocom lsscsi  pcscd libacsccid1 libccid  pcsc-tools cardpeek cardpeek-data yosys
+    # FS Tools
+    sudo DEBIAN_FRONTEND=noninteractiv apt install -y fusecram fusefat fuseiso fuse2fs
+	
+	# OT tools
+	pipx_fuckery opcua-client
+	clone_or_update_repo https://github.com/meeas/plcscan
+	clone_or_update_repo https://github.com/klsecservices/s7scan
+	clone_or_update_repo https://github.com/mssabr01/sixnet-tools/tree/new_master/SIXNET%20tools
     
     # Configure rust environment
     rustup default stable
@@ -183,9 +193,9 @@ generic_setup() {
         wget -q https://downloads2.saleae.com/logic2/Logic-2.4.29-linux-x64.AppImage
         sudo chmod +x /opt/saleae/Logic-2.4.29-linux-x64.AppImage
         echo '#!/bin/bash' | sudo tee /opt/saleae/logic > /dev/null
-	echo "sudo /opt/saleae/Logic-2.4.29-linux-x64.AppImage --no-sandbox" | sudo tee /opt/saleae/logic > /dev/null
+		echo "sudo /opt/saleae/Logic-2.4.29-linux-x64.AppImage --no-sandbox" | sudo tee /opt/saleae/logic > /dev/null
         sudo chmod +x /opt/saleae/logic
-	add_rc_path /opt/saleae/logic
+		add_rc_path /opt/saleae/logic
         popd
     fi
     
@@ -204,8 +214,6 @@ generic_setup() {
         wget -q https://github.com/frida/frida/releases/download/17.2.17/frida-server-17.2.17-android-x86_64.xz
         popd
     fi
-
-
     # Scout suite
     # YOLO
     pipx_fuckery scoutsuite
@@ -226,7 +234,6 @@ generic_setup() {
     wget -q 'https://portswigger-cdn.net/burp/releases/download?product=pro&version=2024.10.3&type=Linux'  -O $HOME/Downloads/burp_installer
     echo "[!] Don't forget to install your own burp (GUI), it's here - $USER/Downloads/burp_installer"
 
-
     # Customisation
     if [ "$SHELL" != "/bin/zsh" ]; then
         echo "Changing the current user's shell to zsh..."
@@ -240,10 +247,6 @@ generic_setup() {
     wget -q https://github.com/Blackfell/ansible-hax/blob/main/roles/bf_arch_desktop/files/BFBackground.png?raw=true  -O $HOME/BFBackground.png
     sudo gsettings set org.gnome.desktop.background picture-uri "file://$HOME/BFBackground.png"
 
-    # Some general APT tools on both OS
-    sudo DEBIAN_FRONTEND=noninteractiv apt install -y  snapd bettercap apktool hostapd qemu-system qemu-user mitmproxy cmake hashcat-nvidia hcxtools openocd gqrx-sdr inspectrum minicom picocom lsscsi  pcscd libacsccid1 libccid  pcsc-tools cardpeek cardpeek-data
-    # FS Tools
-    sudo DEBIAN_FRONTEND=noninteractiv apt install -y fusecram fusefat fuseiso fuse2fs
 
     # Snap tools
     sudo systemctl enable --now snapd
@@ -269,6 +272,9 @@ generic_setup() {
         sudo curl -X POST https://www.segger.com/downloads/jlink/JLink_Linux_x86_64.deb --data-raw 'accept_license_agreement=accepted&submit=Download+software'  -o /opt/segger/JLink_Linux_x86_64.deb
         sudo dpkg -i /opt/segger/JLink_Linux_x86_64.deb
     fi
+
+	# Cynthion
+	pipx_fuckery cynthion
 	
 }
 
