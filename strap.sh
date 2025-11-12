@@ -152,7 +152,7 @@ generic_setup() {
 	# STUFF THAT IS OS GENERIC
 	
     # Some general APT tools on both OS
-    sudo DEBIAN_FRONTEND=noninteractiv apt install -y  snapd bettercap apktool hostapd qemu-system qemu-user mitmproxy cmake hashcat-nvidia hcxtools openocd gqrx-sdr inspectrum minicom picocom lsscsi  pcscd libacsccid1 libccid  pcsc-tools cardpeek cardpeek-data yosys
+    sudo DEBIAN_FRONTEND=noninteractiv apt install -y  snapd bettercap apktool hostapd qemu-system qemu-user mitmproxy cmake hashcat-nvidia hcxtools openocd gqrx-sdr inspectrum minicom picocom lsscsi  pcscd libacsccid1 libccid  pcsc-tools cardpeek cardpeek-data 
     # FS Tools
     sudo DEBIAN_FRONTEND=noninteractiv apt install -y fusecram fusefat fuseiso fuse2fs
 	
@@ -274,8 +274,11 @@ generic_setup() {
     fi
 
 	# Cynthion
+	sudo DEBIAN_FRONTEND=noninteractiv apt install -y nextpnr-ecp5 yosys tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev fgpa-trellis
 	pipx_fuckery cynthion
-	
+	sudo mkdir -p /opt/packetry
+	sudo wget https://github.com/greatscottgadgets/packetry/releases/download/v0.5.0/packetry-x86_64.AppImage -O /opt/packetry/packetry-x86_64_v0.5.0.AppImage
+	sudo chmod +x /opt/packetry/packetry-x86_64_v0.5.0.AppImage
 }
 
 clone_documentation() {
