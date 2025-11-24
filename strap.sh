@@ -60,7 +60,7 @@ kali_install() {
 	sed -i '/^ApplicationTransparency=/c\ApplicationTransparency=0' "$HOME/.config/qterminal.org/qterminal.ini" || echo "ApplicationTransparency=0" >> "$HOME/.config/file.ini"
 	# Nessus
 	if [ ! -f /opt/nessus/sbin/nessusd ]; then
-			curl --request GET --url 'https://www.tenable.com/downloads/api/v2/pages/nessus/files/Nessus-10.8.3-debian10_amd64.deb' --output "$HOME/Nessus-10.8.3-debian10_amd64.deb"
+			curl --request GET --url 'https://www.tenable.com/downloads/api/v1/public/pages/nessus/downloads/27148/download?i_agree_to_tenable_license_agreement=true' --output "$HOME/Nessus-10.8.3-debian10_amd64.deb"
 			sudo dpkg -i "$HOME/Nessus-10.8.3-ubuntu1604_amd64.deb"
 	else
 		echo "[+] Nessus already here, skipping install..."
@@ -96,7 +96,7 @@ ubuntu_install() {
 	add_rc_path /opt/Responder
 	# Nessus
 	if [ ! -f /opt/nessus/sbin/nessusd ] ; then
-		curl --request GET --url 'https://www.tenable.com/downloads/api/v1/public/pages/nessus/downloads/26040/download?i_agree_to_tenable_license_agreement=true'  --output "$HOME/Nessus-10.8.3-ubuntu1604_amd64.deb"
+		curl --request GET --url 'https://www.tenable.com/downloads/api/v1/public/pages/nessus/downloads/27148/download?i_agree_to_tenable_license_agreement=true'  --output "$HOME/Nessus-10.8.3-ubuntu1604_amd64.deb"
 			sudo dpkg -i "$HOME/Nessus-10.8.3-ubuntu1604_amd64.deb"
 	else
 		echo "[+] Nessus already here, skipping install..."
