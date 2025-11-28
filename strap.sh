@@ -157,7 +157,7 @@ generic_setup() {
 	pipx_fuckery wesng
 	
     # Some general APT tools on both OS
-    sudo DEBIAN_FRONTEND=noninteractiv apt install -y  snapd bettercap apktool hostapd qemu-system qemu-user mitmproxy cmake hashcat-nvidia hcxtools openocd gqrx-sdr inspectrum minicom picocom lsscsi  pcscd libacsccid1 libccid  pcsc-tools cardpeek cardpeek-data tio
+    sudo DEBIAN_FRONTEND=noninteractiv apt install -y  snapd bettercap apktool hostapd qemu-system qemu-user mitmproxy cmake hashcat-nvidia hcxtools openocd gqrx-sdr inspectrum minicom picocom lsscsi  pcscd libacsccid1 libccid  pcsc-tools cardpeek cardpeek-data tio rsh-redone-client
     # FS Tools
     sudo DEBIAN_FRONTEND=noninteractiv apt install -y fusecram fusefat fuseiso fuse2fs
 	
