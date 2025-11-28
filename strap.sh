@@ -26,12 +26,16 @@ pipx_fuckery () {
     fi
 }
 
+# Clone repo or update it, will use arg 2 as branch arg 3 as repo name, both optional, but if you use name you need branch too. 
 clone_or_update_repo() {
     local REPO_URL="$1"
     local REPO_NAME=$(basename -s .git "$REPO_URL")
     if [ -n "$2" ]; then 
 	    local BRANCH="--branch $2"
 	    local REPO_NAME="${REPO_NAME}_$2"
+    fi
+	if [ -n "$3" ]; then
+	    local REPO_NAME="$3"
     fi
     local TARGET_DIR="/opt/$REPO_NAME"
     sudo mkdir -p $TARGET_DIR
@@ -162,7 +166,7 @@ generic_setup() {
 	sudo DEBIAN_FRONTEND=noninteractiv apt install -y python3-pymodbus
 	clone_or_update_repo https://github.com/sourceperl/mbtget
 	clone_or_update_repo https://github.com/andyjsmith/plcscan # Python 3 version of 
-	clone_or_update_repo https://github.com/meeas/plcscan master # Still get version 1 for python2
+	clone_or_update_repo https://github.com/meeas/plcscan master plcscanpy2# Still get version 1 for python2
 	clone_or_update_repo https://github.com/klsecservices/s7scan
 	clone_or_update_repo https://github.com/mssabr01/sixnet-tools/tree/new_master/SIXNET%20tools
 	clone_or_update_repo https://github.com/sanny32/OpenModScan
