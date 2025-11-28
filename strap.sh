@@ -150,6 +150,7 @@ generic_setup() {
     fi
 
 	# STUFF THAT IS OS GENERIC
+	pipx_fuckery wesng
 	
     # Some general APT tools on both OS
     sudo DEBIAN_FRONTEND=noninteractiv apt install -y  snapd bettercap apktool hostapd qemu-system qemu-user mitmproxy cmake hashcat-nvidia hcxtools openocd gqrx-sdr inspectrum minicom picocom lsscsi  pcscd libacsccid1 libccid  pcsc-tools cardpeek cardpeek-data tio
@@ -158,9 +159,18 @@ generic_setup() {
 	
 	# OT tools
 	pipx_fuckery opcua-client
-	clone_or_update_repo https://github.com/meeas/plcscan
+	sudo DEBIAN_FRONTEND=noninteractiv apt install -y python3-pymodbus
+	clone_or_update_repo https://github.com/sourceperl/mbtget
+	clone_or_update_repo https://github.com/andyjsmith/plcscan # Python 3 version of 
+	clone_or_update_repo https://github.com/meeas/plcscan master # Still get version 1 for python2
 	clone_or_update_repo https://github.com/klsecservices/s7scan
 	clone_or_update_repo https://github.com/mssabr01/sixnet-tools/tree/new_master/SIXNET%20tools
+	clone_or_update_repo https://github.com/sanny32/OpenModScan
+	pushd /opt/OpenModScan
+	./build.sh
+	popd
+	clone_or_update_repo https://github.com/trouat/smod
+	clone_or_update_repo https://github.com/w3h/isf
     
     # Configure rust environment
     rustup default stable
