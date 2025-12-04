@@ -98,7 +98,7 @@ ubuntu_install() {
 	# Responder
 	clone_or_update_repo https://github.com/lgandx/Responder
 	if [ ! -f /opt/Responder/respvenv/bin/activate] ; then
-		pushd /ot/Responder
+		pushd /opt/Responder
 		python3 -m venv respenv
 		source respenv/bin/activate
 		python3 -m pip install netifaces
