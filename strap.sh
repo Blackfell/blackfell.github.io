@@ -96,8 +96,15 @@ ubuntu_install() {
 	clone_or_update_repo https://github.com/iphelix/dnschef  
 	add_rc_path /opt/dnschef    
 	# Responder
-	clone_or_update_repo https://github.com/SpiderLabs/Responder
-	add_rc_path /opt/Responder
+	clone_or_update_repo https://github.com/lgandx/Responder
+	if [ ! -f /opt/Responder/respvenv/bin/activate] ; then
+		pushd /ot/Responder
+		python3 -m venv respenv
+		source respenv/bin/activate
+		python3 -m pip install netifaces
+		add_rc_path /opt/Responder 	
+		popd
+	fi
 	# Nessus
 	if [ ! -f /opt/nessus/sbin/nessusd ] ; then
 		curl --request GET --url 'https://www.tenable.com/downloads/api/v1/public/pages/nessus/downloads/27148/download?i_agree_to_tenable_license_agreement=true'  --output "$HOME/Nessus-10.8.3-ubuntu1604_amd64.deb"
