@@ -83,7 +83,7 @@ kali_install() {
 ubuntu_install() {
 	echo "Detected Ubuntu. Installing would-be Kali shit."
 	# Base tools first
-	sudo DEBIAN_FRONTEND=noninteractiv apt install -y thefuck byobu vim flashrom nmap bashtop traceroute esptool plocate golang-go docker.io  python3-venv pipx curl nmap hydra medusa gnome-tweaks vlc openssh-server wireshark netdiscover rpcbind testssl.sh jython
+	sudo DEBIAN_FRONTEND=noninteractiv apt install -y thefuck byobu vim flashrom nmap bashtop traceroute esptool plocate golang-go docker.io  python3-venv pipx curl nmap hydra medusa gnome-tweaks vlc openssh-server wireshark netdiscover rpcbind testssl.sh jython snmp
 	sudo snap install rustup --classic
 	# ensure pipx path
 	add_rc_path "/home/blackfell/.local/bin"
