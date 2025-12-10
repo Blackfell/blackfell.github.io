@@ -43,12 +43,12 @@ clone_or_update_repo() {
     if [ -z "$(ls -A "$TARGET_DIR")" ]; then
         echo "[!] - fresh clone of $REPO_URL"
         echo "$TARGET_DIR created, but empty, cloning..."
-        git clone $BRANCH "$REPO_URL" "$TARGET_DIR"
+         clone $BRANCH "$REPO_URL" "$TARGET_DIR"
 	return 1	# if true we'll run build
     else
         echo "Directory $TARGET_DIR already exists. Pulling latest changes..."
         # Navigate to the directory and pull the latest changes
-        if git -C "$TARGET_DIR" pull | grep -v "Already up-to-date"; then CHANGED=0; else CHANGED=1; fi
+        if  -C "$TARGET_DIR" pull | grep -v "Already up-to-date"; then CHANGED=0; else CHANGED=1; fi
  	if $CHANGED; then echo "[!] - Repo $REPO_URL at $TARGET_DIR is changed! Will build again if needed."; else echo "[+] - Repo $REPO_URL at $TARGET_DIR is not changed."; fi
 	return $CHANGED # returns true if a change has happened so we'll build again
     fi
@@ -90,13 +90,13 @@ ubuntu_install() {
 	# Pwntools
 	pipx_fuckery pwntools
 	# Seclists
-	clone_or_update_repo https://github.com/danielmiessler/SecLists.git
+	clone_or_update_repo https://hub.com/danielmiessler/SecLists.
 	sudo ln -s /opt/SecLists /usr/share/seclists/
 	# DNSChef
-	clone_or_update_repo https://github.com/iphelix/dnschef  
+	clone_or_update_repo https://hub.com/iphelix/dnschef  
 	add_rc_path /opt/dnschef    
 	# Responder
-	clone_or_update_repo https://github.com/lgandx/Responder
+	clone_or_update_repo https://hub.com/lgandx/Responder
 	if [ ! -f /opt/Responder/respvenv/bin/activate] ; then
 		pushd /opt/Responder
 		python3 -m venv respenv
@@ -114,9 +114,9 @@ ubuntu_install() {
 	fi
 	# Impacket and nxc
 	pipx_fuckery impacket
-	# NXC is from git so different install procedure...
+	# NXC is from  so different install procedure...
 	if pipx list | grep ncx | grep installed; then
-			pipx upgrade git+https://github.com/Pennyw0rth/NetExec
+			pipx upgrade +https://hub.com/Pennyw0rth/NetExec
 	else
 		pipx install git+https://github.com/Pennyw0rth/NetExec
 	fi
@@ -471,6 +471,9 @@ install_git_tools(){
     # Snafflepy
     clone_or_update_repo https://github.com/asmtlab/snafflepy
     add_rc_path /opt/snafflepy
+
+	# NTLM PCAP PArser
+	clone_or_update_repo https://github.com/mlgualtieri/NTLMRawUnhide
 
     # ESP32 image parser 
     if clone_or_update_repo https://github.com/tenable/esp32_image_parser; then
