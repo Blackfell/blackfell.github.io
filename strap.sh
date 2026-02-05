@@ -294,6 +294,16 @@ generic_setup() {
         sudo dpkg -i /opt/segger/JLink_Linux_x86_64.deb
     fi
 
+	# ipatool
+	sudo mkdir -p /opt/ipatool
+	sudo chown -R $USER:$USER /opt/ipatool
+	wget -O /opt/ipatool/ipatool-2.2.0-linux-amd64.tar.gz https://github.com/majd/ipatool/releases/download/v2.2.0/ipatool-2.2.0-linux-amd64.tar.gz
+	pushd /opt/ipatool
+	tar -xf ipatool-2.2.0-linux-amd64.tar.gz
+	chmod +x /opt/ipatool/bin/ipatool-2.2.0-linux-amd64
+	popd
+	
+
 	# Cynthion
 	sudo DEBIAN_FRONTEND=noninteractiv apt install -y nextpnr-ecp5 yosys tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev fgpa-trellis
 	pipx_fuckery cynthion
