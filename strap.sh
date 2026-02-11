@@ -400,12 +400,27 @@ install_git_tools(){
     sudo mkdir -p /opt/bloodhoundly4k 
     if [ ! -f /opt/bloodhoundly4k/BloodHound-linux-x64/BloodHound ]; then
         pushd /opt/bloodhoundly4k
-        echo "[-] Downloading Bloodhound, please wait..."
+        echo "[-] Downloading Bloodhound ly4k, please wait..."
         sudo wget -q https://github.com/ly4k/BloodHound/releases/download/v4.2.0-ly4k/BloodHound-linux-x64.zip -O /opt/bloodhoundly4k/BloodHound-x64lin.zip
         sudo unzip /opt/bloodhoundly4k/BloodHound-x64lin.zip 
 	    sudo chmod -R 04755 /opt/bloodhoundly4k/BloodHound-linux-x64/chrome-sandbox
         # Sadly there's a directory in the zip
         add_line_if_not_exists "alias bloodhound-nosandbox='/opt/bloodhoundly4k/BloodHound-linux-x64/BloodHound --no-sandbox'" "$HOME/.zshrc" 
+        popd
+    fi
+
+	# Bloodhound community
+	sudo mkdir -p /opt/bloodhoundcommunity
+	pipx install bloodhound-ce
+	if [ ! -f /opt/bloodhoundcommunity/BloodHound ]; then
+        pushd /opt/bloodhoundcommunity
+		sudo chown -R $USER:$USER /opt/bloodhoundcommunity
+        echo "[-] Downloading Bloodhound Community, please wait..."
+        wget -q https://github.com/SpecterOps/bloodhound-cli/releases/latest/download/bloodhound-cli-linux-amd64.tar.gz -O /opt/bloodhoundcommunity/BloodHound-community.tar.gz
+		tar -xzf  /opt/bloodhoundcommunity/BloodHound-community.tar.gz 
+		sudo DEBIAN_FRONTEND=noninteractiv apt install -y docker-compose-v2
+		sudo ./bloodhound-cli install | tee install.log
+	    echo "Bloodhound Communicty installed."
         popd
     fi
 
