@@ -90,13 +90,13 @@ ubuntu_install() {
 	# Pwntools
 	pipx_fuckery pwntools
 	# Seclists
-	clone_or_update_repo https://hub.com/danielmiessler/SecLists.
+	clone_or_update_repo https://github.com/danielmiessler/SecLists.
 	sudo ln -s /opt/SecLists /usr/share/seclists/
 	# DNSChef
-	clone_or_update_repo https://hub.com/iphelix/dnschef  
+	clone_or_update_repo https://github.com/iphelix/dnschef  
 	add_rc_path /opt/dnschef    
 	# Responder
-	clone_or_update_repo https://hub.com/lgandx/Responder
+	clone_or_update_repo https://github.com/lgandx/Responder
 	if [ ! -f /opt/Responder/respvenv/bin/activate] ; then
 		pushd /opt/Responder
 		python3 -m venv respenv
@@ -116,7 +116,7 @@ ubuntu_install() {
 	pipx_fuckery impacket
 	# NXC is from  so different install procedure...
 	if pipx list | grep ncx | grep installed; then
-			pipx upgrade +https://hub.com/Pennyw0rth/NetExec
+			pipx upgrade +https://github.com/Pennyw0rth/NetExec
 	else
 		pipx install git+https://github.com/Pennyw0rth/NetExec
 	fi
