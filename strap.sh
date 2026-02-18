@@ -43,7 +43,7 @@ clone_or_update_repo() {
     if [ -z "$(ls -A "$TARGET_DIR")" ]; then
         echo "[!] - fresh clone of $REPO_URL"
         echo "$TARGET_DIR created, but empty, cloning..."
-         clone $BRANCH "$REPO_URL" "$TARGET_DIR"
+        git clone $BRANCH "$REPO_URL" "$TARGET_DIR"
 	return 1	# if true we'll run build
     else
         echo "Directory $TARGET_DIR already exists. Pulling latest changes..."
