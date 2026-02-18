@@ -90,7 +90,7 @@ ubuntu_install() {
 	# Pwntools
 	pipx_fuckery pwntools
 	# Seclists
-	clone_or_update_repo https://github.com/danielmiessler/SecLists.
+	clone_or_update_repo https://github.com/danielmiessler/SecLists
 	sudo ln -s /opt/SecLists /usr/share/seclists/
 	# DNSChef
 	clone_or_update_repo https://github.com/iphelix/dnschef  
