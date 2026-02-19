@@ -649,7 +649,7 @@ install_git_tools(){
 	        # Now actually move it into /opt
 	        sudo mv zephyr-sdk-0.16.0 /opt
 	        pushd /opt/zephyr-sdk-0.16.0
-	        ./setup.sh
+	        yes y | ./setup.sh  # I like to live dangerously
 	        # Apply udev rules
 	        sudo /opt/zephyr-sdk-0.16.0/sysroots/x86_64-pokysdk-linux/usr/share/openocd/contrib/60-openocd.rules /etc/udev/rules.d
 	        sudo udevadm control --reload
