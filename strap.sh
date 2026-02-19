@@ -87,6 +87,10 @@ ubuntu_install() {
 	sudo snap install rustup --classic
 	# ensure pipx path
 	add_rc_path "/home/blackfell/.local/bin"
+	# Background
+	wget -q https://blackfell.net/kali_lincox_mine.png -O $HOME/kali_background.png
+	echo "[!] you can use the backgorund at $HOME/kali_background.png if you want..."
+	
 	# Pwntools
 	pipx_fuckery pwntools
 	# Seclists
