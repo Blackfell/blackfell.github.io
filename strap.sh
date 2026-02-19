@@ -343,6 +343,7 @@ clone_documentation() {
 }
 
 install_go_tools(){
+	echo "[+] Installing Go tools now..."
     # GO Tools for recon and OSINT
     go install github.com/tomnomnom/httprobe@latest
     go install github.com/projectdiscovery/dnsx/cmd/dnsx@latest
