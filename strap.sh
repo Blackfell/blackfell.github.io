@@ -166,6 +166,7 @@ generic_setup() {
 
 	# STUFF THAT IS OS GENERIC
 	pipx_fuckery wesng
+	pipx_fuckery dementor
 	
     # Some general APT tools on both OS
     sudo DEBIAN_FRONTEND=noninteractiv apt install -y  snapd bettercap apktool hostapd qemu-system qemu-user mitmproxy cmake hashcat-nvidia hcxtools openocd gqrx-sdr inspectrum minicom picocom lsscsi  pcscd libacsccid1 libccid  pcsc-tools cardpeek cardpeek-data tio rsh-redone-client
