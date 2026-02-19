@@ -318,7 +318,7 @@ generic_setup() {
 	# Binja
 	sudo mkdir -p /opt/binja
 	sudo chown -R $USER:$USER /opt/binja
-	if [ -f /opt/binja/binaryninja/binaryninja ]; then
+	if [ ! -f /opt/binja/binaryninja/binaryninja ]; then
 		wget -qO /opt/binja/binja.zip https://release-assets.githubusercontent.com/github-production-release-asset/45279022/a395ae2a-a33a-4bfa-92ff-1bfb6a194b73\?sp\=r\&sv\=2018-11-09\&sr\=b\&spr\=https\&se\=2026-01-29T17%3A19%3A11Z\&rscd\=attachment%3B+filename%3Dbinaryninja_free_linux.zip\&rsct\=application%2Foctet-stream\&skoid\=96c2d410-5711-43a1-aedd-ab1947aa7ab0\&sktid\=398a6654-997b-47e9-b12b-9515b896b4de\&skt\=2026-01-29T16%3A19%3A11Z\&ske\=2026-01-29T17%3A19%3A11Z\&sks\=b\&skv\=2018-11-09\&sig\=LpdikPDuKtp0qPMAX77eZ99KS1H0IGmcGQICe7O8qNk%3D\&jwt\=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc2OTcwODI2MywibmJmIjoxNzY5NzA0NjYzLCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.xkNQLc0zOBsRscCKpratbH0E0vNSXLHSeBgLWmvkJl0\&response-content-disposition\=attachment%3B%20filename%3Dbinaryninja_free_linux.zip\&response-content-type\=application%2Foctet-stream
 		pushd /opt/binja
 		7z x binja.zip
