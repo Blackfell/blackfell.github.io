@@ -48,7 +48,7 @@ clone_or_update_repo() {
     else
         echo "Directory $TARGET_DIR already exists. Pulling latest changes..."
         # Navigate to the directory and pull the latest changes
-        if git -C "$TARGET_DIR" pull | grep -qv "Already up to date"; then CHANGED=0; else CHANGED=1; fi
+        if git -C "$TARGET_DIR" pull | grep -qv "Already up to date"; then export CHANGED=0; else export CHANGED=1; fi
  	if $CHANGED; then echo "[!] - Repo $REPO_URL at $TARGET_DIR is changed! Will build again if needed."; else echo "[+] - Repo $REPO_URL at $TARGET_DIR is not changed."; fi
 	return $CHANGED # returns true if a change has happened so we'll build again
     fi
@@ -129,7 +129,7 @@ ubuntu_install() {
 	# PyWerview
 	pipx_fuckery pywerview
 	# Wifi stuff
-	sudo DEBIAN_FRONTEND=noninteractiv apt install wifite rtl8812au-dkms -y
+	sudo DEBIAN_FRONTEND=noninteractiv apt install wifite  -y # rtl8812au-dkms - WAS CAUSING ISSUES IN Feb 26
 	# Generic hacking tools (snaps)
 	sudo snap install metasploit-framework 
 	sudo snap install sqlmap 
