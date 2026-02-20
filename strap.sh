@@ -101,7 +101,7 @@ ubuntu_install() {
 	add_rc_path /opt/dnschef    
 	# Responder
 	clone_or_update_repo https://github.com/lgandx/Responder
-	if [ ! -f /opt/Responder/respvenv/bin/activate] ; then
+	if [ ! -f /opt/Responder/respvenv/bin/activate ] ; then
 		pushd /opt/Responder
 		python3 -m venv respenv
 		source respenv/bin/activate
