@@ -302,7 +302,7 @@ generic_setup() {
 	# ipatool
 	sudo mkdir -p /opt/ipatool
 	sudo chown -R $USER:$USER /opt/ipatool
-	wget -O /opt/ipatool/ipatool-2.2.0-linux-amd64.tar.gz https://github.com/majd/ipatool/releases/download/v2.2.0/ipatool-2.2.0-linux-amd64.tar.gz
+	wget -qO /opt/ipatool/ipatool-2.2.0-linux-amd64.tar.gz https://github.com/majd/ipatool/releases/download/v2.2.0/ipatool-2.2.0-linux-amd64.tar.gz
 	pushd /opt/ipatool
 	tar -xf ipatool-2.2.0-linux-amd64.tar.gz
 	chmod +x /opt/ipatool/bin/ipatool-2.2.0-linux-amd64
