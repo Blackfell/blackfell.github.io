@@ -65,7 +65,7 @@ kali_install() {
 	# Nessus
 	if [ ! -f /opt/nessus/sbin/nessusd ]; then
 			curl --request GET --url 'https://www.tenable.com/downloads/api/v1/public/pages/nessus/downloads/28017/download?i_agree_to_tenable_license_agreement=true' --output "$HOME/Nessus-10.11.3-debian10_amd64.deb"
-			sudo dpkg -i "$HOME/Nessus-10.11.2-ubuntu1604_amd64.deb"
+			sudo dpkg -i "$HOME/Nessus-10.11.3-ubuntu1604_amd64.deb"
 	else
 		echo "[+] Nessus already here, skipping install..."
 	fi
@@ -115,7 +115,7 @@ ubuntu_install() {
 	# Nessus
 	if [ ! -f /opt/nessus/sbin/nessusd ] ; then
 		curl --request GET --url 'https://www.tenable.com/downloads/api/v1/public/pages/nessus/downloads/28027/download?i_agree_to_tenable_license_agreement=true'  --output "$HOME/Nessus-10.11.3-ubuntu1604_amd64.deb"
-			sudo dpkg -i "$HOME/Nessus-10.11.2-ubuntu1604_amd64.deb"
+			sudo dpkg -i "$HOME/Nessus-10.11.3-ubuntu1604_amd64.deb"
 	else
 		echo "[+] Nessus already here, skipping install..."
 	fi
