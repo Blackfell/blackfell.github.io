@@ -145,7 +145,7 @@ ubuntu_install() {
 	sudo snap install crackmapexec
 
 	# Web tooling
-	cargo install feroxbuster
+	cargo -q install feroxbuster
 
 	# evil-winrm
 	gem install evil-winrm
