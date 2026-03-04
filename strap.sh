@@ -64,7 +64,7 @@ kali_install() {
 	sed -i '/^ApplicationTransparency=/c\ApplicationTransparency=0' "$HOME/.config/qterminal.org/qterminal.ini" || echo "ApplicationTransparency=0" >> "$HOME/.config/file.ini"
 	# Nessus
 	if [ ! -f /opt/nessus/sbin/nessusd ]; then
-			curl --request GET --url 'https://www.tenable.com/downloads/api/v1/public/pages/nessus/downloads/27757/download?i_agree_to_tenable_license_agreement=true' --output "$HOME/Nessus-10.11.2-debian10_amd64.deb"
+			curl --request GET --url 'https://www.tenable.com/downloads/api/v1/public/pages/nessus/downloads/28017/download?i_agree_to_tenable_license_agreement=true' --output "$HOME/Nessus-10.11.3-debian10_amd64.deb"
 			sudo dpkg -i "$HOME/Nessus-10.11.2-ubuntu1604_amd64.deb"
 	else
 		echo "[+] Nessus already here, skipping install..."
@@ -114,7 +114,7 @@ ubuntu_install() {
 	fi
 	# Nessus
 	if [ ! -f /opt/nessus/sbin/nessusd ] ; then
-		curl --request GET --url 'https://www.tenable.com/downloads/api/v1/public/pages/nessus/downloads/27767/download?i_agree_to_tenable_license_agreement=true'  --output "$HOME/Nessus-10.11.2-ubuntu1604_amd64.deb"
+		curl --request GET --url 'https://www.tenable.com/downloads/api/v1/public/pages/nessus/downloads/28027/download?i_agree_to_tenable_license_agreement=true'  --output "$HOME/Nessus-10.11.3-ubuntu1604_amd64.deb"
 			sudo dpkg -i "$HOME/Nessus-10.11.2-ubuntu1604_amd64.deb"
 	else
 		echo "[+] Nessus already here, skipping install..."
@@ -319,7 +319,7 @@ generic_setup() {
 	sudo DEBIAN_FRONTEND=noninteractiv apt install -y nextpnr-ecp5 yosys tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev fgpa-trellis
 	pipx_fuckery cynthion
 	sudo mkdir -p /opt/packetry
-	sudo wget https://github.com/greatscottgadgets/packetry/releases/download/v0.5.0/packetry-x86_64.AppImage -O /opt/packetry/packetry-x86_64_v0.5.0.AppImage
+	sudo wget -q https://github.com/greatscottgadgets/packetry/releases/download/v0.5.0/packetry-x86_64.AppImage -O /opt/packetry/packetry-x86_64_v0.5.0.AppImage
 	sudo chmod +x /opt/packetry/packetry-x86_64_v0.5.0.AppImage
 
 	# Binja
