@@ -664,14 +664,15 @@ install_git_tools(){
 	        tar xvf zephyr-sdk-0.16.0_linux-x86_64.tar.xz
 	        # Now actually move it into /opt
 	        sudo mv zephyr-sdk-0.16.0 /opt
-	        #pushd /opt/zephyr-sdk-0.16.0
-	        #yes y | ./setup.sh  # I like to live dangerously
-	        # Apply udev rules
-			echo "[!] This script no longer installs the Zephyr SDK because the installer requires interactive operation"
-			echo "[-] You can run ./setup.sh in /opt/zephyr-sdk-0.16.0"
-	        echo "[-] then: sudo /opt/zephyr-sdk-0.16.0/sysroots/x86_64-pokysdk-linux/usr/share/openocd/contrib/60-openocd.rules /etc/udev/rules.d"
-	        echo "[-] then: sudo udevadm control --reload"
-	       	#popd
+			#echo "[!] This script no longer installs the Zephyr SDK because the installer requires interactive operation"
+			#echo "[-] You can run ./setup.sh in /opt/zephyr-sdk-0.16.0"
+	        #echo "[-] then: sudo /opt/zephyr-sdk-0.16.0/sysroots/x86_64-pokysdk-linux/usr/share/openocd/contrib/60-openocd.rules /etc/udev/rules.d"
+	        #echo "[-] then: sudo udevadm control --reload"
+			pushd /opt/zephyr-sdk-0.16.0
+	        yes y | ./setup.sh  # I like to live dangerously
+			sudo /opt/zephyr-sdk-0.16.0/sysroots/x86_64-pokysdk-linux/usr/share/openocd/contrib/60-openocd.rules /etc/udev/rules.d
+			sudo udevadm control --reload
+	       	popd
 	    else
 	        echo '[!] SDK download checksum failed. You are on your own, sorry...'
 	    fi
