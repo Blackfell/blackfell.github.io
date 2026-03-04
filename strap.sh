@@ -748,7 +748,7 @@ install_git_tools(){
  		echo "[+] Getting CyberChef local..."
  		sudo mkdir -p /opt/CyberChef
 		sudo chown -R $USER:$USER /opt/CyberChef
-		wget https://github.com/gchq/CyberChef/releases/download/v10.22.1/CyberChef_v10.22.1.zip -O /opt/CyberChef/CyberChef_v10.22.1.zip
+		wget -q https://github.com/gchq/CyberChef/releases/download/v10.22.1/CyberChef_v10.22.1.zip -O /opt/CyberChef/CyberChef_v10.22.1.zip
   		unzip -q -d /opt/CyberChef/ CyberChef_v10.19.4.zip
  		echo "[+] You can now access cyberchef in /opt/CyberChef" 
    	else
