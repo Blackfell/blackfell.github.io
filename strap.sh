@@ -642,7 +642,7 @@ install_git_tools(){
 	    sudo dpkg -i nrf-udev_1.0.1-all.deb
 	    # You may need Segger installed, let's do that anyway 
 	    sudo mkdir -p /opt/segger
-	    sudo curl -X POST https://www.segger.com/downloads/jlink/JLink_Linux_V818_x86_64.deb --data-raw 'accept_license_agreement=accepted&submit=Download+software'  -o /opt/segger/JLink_Linux_V818_x86_64.deb
+	    sudo curl -q -X POST https://www.segger.com/downloads/jlink/JLink_Linux_V818_x86_64.deb --data-raw 'accept_license_agreement=accepted&submit=Download+software'  -o /opt/segger/JLink_Linux_V818_x86_64.deb
 	    sudo dpkg -i /opt/segger/JLink_Linux_V818_x86_64.deb
 	    # Main Zephyr install
 	    sudo DEBIAN_FRONTEND=noninteractiv apt install --no-install-recommends git cmake ninja-build gperf \
@@ -658,18 +658,20 @@ install_git_tools(){
 	    west zephyr-export
 	    pip install -r /opt/zephyr/zephyr/scripts/requirements.txt
 	    # Install the zephyr project SDK into /opt, rather than $HOME
-	    wget https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.16.0/zephyr-sdk-0.16.0_linux-x86_64.tar.xz
+	    wget -q https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.16.0/zephyr-sdk-0.16.0_linux-x86_64.tar.xz
 	    if wget -O - https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.16.0/sha256.sum | shasum --check --ignore-missing ; then
 	        echo '[+] SDK downloaded OK.'
 	        tar xvf zephyr-sdk-0.16.0_linux-x86_64.tar.xz
 	        # Now actually move it into /opt
 	        sudo mv zephyr-sdk-0.16.0 /opt
-	        pushd /opt/zephyr-sdk-0.16.0
-	        yes y | ./setup.sh  # I like to live dangerously
+	        #pushd /opt/zephyr-sdk-0.16.0
+	        #yes y | ./setup.sh  # I like to live dangerously
 	        # Apply udev rules
-	        sudo /opt/zephyr-sdk-0.16.0/sysroots/x86_64-pokysdk-linux/usr/share/openocd/contrib/60-openocd.rules /etc/udev/rules.d
-	        sudo udevadm control --reload
-	       popd
+			echo "[!] This script no longer installs the Zephyr SDK because the installer requires interactive operation"
+			echo "[-] You can run ./setup.sh in /opt/zephyr-sdk-0.16.0"
+	        echo "[-] then: sudo /opt/zephyr-sdk-0.16.0/sysroots/x86_64-pokysdk-linux/usr/share/openocd/contrib/60-openocd.rules /etc/udev/rules.d"
+	        echo "[-] then: sudo udevadm control --reload"
+	       	#popd
 	    else
 	        echo '[!] SDK download checksum failed. You are on your own, sorry...'
 	    fi
