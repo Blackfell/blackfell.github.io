@@ -802,7 +802,8 @@ fi
 # Refresh apt then go!
 sudo apt update 
 generic_setup $OS
+echo "[!] Installing Git tools now..."
 install_git_tools
+echo "[!] Git tools installed... Doing Golang tools now..."
 install_go_tools
-
 echo "[+] Done. You can check the log - $LOGFILE"
