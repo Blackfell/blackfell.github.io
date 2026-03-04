@@ -418,7 +418,7 @@ install_git_tools(){
         pushd /opt/bloodhoundly4k
         echo "[-] Downloading Bloodhound ly4k, please wait..."
         sudo wget -q https://github.com/ly4k/BloodHound/releases/download/v4.2.0-ly4k/BloodHound-linux-x64.zip -O /opt/bloodhoundly4k/BloodHound-x64lin.zip
-        sudo unzip /opt/bloodhoundly4k/BloodHound-x64lin.zip 
+        sudo unzip -q /opt/bloodhoundly4k/BloodHound-x64lin.zip 
 	    sudo chmod -R 04755 /opt/bloodhoundly4k/BloodHound-linux-x64/chrome-sandbox
         # Sadly there's a directory in the zip
         add_line_if_not_exists "alias bloodhound-nosandbox='/opt/bloodhoundly4k/BloodHound-linux-x64/BloodHound --no-sandbox'" "$HOME/.zshrc" 
@@ -746,7 +746,7 @@ install_git_tools(){
  		sudo mkdir -p /opt/CyberChef
 		sudo chown -R $USER:$USER /opt/CyberChef
 		wget https://github.com/gchq/CyberChef/releases/download/v10.22.1/CyberChef_v10.22.1.zip -O /opt/CyberChef/CyberChef_v10.22.1.zip
-  		unzip -d /opt/CyberChef/ CyberChef_v10.19.4.zip
+  		unzip -q -d /opt/CyberChef/ CyberChef_v10.19.4.zip
  		echo "[+] You can now access cyberchef in /opt/CyberChef" 
    	else
 		echo "[+] Cyberchef already there..."
