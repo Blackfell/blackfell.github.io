@@ -90,6 +90,9 @@ ubuntu_install() {
 	# Background
 	wget -q https://blackfell.net/kali_lincox_mine.png -O $HOME/kali_background.png
 	echo "[!] you can use the backgorund at $HOME/kali_background.png if you want..."
+
+	# Remmina
+	sudo DEBIAN_FRONTEND=noninteractiv apt install -y  remmina remmina-common remmina-dev remmina-plugin-exec remmina-plugin-kiosk remmina-plugin-kwallet remmina-plugin-python remmina-plugin-rdp remmina-plugin-secret remmina-plugin-spice remmina-plugin-vnc remmina-plugin-www remmina-plugin-x2go
 	
 	# Pwntools
 	pipx_fuckery pwntools
@@ -143,6 +146,9 @@ ubuntu_install() {
 
 	# Web tooling
 	cargo install feroxbuster
+
+	# evil-winrm
+	gem install evil-winrm
 }
 
 generic_setup() {
@@ -735,20 +741,42 @@ install_git_tools(){
 		popd
     fi
 
-	if clone_or_update_repo https://github.com/gchq/CyberChef; then 
- 		echo "[+] Changes to Cyberchef source, building..."
- 		pushd /opt/CyberChef
-		sudo docker build --tag cyberchef --ulimit nofile=10000 .
-  		echo '#!/usr/bin/env bash' > /opt/CyberChef/run.sh
- 		echo "sudo docker run -dt -p 8888:80 cyberchef" >> /opt/CyberChef/run.sh
-   		echo "open http://127.0.0.1:8888" >> /opt/CyberChef/run.sh
-		chmod +x /opt/CyberChef/run.sh
- 		popd
+	if [ ! -f /opt/CyberChef/index.html.br ]; then 
+ 		echo "[+] Getting CyberChef local..."
+ 		sudo mkdir -p /opt/CyberChef
+		sudo chown -R $USER:$USER /opt/CyberChef
+		wget https://github.com/gchq/CyberChef/releases/download/v10.22.1/CyberChef_v10.22.1.zip -O /opt/CyberChef/CyberChef_v10.22.1.zip
+  		unzip -d /opt/CyberChef/ CyberChef_v10.19.4.zip
+ 		echo "[+] You can now access cyberchef in /opt/CyberChef" 
    	else
-		echo "[+] Cyberchef already built, continuing..."
+		echo "[+] Cyberchef already there..."
   	fi
 
-   clone_or_update_repo https://github.com/Pwnistry/Windows-Exploit-Suggester-python3 # https://github.com/AonCyberLabs/Windows-Exploit-Suggester
+   	clone_or_update_repo https://github.com/Pwnistry/Windows-Exploit-Suggester-python3 # https://github.com/AonCyberLabs/Windows-Exploit-Suggester
+
+   	# Pezor
+   	if clone_or_update_repo clone https://github.com/phra/PEzor.git; then
+		echo "[+] PEzor needs updating or installing!"
+		pushd /opt/PEzor
+		sudo bash install.sh && echo DONE >> /opt/PEzor/install_complete
+		echo "[+] Testing Pezor works...."
+		bash PEzor.sh -h
+		popd /opt/PEzor
+	fi
+
+	# Helper Scripts
+	if clone_or_update_repo https://github.com/lapolis/helper-scripts; then
+		echo "[+] Building helper scripts including nessustoexcel"
+		pushd /opt/helper-scripts
+		python3 -m venv helpervenv
+		source helpervenv/bin/activate
+		python -m pip install -r requirements.txt
+		deactivate
+		popd
+	fi
+
+	pipx_fuckery pyserial
+	
 }
 
 ####### MAIN ########
