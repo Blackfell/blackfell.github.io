@@ -136,7 +136,7 @@ ubuntu_install() {
 	# PyWerview
 	pipx_fuckery pywerview
 	# Wifi stuff
-	sudo DEBIAN_FRONTEND=noninteractiv apt install wifite  -y # rtl8812au-dkms - WAS CAUSING ISSUES IN Feb 26
+	sudo DEBIAN_FRONTEND=noninteractiv apt install wifite bully hashcat hcxdumptool hcxtools macchanger -y # rtl8812au-dkms - WAS CAUSING ISSUES IN Feb 26
 	# Generic hacking tools (snaps)
 	sudo snap install metasploit-framework 
 	sudo snap install sqlmap 
