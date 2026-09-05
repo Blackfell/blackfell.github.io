@@ -1,0 +1,85 @@
+<style>
+  .site-header { border-top: 5px solid #b60000; }   /* branded red top bar (OG accent) */
+  .site-header__inner { display:flex; align-items:center; gap:1em; }
+  .site-header__inner::after { content:none !important; }   /* neutralise Minima's clearfix inside the flex row */
+  .site-header__inner .site-search { margin-left:auto; }    /* pin search hard to the right edge, aligned with content */
+  .site-logo img { height:44px; width:auto; display:block; }
+  .site-search { position:relative; }
+
+  /* Simple black magnifier icon (MM-style), toggles a right-aligned dropdown */
+  .search-toggle {
+    display:inline-flex; align-items:center; justify-content:center;
+    background:none; border:none; padding:.25em; cursor:pointer; color:#111;
+  }
+  .search-toggle svg { width:22px; height:22px; display:block; }
+  .search-toggle:hover { color:#b60000; }
+
+  .search-box {
+    display:none; position:absolute; right:0; top:calc(100% + 8px);
+    width:min(84vw,320px); z-index:60; background:#fff; padding:.6em;
+    border:1px solid #ddd; border-radius:10px; box-shadow:0 10px 28px rgba(0,0,0,.14);
+  }
+  .site-search.open .search-box { display:block; }
+  #search-input {
+    width:100%; box-sizing:border-box; padding:.45em .7em;
+    border:1px solid #ccc; border-radius:6px; font-size:.9em;
+  }
+  #search-input:focus { outline:none; border-color:#b60000; box-shadow:0 0 0 2px rgba(182,0,0,.15); }
+  .search-results { list-style:none; margin:.4em 0 0; padding:0; }
+  .search-results:empty { display:none; }
+  .search-results li { padding:.5em .35em; border-bottom:1px solid #f0f0f0; }
+  .search-results li:last-child { border-bottom:0; }
+  .search-results a { text-decoration:none; font-weight:600; }
+  .search-results small { color:#8a94a6; display:block; font-size:.78em; }
+
+  /* Desktop: shrink the icon down a little */
+  @media (min-width:601px){ .search-toggle svg { width:18px; height:18px; } }
+</style>
+
+<header class="site-header" role="banner">
+  <div class="wrapper site-header__inner">
+    <a class="site-logo" rel="author" href="{{ '/' | relative_url }}">
+      <img src="{{ '/assets/images/generic/small_logo.png' | relative_url }}" alt="{{ site.title | escape }}">
+    </a>
+    <div class="site-search">
+      <button type="button" id="search-toggle" class="search-toggle" aria-label="Search">
+        <svg viewBox="0 0 512 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="M505 442.7L405.3 343c28.4-34.9 45.4-79.3 45.4-127.7C450.7 96.5 354.2 0 235.4 0S20 96.5 20 215.4s96.5 215.4 215.4 215.4c48.4 0 92.8-17 127.7-45.4l99.7 99.7c4.7 4.7 10.9 7 17 7s12.3-2.3 17-7c9.4-9.3 9.4-24.5.2-33.9zM79 215.4c0-86.2 70.1-156.3 156.3-156.3s156.3 70.1 156.3 156.3-70.1 156.3-156.3 156.3S79 301.5 79 215.4z"/></svg>
+      </button>
+      <div class="search-box">
+        <input type="text" id="search-input" placeholder="Search posts…" autocomplete="off" aria-label="Search posts">
+        <ul id="results-container" class="search-results"></ul>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.SimpleJekyllSearch) {
+      window.SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('results-container'),
+        json: '{{ "/search.json" | relative_url }}',
+        searchResultTemplate: '<li><a href="{url}">{title}</a><small>{date}</small></li>',
+        noResultsText: '<li><small>No matches</small></li>',
+        limit: 8,
+        fuzzy: false
+      });
+    }
+    var wrap = document.querySelector('.site-search');
+    var toggle = document.getElementById('search-toggle');
+    if (toggle && wrap) {
+      toggle.addEventListener('click', function (e) {
+        e.stopPropagation();
+        wrap.classList.toggle('open');
+        if (wrap.classList.contains('open')) { document.getElementById('search-input').focus(); }
+      });
+      document.addEventListener('click', function (e) {
+        if (!wrap.contains(e.target)) { wrap.classList.remove('open'); }
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') { wrap.classList.remove('open'); }
+      });
+    }
+  });
+</script>

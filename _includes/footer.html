@@ -1,0 +1,29 @@
+<style>
+  .site-footer { border-top: 1px solid #eaeaea; margin-top: 3rem; padding: 1.8rem 0; }
+  .footer-inner { text-align: center; color: #79797f; font-size: .9rem; }
+  .footer-nav { margin-bottom: .5rem; font-weight: 600; }
+  .footer-nav a, .footer-social a { color: #555; text-decoration: none; margin: 0 .5rem; display: inline-block; }
+  .footer-nav a:hover, .footer-social a:hover { color: #b60000; }
+  .footer-social { margin: .4rem 0 .2rem; }
+  .footer-tag { color: #9a9a9a; font-size: .82rem; margin: .7rem 0 0; }
+</style>
+
+<footer class="site-footer">
+  <div class="wrapper footer-inner">
+    <nav class="footer-nav">
+      <a href="{{ '/' | relative_url }}">Home</a>
+      <a href="{{ '/about/' | relative_url }}">About</a>
+      <a href="{{ '/archive/' | relative_url }}">Archive</a>
+      <a href="{{ '/elsewhere/' | relative_url }}">Writing elsewhere</a>
+    </nav>
+    <p class="footer-social">
+      <a href="https://www.linkedin.com/in/blackfell/">LinkedIn</a>
+      <a href="https://github.com/Blackfell">GitHub</a>
+      <a href="https://twitter.com/blackf3ll">Twitter/X</a>
+      <a href="https://infosec.exchange/@blackfell" rel="me">Mastodon</a>
+      <a href="https://bsky.app/profile/blackfell-infosec.bsky.social">Bluesky</a>
+      <a href="mailto:info@blackfell.net">Email</a>
+    </p>
+    <p class="footer-tag">© {{ site.time | date: "%Y" }} Sam · blackfell.net - views my own · built with Jekyll</p>
+  </div>
+</footer>

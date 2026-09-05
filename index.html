@@ -1,51 +1,157 @@
 ---
-title : " "
-layout: splash
-author_profile: true
-header:
-    overlay_image: "/assets/images/generic/fog2.jpg"
-    actions:
-        - label: "Straight to the latest article"
-          url: "/latest"
-excerpt: "Welcome to My Personal Blog and Reference. I built this site to help my friends, family and colleagues, hopefully you'll find something useful too."
-#intro: 
-#    - excerpt: 'This is the intro excerpt.'
-#About me section
-feature_row:
-    - image_path: /assets/images/generic/forest.jpg
-      alt: "About Image"
-      title: "Who am I anyway?"
-      excerpt: 'This is my blog, but who am I? Find out more about me, why I blog and how I can help you here.'
-      url: /about/
-      btn_label: "Read about me"
-      btn_class: "btn--inverse"
-#Guidance Section
-feature_row2:
-    - image_path: /assets/images/generic/laptop.jpg
-      alt: "Guidance Image"
-      title: "Guidance Articles"
-      excerpt: 'This is my blog, but who am I? Find out more about me, why I blog and how I can help you here.'
-      url: /categories/#guidance
-      btn_label: "Get Guidance"
-      btn_class: "btn--inverse"
-      excerpt: "There is a **lot** of information out there on security. Some of my blog posts provide simple, clear discussion of security issues; perhaps they can cut through the noise and help you too."
-#technical Section
-feature_row3:
-    - image_path: /assets/images/generic/urban.jpg
-      alt: "Technical Image"
-      title: "Technical Guides & Articles"
-      excerpt: "I've given plenty of written and verbal guidance on technical aspects of security but have now collected these articles into one place here. These are designed to help people learn practical security related skills, understand computers, coding, the business of security and learn in a fun, safe, ethical and legal way"
-      url: /categories/#technical
-      btn_label: "Get T3ChN1Ca1"
-      btn_class: "btn--inverse"
-
+layout: default
+title: Home
 ---
 
-{% include feature_row id="intro" type="left" %}
+<style>
+  .home-wrap { max-width: 100%; margin: 0 auto; }
+  /* Full-width LinkedIn-style cover banner.
+     Placeholder = black stripe on white; swaps to banner.jpg automatically when you add it. */
+  .hero { margin: 0 0 2rem; }
+  .hero-banner {
+    width: 100vw; margin-left: calc(50% - 50vw);
+    aspect-ratio: 2560 / 200; max-height: 220px;
+    background: url('/assets/images/generic/banner.jpg?v={{ site.time | date: "%s" }}') center / cover no-repeat #fff;
+  }
+  .hero-profile { display:flex; gap:1.5rem; align-items:flex-start; }
+  .hero .avatar-photo {
+    flex:0 0 auto; width:128px; height:128px; border-radius:50%; object-fit:cover;
+    border:4px solid #fff; box-shadow:0 4px 14px rgba(0,0,0,.18); background:#fff;
+    margin-top:-64px; position:relative; z-index:2;
+  }
+  .hero__text { padding-top:.6rem; }
+  .hero h1 { margin:0 0 .15rem; font-size:2rem; line-height:1.1; color:#1a2233; }
+  .hero .role { margin:0 0 .6rem; color:#4a5568; font-weight:600; }
+  .hero .bio { margin:0 0 1rem; color:#33404f; max-width:64ch; }
+  .social a {
+    display:inline-block; margin-right:.5rem; margin-bottom:.4rem; padding:.4rem .8rem;
+    border-radius:8px; font-size:.85rem; text-decoration:none;
+    background:#b60000; color:#fff; border:1px solid #b60000;
+  }
+  .social a:hover { background:#8a0000; }
+  .social a.ghost { background:#fff; color:#b60000; }
+  .group { margin: 0 0 2.75rem; }
+  .group > h2 {
+    font-size: 1.4rem; margin: 0 0 .3rem;
+    border-bottom: 2px solid #b60000; display: inline-block; padding-bottom: .2rem;
+  }
+  .group > h2 .count { font-size: .82rem; font-weight: 700; color: #b60000; margin-left: .3rem; vertical-align: middle; }
+  .group .sub { color: #667; margin: .2rem 0 1rem; font-size: .95rem; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; }
+  .card {
+    display: flex; flex-direction: column; padding: 1rem 1.1rem; border: 1px solid #e2e6ee; border-radius: 12px;
+    text-decoration: none; color: inherit; background: #fff; transition: all .15s ease;
+  }
+  .card { box-shadow: 0 1px 2px rgba(0,0,0,.04); }
+  .card:hover { border-color: #b60000; transform: translateY(-3px); box-shadow: 0 8px 22px rgba(182,0,0,.12); }
+  .card:hover h4 { color: #b60000; }
+  .card h4 { margin: 0 0 .3rem; font-size: 1.05rem; color: #1a2233; transition: color .15s ease; }
+  .card .date { margin: 0 0 .5rem; font-size: .78rem; color: #8a94a6; text-transform: uppercase; letter-spacing: .03em; }
+  .card .excerpt { margin: 0; font-size: .9rem; color: #4a5568; line-height: 1.45; flex: 1 1 auto; }
+  .card .tag { display: inline-block; margin-top: .6rem; font-size: .72rem; color: #b60000; font-weight: 600; }
+  .series-label { display:inline-block; margin:.2rem 0 .8rem; font-size:.75rem; font-weight:700;
+    color:#b60000; background:#fbeaea; padding:.25rem .6rem; border-radius:20px; letter-spacing:.03em; }
+  .archive-cta { text-align: center; margin: 1rem 0 2rem; }
+  .archive-cta a {
+    display: inline-block; padding: .7rem 1.4rem; border: 2px solid #b60000; border-radius: 10px;
+    color: #b60000; font-weight: 700; text-decoration: none;
+  }
+  .archive-cta a:hover { background: #b60000; color: #fff; }
+  @media (max-width: 600px) {
+    .hero-profile { flex-direction: column; align-items: center; text-align: center; }
+    .hero .avatar-photo { margin-top: -56px; }
+    .hero__text { padding-top: 0; }
+    .hero .bio { margin-left: auto; margin-right: auto; }
+  }
+</style>
 
-{% include feature_row id="feature_row" type="right" %}
+<div class="home-wrap">
 
-{% include feature_row id="feature_row2" type="left" %}
+  <section class="hero">
+    <div class="hero-banner"></div>
+    <div class="hero-profile">
+      <img class="avatar-photo" src="{{ '/assets/images/generic/author.jpg' | relative_url }}" alt="Sam">
+      <div class="hero__text">
+        <h1>Sam</h1>
+        <p class="role">Security consultant · Pentest Partners · North West England</p>
+        <p class="bio">Husband, father and security guy with a soft spot for industrial control systems, hardware and radio. I break things, mend things, and, sometimes, I even write about it. Views my own.</p>
+        <div class="social">
+          <a href="https://www.linkedin.com/in/blackfell/">LinkedIn</a>
+          <a href="https://github.com/Blackfell">GitHub</a>
+          <a href="https://twitter.com/blackf3ll">Twitter/X</a>
+          <a href="https://infosec.exchange/@blackfell" rel="me">Mastodon</a>
+          <a href="https://bsky.app/profile/blackfell-infosec.bsky.social">Bluesky</a>
+          <a href="mailto:info@blackfell.net">Email</a>
+          <a class="ghost" href="/about/">About →</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-{% include feature_row id="feature_row3" type="right" %}
+  {% assign new_latest = site.data.elsewhere | where_exp: "i", "i.series == nil" | sort: "date" | reverse %}
+  {% assign ble = site.data.elsewhere | where: "series", "Bluetooth Low Energy" | sort: "part" %}
+  <section class="group">
+    <h2>New writing <span class="count">· {{ new_latest | size | plus: ble.size }}</span></h2>
+    <p class="sub">Most recent work - published on the Pentest Partners blog.</p>
+    <div class="cards">
+      {% for i in new_latest %}
+      <a class="card" href="{{ i.url }}" target="_blank" rel="noopener">
+        <h4>{{ i.title }}</h4>
+        <p class="date">{{ i.date | date: "%b %Y" }} · {{ i.outlet }}</p>
+        <p class="excerpt">{{ i.description }}</p>
+        <span class="tag">Read on Pentest Partners ↗</span>
+      </a>
+      {% endfor %}
+    </div>
 
+    {% if ble.size > 0 %}
+    <div style="margin-top:1.4rem;">
+      <span class="series-label">SERIES · HACKING BLUETOOTH LOW ENERGY</span>
+      <div class="cards">
+        {% for i in ble %}
+        <a class="card" href="{{ i.url }}" target="_blank" rel="noopener">
+          <h4>Part {{ i.part }}</h4>
+          <p class="date">{{ i.date | date: "%b %Y" }} · {{ i.outlet }}</p>
+          <p class="excerpt">{{ i.description }}</p>
+          <span class="tag">Read on Pentest Partners ↗</span>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
+  </section>
+
+  {% assign writeups = site.posts | where: "group", "writeups" %}
+  <section class="group">
+    <h2>Writeups <span class="count">· {{ writeups | size }}</span></h2>
+    <p class="sub">CTF/box walkthroughs and exploit-dev deep-dives. Mostly old but still relevant.</p>
+    <div class="cards">
+      {% for post in writeups %}
+      <a class="card" href="{{ post.url | relative_url }}">
+        <h4>{{ post.title | default: post.slug }}</h4>
+        <p class="date">{{ post.date | date: "%b %Y" }}</p>
+        <p class="excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+
+  {% assign guides = site.posts | where: "group", "guides" %}
+  <section class="group">
+    <h2>Guides <span class="count">· {{ guides | size }}</span></h2>
+    <p class="sub">Approachable explainers - passwords, getting started, building a lab. 
+      These are becoming dated, but I've kept them here for posterity cringe and enjoy... </p>
+    <div class="cards">
+      {% for post in guides %}
+      <a class="card" href="{{ post.url | relative_url }}">
+        <h4>{{ post.title | default: post.slug }}</h4>
+        <p class="date">{{ post.date | date: "%b %Y" }}</p>
+        <p class="excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
+      </a>
+      {% endfor %}
+    </div>
+  </section>
+
+  <p class="archive-cta"><a href="/archive/">Browse the full archive →</a></p>
+
+</div>

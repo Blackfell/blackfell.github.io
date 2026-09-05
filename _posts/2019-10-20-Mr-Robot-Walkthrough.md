@@ -1,4 +1,5 @@
 ---
+group: writeups
 defaults:
   - scope:
       path: ""

@@ -1,4 +1,5 @@
 ---
+group: meta
 defaults:
   # _posts
   - scope:

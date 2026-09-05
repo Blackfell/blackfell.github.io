@@ -1,4 +1,5 @@
 ---
+group: guides
 defaults:
   # _posts
   - scope:

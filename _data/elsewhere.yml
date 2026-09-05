@@ -1,0 +1,32 @@
+# Curated list of my writing published off this site. Add one entry per article.
+- title: "One SSID To Rule Them All"
+  url: "https://www.pentestpartners.com/security-blog/one-ssid-to-rule-them-all/"
+  date: 2026-08-24
+  outlet: Pentest Partners
+  description: "How a corporate Wi-Fi SSID misconfig broke OT segmentation."
+- title: "EN 303 645 is the baseline, not the finish line for IoT security"
+  url: "https://www.pentestpartners.com/security-blog/en-303-645-is-the-baseline-not-the-finish-line-for-iot-security/"
+  date: 2026-07-03
+  outlet: Pentest Partners
+  description: "The IoT security standard, and where it falls short."
+- title: "Start hacking Bluetooth Low Energy today! (part 3)"
+  url: "https://www.pentestpartners.com/security-blog/start-hacking-bluetooth-low-energy-today-part-3/"
+  date: 2025-09-04
+  outlet: Pentest Partners
+  series: "Bluetooth Low Energy"
+  part: 3
+  description: "Using Nordic dev kits to hack BLE devices."
+- title: "Start hacking Bluetooth Low Energy today! (part 2)"
+  url: "https://www.pentestpartners.com/security-blog/start-hacking-bluetooth-low-energy-today-part-2/"
+  date: 2025-08-27
+  outlet: Pentest Partners
+  series: "Bluetooth Low Energy"
+  part: 2
+  description: "Budget BLE hacking with Sonoff and Nordic dongles."
+- title: "Start hacking Bluetooth Low Energy today! (part 1)"
+  url: "https://www.pentestpartners.com/security-blog/start-hacking-bluetooth-low-energy-today-part-1/"
+  date: 2025-08-21
+  outlet: Pentest Partners
+  series: "Bluetooth Low Energy"
+  part: 1
+  description: "Getting started hacking BLE key-finder tags on a budget."

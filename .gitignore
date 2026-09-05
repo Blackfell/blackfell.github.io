@@ -2,4 +2,9 @@ _site
 helper_files
 Gemfile.lock
 .sass-cache
+.jekyll-cache
 *.bak
+vendor
+.bundle
+.claude
+.omc

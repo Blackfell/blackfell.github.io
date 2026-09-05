@@ -1,0 +1,6 @@
+{% if page.feature_row %}{% for f in page.feature_row %}
+<div class="feature-row-shim" style="margin:1rem 0;padding:1rem;border:1px solid #ddd;border-radius:6px;">
+  {% if f.title %}<h3 style="margin-top:0;">{{ f.title }}</h3>{% endif %}
+  {% if f.excerpt %}{{ f.excerpt | markdownify }}{% endif %}
+  {% if f.url %}<a href="{{ f.url | relative_url }}">{{ f.btn_label | default: 'Read more' }}</a>{% endif %}
+</div>{% endfor %}{% endif %}

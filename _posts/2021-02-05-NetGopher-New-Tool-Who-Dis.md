@@ -1,4 +1,5 @@
 ---
+group: tools
 defaults:
   # _posts
   - scope:

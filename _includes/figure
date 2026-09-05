@@ -1,0 +1,4 @@
+<figure>
+  <img src="{{ include.image_path | relative_url }}" alt="{{ include.alt }}" loading="lazy" style="max-width:100%;height:auto;">
+  {% if include.caption %}<figcaption>{{ include.caption | markdownify | remove: '<p>' | remove: '</p>' }}</figcaption>{% endif %}
+</figure>

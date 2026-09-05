@@ -1,11 +1,12 @@
 ---
+group: writeups
 title:  "HTB Business CTF Writeup"
 date:   2021-07-27 23:00:00 +0000
 header:
   overlay_image: /assets/images/posts/pwn_manager/banner.png
   teaser: /assets/images/posts/pwn_manager/banner.png
 excerpt: "Employee Manager PWN Challenge"
-layout: single
+layout: post
 classes: wide
 categories:
   - Technical

@@ -1,0 +1,18 @@
+---
+# Custom Sass entry — overrides Minima's accent to your OG (contrast) red before importing.
+---
+@charset "utf-8";
+
+$brand-color:      #b60000;   // your OG contrast primary
+$brand-color-dark: #8a0000;
+$content-width:    1140px;    // wider column — the card grid needs room on desktop
+
+@import "minima";
+
+// Keep long-form article text comfortable to read even on the wider layout
+.post .post-content { max-width: 760px; }
+
+// Clear keyboard-focus ring in the brand colour
+a:focus-visible,
+button:focus-visible,
+input:focus-visible { outline: 2px solid #b60000; outline-offset: 2px; }
