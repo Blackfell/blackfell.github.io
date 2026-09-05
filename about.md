@@ -36,7 +36,7 @@ The team was a great spread of highly technical people from defence, CNI, testin
 
 I carried my threat modelling into automotive (my first run-in with ISO 21434), took more of a role in business development, and eventually got into building and delivering security training for a very technical and critical audience... engineers.
 
-**Pen Test Partners - Hardware Security Consultant** · _[2022-present]_
+**Pen Test Partners - Managing Hardware Security Consultant** · _[2022-present]_
 
 The hardware team at PTP has been, and still is, fantastic. I've tested consumer and industrial IoT end to end, EV chargers, telemetry and measurement kit, medical devices, access control systems and plenty of other odd hardware. All the while surrounded by the most obscure and brilliant hackers.
 
