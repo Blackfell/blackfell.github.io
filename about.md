@@ -16,7 +16,7 @@ I studied Physics at Leeds, I liked solving problems and the breadth of the cour
 
 Where I really got started. I joined on the graduate scheme and, after flirting with some of the mechanical engineering work, settled into an electrical team that felt like a small business inside a large company, full of excellent people.
 
-I started in engineering and fell fairly quickly into security, which I had to self-teach. I learnt to assess and manage risk, threat model, design systems with security in mind, and build and administer IT and OT systems. I picked up forensics and incident response, testing and system hardening along the way, and later added formal SANS certifications as the team took on more. I also picked up the habit of pulling things apart, and occasionally putting them back together.
+I started in engineering and fell fairly quickly into security, which I had to self-teach with the help of my experienced team lead. I learnt to assess and manage risk, threat model, design systems with security in mind, and build and administer IT and OT systems. I picked up forensics and incident response, testing and system hardening along the way, and later added formal SANS certifications as the team took on more. I also picked up the habit of pulling things apart, and occasionally putting them back together.
 
 Eventually I wanted broader exposure across industries, which pulled me towards consulting.
 
