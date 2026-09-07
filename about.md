@@ -48,6 +48,8 @@ Alongside that I've kept a base skillset in IT, web and cloud testing, both thro
 
 I've used my OT monitoring background to build our assessment offering for highly sensitive environments, and my threat modelling experience to support a set of service lines: threat modelling products, helping businesses threat model their own products, and training clients to do it themselves. 
 
+In 2026, I got to travel to DEFCON 34 to present some research into OPTO22 PRogrammable Automation Controllers, demonstrating our discovery script and techniques to bridge separate OT security zones. We also presented the PTP Industrial Cocktail Systems (ICS-es), which were lovingly built by me and the inimitable Adam Bromiley. It was great to be involved in the ICS Village, what a great group of people! You can read more [here](https://www.pentestpartners.com/security-blog/planes-plcs-and-6am-runs-at-defcon-34/).
+
 ## Find me elsewhere
 
 - **LinkedIn** - [in/blackfell](https://www.linkedin.com/in/blackfell/)
