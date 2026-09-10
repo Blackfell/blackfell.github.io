@@ -63,7 +63,7 @@ clone_or_update_repo() {
 kali_install() {
 	echo "Detected Kali Linux. Installing Kali specifics."
 	# Base tools first
-	sudo DEBIAN_FRONTEND=noninteractiv apt install -y thefuck byobu vim flashrom nmap bashtop python3-pwntools esptool plocate golang-go docker.io rustup python3-venv pipx curl nmap vlc
+	sudo DEBIAN_FRONTEND=noninteractiv apt install -y thefuck byobu vim flashrom nmap bashtop python3-pwntools esptool plocate golang-go docker.io rustup python3-venv  curl nmap vlc
 
 	# Ensure this is set in $HOME/.config/qterminal.org/qterminal.ini ApplicationTransparency=0
 	sed -i '/^ApplicationTransparency=/c\ApplicationTransparency=0' "$HOME/.config/qterminal.org/qterminal.ini" || echo "ApplicationTransparency=0" >> "$HOME/.config/file.ini"
@@ -88,7 +88,7 @@ kali_install() {
 ubuntu_install() {
 	echo "Detected Ubuntu. Installing would-be Kali shit."
 	# Base tools first
-	sudo DEBIAN_FRONTEND=noninteractiv apt install -y thefuck byobu vim flashrom nmap bashtop traceroute esptool plocate golang-go docker.io  python3-venv pipx curl nmap hydra medusa gnome-tweaks vlc openssh-server wireshark netdiscover rpcbind testssl.sh jython snmp
+	sudo DEBIAN_FRONTEND=noninteractiv apt install -y thefuck byobu vim flashrom nmap bashtop traceroute esptool plocate golang-go docker.io  python3-venv curl nmap hydra medusa gnome-tweaks vlc openssh-server wireshark netdiscover rpcbind testssl.sh jython snmp
 	sudo snap install rustup --classic
 	# ensure pipx path
 	add_rc_path "/home/blackfell/.local/bin"
@@ -174,7 +174,7 @@ parrot_install() {
 	PANEL_SNAPSHOT="$SRCDIR/strap_parrot_panel.conf"
 
 	# Konsole colours - Linux console palette, 77% opacity, red block cursor
-	sudo DEBIAN_FRONTEND=noninteractive apt install -y konsole
+	sudo DEBIAN_FRONTEND=noninteractive apt install -y konsole 
 	mkdir -p "$KONSOLE_DIR"
 	cat > "$KONSOLE_DIR/Linux.colorscheme" <<-'EOF'
 	[Background]
@@ -441,6 +441,9 @@ generic_setup() {
     else
         echo "[+] Zsh already configured. Skipping..."
     fi
+
+	# Pipx
+    sudo DEBIAN_FRONTEND=noninteractiv apt install -y  pipx 
     
     # stuff that needs to be OS specific
     if [ $OS = "kali" ]; then
