@@ -26,6 +26,11 @@ pipx_fuckery () {
     fi
 }
 
+set_kwin_shortcut() {
+	# kglobalshortcutsrc value is "active,default,friendly"; active=none unbinds it
+	$KWRITECONFIG --file kglobalshortcutsrc --group kwin --key "$1" "$2,$3,$4"
+}
+
 # Clone repo or update it, will use arg 2 as branch arg 3 as repo name, both optional, but if you use name you need branch too. 
 clone_or_update_repo() {
     local REPO_URL="$1"
@@ -58,7 +63,7 @@ clone_or_update_repo() {
 kali_install() {
 	echo "Detected Kali Linux. Installing Kali specifics."
 	# Base tools first
-	sudo DEBIAN_FRONTEND=noninteractiv apt install -y thefuck byobu vim flashrom nmap bashtop python3-pwntools esptool plocate golang-go docker.io rustup python3-venv pipx curl nmap vlc
+	sudo DEBIAN_FRONTEND=noninteractiv apt install -y thefuck  vim flashrom nmap bashtop python3-pwntools esptool plocate golang-go docker.io rustup python3-venv  curl nmap vlc
 
 	# Ensure this is set in $HOME/.config/qterminal.org/qterminal.ini ApplicationTransparency=0
 	sed -i '/^ApplicationTransparency=/c\ApplicationTransparency=0' "$HOME/.config/qterminal.org/qterminal.ini" || echo "ApplicationTransparency=0" >> "$HOME/.config/file.ini"
@@ -83,7 +88,7 @@ kali_install() {
 ubuntu_install() {
 	echo "Detected Ubuntu. Installing would-be Kali shit."
 	# Base tools first
-	sudo DEBIAN_FRONTEND=noninteractiv apt install -y thefuck byobu vim flashrom nmap bashtop traceroute esptool plocate golang-go docker.io  python3-venv pipx curl nmap hydra medusa gnome-tweaks vlc openssh-server wireshark netdiscover rpcbind testssl.sh jython snmp
+	sudo DEBIAN_FRONTEND=noninteractiv apt install -y thefuck byobu vim flashrom nmap bashtop traceroute esptool plocate golang-go docker.io  python3-venv curl nmap hydra medusa gnome-tweaks vlc openssh-server wireshark netdiscover rpcbind testssl.sh jython snmp
 	sudo snap install rustup --classic
 	# ensure pipx path
 	add_rc_path "/home/blackfell/.local/bin"
@@ -151,23 +156,302 @@ ubuntu_install() {
 	gem install evil-winrm
 }
 
+parrot_install() {
+	echo "Detected Parrot. Installing Parrot/KDE Plasma specifics."
+	# strap.sh's old parrot_install was a copy of kali_install (XFCE), so every
+	# desktop line silently no-op'd on Plasma. This is the KDE-native version.
+
+	# Plasma 5 and 6 ship different config writers, use whichever is here
+	if command -v kwriteconfig6 >/dev/null 2>&1; then KWRITECONFIG=kwriteconfig6
+	elif command -v kwriteconfig5 >/dev/null 2>&1; then KWRITECONFIG=kwriteconfig5
+	else echo "[!] - No kwriteconfig5/6, is this really KDE? Skipping Parrot desktop bits."; return 1; fi
+
+	local KONSOLE_DIR="$HOME/.local/share/konsole"
+	local FAVICON_URL="https://blackfell.net/favicon.ico"
+	local PANEL_CONFIG="$HOME/.config/plasma-org.kde.plasma.desktop-appletsrc"
+	local SRCDIR PANEL_SNAPSHOT
+	SRCDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+	PANEL_SNAPSHOT="$SRCDIR/strap_parrot_panel.conf"
+
+	# Konsole colours - Linux console palette, 77% opacity, red block cursor
+	sudo DEBIAN_FRONTEND=noninteractive apt install -y konsole 
+	mkdir -p "$KONSOLE_DIR"
+	cat > "$KONSOLE_DIR/Linux.colorscheme" <<-'EOF'
+	[Background]
+	Color=0,0,0
+
+	[BackgroundFaint]
+	Color=0,0,0
+
+	[BackgroundIntense]
+	Color=104,104,104
+
+	[Color0]
+	Color=0,0,0
+
+	[Color0Faint]
+	Color=24,24,24
+
+	[Color0Intense]
+	Color=104,104,104
+
+	[Color1]
+	Color=178,24,24
+
+	[Color1Faint]
+	Color=101,0,0
+
+	[Color1Intense]
+	Color=255,84,84
+
+	[Color2]
+	Color=24,178,24
+
+	[Color2Faint]
+	Color=0,101,0
+
+	[Color2Intense]
+	Color=84,255,84
+
+	[Color3]
+	Color=178,104,24
+
+	[Color3Faint]
+	Color=101,94,0
+
+	[Color3Intense]
+	Color=255,255,84
+
+	[Color4]
+	Color=24,24,178
+
+	[Color4Faint]
+	Color=0,0,101
+
+	[Color4Intense]
+	Color=84,84,255
+
+	[Color5]
+	Color=178,24,178
+
+	[Color5Faint]
+	Color=101,0,101
+
+	[Color5Intense]
+	Color=255,84,255
+
+	[Color6]
+	Color=24,178,178
+
+	[Color6Faint]
+	Color=0,101,101
+
+	[Color6Intense]
+	Color=84,255,255
+
+	[Color7]
+	Color=178,178,178
+
+	[Color7Faint]
+	Color=101,101,101
+
+	[Color7Intense]
+	Color=255,255,255
+
+	[Foreground]
+	Color=178,178,178
+
+	[ForegroundFaint]
+	Color=101,101,101
+
+	[ForegroundIntense]
+	Color=255,255,255
+
+	[General]
+	Anchor=0.5,0.5
+	Blur=false
+	ColorRandomization=false
+	Description=Linux Colours
+	FillStyle=Tile
+	Opacity=0.77
+	Wallpaper=
+	WallpaperFlipType=NoFlip
+	WallpaperOpacity=1
+	EOF
+	cat > "$KONSOLE_DIR/Parrot.profile" <<-'EOF'
+	[Appearance]
+	ColorScheme=Linux
+	UseFontLineChararacters=true
+
+	[Cursor Options]
+	CursorShape=0
+	CustomCursorColor=255,0,0
+	UseCustomCursorColor=true
+
+	[General]
+	Name=Parrot
+	Parent=FALLBACK/
+	TerminalColumns=110
+
+	[Interaction Options]
+	AutoCopySelectedText=true
+	TrimLeadingSpacesInSelectedText=false
+	TrimTrailingSpacesInSelectedText=true
+	UnderlineFilesEnabled=true
+
+	[Keyboard]
+	KeyBindings=default
+
+	[Scrolling]
+	HistoryMode=2
+
+	[Terminal Features]
+	BlinkingCursorEnabled=true
+	EOF
+	$KWRITECONFIG --file konsolerc --group "Desktop Entry" --key DefaultProfile "Parrot.profile"
+	$KWRITECONFIG --file konsolerc --group KonsoleWindow --key ShowMenuBarByDefault false
+	$KWRITECONFIG --file konsolerc --group KonsoleWindow --key RememberWindowSize false
+	$KWRITECONFIG --file konsolerc --group MainWindow --key StatusBar "Disabled"
+
+	# User icon from the blackfell favicon (Plasma, SDDM, AccountsService)
+	sudo DEBIAN_FRONTEND=noninteractive apt install -y imagemagick
+	local tmpdir; tmpdir="$(mktemp -d)"
+	local ico="$tmpdir/favicon.ico" png="$HOME/.face.icon"
+	if curl -sfL "$FAVICON_URL" -o "$ico"; then
+		# .ico holds several sizes - take the largest frame, square to 256
+		local best; best="$(identify -format '%[fx:w*h] %[scene]\n' "$ico" 2>/dev/null | sort -rn | head -1 | cut -d' ' -f2)"
+		[ -z "$best" ] && best=0
+		if convert "${ico}[${best}]" -background none -resize 256x256 -gravity center -extent 256x256 "PNG32:$png"; then
+			chmod 644 "$png"; cp -f "$png" "$HOME/.face"
+			sudo mkdir -p /var/lib/AccountsService/icons /var/lib/AccountsService/users
+			sudo cp -f "$png" "/var/lib/AccountsService/icons/$USER"
+			sudo chmod 644 "/var/lib/AccountsService/icons/$USER"
+			local userfile="/var/lib/AccountsService/users/$USER"
+			if [ ! -f "$userfile" ]; then
+				printf '[User]\nIcon=/var/lib/AccountsService/icons/%s\n' "$USER" | sudo tee "$userfile" >/dev/null
+			elif sudo grep -q '^Icon=' "$userfile"; then
+				sudo sed -i "s#^Icon=.*#Icon=/var/lib/AccountsService/icons/$USER#" "$userfile"
+			else
+				echo "Icon=/var/lib/AccountsService/icons/$USER" | sudo tee -a "$userfile" >/dev/null
+			fi
+			sudo chmod 600 "$userfile"
+			echo "[+] User icon set from favicon."
+		else
+			echo "[!] - Icon conversion failed, skipping."
+		fi
+	else
+		echo "[!] - Couldn't fetch $FAVICON_URL, skipping user icon."
+	fi
+	rm -rf "$tmpdir"
+
+	# Free Ctrl+F1..F6 / F11 / F12 for byobu, desktops move to Meta+F<n>.
+	# MUST go over D-Bus not kwriteconfig: kwin_wayland owns the shortcut
+	# registry in memory and clobbers live file writes on session end.
+	# busctl not qdbus - qdbus can't marshal the 'ai' array-of-int arg.
+	local act
+	for act in "MoveMouseToFocus:Move Mouse to Focus" "MoveMouseToCenter:Move Mouse to Centre"; do
+		busctl --user call org.kde.kglobalaccel /kglobalaccel org.kde.KGlobalAccel \
+			setForeignShortcut asai 4 "kwin" "${act%%:*}" "KWin" "${act#*:}" 0 >/dev/null 2>&1 \
+			&& echo "[+] ${act%%:*} unbound"
+	done
+	# Qt keycodes: Meta(0x10000000)=268435456, Key_F1..F6 = 16777264..16777269
+	local kga_meta=268435456 i key
+	for i in 1 2 3 4 5 6; do
+		key=$((kga_meta + 16777263 + i))
+		busctl --user call org.kde.kglobalaccel /kglobalaccel org.kde.KGlobalAccel \
+			setForeignShortcut asai 4 "kwin" "Switch to Desktop $i" "KWin" "Switch to Desktop $i" 1 $key \
+			>/dev/null 2>&1 && echo "[+] Desktop $i -> Meta+F$i" || echo "[!] - Desktop $i rebind failed."
+	done
+	# Trailing 0 = empty key array = unbound
+	busctl --user call org.kde.kglobalaccel /kglobalaccel org.kde.KGlobalAccel \
+		setForeignShortcut asai 4 "kwin" "Cube" "KWin" "Desktop Cube" 0 >/dev/null 2>&1
+	busctl --user call org.kde.kglobalaccel /kglobalaccel org.kde.KGlobalAccel \
+		setForeignShortcut asai 4 "plasmashell" "show dashboard" "plasmashell" "Show Desktop" 0 >/dev/null 2>&1
+	# Belt and braces: also write the file for a fresh box with no live session yet
+	for i in 1 2 3 4 5 6; do
+		set_kwin_shortcut "Switch to Desktop $i" "Meta+F$i" "Ctrl+F$i" "Switch to Desktop $i"
+	done
+	set_kwin_shortcut "Cube" "none" "Ctrl+F11" "Desktop Cube"
+	set_kwin_shortcut "MoveMouseToFocus" "none" "Meta+F5" "Move Mouse to Focus"
+	set_kwin_shortcut "MoveMouseToCenter" "none" "Meta+F6" "Move Mouse to Centre"
+	$KWRITECONFIG --file kglobalshortcutsrc --group plasmashell --key "show dashboard" "none,Ctrl+F12,Show Desktop"
+	echo "[+] Ctrl+F1..F6/F11/F12 free for byobu, desktops on Meta+F1..F6."
+
+	# Window buttons to the RIGHT (xfwm4 call in strap.sh is a Plasma no-op).
+	# M=menu I=minimise A=maximise X=close. Write v2 (current) and v3 groups.
+	local g
+	for g in org.kde.kdecoration2 org.kde.kdecoration3; do
+		$KWRITECONFIG --file kwinrc --group "$g" --key ButtonsOnLeft "M"
+		$KWRITECONFIG --file kwinrc --group "$g" --key ButtonsOnRight "IAX"
+	done
+	if command -v qdbus6 >/dev/null 2>&1; then qdbus6 org.kde.KWin /KWin reconfigure 2>/dev/null
+	elif command -v qdbus >/dev/null 2>&1; then qdbus org.kde.KWin /KWin reconfigure 2>/dev/null; fi
+
+	# Wallpaper - the bit xfconf/gsettings never did on Plasma
+	if [ ! -f "$HOME/BFBackground.png" ]; then
+		wget -q https://github.com/Blackfell/ansible-hax/raw/refs/heads/main/roles/bf_arch_desktop/files/BFBackground.png -O "$HOME/BFBackground.png"
+	fi
+	if command -v plasma-apply-wallpaperimage >/dev/null 2>&1; then
+		plasma-apply-wallpaperimage "$HOME/BFBackground.png"
+	else
+		echo "[!] - plasma-apply-wallpaperimage missing, set it by hand from $HOME/BFBackground.png"
+	fi
+
+	# Nessus (strap.sh's copy downloads one filename, dpkg's another, and 28017 now 404s)
+	if [ ! -f /opt/nessus/sbin/nessusd ]; then
+		local deb="$HOME/Nessus-latest-debian10_amd64.deb"
+		if curl -fsSL --url 'https://www.tenable.com/downloads/api/v2/pages/nessus/files/Nessus-latest-debian10_amd64.deb' --output "$deb" \
+			&& file "$deb" | grep -qi "debian binary package"; then
+			sudo dpkg -i "$deb"
+		else
+			echo "[!] - Nessus download failed or wasn't a .deb, grab it from https://www.tenable.com/downloads/nessus"
+			rm -f "$deb"
+		fi
+	else
+		echo "[+] Nessus already here, skipping install..."
+	fi
+
+	# Panel / taskbar layout from the snapshot next to this script.
+	# plasmashell serialises the layout on exit, so it MUST be stopped before we write.
+	if [ -f "$PANEL_SNAPSHOT" ]; then
+		[ -f "$PANEL_CONFIG" ] && cp -f "$PANEL_CONFIG" "${PANEL_CONFIG}.bak.$(date +%Y%m%d%H%M%S)"
+		if command -v kquitapp6 >/dev/null 2>&1; then kquitapp6 plasmashell 2>/dev/null
+		elif command -v kquitapp5 >/dev/null 2>&1; then kquitapp5 plasmashell 2>/dev/null
+		else killall plasmashell 2>/dev/null; fi
+		local waited=0
+		while pgrep -x plasmashell >/dev/null 2>&1 && [ $waited -lt 10 ]; do sleep 1; waited=$((waited + 1)); done
+		pgrep -x plasmashell >/dev/null 2>&1 && { killall -9 plasmashell 2>/dev/null; sleep 1; }
+		mkdir -p "$(dirname "$PANEL_CONFIG")"
+		cp -f "$PANEL_SNAPSHOT" "$PANEL_CONFIG"
+		(setsid plasmashell >/dev/null 2>&1 &)
+		echo "[+] Panel layout restored from $PANEL_SNAPSHOT"
+	else
+		echo "[!] - No panel snapshot at $PANEL_SNAPSHOT, skipping panel (grab one: cp $PANEL_CONFIG $PANEL_SNAPSHOT)"
+	fi
+}
+
 generic_setup() {
     OS=$1
     # Start off with a oh-my-zsh install
     if [ ! -d $HOME/.oh-my-zsh ]; then 
         echo "[+] Installing oh-my-zsh"
-        sudo apt install -y zsh
-        CHSH="yes" sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+        sudo DEBIAN_FRONTEND=noninteractiv apt install -y zsh
+        CHSH=yes RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 	    sed -i 's/^ZSH_THEME=.*$/ZSH_THEME="alanpeabody"/g' $HOME/.zshrc
     else
         echo "[+] Zsh already configured. Skipping..."
     fi
+
+	# Pipx and byobu everywhere
+    sudo DEBIAN_FRONTEND=noninteractiv apt install -y  pipx byobu
     
     # stuff that needs to be OS specific
     if [ $OS = "kali" ]; then
         kali_install
     elif [ $OS = "ubuntu" ]; then
         ubuntu_install        
+	elif [ $OS = "parrot" ]; then
+        parrot_install    
     fi
 
 	# STUFF THAT IS OS GENERIC
@@ -794,8 +1078,10 @@ if grep -iq "ubuntu" /etc/os-release; then
     OS="ubuntu"
 elif grep -iq "kali" /etc/os-release; then
     OS="kali"
+elif grep -iq "parrot" /etc/os-release; then
+    OS="parrot"
 else
-    echo "[!] This script is for Ubuntu or Kali. If you want to use it with another OS, edit it yourself."
+    echo "[!] This script is for Ubuntu, ParrotOS or Kali. If you want to use it with another OS, edit it yourself."
     exit 1
 fi
 
