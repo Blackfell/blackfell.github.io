@@ -88,12 +88,20 @@ title: Home
     </div>
   </section>
 
+  {% assign news = site.posts | where: "group", "news" | sort: "date" | reverse %}
   {% assign new_latest = site.data.elsewhere | where_exp: "i", "i.series == nil" | sort: "date" | reverse %}
   {% assign ble = site.data.elsewhere | where: "series", "Bluetooth Low Energy" | sort: "part" %}
   <section class="group">
-    <h2>New writing <span class="count">· {{ new_latest | size | plus: ble.size }}</span></h2>
-    <p class="sub">Most recent work - published on the Pentest Partners blog.</p>
+    <h2>New writing <span class="count">· {{ new_latest | size | plus: ble.size | plus: news.size }}</span></h2>
+    <p class="sub">Most recent work, here and over on the Pentest Partners blog.</p>
     <div class="cards">
+      {% for post in news %}
+      <a class="card" href="{{ post.url | relative_url }}">
+        <h4>{{ post.title | default: post.slug }}</h4>
+        <p class="date">{{ post.date | date: "%b %Y" }} · on this site</p>
+        <p class="excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
+      </a>
+      {% endfor %}
       {% for i in new_latest %}
       <a class="card" href="{{ i.url }}" target="_blank" rel="noopener">
         <h4>{{ i.title }}</h4>
