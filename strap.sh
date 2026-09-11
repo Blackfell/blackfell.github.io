@@ -63,7 +63,7 @@ clone_or_update_repo() {
 kali_install() {
 	echo "Detected Kali Linux. Installing Kali specifics."
 	# Base tools first
-	sudo DEBIAN_FRONTEND=noninteractiv apt install -y thefuck byobu vim flashrom nmap bashtop python3-pwntools esptool plocate golang-go docker.io rustup python3-venv  curl nmap vlc
+	sudo DEBIAN_FRONTEND=noninteractiv apt install -y thefuck  vim flashrom nmap bashtop python3-pwntools esptool plocate golang-go docker.io rustup python3-venv  curl nmap vlc
 
 	# Ensure this is set in $HOME/.config/qterminal.org/qterminal.ini ApplicationTransparency=0
 	sed -i '/^ApplicationTransparency=/c\ApplicationTransparency=0' "$HOME/.config/qterminal.org/qterminal.ini" || echo "ApplicationTransparency=0" >> "$HOME/.config/file.ini"
@@ -442,8 +442,8 @@ generic_setup() {
         echo "[+] Zsh already configured. Skipping..."
     fi
 
-	# Pipx
-    sudo DEBIAN_FRONTEND=noninteractiv apt install -y  pipx 
+	# Pipx and byobu everywhere
+    sudo DEBIAN_FRONTEND=noninteractiv apt install -y  pipx byobu
     
     # stuff that needs to be OS specific
     if [ $OS = "kali" ]; then
