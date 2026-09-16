@@ -1,4 +1,9 @@
 # Curated list of my writing published off this site. Add one entry per article.
+- title: "IET Cyber Security for Critical Industries Conference"
+  url: "https://www.pentestpartners.com/security-blog/events/iet-cyber-security-for-critical-industries-conference/"
+  date: 2026-09-16
+  outlet: Pentest Partners
+  description: "My talk: lessons from hands-on OT security testing."
 - title: "One SSID To Rule Them All"
   url: "https://www.pentestpartners.com/security-blog/one-ssid-to-rule-them-all/"
   date: 2026-08-24
