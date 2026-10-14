@@ -462,6 +462,10 @@ generic_setup() {
     sudo DEBIAN_FRONTEND=noninteractiv apt install -y  snapd bettercap apktool hostapd qemu-system qemu-user mitmproxy cmake hashcat-nvidia hcxtools openocd gqrx-sdr inspectrum minicom picocom lsscsi  pcscd libacsccid1 libccid  pcsc-tools cardpeek cardpeek-data tio rsh-redone-client
     # FS Tools
     sudo DEBIAN_FRONTEND=noninteractiv apt install -y fusecram fusefat fuseiso fuse2fs
+
+	Shodan nrich
+	wget https://gitlab.com/api/v4/projects/33695681/packages/generic/nrich/latest/nrich_latest_x86_64.deb
+	sudo dpkg -i nrich_latest_x86_64.deb
 	
 	# OT tools
 	pipx_fuckery opcua-client
